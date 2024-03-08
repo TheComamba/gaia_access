@@ -1,0 +1,40 @@
+name: Run Tests
+on: [push, pull_request]
+
+env:
+  RUST_BACKTRACE: 1
+
+jobs:
+  buildAndTest:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies for Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl build-essential cmake pkg-config cargo
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - uses: clechasseur/rs-cargo@v1
+        if: ${{ github.event_name != 'pull_request' }}
+        with:
+          command: test
+
+      - uses: clechasseur/rs-cargo@v1
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          command: test
+          args: --release -- --include-ignored
+
+      - uses: clechasseur/rs-cargo@v1
+        with:
+          command: clippy
