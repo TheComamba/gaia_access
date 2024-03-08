@@ -1,4 +1,4 @@
-use crate::{column::GaiaColumn, condition::GaiaCondition, table::GaiaTable};
+use crate::{column::GaiaColumn, condition::GaiaCondition, error::GaiaError, table::GaiaTable};
 
 pub struct GaiaQueryBuilder {
     table: GaiaTable,
@@ -59,7 +59,7 @@ impl GaiaQueryBuilder {
         query
     }
 
-    pub fn do_query(&self) {
+    pub fn do_query(&self) -> Result<(), GaiaError> {
         let response = reqwest::blocking::Client::new()
             .get("https://gea.esac.esa.int/tap-server/tap/sync")
             .query(&[
@@ -68,8 +68,8 @@ impl GaiaQueryBuilder {
                 ("format", "json"),
                 ("query", &self.query_string()),
             ])
-            .send()
-            .unwrap();
-        println!("{}", response.text().unwrap());
+            .send()?;
+        println!("{}", response.text()?);
+        Ok(())
     }
 }
