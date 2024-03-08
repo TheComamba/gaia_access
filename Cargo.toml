@@ -6,5 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+reqwest = { version = "0.11.0", default-features = false, features = ["blocking", "rustls-tls"] } # Downloading files
 strum = { version = "0.26.0", no-default-features = true, features = ["derive"] } # Derive string from enum
 strum_macros = "0.26.0" # Derive string from enum

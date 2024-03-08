@@ -32,7 +32,7 @@ impl GaiaQueryBuilder {
         self
     }
 
-    pub fn query_string(self) -> String {
+    pub fn query_string(&self) -> String {
         let mut query = "SELECT".to_string();
         if let Some(top) = self.top {
             query.push_str(&format!(" TOP {}", top));
@@ -57,5 +57,19 @@ impl GaiaQueryBuilder {
             ));
         }
         query
+    }
+
+    pub fn do_query(&self) {
+        let response = reqwest::blocking::Client::new()
+            .get("https://gea.esac.esa.int/tap-server/tap/sync")
+            .query(&[
+                ("request", "doQuery"),
+                ("lang", "ADQL"),
+                ("format", "json"),
+                ("query", &self.query_string()),
+            ])
+            .send()
+            .unwrap();
+        println!("{}", response.text().unwrap());
     }
 }
