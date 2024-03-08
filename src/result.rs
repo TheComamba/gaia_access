@@ -44,25 +44,21 @@ pub(super) struct GaiaResponse {
     data: Vec<Vec<GaiaCellData>>,
 }
 
-pub struct GaiaStar {
-    pub data: HashMap<GaiaColumn, GaiaCellData>,
-}
-
 pub struct GaiaResult {
     pub columns: Vec<GaiaColumn>,
-    pub stars: Vec<GaiaStar>,
+    pub data: Vec<HashMap<GaiaColumn, GaiaCellData>>,
 }
 
 impl GaiaResult {
     pub(super) fn new(response: GaiaResponse, columns: Vec<GaiaColumn>) -> Self {
-        let mut stars = Vec::new();
+        let mut data = Vec::new();
         for row in response.data {
             let mut star = HashMap::new();
             for (i, cell) in row.into_iter().enumerate() {
                 star.insert(columns[i], cell);
             }
-            stars.push(GaiaStar { data: star });
+            data.push(star);
         }
-        GaiaResult { columns, stars }
+        GaiaResult { columns, data }
     }
 }
