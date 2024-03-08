@@ -23,11 +23,11 @@ mod tests {
     #[test]
     fn request_top_entry_from_every_table() {
         for table in GaiaTable::iter() {
-            let query = GaiaQueryBuilder::new(table)
+            let result = GaiaQueryBuilder::new(table)
                 .top(1)
                 .select(vec![GaiaColumn::designation])
                 .do_query();
-            assert!(query.is_ok());
+            assert!(result.is_ok());
         }
     }
 }

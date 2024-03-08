@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub enum GaiaError {
     QueryError(reqwest::Error),
     ParseError(serde_json::Error),
