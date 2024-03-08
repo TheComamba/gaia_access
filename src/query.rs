@@ -1,10 +1,10 @@
-use crate::{column::GaiaColumn, table::GaiaTable};
+use crate::{column::GaiaColumn, condition::GaiaCondition, table::GaiaTable};
 
 pub struct GaiaQueryBuilder {
     table: GaiaTable,
     top: Option<usize>,
     columns: Vec<GaiaColumn>,
-    conditions: Vec<String>,
+    conditions: Vec<GaiaCondition>,
 }
 
 impl GaiaQueryBuilder {
@@ -27,8 +27,8 @@ impl GaiaQueryBuilder {
         self
     }
 
-    pub fn where_clause(mut self, condition: &str) -> Self {
-        self.conditions.push(condition.to_string());
+    pub fn where_clause(mut self, condition: GaiaCondition) -> Self {
+        self.conditions.push(condition);
         self
     }
 
@@ -47,7 +47,14 @@ impl GaiaQueryBuilder {
         ));
         query.push_str(&format!(" FROM {}", self.table.to_string()));
         if !self.conditions.is_empty() {
-            query.push_str(&format!(" WHERE {}", self.conditions.join(" AND ")));
+            query.push_str(&format!(
+                " WHERE {}",
+                self.conditions
+                    .iter()
+                    .map(|c| c.to_string())
+                    .collect::<Vec<_>>()
+                    .join(" AND ")
+            ));
         }
         query
     }
