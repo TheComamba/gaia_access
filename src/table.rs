@@ -27,6 +27,7 @@ mod tests {
                 .top(1)
                 .select(vec![GaiaColumn::designation])
                 .do_query();
+            assert!(query.is_ok());
         }
     }
 }

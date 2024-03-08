@@ -1,7 +1,8 @@
+use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumString};
 
 #[allow(non_camel_case_types)]
-#[derive(Debug, EnumString, Display)]
+#[derive(Debug, Clone, Copy, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum GaiaColumn {
     designation,
     ecl_lon,
