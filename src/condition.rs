@@ -8,12 +8,10 @@ pub enum GaiaCondition {
 impl ToString for GaiaCondition {
     fn to_string(&self) -> String {
         let str = match self {
-            GaiaCondition::LessThan(column, value) => format!("{} < {}", column.to_string(), value),
-            GaiaCondition::GreaterThan(column, value) => {
-                format!("{} > {}", column.to_string(), value)
-            }
+            GaiaCondition::LessThan(column, value) => format!("{} < {}", column, value),
+            GaiaCondition::GreaterThan(column, value) => format!("{} > {}", column, value),
             GaiaCondition::Between(column, value1, value2) => {
-                format!("{} BETWEEN {} AND {}", column.to_string(), value1, value2)
+                format!("{} BETWEEN {} AND {}", column, value1, value2)
             }
         };
         format!("({})", str)
