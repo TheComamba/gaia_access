@@ -1,17 +1,18 @@
 #[derive(Debug)]
 pub enum GaiaError {
-    QueryError(reqwest::Error),
-    ParseError(serde_json::Error),
+    General(String),
+    Query(reqwest::Error),
+    Parse(serde_json::Error),
 }
 
 impl From<reqwest::Error> for GaiaError {
     fn from(error: reqwest::Error) -> Self {
-        GaiaError::QueryError(error)
+        GaiaError::Query(error)
     }
 }
 
 impl From<serde_json::Error> for GaiaError {
     fn from(error: serde_json::Error) -> Self {
-        GaiaError::ParseError(error)
+        GaiaError::Parse(error)
     }
 }
