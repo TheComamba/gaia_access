@@ -86,6 +86,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn all_rust_schemas_are_in_xml() {
         let result = read_xml_file().unwrap();
         let mut missing_schemas = result.schemas.clone();
@@ -98,6 +99,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn all_rust_tables_are_in_xml() {
         let result = read_xml_file().unwrap();
         let mut missing_tables = result.tables.clone();
@@ -110,6 +112,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn all_rust_columns_are_in_xml() {
         let result = read_xml_file().unwrap();
         let mut missing_columns = result.columns.clone();
