@@ -1,8 +1,10 @@
 use serde::{Deserialize, Serialize};
-use strum::{Display, EnumString};
+use strum::{Display, EnumIter, EnumString};
 
 #[allow(non_camel_case_types)]
-#[derive(Debug, Clone, Copy, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(
+    Debug, Clone, Copy, EnumIter, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize,
+)]
 pub enum GaiaColumn {
     designation,
     ecl_lon,
