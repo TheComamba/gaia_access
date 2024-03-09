@@ -33,7 +33,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         with:
           command: test
-          args: --release -- --include-ignored
+          args: --release -- --ignored
 
       - uses: clechasseur/rs-cargo@v1
         with:

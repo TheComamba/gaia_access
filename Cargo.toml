@@ -11,3 +11,6 @@ strum = { version = "0.26.0", no-default-features = true, features = ["derive"] 
 serde = { version = "1.0", default-features = false, features = ["derive"] } # (De)Serialization
 serde_json = { version = "1.0", default-features = false, features = ["std"] }
 strum_macros = "0.26.0" # Derive string from enum
+
+[dev-dependencies]
+xmltree = "0.10.0" # XML DeSerialization
