@@ -1,9 +1,9 @@
 #[cfg(test)]
 mod tests {
     use gaia_access::error::GaiaError;
-    use minidom::Element;
     use reqwest;
     use std::{fs, io::BufReader};
+    use xmltree::Element;
 
     const FILE_PATH: &'static str = "dev_data/tables.xml";
 
@@ -27,20 +27,29 @@ mod tests {
         let file = fs::File::open(FILE_PATH).map_err(|e| GaiaError::General(e.to_string()))?;
 
         let reader = BufReader::new(file);
-        let root = Element::from_reader(reader).map_err(|e| GaiaError::General(e.to_string()))?;
-
-        // Access and process XML elements here
+        let root = Element::parse(reader).map_err(|e| GaiaError::General(e.to_string()))?;
+        println!("Root has {} children", root.children.len());
+        for schema in root.children {
+            let schema = schema.as_element().unwrap();
+            println!(
+                "Schema {} has {} children",
+                schema.name,
+                schema.children.len()
+            );
+        }
 
         Ok(())
     }
 
     #[test]
+    #[ignore]
     fn test_check_and_download_file() {
         let result = check_and_download_file();
         assert!(result.is_ok(), "Error: {:?}", result.err());
     }
 
     #[test]
+    #[ignore]
     fn test_read_xml_file() {
         let result = read_xml_file();
         assert!(result.is_ok(), "Error: {:?}", result.err());

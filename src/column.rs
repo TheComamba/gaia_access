@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use strum_macros::{Display, EnumString};
+use strum::{Display, EnumString};
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -17,6 +17,7 @@ mod tests {
     use crate::{
         query::GaiaQueryBuilder,
         result::{get_float, get_string},
+        schema::GaiaSchema,
         table::GaiaTable,
     };
 
@@ -32,7 +33,7 @@ mod tests {
     #[test]
     fn request_a_string() {
         let col = GaiaColumn::designation;
-        let result = GaiaQueryBuilder::new(GaiaTable::GaiaDr3GaiaSource)
+        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
             .top(1)
             .select(vec![col])
             .do_query()
@@ -45,7 +46,7 @@ mod tests {
     #[test]
     fn request_a_float() {
         let col = GaiaColumn::ecl_lon;
-        let result = GaiaQueryBuilder::new(GaiaTable::GaiaDr3GaiaSource)
+        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
             .top(1)
             .select(vec![col])
             .do_query()
