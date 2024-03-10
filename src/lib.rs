@@ -7,4 +7,13 @@ pub mod schema;
 pub mod table;
 
 pub mod external;
+pub mod gaiadr1;
+pub mod gaiadr2;
 pub mod gaiadr3;
+pub mod gaiaedr3;
+pub mod gaiafpr;
+pub mod job_upload;
+pub mod public;
+pub mod tap_config;
+pub mod tap_schema;
+pub mod tap_upload;
