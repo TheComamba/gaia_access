@@ -15,7 +15,7 @@ pub enum GaiaColumn {}
 mod tests {
     use crate::{
         gaiadr3::gaia_source::GaiaSource,
-        gaiadr3::GaiaDr3,
+        gaiadr3::Gaiadr3,
         query::GaiaQueryBuilder,
         result::{get_float, get_string},
     };
@@ -23,7 +23,7 @@ mod tests {
     #[test]
     fn request_a_string() {
         let col = crate::gaiadr3::gaia_source::Col::designation;
-        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
+        let result = GaiaQueryBuilder::new(Gaiadr3, GaiaSource)
             .top(1)
             .select(vec![col])
             .do_query()
@@ -36,7 +36,7 @@ mod tests {
     #[test]
     fn request_a_float() {
         let col = crate::gaiadr3::gaia_source::Col::ecl_lon;
-        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
+        let result = GaiaQueryBuilder::new(Gaiadr3, GaiaSource)
             .top(1)
             .select(vec![col])
             .do_query()
