@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 use strum::{Display, EnumIter, EnumString};
 
+pub(crate) trait Column {
+    fn string(&self) -> String;
+}
+
 #[allow(non_camel_case_types)]
 #[derive(
     Debug, Clone, Copy, EnumIter, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize,

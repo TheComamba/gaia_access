@@ -1,5 +1,9 @@
 use strum::{Display, EnumIter, EnumString};
 
+pub(crate) trait Table {
+    fn string(&self) -> String;
+}
+
 #[allow(non_camel_case_types)]
 #[derive(EnumIter, EnumString, Display)]
 pub enum GaiaTable {
