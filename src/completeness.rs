@@ -101,11 +101,23 @@ mod tests {
         let xml_schemas = read_xml_file().unwrap();
         let rust_schemas = collect_known_schemas();
         for (schema, tables) in rust_schemas {
-            assert!(xml_schemas.contains_key(&schema));
+            assert!(
+                xml_schemas.contains_key(&schema),
+                "Schema {} not found in XML",
+                schema
+            );
             for (table, columns) in tables {
-                assert!(xml_schemas[&schema].contains_key(&table));
+                assert!(
+                    xml_schemas[&schema].contains_key(&table),
+                    "Table {} not found in XML",
+                    table
+                );
                 for column in columns {
-                    assert!(xml_schemas[&schema][&table].contains(&column));
+                    assert!(
+                        xml_schemas[&schema][&table].contains(&column),
+                        "Column {} not found in XML",
+                        column
+                    );
                 }
             }
         }
@@ -116,14 +128,42 @@ mod tests {
     fn all_xml_data_is_in_rust() {
         let rust_schemas = collect_known_schemas();
         let xml_schemas = read_xml_file().unwrap();
+        let mut missing_schemas = Vec::new();
         for (schema, tables) in xml_schemas {
-            assert!(rust_schemas.contains_key(&schema));
-            for (table, columns) in tables {
-                assert!(rust_schemas[&schema].contains_key(&table));
-                for column in columns {
-                    assert!(rust_schemas[&schema][&table].contains(&column));
-                }
+            if !rust_schemas.contains_key(&schema) {
+                missing_schemas.push(schema);
+                continue;
             }
+            let mut missing_tables = Vec::new();
+            for (table, columns) in tables {
+                if !rust_schemas[&schema].contains_key(&table) {
+                    missing_tables.push(table);
+                    continue;
+                }
+                let mut missing_columns = Vec::new();
+                for column in columns {
+                    if !rust_schemas[&schema][&table].contains(&column) {
+                        missing_columns.push(column);
+                    }
+                }
+                assert!(
+                    missing_columns.is_empty(),
+                    "Table {} is missing these columns:\n{:?}",
+                    table,
+                    missing_columns
+                );
+            }
+            assert!(
+                missing_tables.is_empty(),
+                "Schema {} is missing these tables:\n{:?}",
+                schema,
+                missing_tables,
+            );
         }
+        assert!(
+            missing_schemas.is_empty(),
+            "Missing schemas in Rust:\n{:?}",
+            missing_schemas
+        );
     }
 }

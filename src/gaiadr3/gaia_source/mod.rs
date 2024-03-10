@@ -1,5 +1,4 @@
-use serde::{Deserialize, Serialize};
-use strum::{Display, EnumIter, EnumString};
+use strum::Display;
 
 use crate::{column::Column, table::Table};
 
@@ -12,9 +11,7 @@ impl Table for GaiaSource {
 }
 
 #[allow(non_camel_case_types)]
-#[derive(
-    Debug, Clone, Copy, EnumIter, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize,
-)]
+#[derive(Debug, Clone, Copy, Display, PartialEq, Eq, Hash)]
 pub enum Col {
     designation,
     ecl_lon,

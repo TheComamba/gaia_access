@@ -1,4 +1,4 @@
-use crate::schema::Schema;
+use crate::{column::Column, schema::Schema};
 
 pub struct Dual;
 
@@ -8,7 +8,17 @@ impl Schema for Dual {
     }
 }
 
+#[allow(non_camel_case_types)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display, strum::EnumIter)]
+pub enum Col {
+    dummy,
+}
+
+impl Column for Col {}
+
 #[cfg(test)]
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
-    map.insert(Dual.string(), vec![]);
+    use strum::IntoEnumIterator;
+    let col_strings = Col::iter().map(|col| col.to_string()).collect();
+    map.insert(Dual.string(), col_strings);
 }
