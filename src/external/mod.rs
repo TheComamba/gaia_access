@@ -8,24 +8,43 @@ impl Schema for External {
     }
 }
 
+#[cfg(any(apassdr9, test))]
 pub mod apassdr9;
+#[cfg(any(catwise2020, test))]
 pub mod catwise2020;
+#[cfg(any(gaia_eso_survey, test))]
 pub mod gaia_eso_survey;
+#[cfg(any(gaiadr2_astrophysical_parameters, test))]
 pub mod gaiadr2_astrophysical_parameters;
+#[cfg(any(gaiadr2_geometric_distance, test))]
 pub mod gaiadr2_geometric_distance;
+#[cfg(any(gaiaedr3_distance, test))]
 pub mod gaiaedr3_distance;
+#[cfg(any(gaiaedr3_gcns_main_1, test))]
 pub mod gaiaedr3_gcns_main_1;
+#[cfg(any(gaiaedr3_gcns_rejected_1, test))]
 pub mod gaiaedr3_gcns_rejected_1;
+#[cfg(any(gaiaedr3_spurious, test))]
 pub mod gaiaedr3_spurious;
+#[cfg(any(galex_ais, test))]
 pub mod galex_ais;
+#[cfg(any(ravedr5_com, test))]
 pub mod ravedr5_com;
+#[cfg(any(ravedr5_dr5, test))]
 pub mod ravedr5_dr5;
+#[cfg(any(ravedr5_gra, test))]
 pub mod ravedr5_gra;
+#[cfg(any(ravedr5_on, test))]
 pub mod ravedr5_on;
+#[cfg(any(ravedr6, test))]
 pub mod ravedr6;
+#[cfg(any(sdssdr13_photoprimary, test))]
 pub mod sdssdr13_photoprimary;
+#[cfg(any(skymapperdr1_master, test))]
 pub mod skymapperdr1_master;
+#[cfg(any(skymapperdr2_master, test))]
 pub mod skymapperdr2_master;
+#[cfg(any(tmass_xsc, test))]
 pub mod tmass_xsc;
 
 #[cfg(test)]
