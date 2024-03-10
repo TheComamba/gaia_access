@@ -70,13 +70,16 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn print_all_tables() {
+    fn print_all_features() {
         let result = read_xml_file().unwrap();
         for (schema, tables) in result {
-            println!("\nSchema: {}\n", schema);
+            let mut table_features = Vec::new();
             for (table, _) in tables {
-                println!("{}", table);
+                let feature_name = format!("{}_{}", schema, table);
+                table_features.push(feature_name.clone());
+                println!("{} = []", feature_name);
             }
+            println!("{} = {:?}", schema, table_features);
         }
     }
 
