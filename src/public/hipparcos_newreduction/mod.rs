@@ -7,3 +7,8 @@ impl Schema for HipparcosNewreduction {
         "hipparcos_newreduction".to_string()
     }
 }
+
+#[cfg(test)]
+pub(crate) fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
+    map.insert(HipparcosNewreduction.string(), vec![]);
+}

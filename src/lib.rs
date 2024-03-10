@@ -17,3 +17,13 @@ pub mod public;
 pub mod tap_config;
 pub mod tap_schema;
 pub mod tap_upload;
+
+#[cfg(test)]
+mod completeness;
+#[cfg(test)]
+pub(crate) fn collect_known_schemas(
+) -> std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>> {
+    let mut known = std::collections::HashMap::new();
+    public::collect_known(&mut known);
+    known
+}

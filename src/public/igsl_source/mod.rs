@@ -7,3 +7,8 @@ impl Schema for IgslSource {
         "igsl_source".to_string()
     }
 }
+
+#[cfg(test)]
+pub(crate) fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
+    map.insert(IgslSource.string(), vec![]);
+}

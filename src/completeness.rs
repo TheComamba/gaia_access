@@ -1,18 +1,11 @@
 #[cfg(test)]
 mod tests {
-    use gaia_access::{column::GaiaColumn, error::GaiaError, schema::GaiaSchema, table::GaiaTable};
+    use crate::{collect_known_schemas, error::GaiaError};
     use reqwest;
     use std::{collections::HashMap, fs, io::BufReader};
-    use strum::IntoEnumIterator;
     use xmltree::Element;
 
     const FILE_PATH: &'static str = "dev_data/tables.xml";
-
-    struct GaiaTables {
-        schemas: Vec<String>,
-        tables: Vec<String>,
-        columns: Vec<String>,
-    }
 
     type Tables = HashMap<String, Vec<String>>;
     type Schemas = HashMap<String, Tables>;
@@ -102,42 +95,35 @@ mod tests {
         }
     }
 
-    // #[test]
-    // #[ignore]
-    // fn all_rust_schemas_are_in_xml() {
-    //     let result = read_xml_file().unwrap();
-    //     let mut missing_schemas = result.schemas.clone();
-    //     for schema in GaiaSchema::iter() {
-    //         let schema = schema.to_string();
-    //         assert!(result.schemas.contains(&schema));
-    //         missing_schemas.retain(|s| s != &schema);
-    //     }
-    //     println!("Missing schemas: {:?}", missing_schemas);
-    // }
+    #[test]
+    #[ignore]
+    fn all_rust_data_is_in_xml() {
+        let xml_schemas = read_xml_file().unwrap();
+        let rust_schemas = collect_known_schemas();
+        for (schema, tables) in rust_schemas {
+            assert!(xml_schemas.contains_key(&schema));
+            for (table, columns) in tables {
+                assert!(xml_schemas[&schema].contains_key(&table));
+                for column in columns {
+                    assert!(xml_schemas[&schema][&table].contains(&column));
+                }
+            }
+        }
+    }
 
-    // #[test]
-    // #[ignore]
-    // fn all_rust_tables_are_in_xml() {
-    //     let result = read_xml_file().unwrap();
-    //     let mut missing_tables = result.tables.clone();
-    //     for table in GaiaTable::iter() {
-    //         let table = table.to_string();
-    //         assert!(result.tables.contains(&table));
-    //         missing_tables.retain(|t| t != &table);
-    //     }
-    //     println!("Missing tables: {:?}", missing_tables);
-    // }
-
-    // #[test]
-    // #[ignore]
-    // fn all_rust_columns_are_in_xml() {
-    //     let result = read_xml_file().unwrap();
-    //     let mut missing_columns = result.columns.clone();
-    //     for column in GaiaColumn::iter() {
-    //         let column = column.to_string();
-    //         assert!(result.columns.contains(&column));
-    //         missing_columns.retain(|c| c != &column);
-    //     }
-    //     println!("Missing columns: {:?}", missing_columns);
-    // }
+    #[test]
+    #[ignore]
+    fn all_xml_data_is_in_rust() {
+        let rust_schemas = collect_known_schemas();
+        let xml_schemas = read_xml_file().unwrap();
+        for (schema, tables) in xml_schemas {
+            assert!(rust_schemas.contains_key(&schema));
+            for (table, columns) in tables {
+                assert!(rust_schemas[&schema].contains_key(&table));
+                for column in columns {
+                    assert!(rust_schemas[&schema][&table].contains(&column));
+                }
+            }
+        }
+    }
 }

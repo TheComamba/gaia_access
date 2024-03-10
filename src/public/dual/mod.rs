@@ -7,3 +7,8 @@ impl Schema for Dual {
         "dual".to_string()
     }
 }
+
+#[cfg(test)]
+pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
+    map.insert(Dual.string(), vec![]);
+}
