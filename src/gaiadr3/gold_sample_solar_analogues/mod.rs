@@ -1,10 +1,10 @@
 use crate::{column::Column, schema::Schema};
 
-pub struct GaiaSource;
+pub struct GoldSampleSolarAnalogues;
 
-impl Schema for GaiaSource {
+impl Schema for GoldSampleSolarAnalogues {
     fn string(&self) -> String {
-        "gaia_source".to_string()
+        "gold_sample_solar_analogues".to_string()
     }
 }
 
@@ -19,5 +19,5 @@ impl Column for Col {}
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
     use strum::IntoEnumIterator;
     let col_strings = Col::iter().map(|col| col.to_string()).collect();
-    map.insert(GaiaSource.string(), col_strings);
+    map.insert(GoldSampleSolarAnalogues.string(), col_strings);
 }
