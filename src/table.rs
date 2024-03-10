@@ -1,6 +1,6 @@
 use strum::{Display, EnumIter, EnumString};
 
-pub(crate) trait Table {
+pub trait Table {
     fn string(&self) -> String;
 }
 

@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use strum::{Display, EnumIter, EnumString};
 
-pub(crate) trait Column {
+pub trait Column {
     fn string(&self) -> String;
 }
 
@@ -4206,10 +4206,10 @@ pub enum GaiaColumn {
 mod tests {
     use super::*;
     use crate::{
+        gaiadr3::gaia_source::GaiaSource,
+        gaiadr3::GaiaDr3,
         query::GaiaQueryBuilder,
         result::{get_float, get_string},
-        schema::GaiaSchema,
-        table::GaiaTable,
     };
 
     #[test]
@@ -4224,7 +4224,7 @@ mod tests {
     #[test]
     fn request_a_string() {
         let col = GaiaColumn::designation;
-        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
+        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(1)
             .select(vec![col])
             .do_query()
@@ -4237,7 +4237,7 @@ mod tests {
     #[test]
     fn request_a_float() {
         let col = GaiaColumn::ecl_lon;
-        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
+        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(1)
             .select(vec![col])
             .do_query()

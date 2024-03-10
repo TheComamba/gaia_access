@@ -17,6 +17,7 @@ impl Table for GaiaSource {
 )]
 pub enum Col {
     designation,
+    ecl_lon,
 }
 
 impl Column for Col {

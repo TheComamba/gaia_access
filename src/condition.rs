@@ -21,7 +21,11 @@ impl ToString for GaiaCondition {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{query::GaiaQueryBuilder, result::get_float, schema::GaiaSchema, table::GaiaTable};
+    use crate::{
+        gaiadr3::{gaia_source::GaiaSource, GaiaDr3},
+        query::GaiaQueryBuilder,
+        result::get_float,
+    };
 
     const NUMBER_OF_COLUMNS: usize = 20;
 
@@ -29,7 +33,7 @@ mod tests {
     fn request_less_than_condition() {
         let col = GaiaColumn::ecl_lon;
         let cond = GaiaCondition::LessThan(col, 10.0);
-        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
+        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(NUMBER_OF_COLUMNS)
             .select(vec![col])
             .where_clause(cond)
@@ -44,7 +48,7 @@ mod tests {
     fn request_greater_than_condition() {
         let col = GaiaColumn::ecl_lon;
         let cond = GaiaCondition::GreaterThan(col, 10.0);
-        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
+        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(NUMBER_OF_COLUMNS)
             .select(vec![col])
             .where_clause(cond)
@@ -59,7 +63,7 @@ mod tests {
     fn request_between_condition() {
         let col = GaiaColumn::ecl_lon;
         let cond = GaiaCondition::Between(col, 10.0, 20.0);
-        let result = GaiaQueryBuilder::new(GaiaSchema::gaiadr3, GaiaTable::gaia_source)
+        let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(NUMBER_OF_COLUMNS)
             .select(vec![col])
             .where_clause(cond)

@@ -3,20 +3,20 @@ use crate::{
     condition::GaiaCondition,
     error::GaiaError,
     result::{GaiaResponse, GaiaResult},
-    schema::GaiaSchema,
-    table::GaiaTable,
+    schema::Schema,
+    table::Table,
 };
 
-pub struct GaiaQueryBuilder {
-    schema: GaiaSchema,
-    table: GaiaTable,
+pub struct GaiaQueryBuilder<S: Schema, T: Table> {
+    schema: S,
+    table: T,
     top: Option<usize>,
     columns: Vec<GaiaColumn>,
     conditions: Vec<GaiaCondition>,
 }
 
-impl GaiaQueryBuilder {
-    pub fn new(schema: GaiaSchema, table: GaiaTable) -> Self {
+impl<S: Schema, T: Table> GaiaQueryBuilder<S, T> {
+    pub fn new(schema: S, table: T) -> Self {
         GaiaQueryBuilder {
             schema,
             table,
@@ -54,7 +54,11 @@ impl GaiaQueryBuilder {
                 .collect::<Vec<_>>()
                 .join(", ")
         ));
-        query.push_str(&format!(" FROM {}.{}", self.schema, self.table));
+        query.push_str(&format!(
+            " FROM {}.{}",
+            self.schema.string(),
+            self.table.string()
+        ));
         if !self.conditions.is_empty() {
             query.push_str(&format!(
                 " WHERE {}",
