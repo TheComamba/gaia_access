@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-use crate::column::GaiaColumn;
+use crate::column::Column;
 
 #[derive(Serialize, Deserialize)]
 struct GaiaMetadataLine {
@@ -44,13 +44,13 @@ pub(super) struct GaiaResponse {
     data: Vec<Vec<GaiaCellData>>,
 }
 
-pub struct GaiaResult {
-    pub columns: Vec<GaiaColumn>,
-    pub data: Vec<HashMap<GaiaColumn, GaiaCellData>>,
+pub struct GaiaResult<C: Column> {
+    pub columns: Vec<C>,
+    pub data: Vec<HashMap<C, GaiaCellData>>,
 }
 
-impl GaiaResult {
-    pub(super) fn new(response: GaiaResponse, columns: Vec<GaiaColumn>) -> Self {
+impl<C: Column> GaiaResult<C> {
+    pub(super) fn new(response: GaiaResponse, columns: Vec<C>) -> Self {
         let mut data = Vec::new();
         for row in response.data {
             let mut star = HashMap::new();

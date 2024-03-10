@@ -20,8 +20,4 @@ pub enum Col {
     ecl_lon,
 }
 
-impl Column for Col {
-    fn string(&self) -> String {
-        self.to_string()
-    }
-}
+impl Column for Col {}

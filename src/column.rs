@@ -1,9 +1,9 @@
+use std::hash::Hash;
+
 use serde::{Deserialize, Serialize};
 use strum::{Display, EnumIter, EnumString};
 
-pub trait Column {
-    fn string(&self) -> String;
-}
+pub trait Column: ToString + Eq + Hash + Clone + Copy {}
 
 #[allow(non_camel_case_types)]
 #[derive(
@@ -4223,7 +4223,7 @@ mod tests {
 
     #[test]
     fn request_a_string() {
-        let col = GaiaColumn::designation;
+        let col = crate::gaiadr3::gaia_source::Col::designation;
         let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(1)
             .select(vec![col])
@@ -4236,7 +4236,7 @@ mod tests {
 
     #[test]
     fn request_a_float() {
-        let col = GaiaColumn::ecl_lon;
+        let col = crate::gaiadr3::gaia_source::Col::ecl_lon;
         let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(1)
             .select(vec![col])

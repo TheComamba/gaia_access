@@ -1,17 +1,19 @@
-use crate::column::GaiaColumn;
+use crate::column::Column;
 
-pub enum GaiaCondition {
-    LessThan(GaiaColumn, f64),
-    GreaterThan(GaiaColumn, f64),
-    Between(GaiaColumn, f64, f64),
+pub enum GaiaCondition<C: Column> {
+    LessThan(C, f64),
+    GreaterThan(C, f64),
+    Between(C, f64, f64),
 }
-impl ToString for GaiaCondition {
+impl<C: Column> ToString for GaiaCondition<C> {
     fn to_string(&self) -> String {
         let str = match self {
-            GaiaCondition::LessThan(column, value) => format!("{} < {}", column, value),
-            GaiaCondition::GreaterThan(column, value) => format!("{} > {}", column, value),
+            GaiaCondition::LessThan(column, value) => format!("{} < {}", column.to_string(), value),
+            GaiaCondition::GreaterThan(column, value) => {
+                format!("{} > {}", column.to_string(), value)
+            }
             GaiaCondition::Between(column, value1, value2) => {
-                format!("{} BETWEEN {} AND {}", column, value1, value2)
+                format!("{} BETWEEN {} AND {}", column.to_string(), value1, value2)
             }
         };
         format!("({})", str)
@@ -31,7 +33,7 @@ mod tests {
 
     #[test]
     fn request_less_than_condition() {
-        let col = GaiaColumn::ecl_lon;
+        let col = crate::gaiadr3::gaia_source::Col::ecl_lon;
         let cond = GaiaCondition::LessThan(col, 10.0);
         let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(NUMBER_OF_COLUMNS)
@@ -46,7 +48,7 @@ mod tests {
 
     #[test]
     fn request_greater_than_condition() {
-        let col = GaiaColumn::ecl_lon;
+        let col = crate::gaiadr3::gaia_source::Col::ecl_lon;
         let cond = GaiaCondition::GreaterThan(col, 10.0);
         let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(NUMBER_OF_COLUMNS)
@@ -61,7 +63,7 @@ mod tests {
 
     #[test]
     fn request_between_condition() {
-        let col = GaiaColumn::ecl_lon;
+        let col = crate::gaiadr3::gaia_source::Col::ecl_lon;
         let cond = GaiaCondition::Between(col, 10.0, 20.0);
         let result = GaiaQueryBuilder::new(GaiaDr3, GaiaSource)
             .top(NUMBER_OF_COLUMNS)
