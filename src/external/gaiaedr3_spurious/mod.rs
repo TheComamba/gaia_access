@@ -10,7 +10,19 @@ impl Schema for Gaiaedr3Spurious {
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display, strum::EnumIter)]
-pub enum Col {}
+pub enum Col {
+    source_id,
+    fidelity_v2,
+    theta_arcsec_worst_source,
+    norm_dg,
+    dist_nearest_neighbor_at_least_m2_brighter,
+    dist_nearest_neighbor_at_least_0_brighter,
+    dist_nearest_neighbor_at_least_2_brighter,
+    dist_nearest_neighbor_at_least_4_brighter,
+    dist_nearest_neighbor_at_least_6_brighter,
+    dist_nearest_neighbor_at_least_10_brighter,
+    fidelity_v1,
+}
 
 impl Column for Col {}
 

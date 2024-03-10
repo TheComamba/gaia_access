@@ -10,7 +10,16 @@ impl Schema for Gaiaedr3Distance {
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display, strum::EnumIter)]
-pub enum Col {}
+pub enum Col {
+    source_id,
+    r_med_geo,
+    r_lo_geo,
+    r_hi_geo,
+    r_med_photogeo,
+    r_lo_photogeo,
+    r_hi_photogeo,
+    flag,
+}
 
 impl Column for Col {}
 

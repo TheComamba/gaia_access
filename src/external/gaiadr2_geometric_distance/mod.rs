@@ -10,7 +10,15 @@ impl Schema for Gaiadr2GeometricDistance {
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display, strum::EnumIter)]
-pub enum Col {}
+pub enum Col {
+    source_id,
+    r_est,
+    r_lo,
+    r_hi,
+    r_len,
+    result_flag,
+    modality_flag,
+}
 
 impl Column for Col {}
 
