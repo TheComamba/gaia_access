@@ -35,6 +35,7 @@ mod completeness;
 pub(crate) fn collect_known_schemas(
 ) -> std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>> {
     let mut known = std::collections::HashMap::new();
+    external::collect_known(&mut known);
     public::collect_known(&mut known);
     known
 }
