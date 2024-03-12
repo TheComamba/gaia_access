@@ -55,7 +55,7 @@ impl Column for Col {{}}
 
 #[cfg(test)]
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {{
-    use strum::IntoEnumIterator;
+    let mut col_strings = Vec::new();
     {known_columns}
     map.insert({name}.string(), col_strings);
 }}
@@ -127,8 +127,23 @@ def write_schema_file(schema_folder_path, schema_name, tables):
 def write_table_file(table_folder_path, table_name, columns):
     os.makedirs(table_folder_path, exist_ok=True)
 
-    column_enums = "\n".join([f"{column}," for column in columns])
-    known_columns = "\n".join([f"col_strings.push(Col::{column}.to_string());" for column in columns])
+    columns_for_enum = columns.copy()
+    columns_for_known = columns.copy()
+
+    columns_for_enum = ["#[strum(serialize = \"\\\"size\\\"\")] size" if column == "\"size\"" else column for column in columns_for_enum]
+    columns_for_known = ["size" if column == "\"size\"" else column for column in columns_for_known]
+
+    columns_for_enum = ["#[strum(serialize = \"type\")] type_col" if column == "type" else column for column in columns_for_enum]
+    columns_for_known = ["type_col" if column == "type" else column for column in columns_for_known]
+
+    columns_for_enum = ["#[strum(serialize = \"\\\"key\\\"\")] key" if column == "\"key\"" else column for column in columns_for_enum]
+    columns_for_known = ["key" if column == "\"key\"" else column for column in columns_for_known]
+
+    columns_for_enum = ["#[strum(serialize = \"\\\"value\\\"\")] value" if column == "\"value\"" else column for column in columns_for_enum]
+    columns_for_known = ["value" if column == "\"value\"" else column for column in columns_for_known]
+
+    column_enums = "\n".join([f"{column}," for column in columns_for_enum])
+    known_columns = "\n".join([f"col_strings.push(Col::{column}.to_string());" for column in columns_for_known])
 
     with open(os.path.join(table_folder_path, 'mod.rs'), 'w') as table_file:
         table_file.write(TABLE_TEMPLATE.format(name=table_name, columns=column_enums, known_columns=known_columns))
