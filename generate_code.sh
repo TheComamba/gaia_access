@@ -14,3 +14,5 @@ python generate_code.py
 
 # Deactivate the virtual environment
 deactivate
+
+cargo fmt
