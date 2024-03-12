@@ -197,6 +197,8 @@ pub mod xp_summary;
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
+    // Some tables do not have any columns. Disabling compiler warnings for these cases
+    #[allow(unused_mut)]
     let mut tables = std::collections::HashMap::new();
     gaia_source::collect_known(&mut tables);
     gaia_source_lite::collect_known(&mut tables);

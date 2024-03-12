@@ -89,6 +89,8 @@ pub mod urat1_neighbourhood;
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
+    // Some tables do not have any columns. Disabling compiler warnings for these cases
+    #[allow(unused_mut)]
     let mut tables = std::collections::HashMap::new();
     gaia_source::collect_known(&mut tables);
     agn_cross_id::collect_known(&mut tables);

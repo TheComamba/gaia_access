@@ -39,6 +39,8 @@ pub mod vari_rad_vel_statistics;
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
+    // Some tables do not have any columns. Disabling compiler warnings for these cases
+    #[allow(unused_mut)]
     let mut tables = std::collections::HashMap::new();
     crowded_field_source::collect_known(&mut tables);
     lens_candidates::collect_known(&mut tables);

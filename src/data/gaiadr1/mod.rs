@@ -75,6 +75,8 @@ pub mod variable_summary;
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
+    // Some tables do not have any columns. Disabling compiler warnings for these cases
+    #[allow(unused_mut)]
     let mut tables = std::collections::HashMap::new();
     aux_qso_icrf2_match::collect_known(&mut tables);
     ext_phot_zero_point::collect_known(&mut tables);

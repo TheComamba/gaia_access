@@ -29,6 +29,8 @@ pub mod tycho2;
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
+    // Some tables do not have any columns. Disabling compiler warnings for these cases
+    #[allow(unused_mut)]
     let mut tables = std::collections::HashMap::new();
     hipparcos::collect_known(&mut tables);
     hipparcos_newreduction::collect_known(&mut tables);

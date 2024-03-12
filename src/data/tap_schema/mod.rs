@@ -25,6 +25,8 @@ pub mod tables;
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
+    // Some tables do not have any columns. Disabling compiler warnings for these cases
+    #[allow(unused_mut)]
     let mut tables = std::collections::HashMap::new();
     columns::collect_known(&mut tables);
     key_columns::collect_known(&mut tables);
