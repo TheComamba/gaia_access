@@ -6,6 +6,60 @@ from xml.etree import ElementTree as ET
 
 FILE_PATH = "dev_data/file.xml"
 
+SCHEMA_TEMPLATE = """
+use crate::schema::Schema;
+
+#[allow(non_camel_case_types)]
+pub struct {name};
+
+impl Schema for {name} {
+    fn string(&self) -> String {
+        "{name}".to_string()
+    }
+}
+
+{}
+
+#[cfg(test)]
+pub(crate) fn collect_known(
+    map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
+) {
+    let mut tables = std::collections::HashMap::new();
+    {}
+    map.insert({name}.string(), tables);
+}
+"""
+
+TABLE_TEMPLATE = """
+use crate::column::Column
+use crate::schema::Schema;
+
+#[allow(non_camel_case_types)]
+pub struct {name};
+
+impl Schema for {name} {
+    fn string(&self) -> String {
+        "{name}".to_string()
+    }
+}
+
+#[allow(non_camel_case_types)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display, strum::EnumIter)]
+pub enum Col {
+    {}
+}
+
+impl Column for Col {
+}
+
+#[cfg(test)]
+pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
+    use strum::IntoEnumIterator;
+    let col_strings = Col::iter().map(|col| col.to_string()).collect();
+    map.insert({name}.string(), col_strings);
+}
+"""
+
 class GaiaError(Exception):
     pass
 
@@ -53,13 +107,28 @@ def read_xml_file():
 
     return gaia_schemas
 
+def write_data_file(schema, data_path):
+    os.makedirs(data_path, exist_ok=True)
+    with open(os.path.join(data_path, 'mod.rs'), 'a') as data_file:
+        for schema_name in schema:
+            data_file.write(f'#[cfg(any({schema_name}, test))]\n')
+            data_file.write(f'pub mod {schema_name};\n')
+
+def write_schema_file(data_path, schema_name):
+    schema_folder_path = os.path.join(data_path, schema_name)
+    os.makedirs(schema_folder_path, exist_ok=True)
+    with open(os.path.join(schema_folder_path, 'mod.rs'), 'w') as schema_file:
+        schema_file.write(SCHEMA_TEMPLATE.format("TODO: table_mods", "TODO: collect known", name=schema_name))
+
 def generate_code(schema):
-    folder_path = "src/data"
-    
-    if os.path.exists(folder_path):
-        shutil.rmtree(folder_path)
-    
-    os.makedirs(folder_path, exist_ok=True)
+    data_path = "src/data"
+    if os.path.exists(data_path):
+        shutil.rmtree(data_path)
+
+    write_data_file(schema, data_path)
+            
+    for schema_name in schema:
+        write_schema_file(data_path, schema_name)
 
 if __name__ == "__main__":
     try:
