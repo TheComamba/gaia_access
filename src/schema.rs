@@ -15,3 +15,7 @@ pub enum GaiaSchema {
     tap_schema,
     tap_upload,
 }
+
+pub trait Schema {
+    fn string(&self) -> String;
+}

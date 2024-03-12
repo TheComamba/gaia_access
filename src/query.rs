@@ -1,22 +1,22 @@
 use crate::{
-    column::GaiaColumn,
+    column::Column,
     condition::GaiaCondition,
     error::GaiaError,
     result::{GaiaResponse, GaiaResult},
-    schema::GaiaSchema,
-    table::GaiaTable,
+    schema::Schema,
+    table::Table,
 };
 
-pub struct GaiaQueryBuilder {
-    schema: GaiaSchema,
-    table: GaiaTable,
+pub struct GaiaQueryBuilder<S: Schema, T: Table, C: Column> {
+    schema: S,
+    table: T,
     top: Option<usize>,
-    columns: Vec<GaiaColumn>,
-    conditions: Vec<GaiaCondition>,
+    columns: Vec<C>,
+    conditions: Vec<GaiaCondition<C>>,
 }
 
-impl GaiaQueryBuilder {
-    pub fn new(schema: GaiaSchema, table: GaiaTable) -> Self {
+impl<S: Schema, T: Table, C: Column> GaiaQueryBuilder<S, T, C> {
+    pub fn new(schema: S, table: T) -> Self {
         GaiaQueryBuilder {
             schema,
             table,
@@ -26,7 +26,7 @@ impl GaiaQueryBuilder {
         }
     }
 
-    pub fn select(mut self, mut columns: Vec<GaiaColumn>) -> Self {
+    pub fn select(mut self, mut columns: Vec<C>) -> Self {
         self.columns.append(&mut columns);
         self
     }
@@ -36,7 +36,7 @@ impl GaiaQueryBuilder {
         self
     }
 
-    pub fn where_clause(mut self, condition: GaiaCondition) -> Self {
+    pub fn where_clause(mut self, condition: GaiaCondition<C>) -> Self {
         self.conditions.push(condition);
         self
     }
@@ -54,7 +54,11 @@ impl GaiaQueryBuilder {
                 .collect::<Vec<_>>()
                 .join(", ")
         ));
-        query.push_str(&format!(" FROM {}.{}", self.schema, self.table));
+        query.push_str(&format!(
+            " FROM {}.{}",
+            self.schema.string(),
+            self.table.string()
+        ));
         if !self.conditions.is_empty() {
             query.push_str(&format!(
                 " WHERE {}",
@@ -68,7 +72,7 @@ impl GaiaQueryBuilder {
         query
     }
 
-    pub fn do_query(&self) -> Result<GaiaResult, GaiaError> {
+    pub fn do_query(self) -> Result<GaiaResult<C>, GaiaError> {
         let response = reqwest::blocking::Client::new()
             .get("https://gea.esac.esa.int/tap-server/tap/sync")
             .query(&[
@@ -80,6 +84,6 @@ impl GaiaQueryBuilder {
             .send()?;
         let text = response.text()?;
         let response: GaiaResponse = serde_json::from_str(&text)?;
-        Ok(GaiaResult::new(response, self.columns.clone()))
+        Ok(GaiaResult::new(response, self.columns))
     }
 }
