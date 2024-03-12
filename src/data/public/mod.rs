@@ -10,19 +10,19 @@ impl Schema for public {
     }
 }
 
-#[cfg(any(dual, test))]
+#[cfg(any(public_dual, test))]
 pub mod dual;
-#[cfg(any(hipparcos, test))]
+#[cfg(any(public_hipparcos, test))]
 pub mod hipparcos;
-#[cfg(any(hipparcos_newreduction, test))]
+#[cfg(any(public_hipparcos_newreduction, test))]
 pub mod hipparcos_newreduction;
-#[cfg(any(hubble_sc, test))]
+#[cfg(any(public_hubble_sc, test))]
 pub mod hubble_sc;
-#[cfg(any(igsl_source, test))]
+#[cfg(any(public_igsl_source, test))]
 pub mod igsl_source;
-#[cfg(any(igsl_source_catalog_ids, test))]
+#[cfg(any(public_igsl_source_catalog_ids, test))]
 pub mod igsl_source_catalog_ids;
-#[cfg(any(tycho2, test))]
+#[cfg(any(public_tycho2, test))]
 pub mod tycho2;
 
 #[cfg(test)]

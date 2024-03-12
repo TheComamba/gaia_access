@@ -10,79 +10,79 @@ impl Schema for gaiaedr3 {
     }
 }
 
-#[cfg(any(agn_cross_id, test))]
+#[cfg(any(gaiaedr3_agn_cross_id, test))]
 pub mod agn_cross_id;
-#[cfg(any(allwise_best_neighbour, test))]
+#[cfg(any(gaiaedr3_allwise_best_neighbour, test))]
 pub mod allwise_best_neighbour;
-#[cfg(any(allwise_neighbourhood, test))]
+#[cfg(any(gaiaedr3_allwise_neighbourhood, test))]
 pub mod allwise_neighbourhood;
-#[cfg(any(apassdr9_best_neighbour, test))]
+#[cfg(any(gaiaedr3_apassdr9_best_neighbour, test))]
 pub mod apassdr9_best_neighbour;
-#[cfg(any(apassdr9_join, test))]
+#[cfg(any(gaiaedr3_apassdr9_join, test))]
 pub mod apassdr9_join;
-#[cfg(any(apassdr9_neighbourhood, test))]
+#[cfg(any(gaiaedr3_apassdr9_neighbourhood, test))]
 pub mod apassdr9_neighbourhood;
-#[cfg(any(commanded_scan_law, test))]
+#[cfg(any(gaiaedr3_commanded_scan_law, test))]
 pub mod commanded_scan_law;
-#[cfg(any(dr2_neighbourhood, test))]
+#[cfg(any(gaiaedr3_dr2_neighbourhood, test))]
 pub mod dr2_neighbourhood;
-#[cfg(any(frame_rotator_source, test))]
+#[cfg(any(gaiaedr3_frame_rotator_source, test))]
 pub mod frame_rotator_source;
-#[cfg(any(gaia_source, test))]
+#[cfg(any(gaiaedr3_gaia_source, test))]
 pub mod gaia_source;
-#[cfg(any(gaia_source_simulation, test))]
+#[cfg(any(gaiaedr3_gaia_source_simulation, test))]
 pub mod gaia_source_simulation;
-#[cfg(any(gaia_universe_model, test))]
+#[cfg(any(gaiaedr3_gaia_universe_model, test))]
 pub mod gaia_universe_model;
-#[cfg(any(gsc23_best_neighbour, test))]
+#[cfg(any(gaiaedr3_gsc23_best_neighbour, test))]
 pub mod gsc23_best_neighbour;
-#[cfg(any(gsc23_join, test))]
+#[cfg(any(gaiaedr3_gsc23_join, test))]
 pub mod gsc23_join;
-#[cfg(any(gsc23_neighbourhood, test))]
+#[cfg(any(gaiaedr3_gsc23_neighbourhood, test))]
 pub mod gsc23_neighbourhood;
-#[cfg(any(hipparcos2_best_neighbour, test))]
+#[cfg(any(gaiaedr3_hipparcos2_best_neighbour, test))]
 pub mod hipparcos2_best_neighbour;
-#[cfg(any(hipparcos2_neighbourhood, test))]
+#[cfg(any(gaiaedr3_hipparcos2_neighbourhood, test))]
 pub mod hipparcos2_neighbourhood;
-#[cfg(any(panstarrs1_best_neighbour, test))]
+#[cfg(any(gaiaedr3_panstarrs1_best_neighbour, test))]
 pub mod panstarrs1_best_neighbour;
-#[cfg(any(panstarrs1_join, test))]
+#[cfg(any(gaiaedr3_panstarrs1_join, test))]
 pub mod panstarrs1_join;
-#[cfg(any(panstarrs1_neighbourhood, test))]
+#[cfg(any(gaiaedr3_panstarrs1_neighbourhood, test))]
 pub mod panstarrs1_neighbourhood;
-#[cfg(any(ravedr5_best_neighbour, test))]
+#[cfg(any(gaiaedr3_ravedr5_best_neighbour, test))]
 pub mod ravedr5_best_neighbour;
-#[cfg(any(ravedr5_join, test))]
+#[cfg(any(gaiaedr3_ravedr5_join, test))]
 pub mod ravedr5_join;
-#[cfg(any(ravedr5_neighbourhood, test))]
+#[cfg(any(gaiaedr3_ravedr5_neighbourhood, test))]
 pub mod ravedr5_neighbourhood;
-#[cfg(any(sdssdr13_best_neighbour, test))]
+#[cfg(any(gaiaedr3_sdssdr13_best_neighbour, test))]
 pub mod sdssdr13_best_neighbour;
-#[cfg(any(sdssdr13_join, test))]
+#[cfg(any(gaiaedr3_sdssdr13_join, test))]
 pub mod sdssdr13_join;
-#[cfg(any(sdssdr13_neighbourhood, test))]
+#[cfg(any(gaiaedr3_sdssdr13_neighbourhood, test))]
 pub mod sdssdr13_neighbourhood;
-#[cfg(any(skymapperdr2_best_neighbour, test))]
+#[cfg(any(gaiaedr3_skymapperdr2_best_neighbour, test))]
 pub mod skymapperdr2_best_neighbour;
-#[cfg(any(skymapperdr2_join, test))]
+#[cfg(any(gaiaedr3_skymapperdr2_join, test))]
 pub mod skymapperdr2_join;
-#[cfg(any(skymapperdr2_neighbourhood, test))]
+#[cfg(any(gaiaedr3_skymapperdr2_neighbourhood, test))]
 pub mod skymapperdr2_neighbourhood;
-#[cfg(any(tmass_psc_xsc_best_neighbour, test))]
+#[cfg(any(gaiaedr3_tmass_psc_xsc_best_neighbour, test))]
 pub mod tmass_psc_xsc_best_neighbour;
-#[cfg(any(tmass_psc_xsc_join, test))]
+#[cfg(any(gaiaedr3_tmass_psc_xsc_join, test))]
 pub mod tmass_psc_xsc_join;
-#[cfg(any(tmass_psc_xsc_neighbourhood, test))]
+#[cfg(any(gaiaedr3_tmass_psc_xsc_neighbourhood, test))]
 pub mod tmass_psc_xsc_neighbourhood;
-#[cfg(any(tycho2tdsc_merge, test))]
+#[cfg(any(gaiaedr3_tycho2tdsc_merge, test))]
 pub mod tycho2tdsc_merge;
-#[cfg(any(tycho2tdsc_merge_best_neighbour, test))]
+#[cfg(any(gaiaedr3_tycho2tdsc_merge_best_neighbour, test))]
 pub mod tycho2tdsc_merge_best_neighbour;
-#[cfg(any(tycho2tdsc_merge_neighbourhood, test))]
+#[cfg(any(gaiaedr3_tycho2tdsc_merge_neighbourhood, test))]
 pub mod tycho2tdsc_merge_neighbourhood;
-#[cfg(any(urat1_best_neighbour, test))]
+#[cfg(any(gaiaedr3_urat1_best_neighbour, test))]
 pub mod urat1_best_neighbour;
-#[cfg(any(urat1_neighbourhood, test))]
+#[cfg(any(gaiaedr3_urat1_neighbourhood, test))]
 pub mod urat1_neighbourhood;
 
 #[cfg(test)]

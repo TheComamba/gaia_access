@@ -10,15 +10,15 @@ impl Schema for tap_schema {
     }
 }
 
-#[cfg(any(columns, test))]
+#[cfg(any(tap_schema_columns, test))]
 pub mod columns;
-#[cfg(any(key_columns, test))]
+#[cfg(any(tap_schema_key_columns, test))]
 pub mod key_columns;
-#[cfg(any(keys, test))]
+#[cfg(any(tap_schema_keys, test))]
 pub mod keys;
-#[cfg(any(schemas, test))]
+#[cfg(any(tap_schema_schemas, test))]
 pub mod schemas;
-#[cfg(any(tables, test))]
+#[cfg(any(tap_schema_tables, test))]
 pub mod tables;
 
 #[cfg(test)]

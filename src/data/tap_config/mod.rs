@@ -10,9 +10,9 @@ impl Schema for tap_config {
     }
 }
 
-#[cfg(any(coord_sys, test))]
+#[cfg(any(tap_config_coord_sys, test))]
 pub mod coord_sys;
-#[cfg(any(properties, test))]
+#[cfg(any(tap_config_properties, test))]
 pub mod properties;
 
 #[cfg(test)]

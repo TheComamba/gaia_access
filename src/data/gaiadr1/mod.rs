@@ -10,65 +10,65 @@ impl Schema for gaiadr1 {
     }
 }
 
-#[cfg(any(allwise_best_neighbour, test))]
+#[cfg(any(gaiadr1_allwise_best_neighbour, test))]
 pub mod allwise_best_neighbour;
-#[cfg(any(allwise_neighbourhood, test))]
+#[cfg(any(gaiadr1_allwise_neighbourhood, test))]
 pub mod allwise_neighbourhood;
-#[cfg(any(allwise_original_valid, test))]
+#[cfg(any(gaiadr1_allwise_original_valid, test))]
 pub mod allwise_original_valid;
-#[cfg(any(aux_qso_icrf2_match, test))]
+#[cfg(any(gaiadr1_aux_qso_icrf2_match, test))]
 pub mod aux_qso_icrf2_match;
-#[cfg(any(cepheid, test))]
+#[cfg(any(gaiadr1_cepheid, test))]
 pub mod cepheid;
-#[cfg(any(ext_phot_zero_point, test))]
+#[cfg(any(gaiadr1_ext_phot_zero_point, test))]
 pub mod ext_phot_zero_point;
-#[cfg(any(gaia_source, test))]
+#[cfg(any(gaiadr1_gaia_source, test))]
 pub mod gaia_source;
-#[cfg(any(gsc23_best_neighbour, test))]
+#[cfg(any(gaiadr1_gsc23_best_neighbour, test))]
 pub mod gsc23_best_neighbour;
-#[cfg(any(gsc23_neighbourhood, test))]
+#[cfg(any(gaiadr1_gsc23_neighbourhood, test))]
 pub mod gsc23_neighbourhood;
-#[cfg(any(gsc23_original_valid, test))]
+#[cfg(any(gaiadr1_gsc23_original_valid, test))]
 pub mod gsc23_original_valid;
-#[cfg(any(phot_variable_time_series_gfov, test))]
+#[cfg(any(gaiadr1_phot_variable_time_series_gfov, test))]
 pub mod phot_variable_time_series_gfov;
-#[cfg(any(phot_variable_time_series_gfov_statistical_parameters, test))]
+#[cfg(any(gaiadr1_phot_variable_time_series_gfov_statistical_parameters, test))]
 pub mod phot_variable_time_series_gfov_statistical_parameters;
-#[cfg(any(ppmxl_best_neighbour, test))]
+#[cfg(any(gaiadr1_ppmxl_best_neighbour, test))]
 pub mod ppmxl_best_neighbour;
-#[cfg(any(ppmxl_neighbourhood, test))]
+#[cfg(any(gaiadr1_ppmxl_neighbourhood, test))]
 pub mod ppmxl_neighbourhood;
-#[cfg(any(ppmxl_original_valid, test))]
+#[cfg(any(gaiadr1_ppmxl_original_valid, test))]
 pub mod ppmxl_original_valid;
-#[cfg(any(rrlyrae, test))]
+#[cfg(any(gaiadr1_rrlyrae, test))]
 pub mod rrlyrae;
-#[cfg(any(sdss_dr9_best_neighbour, test))]
+#[cfg(any(gaiadr1_sdss_dr9_best_neighbour, test))]
 pub mod sdss_dr9_best_neighbour;
-#[cfg(any(sdss_dr9_neighbourhood, test))]
+#[cfg(any(gaiadr1_sdss_dr9_neighbourhood, test))]
 pub mod sdss_dr9_neighbourhood;
-#[cfg(any(sdssdr9_original_valid, test))]
+#[cfg(any(gaiadr1_sdssdr9_original_valid, test))]
 pub mod sdssdr9_original_valid;
-#[cfg(any(tgas_source, test))]
+#[cfg(any(gaiadr1_tgas_source, test))]
 pub mod tgas_source;
-#[cfg(any(tmass_best_neighbour, test))]
+#[cfg(any(gaiadr1_tmass_best_neighbour, test))]
 pub mod tmass_best_neighbour;
-#[cfg(any(tmass_neighbourhood, test))]
+#[cfg(any(gaiadr1_tmass_neighbourhood, test))]
 pub mod tmass_neighbourhood;
-#[cfg(any(tmass_original_valid, test))]
+#[cfg(any(gaiadr1_tmass_original_valid, test))]
 pub mod tmass_original_valid;
-#[cfg(any(ucac4_best_neighbour, test))]
+#[cfg(any(gaiadr1_ucac4_best_neighbour, test))]
 pub mod ucac4_best_neighbour;
-#[cfg(any(ucac4_neighbourhood, test))]
+#[cfg(any(gaiadr1_ucac4_neighbourhood, test))]
 pub mod ucac4_neighbourhood;
-#[cfg(any(ucac4_original_valid, test))]
+#[cfg(any(gaiadr1_ucac4_original_valid, test))]
 pub mod ucac4_original_valid;
-#[cfg(any(urat1_best_neighbour, test))]
+#[cfg(any(gaiadr1_urat1_best_neighbour, test))]
 pub mod urat1_best_neighbour;
-#[cfg(any(urat1_neighbourhood, test))]
+#[cfg(any(gaiadr1_urat1_neighbourhood, test))]
 pub mod urat1_neighbourhood;
-#[cfg(any(urat1_original_valid, test))]
+#[cfg(any(gaiadr1_urat1_original_valid, test))]
 pub mod urat1_original_valid;
-#[cfg(any(variable_summary, test))]
+#[cfg(any(gaiadr1_variable_summary, test))]
 pub mod variable_summary;
 
 #[cfg(test)]

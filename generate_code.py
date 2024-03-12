@@ -132,7 +132,7 @@ def write_data_file(schema, data_path):
 def write_schema_file(schema_folder_path, schema_name, tables):
     os.makedirs(schema_folder_path, exist_ok=True)
 
-    table_mods = "\n".join([f"#[cfg(any({table}, test))] pub mod {table};" for table in tables])
+    table_mods = "\n".join([f"#[cfg(any({schema_name}_{table}, test))] pub mod {table};" for table in tables])
     known_tables = "\n".join([f"{table}::collect_known(&mut tables);" for table in tables])
 
     with open(os.path.join(schema_folder_path, 'mod.rs'), 'w') as schema_file:
