@@ -12,22 +12,22 @@ use crate::schema::Schema;
 #[allow(non_camel_case_types)]
 pub struct {name};
 
-impl Schema for {name} {
-    fn string(&self) -> String {
+impl Schema for {name} {{
+    fn string(&self) -> String {{
         "{name}".to_string()
-    }
-}
+    }}
+}}
 
-{}
+{modules}
 
 #[cfg(test)]
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
-) {
+) {{
     let mut tables = std::collections::HashMap::new();
-    {}
+    {known_tables}
     map.insert({name}.string(), tables);
-}
+}}
 """
 
 TABLE_TEMPLATE = """
@@ -37,27 +37,26 @@ use crate::schema::Schema;
 #[allow(non_camel_case_types)]
 pub struct {name};
 
-impl Schema for {name} {
-    fn string(&self) -> String {
+impl Schema for {name} {{
+    fn string(&self) -> String {{
         "{name}".to_string()
-    }
-}
+    }}
+}}
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display, strum::EnumIter)]
-pub enum Col {
-    {}
-}
+pub enum Col {{
+    {columns}
+}}
 
-impl Column for Col {
-}
+impl Column for Col {{}}
 
 #[cfg(test)]
-pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
+pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {{
     use strum::IntoEnumIterator;
     let col_strings = Col::iter().map(|col| col.to_string()).collect();
     map.insert({name}.string(), col_strings);
-}
+}}
 """
 
 class GaiaError(Exception):
@@ -118,7 +117,7 @@ def write_schema_file(data_path, schema_name):
     schema_folder_path = os.path.join(data_path, schema_name)
     os.makedirs(schema_folder_path, exist_ok=True)
     with open(os.path.join(schema_folder_path, 'mod.rs'), 'w') as schema_file:
-        schema_file.write(SCHEMA_TEMPLATE.format("TODO: table_mods", "TODO: collect known", name=schema_name))
+        schema_file.write(SCHEMA_TEMPLATE.format(name=schema_name, modules="TODO: table_mods", known_tables="TODO: collect known"))
 
 def generate_code(schema):
     data_path = "src/data"
