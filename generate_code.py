@@ -113,11 +113,15 @@ def write_data_file(schema, data_path):
             data_file.write(f'#[cfg(any({schema_name}, test))]\n')
             data_file.write(f'pub mod {schema_name};\n')
 
-def write_schema_file(data_path, schema_name):
+def write_schema_file(data_path, schema_name, tables):
     schema_folder_path = os.path.join(data_path, schema_name)
     os.makedirs(schema_folder_path, exist_ok=True)
+
+    table_mods = "\n".join([f"#[cfg(any({table}, test))] pub mod {table};" for table in tables])
+    known_tables = "\n".join([f"{table}::collect_known(&mut tables);" for table in tables])
+
     with open(os.path.join(schema_folder_path, 'mod.rs'), 'w') as schema_file:
-        schema_file.write(SCHEMA_TEMPLATE.format(name=schema_name, modules="TODO: table_mods", known_tables="TODO: collect known"))
+        schema_file.write(SCHEMA_TEMPLATE.format(name=schema_name, modules=table_mods, known_tables=known_tables))
 
 def generate_code(schema):
     data_path = "src/data"
@@ -126,8 +130,8 @@ def generate_code(schema):
 
     write_data_file(schema, data_path)
             
-    for schema_name in schema:
-        write_schema_file(data_path, schema_name)
+    for schema_name, tables in schema.items():
+        write_schema_file(data_path, schema_name, tables)
 
 if __name__ == "__main__":
     try:
