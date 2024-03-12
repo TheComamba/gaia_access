@@ -19,3 +19,6 @@ Cargo.lock
 /target
 
 /dev_data
+
+# Python virtual environment
+venv
