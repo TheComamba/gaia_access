@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::{collect_known_schemas, error::GaiaError};
+    use crate::{data::collect_known_schemas, error::GaiaError};
     use reqwest;
     use std::{collections::HashMap, fs, io::BufReader};
     use xmltree::Element;
