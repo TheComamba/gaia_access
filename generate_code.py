@@ -185,6 +185,42 @@ def write_table_file(table_folder_path, table_name, columns):
     with open(os.path.join(table_folder_path, 'mod.rs'), 'w') as table_file:
         table_file.write(TABLE_TEMPLATE.format(name=table_name, columns=column_enums, known_columns=known_columns))
 
+import os
+
+def update_cargo_toml(schema):
+    if not os.path.exists('Cargo.toml'):
+        print("Error: Cargo.toml file does not exist.")
+        return
+
+    try:
+        with open('Cargo.toml', 'r') as file:
+            lines = file.readlines()
+    except Exception as e:
+        print(f"Error reading Cargo.toml: {e}")
+        return
+
+    try:
+        begin_index = lines.index('# begin generated\n') + 1
+        end_index = lines.index('# end generated\n')
+    except ValueError:
+        print("Error: Cannot find the required comments in Cargo.toml.")
+        return
+
+    new_lines = []
+    for schema_name, tables in schema.items():
+        table_features = get_all_table_features(schema, schema_name)
+        new_lines.append(f"{schema_name} = {table_features}\n")
+        for table_feature in table_features:
+            new_lines.append(f"{table_feature} = []\n")
+
+    lines[begin_index:end_index] = new_lines
+
+    try:
+        with open('Cargo.toml', 'w') as file:
+            file.writelines(lines)
+    except Exception as e:
+        print(f"Error writing to Cargo.toml: {e}")
+
 def generate_code(schema):
     data_path = "src/data"
     if os.path.exists(data_path):
@@ -198,6 +234,8 @@ def generate_code(schema):
         for table_name, columns in tables.items():
             table_folder_path = os.path.join(schema_folder_path, table_name)
             write_table_file(table_folder_path, table_name, columns)
+
+    update_cargo_toml(schema)
 
 if __name__ == "__main__":
     try:
