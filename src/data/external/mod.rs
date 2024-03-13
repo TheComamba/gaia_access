@@ -10,43 +10,43 @@ impl Schema for external {
     }
 }
 
-#[cfg(any(external_apassdr9, test))]
+#[cfg(any(feature = "external_apassdr9", test))]
 pub mod apassdr9;
-#[cfg(any(external_catwise2020, test))]
+#[cfg(any(feature = "external_catwise2020", test))]
 pub mod catwise2020;
-#[cfg(any(external_gaia_eso_survey, test))]
+#[cfg(any(feature = "external_gaia_eso_survey", test))]
 pub mod gaia_eso_survey;
-#[cfg(any(external_gaiadr2_astrophysical_parameters, test))]
+#[cfg(any(feature = "external_gaiadr2_astrophysical_parameters", test))]
 pub mod gaiadr2_astrophysical_parameters;
-#[cfg(any(external_gaiadr2_geometric_distance, test))]
+#[cfg(any(feature = "external_gaiadr2_geometric_distance", test))]
 pub mod gaiadr2_geometric_distance;
-#[cfg(any(external_gaiaedr3_distance, test))]
+#[cfg(any(feature = "external_gaiaedr3_distance", test))]
 pub mod gaiaedr3_distance;
-#[cfg(any(external_gaiaedr3_gcns_main_1, test))]
+#[cfg(any(feature = "external_gaiaedr3_gcns_main_1", test))]
 pub mod gaiaedr3_gcns_main_1;
-#[cfg(any(external_gaiaedr3_gcns_rejected_1, test))]
+#[cfg(any(feature = "external_gaiaedr3_gcns_rejected_1", test))]
 pub mod gaiaedr3_gcns_rejected_1;
-#[cfg(any(external_gaiaedr3_spurious, test))]
+#[cfg(any(feature = "external_gaiaedr3_spurious", test))]
 pub mod gaiaedr3_spurious;
-#[cfg(any(external_galex_ais, test))]
+#[cfg(any(feature = "external_galex_ais", test))]
 pub mod galex_ais;
-#[cfg(any(external_ravedr5_com, test))]
+#[cfg(any(feature = "external_ravedr5_com", test))]
 pub mod ravedr5_com;
-#[cfg(any(external_ravedr5_dr5, test))]
+#[cfg(any(feature = "external_ravedr5_dr5", test))]
 pub mod ravedr5_dr5;
-#[cfg(any(external_ravedr5_gra, test))]
+#[cfg(any(feature = "external_ravedr5_gra", test))]
 pub mod ravedr5_gra;
-#[cfg(any(external_ravedr5_on, test))]
+#[cfg(any(feature = "external_ravedr5_on", test))]
 pub mod ravedr5_on;
-#[cfg(any(external_ravedr6, test))]
+#[cfg(any(feature = "external_ravedr6", test))]
 pub mod ravedr6;
-#[cfg(any(external_sdssdr13_photoprimary, test))]
+#[cfg(any(feature = "external_sdssdr13_photoprimary", test))]
 pub mod sdssdr13_photoprimary;
-#[cfg(any(external_skymapperdr1_master, test))]
+#[cfg(any(feature = "external_skymapperdr1_master", test))]
 pub mod skymapperdr1_master;
-#[cfg(any(external_skymapperdr2_master, test))]
+#[cfg(any(feature = "external_skymapperdr2_master", test))]
 pub mod skymapperdr2_master;
-#[cfg(any(external_tmass_xsc, test))]
+#[cfg(any(feature = "external_tmass_xsc", test))]
 pub mod tmass_xsc;
 
 #[cfg(test)]

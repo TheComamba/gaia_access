@@ -10,87 +10,87 @@ impl Schema for gaiadr2 {
     }
 }
 
-#[cfg(any(gaiadr2_allwise_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_allwise_best_neighbour", test))]
 pub mod allwise_best_neighbour;
-#[cfg(any(gaiadr2_allwise_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_allwise_neighbourhood", test))]
 pub mod allwise_neighbourhood;
-#[cfg(any(gaiadr2_apassdr9_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_apassdr9_best_neighbour", test))]
 pub mod apassdr9_best_neighbour;
-#[cfg(any(gaiadr2_apassdr9_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_apassdr9_neighbourhood", test))]
 pub mod apassdr9_neighbourhood;
-#[cfg(any(gaiadr2_aux_allwise_agn_gdr2_cross_id, test))]
+#[cfg(any(feature = "gaiadr2_aux_allwise_agn_gdr2_cross_id", test))]
 pub mod aux_allwise_agn_gdr2_cross_id;
-#[cfg(any(gaiadr2_aux_iers_gdr2_cross_id, test))]
+#[cfg(any(feature = "gaiadr2_aux_iers_gdr2_cross_id", test))]
 pub mod aux_iers_gdr2_cross_id;
-#[cfg(any(gaiadr2_aux_sso_orbit_residuals, test))]
+#[cfg(any(feature = "gaiadr2_aux_sso_orbit_residuals", test))]
 pub mod aux_sso_orbit_residuals;
-#[cfg(any(gaiadr2_aux_sso_orbits, test))]
+#[cfg(any(feature = "gaiadr2_aux_sso_orbits", test))]
 pub mod aux_sso_orbits;
-#[cfg(any(gaiadr2_dr1_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_dr1_neighbourhood", test))]
 pub mod dr1_neighbourhood;
-#[cfg(any(gaiadr2_gaia_source, test))]
+#[cfg(any(feature = "gaiadr2_gaia_source", test))]
 pub mod gaia_source;
-#[cfg(any(gaiadr2_gsc23_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_gsc23_best_neighbour", test))]
 pub mod gsc23_best_neighbour;
-#[cfg(any(gaiadr2_gsc23_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_gsc23_neighbourhood", test))]
 pub mod gsc23_neighbourhood;
-#[cfg(any(gaiadr2_hipparcos2_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_hipparcos2_best_neighbour", test))]
 pub mod hipparcos2_best_neighbour;
-#[cfg(any(gaiadr2_hipparcos2_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_hipparcos2_neighbourhood", test))]
 pub mod hipparcos2_neighbourhood;
-#[cfg(any(gaiadr2_panstarrs1_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_panstarrs1_best_neighbour", test))]
 pub mod panstarrs1_best_neighbour;
-#[cfg(any(gaiadr2_panstarrs1_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_panstarrs1_neighbourhood", test))]
 pub mod panstarrs1_neighbourhood;
-#[cfg(any(gaiadr2_panstarrs1_original_valid, test))]
+#[cfg(any(feature = "gaiadr2_panstarrs1_original_valid", test))]
 pub mod panstarrs1_original_valid;
-#[cfg(any(gaiadr2_ppmxl_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_ppmxl_best_neighbour", test))]
 pub mod ppmxl_best_neighbour;
-#[cfg(any(gaiadr2_ppmxl_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_ppmxl_neighbourhood", test))]
 pub mod ppmxl_neighbourhood;
-#[cfg(any(gaiadr2_ravedr5_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_ravedr5_best_neighbour", test))]
 pub mod ravedr5_best_neighbour;
-#[cfg(any(gaiadr2_ravedr5_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_ravedr5_neighbourhood", test))]
 pub mod ravedr5_neighbourhood;
-#[cfg(any(gaiadr2_ruwe, test))]
+#[cfg(any(feature = "gaiadr2_ruwe", test))]
 pub mod ruwe;
-#[cfg(any(gaiadr2_sdssdr9_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_sdssdr9_best_neighbour", test))]
 pub mod sdssdr9_best_neighbour;
-#[cfg(any(gaiadr2_sdssdr9_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_sdssdr9_neighbourhood", test))]
 pub mod sdssdr9_neighbourhood;
-#[cfg(any(gaiadr2_sso_observation, test))]
+#[cfg(any(feature = "gaiadr2_sso_observation", test))]
 pub mod sso_observation;
-#[cfg(any(gaiadr2_sso_source, test))]
+#[cfg(any(feature = "gaiadr2_sso_source", test))]
 pub mod sso_source;
-#[cfg(any(gaiadr2_tmass_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_tmass_best_neighbour", test))]
 pub mod tmass_best_neighbour;
-#[cfg(any(gaiadr2_tmass_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_tmass_neighbourhood", test))]
 pub mod tmass_neighbourhood;
-#[cfg(any(gaiadr2_tycho2_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_tycho2_best_neighbour", test))]
 pub mod tycho2_best_neighbour;
-#[cfg(any(gaiadr2_tycho2_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_tycho2_neighbourhood", test))]
 pub mod tycho2_neighbourhood;
-#[cfg(any(gaiadr2_urat1_best_neighbour, test))]
+#[cfg(any(feature = "gaiadr2_urat1_best_neighbour", test))]
 pub mod urat1_best_neighbour;
-#[cfg(any(gaiadr2_urat1_neighbourhood, test))]
+#[cfg(any(feature = "gaiadr2_urat1_neighbourhood", test))]
 pub mod urat1_neighbourhood;
-#[cfg(any(gaiadr2_vari_cepheid, test))]
+#[cfg(any(feature = "gaiadr2_vari_cepheid", test))]
 pub mod vari_cepheid;
-#[cfg(any(gaiadr2_vari_classifier_class_definition, test))]
+#[cfg(any(feature = "gaiadr2_vari_classifier_class_definition", test))]
 pub mod vari_classifier_class_definition;
-#[cfg(any(gaiadr2_vari_classifier_definition, test))]
+#[cfg(any(feature = "gaiadr2_vari_classifier_definition", test))]
 pub mod vari_classifier_definition;
-#[cfg(any(gaiadr2_vari_classifier_result, test))]
+#[cfg(any(feature = "gaiadr2_vari_classifier_result", test))]
 pub mod vari_classifier_result;
-#[cfg(any(gaiadr2_vari_long_period_variable, test))]
+#[cfg(any(feature = "gaiadr2_vari_long_period_variable", test))]
 pub mod vari_long_period_variable;
-#[cfg(any(gaiadr2_vari_rotation_modulation, test))]
+#[cfg(any(feature = "gaiadr2_vari_rotation_modulation", test))]
 pub mod vari_rotation_modulation;
-#[cfg(any(gaiadr2_vari_rrlyrae, test))]
+#[cfg(any(feature = "gaiadr2_vari_rrlyrae", test))]
 pub mod vari_rrlyrae;
-#[cfg(any(gaiadr2_vari_short_timescale, test))]
+#[cfg(any(feature = "gaiadr2_vari_short_timescale", test))]
 pub mod vari_short_timescale;
-#[cfg(any(gaiadr2_vari_time_series_statistics, test))]
+#[cfg(any(feature = "gaiadr2_vari_time_series_statistics", test))]
 pub mod vari_time_series_statistics;
 
 #[cfg(test)]
