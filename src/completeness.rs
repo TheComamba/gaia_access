@@ -70,36 +70,6 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn print_all_features() {
-        let result = read_xml_file().unwrap();
-        for (schema, tables) in result {
-            let mut table_features = Vec::new();
-            for (table, _) in tables {
-                let feature_name = format!("{}_{}", schema, table);
-                table_features.push(feature_name.clone());
-                println!("{} = []", feature_name);
-            }
-            println!("{} = {:?}", schema, table_features);
-        }
-    }
-
-    #[test]
-    #[ignore]
-    fn print_all_columns() {
-        let result = read_xml_file().unwrap();
-        for (schema, tables) in result {
-            println!("Schema: {}", schema);
-            for (table, columns) in tables {
-                println!("  Table: {}", table);
-                for column in columns {
-                    println!("    Column: {}", column);
-                }
-            }
-        }
-    }
-
-    #[test]
-    #[ignore]
     fn all_rust_data_is_in_xml() {
         let xml_schemas = read_xml_file().unwrap();
         let rust_schemas = collect_known_schemas();
