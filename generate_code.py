@@ -139,11 +139,11 @@ def write_data_file(schema, data_path):
     for schema_name, tables in schema.items():
         if tables:
             table_features = get_all_table_features(schema, schema_name)
-            table_features.append('')
-            table_features = ', '.join(table_features)
+            table_features = ', '.join([f'feature = "{feature}"' for feature in table_features])
+            table_features += ', '
         else:
             table_features = ''
-        schema_mods.append(f"#[cfg(any({schema_name}, {table_features}test))] pub mod {schema_name};")
+        schema_mods.append(f'#[cfg(any(feature = "{schema_name}", {table_features} test))] pub mod {schema_name};')
         known_schemas.append(f"{schema_name}::collect_known(&mut known);")
 
     schema_mods = "\n".join(schema_mods)
@@ -155,7 +155,7 @@ def write_data_file(schema, data_path):
 def write_schema_file(schema_folder_path, schema_name, tables):
     os.makedirs(schema_folder_path, exist_ok=True)
 
-    table_mods = "\n".join([f"#[cfg(any({schema_name}_{table}, test))] pub mod {table};" for table in tables])
+    table_mods = "\n".join([f'#[cfg(any(feature = "{schema_name}_{table}", test))] pub mod {table};' for table in tables])
     known_tables = "\n".join([f"{table}::collect_known(&mut tables);" for table in tables])
 
     with open(os.path.join(schema_folder_path, 'mod.rs'), 'w') as schema_file:

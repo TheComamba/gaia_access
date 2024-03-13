@@ -10,29 +10,29 @@ impl Schema for gaiafpr {
     }
 }
 
-#[cfg(any(gaiafpr_crowded_field_source, test))]
+#[cfg(any(feature = "gaiafpr_crowded_field_source", test))]
 pub mod crowded_field_source;
-#[cfg(any(gaiafpr_interstellar_medium_params, test))]
+#[cfg(any(feature = "gaiafpr_interstellar_medium_params", test))]
 pub mod interstellar_medium_params;
-#[cfg(any(gaiafpr_interstellar_medium_spectra, test))]
+#[cfg(any(feature = "gaiafpr_interstellar_medium_spectra", test))]
 pub mod interstellar_medium_spectra;
-#[cfg(any(gaiafpr_lens_candidates, test))]
+#[cfg(any(feature = "gaiafpr_lens_candidates", test))]
 pub mod lens_candidates;
-#[cfg(any(gaiafpr_lens_catalogue_name, test))]
+#[cfg(any(feature = "gaiafpr_lens_catalogue_name", test))]
 pub mod lens_catalogue_name;
-#[cfg(any(gaiafpr_lens_observation, test))]
+#[cfg(any(feature = "gaiafpr_lens_observation", test))]
 pub mod lens_observation;
-#[cfg(any(gaiafpr_lens_outlier, test))]
+#[cfg(any(feature = "gaiafpr_lens_outlier", test))]
 pub mod lens_outlier;
-#[cfg(any(gaiafpr_sso_observation, test))]
+#[cfg(any(feature = "gaiafpr_sso_observation", test))]
 pub mod sso_observation;
-#[cfg(any(gaiafpr_sso_source, test))]
+#[cfg(any(feature = "gaiafpr_sso_source", test))]
 pub mod sso_source;
-#[cfg(any(gaiafpr_vari_epoch_radial_velocity, test))]
+#[cfg(any(feature = "gaiafpr_vari_epoch_radial_velocity", test))]
 pub mod vari_epoch_radial_velocity;
-#[cfg(any(gaiafpr_vari_long_period_variable, test))]
+#[cfg(any(feature = "gaiafpr_vari_long_period_variable", test))]
 pub mod vari_long_period_variable;
-#[cfg(any(gaiafpr_vari_rad_vel_statistics, test))]
+#[cfg(any(feature = "gaiafpr_vari_rad_vel_statistics", test))]
 pub mod vari_rad_vel_statistics;
 
 #[cfg(test)]
