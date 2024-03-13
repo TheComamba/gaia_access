@@ -123,6 +123,14 @@ def read_xml_file():
 
     return gaia_schemas
 
+def get_all_table_features(schema, schema_name):
+    if schema_name not in schema:
+        raise ValueError(f"Schema '{schema_name}' does not exist in the provided schema dictionary.")
+    all_table_features = []
+    for table in schema[schema_name].keys():
+        all_table_features.append(f"{schema_name}_{table}")
+    return all_table_features
+
 def write_data_file(schema, data_path):
     os.makedirs(data_path, exist_ok=True)
 
@@ -130,12 +138,12 @@ def write_data_file(schema, data_path):
     known_schemas = []
     for schema_name, tables in schema.items():
         if tables:
-            table_names = [f"{schema_name}_{table}" for table in tables.keys()]
-            table_names.append('')
-            table_names = ', '.join(table_names)
+            table_features = get_all_table_features(schema, schema_name)
+            table_features.append('')
+            table_features = ', '.join(table_features)
         else:
-            table_names = ''
-        schema_mods.append(f"#[cfg(any({schema_name}, {table_names}test))] pub mod {schema_name};")
+            table_features = ''
+        schema_mods.append(f"#[cfg(any({schema_name}, {table_features}test))] pub mod {schema_name};")
         known_schemas.append(f"{schema_name}::collect_known(&mut known);")
 
     schema_mods = "\n".join(schema_mods)
