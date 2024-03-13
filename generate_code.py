@@ -129,8 +129,13 @@ def write_data_file(schema, data_path):
     schema_mods = []
     known_schemas = []
     for schema_name, tables in schema.items():
-        table_names = ', '.join([f"{schema_name}_{table}" for table in tables.keys()])
-        schema_mods.append(f"#[cfg(any({table_names}, test))] pub mod {schema_name};")
+        if tables:
+            table_names = [f"{schema_name}_{table}" for table in tables.keys()]
+            table_names.append('')
+            table_names = ', '.join(table_names)
+        else:
+            table_names = ''
+        schema_mods.append(f"#[cfg(any({schema_name}, {table_names}test))] pub mod {schema_name};")
         known_schemas.append(f"{schema_name}::collect_known(&mut known);")
 
     schema_mods = "\n".join(schema_mods)
