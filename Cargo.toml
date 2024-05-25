@@ -1,7 +1,14 @@
 [package]
-name = "gaia_access"
-version = "0.1.0"
+authors = ["Simon Heidrich <simon@jojoheinze.de>"]
+categories = ["database", "science"]
+description = "Access the Gaia ESA Archive for astronomical data."
 edition = "2021"
+keywords = ["gaia", "astronomy", "ADQL"]
+license = "MIT"
+name = "gaia_access"
+readme = "README.md"
+repository = "https://github.com/TheComamba/GaiaAccess"
+version = "0.1.0"
 
 [lib]
 name         = "gaia_access"
