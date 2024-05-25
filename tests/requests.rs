@@ -1,3 +1,4 @@
+#[cfg(feature = "gaiadr3_gaia_source")]
 #[cfg(test)]
 mod test {
     use gaia_access::{
