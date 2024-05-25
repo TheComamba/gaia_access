@@ -21,3 +21,8 @@ jobs:
                     git diff
                     exit 1
                 fi
+
+        - name: Check for outdated dependencies
+          run: |
+                cargo install cargo-outdated
+                cargo outdated --exit-code 1
