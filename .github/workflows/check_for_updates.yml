@@ -1,0 +1,22 @@
+name: Check for updates
+
+on:
+    push:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v2
+
+        - name: Run generate_code.sh
+          run: ./generate_code.sh
+
+        - name: Check for unstaged changes
+          run: |
+                if [[ `git status --porcelain` ]]; then
+                    echo "This repository needs to be updated. Please run ./generate_code.sh and commit the changes."
+                    git diff
+                    exit 1
+                fi
