@@ -1,7 +1,8 @@
 name: Check for updates
 
 on:
-    push:
+    schedule:
+      - cron: "0 0 * * 5" # every friday at 00:00 UTC
 
 jobs:
     checkForUpdates:
