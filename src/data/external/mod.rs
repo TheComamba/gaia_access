@@ -48,6 +48,10 @@ pub mod skymapperdr1_master;
 pub mod skymapperdr2_master;
 #[cfg(any(feature = "external_tmass_xsc", test))]
 pub mod tmass_xsc;
+#[cfg(any(feature = "external_xgboost_table1", test))]
+pub mod xgboost_table1;
+#[cfg(any(feature = "external_xgboost_table2", test))]
+pub mod xgboost_table2;
 
 #[cfg(test)]
 pub(crate) fn collect_known(
@@ -75,5 +79,7 @@ pub(crate) fn collect_known(
     skymapperdr1_master::collect_known(&mut tables);
     skymapperdr2_master::collect_known(&mut tables);
     tmass_xsc::collect_known(&mut tables);
+    xgboost_table1::collect_known(&mut tables);
+    xgboost_table2::collect_known(&mut tables);
     map.insert(external.string(), tables);
 }

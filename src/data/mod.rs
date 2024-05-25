@@ -20,6 +20,8 @@
     feature = "external_skymapperdr1_master",
     feature = "external_skymapperdr2_master",
     feature = "external_tmass_xsc",
+    feature = "external_xgboost_table1",
+    feature = "external_xgboost_table2",
     test
 ))]
 pub mod external;
