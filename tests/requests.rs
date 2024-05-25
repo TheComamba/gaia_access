@@ -1,6 +1,6 @@
 #[cfg(test)]
-mod tests {
-    use crate::{
+mod test {
+    use gaia_access::{
         data::gaiadr3::{gaia_source::*, gaiadr3},
         query::GaiaQueryBuilder,
         result::{get_float, get_string},
