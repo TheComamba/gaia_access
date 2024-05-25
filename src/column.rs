@@ -1,16 +1,3 @@
-use std::hash::Hash;
-
-use serde::{Deserialize, Serialize};
-use strum::{Display, EnumIter, EnumString};
-
-pub trait Column: ToString + Eq + Hash + Clone + Copy {}
-
-#[allow(non_camel_case_types)]
-#[derive(
-    Debug, Clone, Copy, EnumIter, EnumString, Display, PartialEq, Eq, Hash, Serialize, Deserialize,
-)]
-pub enum GaiaColumn {}
-
 #[cfg(test)]
 mod tests {
     use crate::{

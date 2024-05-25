@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-use crate::column::Column;
+use crate::traits::Column;
 
 #[derive(Serialize, Deserialize)]
 struct GaiaMetadataLine {

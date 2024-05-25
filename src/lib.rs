@@ -4,8 +4,7 @@ pub mod data;
 pub mod error;
 pub mod query;
 pub mod result;
-pub mod schema;
-pub mod table;
+pub(crate) mod traits;
 
 #[cfg(test)]
 mod completeness;

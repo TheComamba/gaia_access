@@ -1,11 +1,12 @@
-use crate::column::Column;
+use std::fmt;
+
+use crate::traits::Column;
 
 pub enum GaiaCondition<C: Column> {
     LessThan(C, f64),
     GreaterThan(C, f64),
     Between(C, f64, f64),
 }
-use std::fmt;
 
 impl<C: Column> fmt::Display for GaiaCondition<C> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {

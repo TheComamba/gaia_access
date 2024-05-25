@@ -1,10 +1,8 @@
 use crate::{
-    column::Column,
     condition::GaiaCondition,
     error::GaiaError,
     result::{GaiaResponse, GaiaResult},
-    schema::Schema,
-    table::Table,
+    traits::{Column, Schema, Table},
 };
 
 pub struct GaiaQueryBuilder<S: Schema, T: Table, C: Column> {
