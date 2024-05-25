@@ -80,18 +80,17 @@ class GaiaError(Exception):
     pass
 
 def check_and_download_file():
-    if not os.path.exists(FILE_PATH):
-        os.makedirs("dev_data", exist_ok=True)
+    os.makedirs("dev_data", exist_ok=True)
 
-        url = "https://gea.esac.esa.int/tap-server/tap/tables"
-        print(f"Downloading {url}...")
-        response = requests.get(url)
+    url = "https://gea.esac.esa.int/tap-server/tap/tables"
+    print(f"Downloading {url}...")
+    response = requests.get(url)
 
-        if response.status_code != 200:
-            raise GaiaError("Failed to download file")
+    if response.status_code != 200:
+        raise GaiaError("Failed to download file")
 
-        with open(FILE_PATH, 'wb') as file:
-            file.write(response.content)
+    with open(FILE_PATH, 'wb') as file:
+        file.write(response.content)
 
 def read_xml_file():
     check_and_download_file()
