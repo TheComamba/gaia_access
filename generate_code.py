@@ -1,3 +1,4 @@
+import copy
 import os
 import shutil
 import chardet
@@ -122,14 +123,31 @@ def read_xml_file():
 
         for schema in root:
             schema_name = schema.find("name").text
+            if schema.find("description") is None:
+                schema_description = "The " + schema_name + " schema. (No further description available)"
+            else:
+                schema_description = schema.find("description").text
             tables = {}
             for table in schema:
                 if table.tag != "table":
                     continue
                 table_name = table.find("name").text.split('.')[-1]
-                columns = [column.find("name").text for column in table if column.tag == "column"]
-                tables[table_name] = columns
-            gaia_schemas[schema_name] = tables
+                if table.find("description") is None:
+                    table_description = "The " + table_name + " table. (No further description available)"
+                else:
+                    table_description = table.find("description").text
+                columns = []
+                for column in table:
+                    if column.tag != "column":
+                        continue
+                    column_name = column.find("name").text
+                    if column.find("description") is None:
+                        column_description = "The " + column_name + " column. (No further description available)"
+                    else:
+                        column_description = column.find("description").text
+                    columns.append({ "name": column_name, "description": column_description })
+                tables[table_name] = { "columns": columns, "description": table_description }
+            gaia_schemas[schema_name] = { "tables": tables, "description": schema_description }
 
     return gaia_schemas
 
@@ -137,7 +155,7 @@ def get_all_table_features(schema, schema_name):
     if schema_name not in schema:
         raise ValueError(f"Schema '{schema_name}' does not exist in the provided schema dictionary.")
     all_table_features = []
-    for table in schema[schema_name].keys():
+    for table in schema[schema_name]["tables"].keys():
         all_table_features.append(f"{schema_name}_{table}")
     return all_table_features
 
@@ -146,7 +164,8 @@ def write_data_file(schema, data_path):
 
     schema_mods = []
     known_schemas = []
-    for schema_name, tables in schema.items():
+    for schema_name in schema.keys():
+        tables = schema[schema_name]["tables"]
         if tables:
             table_features = get_all_table_features(schema, schema_name)
             table_features = ', '.join([f'feature = "{feature}"' for feature in table_features])
@@ -174,23 +193,31 @@ def write_schema_file(schema_folder_path, schema_name, tables):
 def write_table_file(table_folder_path, table_name, columns):
     os.makedirs(table_folder_path, exist_ok=True)
 
-    columns_for_enum = columns.copy()
-    columns_for_known = columns.copy()
+    columns_for_enum = copy.deepcopy(columns)
+    columns_for_known = copy.deepcopy(columns)
 
-    columns_for_enum = ["#[strum(serialize = \"\\\"size\\\"\")] size" if column == "\"size\"" else column for column in columns_for_enum]
-    columns_for_known = ["size" if column == "\"size\"" else column for column in columns_for_known]
+    for column in columns_for_enum:
+        if column["name"] == "\"size\"":
+            column["name"] = "#[strum(serialize = \"\\\"size\\\"\")] size"
+        if column["name"] == "type":
+            column["name"] = "#[strum(serialize = \"type\")] type_col"
+        if column["name"] == "\"key\"":
+            column["name"] = "#[strum(serialize = \"\\\"key\\\"\")] key"
+        if column["name"] == "\"value\"":
+            column["name"] = "#[strum(serialize = \"\\\"value\\\"\")] value"
 
-    columns_for_enum = ["#[strum(serialize = \"type\")] type_col" if column == "type" else column for column in columns_for_enum]
-    columns_for_known = ["type_col" if column == "type" else column for column in columns_for_known]
+    for column in columns_for_known:
+        if column["name"] == "\"size\"":
+            column["name"] = "size"
+        if column["name"] == "type":
+            column["name"] = "type_col"
+        if column["name"] == "\"key\"":
+            column["name"] = "key"
+        if column["name"] == "\"value\"":
+            column["name"] = "value"
 
-    columns_for_enum = ["#[strum(serialize = \"\\\"key\\\"\")] key" if column == "\"key\"" else column for column in columns_for_enum]
-    columns_for_known = ["key" if column == "\"key\"" else column for column in columns_for_known]
-
-    columns_for_enum = ["#[strum(serialize = \"\\\"value\\\"\")] value" if column == "\"value\"" else column for column in columns_for_enum]
-    columns_for_known = ["value" if column == "\"value\"" else column for column in columns_for_known]
-
-    column_enums = "\n".join([f"{column}," for column in columns_for_enum])
-    known_columns = "\n".join([f"col_strings.push(Col::{column}.to_string());" for column in columns_for_known])
+    column_enums = "\n".join([f'{column["name"]},' for column in columns_for_enum])
+    known_columns = "\n".join([f'col_strings.push(Col::{column["name"]}.to_string());' for column in columns_for_known])
 
     with open(os.path.join(table_folder_path, 'mod.rs'), 'w') as table_file:
         table_file.write(TABLE_TEMPLATE.format(name=table_name, columns=column_enums, known_columns=known_columns))
@@ -217,7 +244,7 @@ def update_cargo_toml(schema):
         return
 
     new_lines = []
-    for schema_name, tables in schema.items():
+    for schema_name in schema.keys():
         table_features = get_all_table_features(schema, schema_name)
         new_lines.append(f"{schema_name} = {table_features}\n")
         for table_feature in table_features:
@@ -238,10 +265,12 @@ def generate_code(schema):
 
     write_data_file(schema, data_path)
             
-    for schema_name, tables in schema.items():
+    for schema_name in schema.keys():
+        tables = schema[schema_name]["tables"]
         schema_folder_path = os.path.join(data_path, schema_name)
         write_schema_file(schema_folder_path, schema_name, tables)
-        for table_name, columns in tables.items():
+        for table_name in tables.keys():
+            columns = tables[table_name]["columns"]
             table_folder_path = os.path.join(schema_folder_path, table_name)
             write_table_file(table_folder_path, table_name, columns)
 
