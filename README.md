@@ -34,7 +34,7 @@ use gaia_access::{
 };
 
 // Get the designation and temperature of the first three stars that have a visible magnitude brighter than 5.
-let magnitude_threshold = 5.0
+let magnitude_threshold = 5.0;
 let query_result = GaiaQueryBuilder::new(gaiadr3, gaia_source)
         .top(3)
         .select(vec![
@@ -49,7 +49,7 @@ let query_result = GaiaQueryBuilder::new(gaiadr3, gaia_source)
         .unwrap();
 
 // From the first entry of the returned data, get the temperature value.
-let temperature: GaiaCellData = query_result
+let temperature: &GaiaCellData = query_result
     .data[0]
     .get(&Col::teff_gspphot)
     .unwrap();
