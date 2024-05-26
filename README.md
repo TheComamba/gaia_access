@@ -72,6 +72,8 @@ This means that manually modifying any code within `src/data` is futile. If you 
 
 The same is true for the list of features in `Cargo.toml`.
 
+Because the crate offers no default functionality, a mere `cargo test` will fail. You have to run `cargo test --all-features`, which is exactly what the `test.sh` script does.
+
 ## License
 
 This software is distributed under the [MIT](https://choosealicense.com/licenses/mit/) license. In a nutshell this means that all code is made public, and you are free to use it without any charge.
