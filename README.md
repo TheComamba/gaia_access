@@ -4,7 +4,7 @@ A simple, type-safe crate to access data from the [Gaia ESA Archive](https://gea
 
 ## Usage
 
-To keep the code that needs to be compiled at a manageable amount, every data table is hidden behind a feature flag. They follow the naming convention `<schema>_<table>`. See this project's `Cargo.toml` for a list of all features.
+To keep the code that needs to be compiled at a manageable amount, every data table is hidden behind a feature flag. They follow the naming convention `<schema>_<table>`. Check the [feature flags tab in the docs](https://docs.rs/crate/gaia_access/latest/features) for a list of all features.
 
 In your `Cargo.toml`, you need to enable the tables you want to access, e.g.:
 
