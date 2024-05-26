@@ -1,7 +1,13 @@
+//! Define the error type for the Gaia API.
+
+/// The error type for the Gaia API.
 #[derive(Debug)]
 pub enum GaiaError {
+    /// General error with a string message.
     General(String),
+    /// Error from the query.
     Query(reqwest::Error),
+    /// Error from parsing the response.
     Parse(serde_json::Error),
 }
 

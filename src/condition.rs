@@ -1,12 +1,21 @@
-use crate::column::Column;
+//! Contains the definition of the GaiaCondition enum that allows filtering query results.
 
+use std::fmt;
+
+use crate::traits::Column;
+
+/// The GaiaCondition enum can be used in the QueryBuilder to conditionally filter results.
 pub enum GaiaCondition<C: Column> {
-    LessThan(C, f64),
-    GreaterThan(C, f64),
+    /// Between(column, lower, upper) is rendered as "column BETWEEN lower AND upper" in ADQL.
     Between(C, f64, f64),
+    /// GreaterThan(column, threshold) is rendered as "column > threshold" in ADQL.
+    GreaterThan(C, f64),
+    /// LessThan(column, threshold) is rendered as "column < threshold" in ADQL.
+    LessThan(C, f64),
 }
-impl<C: Column> ToString for GaiaCondition<C> {
-    fn to_string(&self) -> String {
+
+impl<C: Column> fmt::Display for GaiaCondition<C> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let str = match self {
             GaiaCondition::LessThan(column, value) => format!("{} < {}", column.to_string(), value),
             GaiaCondition::GreaterThan(column, value) => {
@@ -16,7 +25,7 @@ impl<C: Column> ToString for GaiaCondition<C> {
                 format!("{} BETWEEN {} AND {}", column.to_string(), value1, value2)
             }
         };
-        format!("({})", str)
+        write!(f, "({})", str)
     }
 }
 

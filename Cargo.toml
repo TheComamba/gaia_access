@@ -1,14 +1,21 @@
 [package]
-name = "gaia_access"
-version = "0.1.0"
+authors = ["The Comamba <thecomamba@jojoheinze.de>"]
+categories = ["database", "science"]
+description = "Access the Gaia ESA Archive for astronomical data."
 edition = "2021"
+keywords = ["gaia", "astronomy", "ADQL"]
+license = "MIT"
+name = "gaia_access"
+readme = "README.md"
+repository = "https://github.com/TheComamba/GaiaAccess"
+version = "0.1.0"
 
 [lib]
 name         = "gaia_access"
 crate-type   = ["rlib"]
 
 [dependencies]
-reqwest = { version = "0.11.0", default-features = false, features = ["blocking", "rustls-tls"] } # Downloading files
+reqwest = { version = "0.12.0", default-features = false, features = ["blocking", "rustls-tls"] } # Downloading files
 strum = { version = "0.26.0", no-default-features = true, features = ["derive"] } # Derive string from enum
 serde = { version = "1.0", default-features = false, features = ["derive"] } # (De)Serialization
 serde_json = { version = "1.0", default-features = false, features = ["std"] }
@@ -19,7 +26,7 @@ xmltree = "0.10.0" # XML DeSerialization
 
 [features]
 # begin generated
-external = ['external_apassdr9', 'external_catwise2020', 'external_gaiadr2_astrophysical_parameters', 'external_gaiadr2_geometric_distance', 'external_gaiaedr3_distance', 'external_gaiaedr3_gcns_main_1', 'external_gaiaedr3_gcns_rejected_1', 'external_gaiaedr3_spurious', 'external_gaia_eso_survey', 'external_galex_ais', 'external_ravedr5_com', 'external_ravedr5_dr5', 'external_ravedr5_gra', 'external_ravedr5_on', 'external_ravedr6', 'external_sdssdr13_photoprimary', 'external_skymapperdr1_master', 'external_skymapperdr2_master', 'external_tmass_xsc']
+external = ['external_apassdr9', 'external_catwise2020', 'external_gaiadr2_astrophysical_parameters', 'external_gaiadr2_geometric_distance', 'external_gaiaedr3_distance', 'external_gaiaedr3_gcns_main_1', 'external_gaiaedr3_gcns_rejected_1', 'external_gaiaedr3_spurious', 'external_gaia_eso_survey', 'external_galex_ais', 'external_ravedr5_com', 'external_ravedr5_dr5', 'external_ravedr5_gra', 'external_ravedr5_on', 'external_ravedr6', 'external_sdssdr13_photoprimary', 'external_skymapperdr1_master', 'external_skymapperdr2_master', 'external_tmass_xsc', 'external_xgboost_table1', 'external_xgboost_table2']
 external_apassdr9 = []
 external_catwise2020 = []
 external_gaiadr2_astrophysical_parameters = []
@@ -39,6 +46,8 @@ external_sdssdr13_photoprimary = []
 external_skymapperdr1_master = []
 external_skymapperdr2_master = []
 external_tmass_xsc = []
+external_xgboost_table1 = []
+external_xgboost_table2 = []
 gaiadr1 = ['gaiadr1_aux_qso_icrf2_match', 'gaiadr1_ext_phot_zero_point', 'gaiadr1_allwise_best_neighbour', 'gaiadr1_allwise_neighbourhood', 'gaiadr1_gsc23_best_neighbour', 'gaiadr1_gsc23_neighbourhood', 'gaiadr1_ppmxl_best_neighbour', 'gaiadr1_ppmxl_neighbourhood', 'gaiadr1_sdss_dr9_best_neighbour', 'gaiadr1_sdss_dr9_neighbourhood', 'gaiadr1_tmass_best_neighbour', 'gaiadr1_tmass_neighbourhood', 'gaiadr1_ucac4_best_neighbour', 'gaiadr1_ucac4_neighbourhood', 'gaiadr1_urat1_best_neighbour', 'gaiadr1_urat1_neighbourhood', 'gaiadr1_cepheid', 'gaiadr1_phot_variable_time_series_gfov', 'gaiadr1_phot_variable_time_series_gfov_statistical_parameters', 'gaiadr1_rrlyrae', 'gaiadr1_variable_summary', 'gaiadr1_allwise_original_valid', 'gaiadr1_gsc23_original_valid', 'gaiadr1_ppmxl_original_valid', 'gaiadr1_sdssdr9_original_valid', 'gaiadr1_tmass_original_valid', 'gaiadr1_ucac4_original_valid', 'gaiadr1_urat1_original_valid', 'gaiadr1_gaia_source', 'gaiadr1_tgas_source']
 gaiadr1_aux_qso_icrf2_match = []
 gaiadr1_ext_phot_zero_point = []
