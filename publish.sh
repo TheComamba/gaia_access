@@ -2,10 +2,6 @@
 
 cargo install cargo-release
 
-cargo release#!/bin/bash
-
-cargo install cargo-release
-
 if [[ "$1" == "--execute" ]]; then
     cargo release --execute
 else
