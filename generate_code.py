@@ -172,7 +172,9 @@ def write_data_file(schema, data_path):
             table_features += ', '
         else:
             table_features = ''
-        schema_mods.append(f'#[cfg(any(feature = "{schema_name}", {table_features} test))] pub mod {schema_name};')
+        schema_mods.append(f'#[cfg(not(doctest))]') # I do not understand why this is needed
+        schema_mods.append(f'#[cfg(any(feature = "{schema_name}", {table_features} test))] ')
+        schema_mods.append(f'pub mod {schema_name};')
         known_schemas.append(f"{schema_name}::collect_known(&mut known);")
 
     schema_mods = "\n".join(schema_mods)

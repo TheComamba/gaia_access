@@ -2,6 +2,7 @@
 
 //! This module contains all the known schemas and tables in the Gaia database.
 
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "external",
     feature = "external_apassdr9",
@@ -28,6 +29,7 @@
     test
 ))]
 pub mod external;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "gaiadr1",
     feature = "gaiadr1_aux_qso_icrf2_match",
@@ -63,6 +65,7 @@ pub mod external;
     test
 ))]
 pub mod gaiadr1;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "gaiadr2",
     feature = "gaiadr2_aux_allwise_agn_gdr2_cross_id",
@@ -109,6 +112,7 @@ pub mod gaiadr1;
     test
 ))]
 pub mod gaiadr2;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "gaiadr3",
     feature = "gaiadr3_gaia_source",
@@ -205,6 +209,7 @@ pub mod gaiadr2;
     test
 ))]
 pub mod gaiadr3;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "gaiaedr3",
     feature = "gaiaedr3_gaia_source",
@@ -247,6 +252,7 @@ pub mod gaiadr3;
     test
 ))]
 pub mod gaiaedr3;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "gaiafpr",
     feature = "gaiafpr_crowded_field_source",
@@ -264,8 +270,10 @@ pub mod gaiaedr3;
     test
 ))]
 pub mod gaiafpr;
+#[cfg(not(doctest))]
 #[cfg(any(feature = "job_upload", test))]
 pub mod job_upload;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "public",
     feature = "public_hipparcos",
@@ -278,6 +286,7 @@ pub mod job_upload;
     test
 ))]
 pub mod public;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "tap_config",
     feature = "tap_config_coord_sys",
@@ -285,6 +294,7 @@ pub mod public;
     test
 ))]
 pub mod tap_config;
+#[cfg(not(doctest))]
 #[cfg(any(
     feature = "tap_schema",
     feature = "tap_schema_columns",
@@ -295,6 +305,7 @@ pub mod tap_config;
     test
 ))]
 pub mod tap_schema;
+#[cfg(not(doctest))]
 #[cfg(any(feature = "tap_upload", test))]
 pub mod tap_upload;
 
