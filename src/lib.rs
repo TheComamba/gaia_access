@@ -22,8 +22,8 @@
 //!
 //! The data query in your code is created via a builder pattern. The returned object contains a data Vec, which for all table rows contains a HashMap from column to value. The type of that value is a union of string, float and null. Knowing what type is expected for a column, it can be extracted.
 //!
-//! # Examples
-//! ```rust
+//! # Example
+//! ```
 //! use gaia_access::{
 //!     condition::GaiaCondition,
 //!     data::gaiadr3::{
