@@ -1,5 +1,5 @@
 [package]
-authors = ["Simon Heidrich <simon@jojoheinze.de>"]
+authors = ["The Comamba <thecomamba@jojoheinze.de>"]
 categories = ["database", "science"]
 description = "Access the Gaia ESA Archive for astronomical data."
 edition = "2021"
