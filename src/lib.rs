@@ -6,4 +6,4 @@ pub mod result;
 pub(crate) mod traits;
 
 #[cfg(test)]
-mod completeness;
+mod test_completeness;
