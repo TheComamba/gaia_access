@@ -4,7 +4,29 @@
 
 use crate::traits::{Column, Table};
 
-/// The dr2_neighbourhood table.
+/// Users wishing to look up the E/DR3 record for an astrophysical source
+/// identified in DR2 must NOT simply extract the record from E/DR3 having
+/// the same source identifier.
+///
+/// As described in the detailed description of attribute designation in
+/// GaiaSource it is not guaranteed that the same astronomical source will
+/// always have the same source identifier in different Data Releases. Hence
+/// the only safe way to compare source records between different Data
+/// Releases in general is to check the records of proximal source(s) in the
+/// same small part of the sky. This table provides the means to do this via
+/// a precomputed crossmatch of such sources, taking into account the proper
+/// motions available at E/DR3.
+///
+/// Within the neighbourhood of a given E/DR3 source there may be none, one
+/// or (rarely) several possible counterparts in DR2 indicated by rows in
+/// this table. This occasional source confusion is an inevitable
+/// consequence of the merging, splitting and deletion of identifiers
+/// introduced in previous releases during the DR3 processing and results in
+/// no guaranteed one–to–one correspondence in source identifiers between
+/// the releases.
+///
+/// For more details of the procedure used to create this crossmatch, see
+/// Chapter [chap:archive] in the online documentation.
 #[allow(non_camel_case_types)]
 pub struct dr2_neighbourhood;
 
@@ -18,10 +40,15 @@ impl Table for dr2_neighbourhood {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Source identifier in Gaia DR2
     dr2_source_id,
+    /// Source identifier in Gaia E/DR3
     dr3_source_id,
+    /// Angular distance between the two sources
     angular_distance,
+    /// G band magnitude difference between the sources
     magnitude_difference,
+    /// Flag indicating whether E/DR3 coordinates were proper motion corrected
     proper_motion_propagation,
 }
 

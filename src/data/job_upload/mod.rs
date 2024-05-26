@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The job_upload schema.
+/// The job_upload schema. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct job_upload;
 

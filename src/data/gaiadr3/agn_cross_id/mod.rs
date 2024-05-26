@@ -4,7 +4,11 @@
 
 use crate::traits::{Column, Table};
 
-/// The agn_cross_id table.
+/// <p>Table <tt>AgnCrossId</tt> lists sources whose positions and proper motions define the celestial reference frame of Gaia catalogue.</p>
+/// <p>
+/// <tt>AgnCrossId</tt> lists the sources in Gaia (E)DR3 cross-matched to sources in a number of external AGN catalogues. The first column is the sources identifier in the external catalogue specified in the third column, the second column is the source identifier in Gaia (E)DR3.</p>
+/// <p>The selection of sources and the quality of the Gaia-CRF3 are discussed in</p>
+/// <p>EDR3-DPACP-133.</p>
 #[allow(non_camel_case_types)]
 pub struct agn_cross_id;
 
@@ -18,8 +22,11 @@ impl Table for agn_cross_id {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Identifier in the external catalogue
     source_name_in_catalogue,
+    /// Gaia source identifier
     source_id,
+    /// Name of the external catalogue
     catalogue_name,
 }
 

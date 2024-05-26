@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The aux_qso_icrf2_match table.
+/// This table has an entry for all sources in the auxiliary QSO solution
+/// matched to the ICRF2 sources and passing all quality filters discussed
+/// in the corresponding documentation.
 #[allow(non_camel_case_types)]
 pub struct aux_qso_icrf2_match;
 
@@ -18,17 +20,118 @@ impl Table for aux_qso_icrf2_match {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// All Gaia data processed by the Data Processing and Analysis Consortium
+    /// comes tagged with a solution identifier. This is a numeric field
+    /// attached to each table row that can be used to unequivocally identify
+    /// the version of all the subsystems that where used in the generation of
+    /// the data as well as the input data used. It is mainly for internal DPAC
+    /// use but is included in the published data releases to enable end users
+    /// to examine the provenance of processed data products. To decode a given
+    /// solution ID visit
     solution_id,
+    /// A unique single numerical identifier of the source.
+    ///
+    /// For the contents of Gaia DR1, which does not include Solar System
+    /// objects, the source ID consists consists of a 64-bit integer, least
+    /// significant bit = 1 and most significant bit = 64, comprising:
+    ///
+    /// -   a HEALPix index number (sky pixel) in bits 36 - 63; by definition
+    ///     the smallest HEALPix index number is zero.
+    ///
+    /// -   a 2-bit Data Processing Centre code in bits 34 - 35; for example
+    ///     MOD(sourceId / 4294967296, 8) can be used to distinguish between
+    ///     sources initialised via the Initial Gaia Source List by the Torino
+    ///     DPC (code = 0) and sources otherwise detected and assigned by Gaia
+    ///     observations (code >0)
+    ///
+    /// -   a 25-bit plus 7 bit sequence number within the HEALPix pixel in bits
+    ///     1 - 32 split into:
+    ///
+    ///     -   a 25 bit running number in bits 8 – 32; the running numbers are
+    ///         defined to be positive, i.e. never zero (except in the case of
+    ///         forced empty windows)
+    ///
+    ///     -   a 7-bit component number in bits 1 – 7
+    ///
+    /// -   one spare bit in bit 33
+    ///
+    /// This means that the HEALpix index level 12 of a given source is
+    /// contained in the most significant bits. HEALpix index of 12 and lower
+    /// levels can thus be retrieved as follows:
+    ///
+    /// -   HEALpix level 12 = source_id / 34359738368
+    ///
+    /// -   HEALpix level 11 = source_id / 137438953472
+    ///
+    /// -   HEALpix level 10 = source_id / 549755813888
+    ///
+    /// -   HEALpix level n = source_id / 2 ^ 35 * 4 ^ (12 - level).
+    ///
+    /// Additional details can be found in the Gaia DPAC public document Source
+    /// Identifiers — Assignment and Usage throughout DPAC (document code
+    /// GAIA–C3–TN–ARI–BAS–020) available from
     source_id,
+    /// Reference epoch to which the astrometic source parameters are referred,
+    /// expressed as a Julian Year in TCB.
     ref_epoch,
+    /// Barycentric right ascension \alpha of the source in ICRS at the
+    /// reference epoch refEpoch
     ra,
+    /// Standard error \sigma_{\alpha *} \equiv \sigma_\alpha\cos\delta of the
+    /// right ascension of the source in ICRS at the reference epoch refEpoch.
     ra_error,
+    /// Barycentric declination \delta of the source in ICRS at the reference
+    /// epoch refEpoch
     dec,
+    /// Standard error \sigma_\delta of the declination of the source in ICRS at
+    /// the reference epoch refEpoch
     dec_error,
+    /// Correlation between right ascension and declination, in dimensionless
+    /// units [-1:+1]
     ra_dec_corr,
+    /// Mean magnitude in the G band. This is computed from the G-band mean flux
+    /// applying the magnitude zero-point in the Vega scale.
     phot_g_mean_mag,
+    /// Type of prior used in the astrometric solution:
+    ///
+    /// -   0: No prior used
+    ///
+    /// -   1: Galaxy Bayesian Prior for parallax and proper motion
+    ///
+    /// -   2: Galaxy Bayesian Prior for parallax and proper motion relaxed by
+    ///     factor 10
+    ///
+    /// -   3: Hipparcos prior for position
+    ///
+    /// -   4: Hipparcos prior for position and proper motion
+    ///
+    /// -   5: Tycho2 prior for position
+    ///
+    /// -   6: Quasar prior for proper motion
+    ///
+    /// The Galaxy Bayesian Prior is defined in , where it is denoted
+    /// \sigma_{\varpi,F90} (for the parallax) and
+    /// \sigma_{\mu,F90}={\cal R}\sigma_{\varpi,F90}, with {\cal R}=10 yr^{-1}
+    /// (for proper motion). The Galaxy Bayesian Prior relaxed by a factor 10 is
+    /// 10\sigma_{\varpi,F90} and 10\sigma_{\mu,F90}, respectively.
+    ///
+    /// For Gaia DR1 the only types of priors used are 2 (for the secondary data
+    /// set), 3 (for the Hipparcos subset of the primary data set), or 5 (for
+    /// the non-Hipparcos subset of the primary data set). Type 6 was used for
+    /// internal calibration purposes and alignment of the reference frame.
     astrometric_priors_used,
+    /// ICRF2 designation of the source matched to this Gaia source.
     icrf2_match,
+    /// Flag indicating how this source was used to fix the orientation of the
+    /// reference frame of the Gaia DR1 solution:
+    ///
+    /// -   0: Not used
+    ///
+    /// -   1: Only right ascention is used
+    ///
+    /// -   2: Only declination is used
+    ///
+    /// -   3: Both right ascention and declination are used
     rot_flag,
 }
 

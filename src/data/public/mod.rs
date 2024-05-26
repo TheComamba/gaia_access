@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The public schema.
+/// The public schema. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct public;
 

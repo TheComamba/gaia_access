@@ -4,7 +4,71 @@
 
 use crate::traits::{Column, Table};
 
-/// The panstarrs1_original_valid table.
+/// The Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) is
+/// a system for wide-field astronomical imaging developed and operated by
+/// the Institute for Astronomy at the University of Hawaii. Pan-STARRS1
+/// (PS1) is the first part of Pan-STARRS to be completed and is the basis
+/// for Data Release 1 (DR1). The PS1 survey used a 1.8 meter telescope and
+/// its 1.4 Gigapixel camera to image the sky in five broadband filters (g,
+/// r, i, z, y).
+///
+/// The current table contains a filtered subsample of the 10 723 304 629
+/// entries listed in the original ObjectThin table.
+/// We used only ObjectThin and MeanObject tables to extract
+/// panstarrs1OriginalValid table, this means that objects detected only in
+/// stack images are not included here. The main reason for us to avoid the
+/// use of objects detected in stack images is that their astrometry is not
+/// as good as the mean objects astrometry: “The stack positions (raStack,
+/// decStack) have considerably larger systematic astrometric errors than
+/// the mean epoch positions (raMean, decMean).” The astrometry for the
+/// MeanObject positions uses Gaia DR1 as a reference catalog, while the
+/// stack positions use 2MASS as a reference catalog.
+///
+/// In details, we filtered out all objects where:
+///
+/// -   nDetections = 1
+///
+/// -   no good quality data in Pan-STARRS, objInfoFlag 33554432 not set
+///
+/// -   mean astrometry could not be measured, objInfoFlag 524288 set
+///
+/// -   stack position used for mean astrometry, objInfoFlag 1048576 set
+///
+/// -   error on all magnitudes equal to 0 or to -999;
+///
+/// -   all magnitudes set to -999;
+///
+/// -   error on RA or DEC greater than 1 arcsec.
+///
+/// The number of objects in panstarrs1OriginalValid is 2 264 263 282.
+///
+/// The panstarrs1OriginalValid table contains only a subset of the columns
+/// available in the combined ObjectThin and MeanObject tables. A
+/// description of the original ObjectThin and MeanObjects tables can be
+/// found at:
+/// https://outerspace.stsci.edu/display/PANSTARRS/PS1+Database+object+and+detection+tables
+///
+/// Download:
+/// http://mastweb.stsci.edu/ps1casjobs/home.aspx
+/// Documentation:
+/// https://outerspace.stsci.edu/display/PANSTARRS
+/// http://pswww.ifa.hawaii.edu/pswww/
+/// References:
+/// The Pan-STARRS1 Surveys, Chambers, K.C., et al. 2016, arXiv:1612.05560
+/// Pan-STARRS Data Processing System, Magnier, E. A., et al. 2016,
+/// arXiv:1612.05240
+/// Pan-STARRS Pixel Processing: Detrending, Warping, Stacking, Waters, C.
+/// Z., et al. 2016, arXiv:1612.05245
+/// Pan-STARRS Pixel Analysis: Source Detection and Characterization,
+/// Magnier, E. A., et al. 2016, arXiv:1612.05244
+/// Pan-STARRS Photometric and Astrometric Calibration, Magnier, E. A., et
+/// al. 2016, arXiv:1612.05242
+/// The Pan-STARRS1 Database and Data Products, Flewelling, H. A., et al.
+/// 2016, arXiv:1612.05243
+///
+/// Catalogue curator:
+/// SSDC - ASI Space Science Data Center
+/// https://www.ssdc.asi.it/
 #[allow(non_camel_case_types)]
 pub struct panstarrs1_original_valid;
 
@@ -18,31 +82,57 @@ impl Table for panstarrs1_original_valid {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// IAU name
     obj_name,
+    /// Unique Object Identifier
     obj_id,
+    /// RA Mean
     ra,
+    /// DEC Mean
     dec,
+    /// RA Mean standard deviation
     ra_error,
+    /// DEC Mean standard deviation
     dec_error,
+    /// Epoch Mean
     epoch_mean,
+    /// Mean magnitude in g filter
     g_mean_psf_mag,
+    /// Error in Mean magnitude in g filter
     g_mean_psf_mag_error,
+    /// g filter flags
     g_flags,
+    /// Mean magnitude in r filter
     r_mean_psf_mag,
+    /// Error in Mean magnitude in r filter
     r_mean_psf_mag_error,
+    /// r filter flags
     r_flags,
+    /// Mean magnitude in i filter
     i_mean_psf_mag,
+    /// Error in Mean magnitude in i filter
     i_mean_psf_mag_error,
+    /// i filter flags
     i_flags,
+    /// Mean magnitude in z filter
     z_mean_psf_mag,
+    /// Error in Mean magnitude in z filter
     z_mean_psf_mag_error,
+    /// z filter flags
     z_flags,
+    /// Mean magnitude in y filter
     y_mean_psf_mag,
+    /// Error in Mean magnitude in y filter
     y_mean_psf_mag_error,
+    /// y filter flags
     y_flags,
+    /// Number of detections
     n_detections,
+    /// Local zone index
     zone_id,
+    /// Object information flags
     obj_info_flag,
+    /// Object quality flags
     quality_flag,
 }
 

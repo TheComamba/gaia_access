@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The lens_catalogue_name table.
+/// This table provides the list of input catalogues that have been used to select any given source that was analysed by the Gravitational Lens module and published in the lens candidate table.
 #[allow(non_camel_case_types)]
 pub struct lens_catalogue_name;
 
@@ -18,8 +18,11 @@ impl Table for lens_catalogue_name {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// The unique identifier for the catalogue(s) used to select the sources in the gravitational lenses analysis
     catalogue_id,
 }
 

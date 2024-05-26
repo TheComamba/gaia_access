@@ -4,7 +4,26 @@
 
 use crate::traits::{Column, Table};
 
-/// The apassdr9_join table.
+/// Convenience table to be used to join the APASS DR9 catalogue with the
+/// cross-match results. The table links the external catalogue original
+/// sourceId (originalExtSourceId) to the corresponding additional numerical
+/// identifier (cleanApassdr9Oid).
+///
+/// Both originalExtSourceId and cleanApassdr9Oid are present in the
+/// cross-match output tables (Apassdr9BestNeighbour and
+/// Apassdr9Neighbourhood). However, in case there are suspected duplicates
+/// in the external catalogue, different originalExtSourceId will correspond
+/// to the same cleanApassdr9Oid.
+///
+/// In the cross-match output table only the originalExtSourceId of the
+/// source with the best astrometry among the suspected duplicates will be
+/// listed. In practice, users may use the originalExtSourceId in the
+/// original catalogue to find the matching source with the best astrometry.
+/// Users interested in all matching suspected duplicates should instead use
+/// the cleanApassdr9Oid in the join with the cross-match result tables.
+///
+/// See Chapter [chap:crossmatch] for more details on the duplicates in the
+/// external catalogues and their treatment in the cross-match computations.
 #[allow(non_camel_case_types)]
 pub struct apassdr9_join;
 
@@ -18,7 +37,9 @@ impl Table for apassdr9_join {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// External Catalogue source identifier
     clean_apassdr9_oid,
 }
 

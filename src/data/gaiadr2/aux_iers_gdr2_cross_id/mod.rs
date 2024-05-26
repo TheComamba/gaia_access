@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The aux_iers_gdr2_cross_id table.
+/// The aux_iers_gdr2_cross_id table. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct aux_iers_gdr2_cross_id;
 
@@ -18,7 +18,9 @@ impl Table for aux_iers_gdr2_cross_id {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// IERS name
     iers_name,
+    /// Gaia source identifier
     source_id,
 }
 

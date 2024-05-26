@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_microlensing table.
+/// This table describes the microlensing events.
 #[allow(non_camel_case_types)]
 pub struct vari_microlensing;
 
@@ -18,41 +18,77 @@ impl Table for vari_microlensing {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// G-band magnitude baseline (level 0)
     paczynski0_g0,
+    /// Error of G-band magnitude baseline (level 0)
     paczynski0_g0_error,
+    /// BP-band magnitude baseline (level 0)
     paczynski0_bp0,
+    /// Error of BP-band magnitude baseline (level 0)
     paczynski0_bp0_error,
+    /// RP-band magnitude baseline (level 0)
     paczynski0_rp0,
+    /// Error of RP-band magnitude baseline (level 0)
     paczynski0_rp0_error,
+    /// Impact parameter (level 0)
     paczynski0_u0,
+    /// Error of the impact parameter (level 0)
     paczynski0_u0_error,
+    /// Event timescale (level 0)
     paczynski0_te,
+    /// Error of event timescale (level 0)
     paczynski0_te_error,
+    /// Time of maximum amplification (level 0)
     paczynski0_tmax,
+    /// Error of time of maximum amplification (level 0)
     paczynski0_tmax_error,
+    /// Chi square of level 0 Paczynski fit
     paczynski0_chi2,
+    /// Reduced chi square of level 0 Paczynski fit
     paczynski0_chi2_dof,
+    /// G-band magnitude baseline (level 1)
     paczynski1_g0,
+    /// Error of G-band magnitude baseline (level 1)
     paczynski1_g0_error,
+    /// BP-band magnitude baseline (level 1)
     paczynski1_bp0,
+    /// Error of BP-band magnitude baseline (level 1)
     paczynski1_bp0_error,
+    /// RP-band magnitude baseline (level 1)
     paczynski1_rp0,
+    /// Error of RP-band magnitude baseline (level 1)
     paczynski1_rp0_error,
+    /// Impact parameter (level 1)
     paczynski1_u0,
+    /// Error of the impact parameter (level 1)
     paczynski1_u0_error,
+    /// Event timescale (level 1)
     paczynski1_te,
+    /// Error of event timescale (level 1)
     paczynski1_te_error,
+    /// Time of maximum amplification (level 1)
     paczynski1_tmax,
+    /// Error of time of maximum amplification (level 1)
     paczynski1_tmax_error,
+    /// Blending factor in G-band (level 1)
     paczynski1_fs_g,
+    /// Error of blending factor in G-band (level 1)
     paczynski1_fs_g_error,
+    /// Blending factor in BP-band (level 1)
     paczynski1_fs_bp,
+    /// Error of blending factor in BP-band (level 1)
     paczynski1_fs_bp_error,
+    /// Blending factor in RP-band (level 1)
     paczynski1_fs_rp,
+    /// Error of blending factor in RP-band (level 1)
     paczynski1_fs_rp_error,
+    /// Chi square of level 1 Paczynski fit
     paczynski1_chi2,
+    /// Reduced chi square of level 1 Paczynski fit
     paczynski1_chi2_dof,
 }
 

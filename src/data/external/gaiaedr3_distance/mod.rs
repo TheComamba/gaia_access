@@ -4,7 +4,33 @@
 
 use crate::traits::{Column, Table};
 
-/// The gaiaedr3_distance table.
+///
+/// Bailer-Jones et al. (2021) EDR3 distances. <p> Estimating distances from parallaxes. V: Geometric and photogeometric distances to 1.47 billion stars in Gaia Early Data Release 3.
+/// Bailer-Jones et al. 2021 AJ 161 147. Data replicated from gedr3dist.main table at GAVO Data Center TAP service https://dc.g-vo.org/tap and TAP metadata as of December 2020.
+/// <p>
+///     Original table description.
+/// <p>
+///     We estimate the distance from the Sun to sources in Gaia EDR3 that have
+///     parallaxes. We provide two types of distance estimate, together with
+///     their corresponding asymmetric uncertainties, using Bayesian posterior
+///     density functions that we sample for each source. Our prior is based
+///     on a detailed model of the 3D spatial, colour, and magnitude
+///     distribution of stars in our Galaxy that includes a 3D map of
+///     interstellar extinction.
+/// <p>
+///     The first type of distance estimate is purely geometric, in that it only
+///     makes use of the Gaia parallax and parallax uncertainty. This uses a
+///     direction-dependent distance prior derived from our Galaxy model. The
+///     second type of distance estimate is photogeometric: in addition to
+///     parallax it also uses the source's G-band magnitude and BP-RP
+///     colour. This type of estimate uses the geometric prior together with a
+///     direction-dependent and colour-dependent prior on the absolute magnitude
+///     of the star.
+/// <p>
+///     Our distance estimate and uncertainties are quantiles, so are invariant
+///     under logarithmic transformations. This means that our median estimate
+///     of the distance can be used to give the median estimate of the distance
+///     modulus, and likewise for the uncertainties.
 #[allow(non_camel_case_types)]
 pub struct gaiaedr3_distance;
 
@@ -18,13 +44,21 @@ impl Table for gaiaedr3_distance {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier. Note that this *cannot* be matched against the DR1 or DR2 source_ids.
     source_id,
+    /// The median of the geometric distance posterior. The geometric distance estimate.
     r_med_geo,
+    /// The 16th percentile of the geometric distance posterior. The lower 1-sigma-like bound on the confidence interval.
     r_lo_geo,
+    /// The 84th percentile of the geometric distance posterior. The upper 1-sigma-like bound on the confidence interval.
     r_hi_geo,
+    /// The median of the photogeometric distance posterior. The photogeometric distance estimate.
     r_med_photogeo,
+    /// The 16th percentile of the photogeometric distance posterior. The lower 1-sigma-like bound on the confidence interval.
     r_lo_photogeo,
+    /// The 84th percentile of the photogeometric distance posterior. The upper 1-sigma-like bound on the confidence interval.
     r_hi_photogeo,
+    /// Additional information on the solution. Do not use for filtering (see table note in the reference URL).
     flag,
 }
 

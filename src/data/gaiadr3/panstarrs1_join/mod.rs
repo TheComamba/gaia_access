@@ -4,7 +4,25 @@
 
 use crate::traits::{Column, Table};
 
-/// The panstarrs1_join table.
+/// Convenience table to be used to join Pan-STARRS1 DR1.1 catalogue with
+/// the cross-match results. The table links the external catalogue original
+/// sourceId (originalExtSourceId) to the corresponding the additional
+/// numerical identifier (cleanPanstarrs1Oid).
+/// Both originalExtSourceId and cleanPanstarrs1Oid are present in the
+/// cross-match output tables (panstarrs1BestNeighbour and
+/// panstarrs1Neighbourhood). However, in case there are suspected
+/// duplicates in the external catalogue, different originalExtSourceId will
+/// correspond to the same cleanPanstarrs1Oid.
+/// In the cross-match output table only the originalExtSourceId of the
+/// source with the best astrometry among the suspected duplicates will be
+/// listed.
+/// In practice, users may use the originalExtSourceId in the original
+/// catalogue to find the matching source with the best astrometry. Users
+/// interested to find all matching suspected duplicates should instead use
+/// the cleanPanstarrs1Oid in the join with the cross-match result tables.
+/// See Documentation, [chap:crossmatch], for more details on the duplicates
+/// in the external catalogues and their treatment in the cross-match
+/// computations.
 #[allow(non_camel_case_types)]
 pub struct panstarrs1_join;
 
@@ -18,7 +36,9 @@ impl Table for panstarrs1_join {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// External Catalogue source identifier
     clean_panstarrs1_oid,
 }
 

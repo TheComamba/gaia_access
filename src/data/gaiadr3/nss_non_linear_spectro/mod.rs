@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The nss_non_linear_spectro table.
+/// This table contains non-single-star orbital models for spectroscopic binaries compatible with a trend. Several possible models are hosted within the same table and they are indicated by the field \texttt{nssSolutionType}. The description of this latter lists all possible solution types considered for this release. Only a selection of parameters hosted in this table are provided here, depending on the solution. The details of those is given in the description of field \texttt{bitIndex}, which can also be used to extract the relevant elements of the correlation vector \texttt{corrVec}. Details about the formalism used to derive the parameters in this table are given in the on-line documentation, see Chapter~\ref{chap:cu4nss}.
 #[allow(non_camel_case_types)]
 pub struct nss_non_linear_spectro;
 
@@ -18,21 +18,37 @@ impl Table for nss_non_linear_spectro {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Source Identifier
     source_id,
+    /// NSS model adopted
     nss_solution_type,
+    /// Mean velocity
     mean_velocity,
+    /// Standard error of Mean velocity
     mean_velocity_error,
+    /// First order derivative of the velocity
     first_deriv_velocity,
+    /// Standard error of First order derivative of the velocity
     first_deriv_velocity_error,
+    /// Second order derivative of the velocity
     second_deriv_velocity,
+    /// Standard error of Second order derivative of the velocity
     second_deriv_velocity_error,
+    /// Total number of radial velocities considered for the primary
     rv_n_obs_primary,
+    /// Total number of radial velocities actually used for the primary
     rv_n_good_obs_primary,
+    /// Boolean mask for the fields above in the corrVec matrix
     bit_index,
+    /// Vector form of the upper triangle of the correlation matrix
     corr_vec,
+    /// Value of the objective function at the solution
     obj_func,
+    /// Goodness of fit in the Hipparcos sense
     goodness_of_fit,
+    /// Quality flag for the achieved NSS solution
     flags,
 }
 

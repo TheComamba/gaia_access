@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The total_galactic_extinction_map_opt table.
+/// This table provides an optimum version of the Total Galactic Extinction map, derived from the table {{TotalGalacticExtinctionMap}} at a single HEALPix level 9. For this, the mean effective total Galactic extinction and related uncertainties have been selected from the optimal HEALPix level of the four offered in {{TotalGalacticExtinctionMap}}. For further details see Section \ref{ssec:cu8par_apsis_tge} of the online documentation.
 #[allow(non_camel_case_types)]
 pub struct total_galactic_extinction_map_opt;
 
@@ -18,12 +18,19 @@ impl Table for total_galactic_extinction_map_opt {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// HEALPix identification
     healpix_id,
+    /// Median A$_0$ extinction parameter
     a0,
+    /// Uncertainty for the mean A$_0$
     a0_uncertainty,
+    /// Number of tracers used
     num_tracers_used,
+    /// Exit status for TGE
     status,
+    /// Number indicating which HEALPix level was chosen to populate this HEALPix
     optimum_hpx_level,
 }
 

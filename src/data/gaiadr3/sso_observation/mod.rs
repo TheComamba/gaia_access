@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The sso_observation table.
+/// Solar System object observations. Each table line contained data obtained during the transit of the source on a single CCD, during a single transit. The corresponding epoch is provided. Data not varying within the transit are repeated identically for all single observations of that transit.
 #[allow(non_camel_case_types)]
 pub struct sso_observation;
 
@@ -18,40 +18,75 @@ impl Table for sso_observation {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Source identifier
     source_id,
+    /// standard MPC denomination of the asteroid
     denomination,
+    /// Transit Identifier
     transit_id,
+    /// Observation Identifier
     observation_id,
+    /// Minor Planet number
     number_mp,
+    /// Gaia-centric epoch TCB(Gaia)
     epoch,
+    /// Error in Gaiacentric epoch
     epoch_err,
+    /// Gaia-centric TCB epoch converted to UTC
     epoch_utc,
+    /// Right ascension of the source
     ra,
+    /// Declination of the source
     dec,
+    /// Standard error of right ascension - systematic
     ra_error_systematic,
+    /// Standard error of declination - systematic
     dec_error_systematic,
+    /// Correlation of ra and dec errors - systematic
     ra_dec_correlation_systematic,
+    /// Standard error of right ascension - random
     ra_error_random,
+    /// Standard error of declination - random
     dec_error_random,
+    /// Correlation of ra and dec errors - random
     ra_dec_correlation_random,
+    /// Calibrated G mag
     g_mag,
+    /// Average calibrated G flux for the transit
     g_flux,
+    /// Error on the G flux
     g_flux_error,
+    /// Barycentric x position of Gaia
     x_gaia,
+    /// Barycentric y position of Gaia
     y_gaia,
+    /// Barycentric z position of Gaia
     z_gaia,
+    /// Barycentric x velocity of Gaia
     vx_gaia,
+    /// Barycentric y velocity of Gaia
     vy_gaia,
+    /// Barycentric z velocity of Gaia
     vz_gaia,
+    /// Geocentric x position of Gaia
     x_gaia_geocentric,
+    /// Geocentric y position of Gaia
     y_gaia_geocentric,
+    /// Geocentric z position of Gaia
     z_gaia_geocentric,
+    /// Geocentric x velocity of Gaia
     vx_gaia_geocentric,
+    /// Geocentric y velocity of Gaia
     vy_gaia_geocentric,
+    /// Geocentric z velocity of Gaia
     vz_gaia_geocentric,
+    /// Position angle of the scanning direction
     position_angle_scan,
+    /// Result of processing the CCDs
     astrometric_outcome_ccd,
+    /// Result of processing the transit
     astrometric_outcome_transit,
 }
 

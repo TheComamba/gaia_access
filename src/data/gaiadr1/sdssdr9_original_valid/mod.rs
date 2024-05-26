@@ -4,7 +4,13 @@
 
 use crate::traits::{Column, Table};
 
-/// The sdssdr9_original_valid table.
+/// SDSS DR9 Catalogue, primary object only, extracted from photoObj fits
+/// files.  
+/// Reference paper: Ahn et al. 2012, ApJS 203,21  
+/// Original catalogue: http://data.sdss3.org/sas/dr9/boss/photoObj/
+/// Catalogue curator:
+/// SSDC - ASI Space Science Data Center
+/// https://www.ssdc.asi.it/
 #[allow(non_camel_case_types)]
 pub struct sdssdr9_original_valid;
 
@@ -18,25 +24,83 @@ impl Table for sdssdr9_original_valid {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Incremental unique numeric identifier (increasing with declination).
+    /// This is the only field which was not in the original SDSS DR9 catalogue,
+    /// but was added for cross-match purposes.
     sdssdr9_oid,
+    /// A number identifying an object in the image catalog for DR9. It is a
+    /// bit-encoded integer of run, rerun, camcol, field, object.  
+    /// The bits are assigned in objid as follows:
+    ///
+    /// -   63 0, unassigned
+    ///
+    /// -   59-62 skyVersion resolved sky version
+    ///
+    /// -   48-58 rerun, number of pipeline rerun
+    ///
+    /// -   32-47 run, run number
+    ///
+    /// -   29-31 camcol, camera column (1-6)
+    ///
+    /// -   28 0, unassigned
+    ///
+    /// -   16-27 field, field number within run
+    ///
+    /// -   0-15 id, object number within field
     obj_id,
+    /// Each unique source in the SDSS catalog is identified by the thingId.
+    /// Each source may have been observed more than once in multiple runs, and
+    /// might therefore have multiple detections listed in the catalog. Only one
+    /// detection is considered primary.
     thing_id,
+    /// J2000 Right Ascension (from r-band, or best other band if r-band if too
+    /// faint or saturated in r).
     ra,
+    /// J2000 Declination (from r-band, or best other band if r-band if too
+    /// faint or saturated in r).
     dec,
+    /// Error in RA*cos(DEC)
     ra_error,
+    /// Error in DEC.
     dec_error,
+    /// Modified Julian Date, used to indicate the date that a given piece of
+    /// SDSS data (image or spectrum) was taken.
     mjd,
+    /// For isolated stars, which are well-described by the point spread
+    /// function (PSF), the optimal measure of the total flux is determined by
+    /// fitting a PSF model to the object.
     u_mag,
+    /// PSF magnitude error.
     u_mag_error,
+    /// For isolated stars, which are well-described by the point spread
+    /// function (PSF), the optimal measure of the total flux is determined by
+    /// fitting a PSF model to the object.
     g_mag,
+    /// PSF magnitude error.
     g_mag_error,
+    /// For isolated stars, which are well-described by the point spread
+    /// function (PSF), the optimal measure of the total flux is determined by
+    /// fitting a PSF model to the object.
     r_mag,
+    /// PSF magnitude error.
     r_mag_error,
+    /// For isolated stars, which are well-described by the point spread
+    /// function (PSF), the optimal measure of the total flux is determined by
+    /// fitting a PSF model to the object.
     i_mag,
+    /// PSF magnitude error.
     i_mag_error,
+    /// For isolated stars, which are well-described by the point spread
+    /// function (PSF), the optimal measure of the total flux is determined by
+    /// fitting a PSF model to the object.
     z_mag,
+    /// PSF magnitude error.
     z_mag_error,
+    /// Distinguishes stars (type=6) and galaxies (type=3) based on their
+    /// morphology. It is quantified on the basis of the difference between the
+    /// PSF and model magnitudes.
     objc_type,
+    /// Clean photometry flag for point sources (1=clean, 0=unclean).
     clean_flag,
 }
 

@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_agn table.
+/// This table provides information on AGN properties.
 #[allow(non_camel_case_types)]
 pub struct vari_agn;
 
@@ -18,12 +18,19 @@ impl Table for vari_agn {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Fractional variability in the G band
     fractional_variability_g,
+    /// Index of the first-order structure function in the G band
     structure_function_index,
+    /// Standard deviation of the index of the structure function
     structure_function_index_scatter,
+    /// Quasar variability metric in the G band
     qso_variability,
+    /// Non-quasar variability metric in the G band
     non_qso_variability,
 }
 

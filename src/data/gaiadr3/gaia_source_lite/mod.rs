@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The gaia_source_lite table.
+/// This is a column-wise subset of the gaia_source table named gaia_source_lite. This table has an entry for every Gaia observed source as published with this data release. It contains the basic source parameters, in their final state as processed by the Gaia Data Processing and Analysis Consortium from the raw data coming from the spacecraft. The table is complemented with others containing information specific to certain kinds of objects (e.g.~Solar--system objects, non--single stars, variables etc.) and value--added processing (e.g.~astrophysical parameters etc.). Further array data types (spectra, epoch measurements) are presented separately via Datalink resources.
 #[allow(non_camel_case_types)]
 pub struct gaia_source_lite;
 
@@ -18,56 +18,107 @@ impl Table for gaia_source_lite {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Random index for use when selecting subsets
     random_index,
+    /// Right ascension
     ra,
+    /// Declination
     dec,
+    /// Parallax
     parallax,
+    /// Standard error of parallax
     parallax_error,
+    /// Parallax divided by its standard error
     parallax_over_error,
+    /// Proper motion in right ascension direction
     pmra,
+    /// Standard error of proper motion in right ascension direction
     pmra_error,
+    /// Proper motion in declination direction
     pmdec,
+    /// Standard error of proper motion in declination direction
     pmdec_error,
+    /// Which parameters have been solved for?
     astrometric_params_solved,
+    /// Astrometrically estimated pseudocolour of the source
     pseudocolour,
+    /// Standard error of the pseudocolour of the source
     pseudocolour_error,
+    /// Percent of successful-IPD windows with more than one peak
     ipd_frac_multi_peak,
+    /// Percent of transits with truncated windows or multiple gate
     ipd_frac_odd_win,
+    /// Renormalised unit weight error
     ruwe,
+    /// G-band mean flux divided by its error
     phot_g_mean_flux_over_error,
+    /// G-band mean magnitude
     phot_g_mean_mag,
+    /// Integrated BP mean flux divided by its error
     phot_bp_mean_flux_over_error,
+    /// Integrated BP mean magnitude
     phot_bp_mean_mag,
+    /// Integrated RP mean flux divided by its error
     phot_rp_mean_flux_over_error,
+    /// Integrated RP mean magnitude
     phot_rp_mean_mag,
+    /// BP/RP excess factor
     phot_bp_rp_excess_factor,
+    /// BP - RP colour
     bp_rp,
+    /// Radial velocity
     radial_velocity,
+    /// Radial velocity error
     radial_velocity_error,
+    /// Number of transits used to compute the radial velocity
     rv_nb_transits,
+    /// Expected signal to noise ratio in the combination of the spectra used to obtain the radial velocity
     rv_expected_sig_to_noise,
+    /// Radial velocity renormalised goodness of fit
     rv_renormalised_gof,
+    /// P-value for constancy based on a chi-squared criterion
     rv_chisq_pvalue,
+    /// Photometric variability flag
     phot_variable_flag,
+    /// Galactic longitude
     l,
+    /// Galactic latitude
     b,
+    /// Flag indicating the availability of additional information in the QsoCandidates table
     in_qso_candidates,
+    /// Flag indicating the availability of additional information in the GalaxyCandidates table
     in_galaxy_candidates,
+    /// Flag indicating the availability of additional information in the various Non-Single Star tables
     non_single_star,
+    /// Flag indicating the availability of mean BP/RP spectrum in continuous representation for this source
     has_xp_continuous,
+    /// Flag indicating the availability of mean BP/RP spectrum in sampled form for this source
     has_xp_sampled,
+    /// Flag indicating the availability of mean RVS spectrum for this source
     has_rvs,
+    /// Flag indicating the availability of epoch photometry for this source
     has_epoch_photometry,
+    /// Flag indicating the availability of epoch radial velocity for this source
     has_epoch_rv,
+    /// Flag indicating the availability of GSP-Phot MCMC samples for this source
     has_mcmc_gspphot,
+    /// Flag indicating the availability of MSC MCMC samples for this source
     has_mcmc_msc,
+    /// Flag indicating that the source is present in the Gaia Andromeda Photometric Survey (GAPS)
     in_andromeda_survey,
+    /// Effective temperature from GSP-Phot Aeneas best library using BP/RP spectra
     teff_gspphot,
+    /// Surface gravity from GSP-Phot Aeneas best library using BP/RP,spectra
     logg_gspphot,
+    /// Iron abundance from GSP-Phot Aeneas best library using BP/RP spectra
     mh_gspphot,
+    /// Distance from GSP-Phot Aeneas best library using BP/RP spectra
     distance_gspphot,
+    /// Extinction in G band from GSP-Phot Aeneas best library using BP/RP spectra
     ag_gspphot,
+    /// Reddening $E(G_{\rm BP} - G_{\rm RP})$ from GSP-Phot Aeneas best library using BP/RP spectra
     ebpminrp_gspphot,
 }
 

@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The hubble_sc table.
+/// Hubble Source Catalogue
 #[allow(non_camel_case_types)]
 pub struct hubble_sc;
 
@@ -18,426 +18,847 @@ impl Table for hubble_sc {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The abscorr column. (No further description available)
     abscorr,
+    /// The a_f435w column. (No further description available)
     a_f435w,
+    /// The a_f435w_n column. (No further description available)
     a_f435w_n,
+    /// The a_f435w_sigma column. (No further description available)
     a_f435w_sigma,
+    /// The a_f475w column. (No further description available)
     a_f475w,
+    /// The a_f475w_n column. (No further description available)
     a_f475w_n,
+    /// The a_f475w_sigma column. (No further description available)
     a_f475w_sigma,
+    /// The a_f502n column. (No further description available)
     a_f502n,
+    /// The a_f502n_n column. (No further description available)
     a_f502n_n,
+    /// The a_f502n_sigma column. (No further description available)
     a_f502n_sigma,
+    /// The a_f550m column. (No further description available)
     a_f550m,
+    /// The a_f550m_n column. (No further description available)
     a_f550m_n,
+    /// The a_f550m_sigma column. (No further description available)
     a_f550m_sigma,
+    /// The a_f555w column. (No further description available)
     a_f555w,
+    /// The a_f555w_n column. (No further description available)
     a_f555w_n,
+    /// The a_f555w_sigma column. (No further description available)
     a_f555w_sigma,
+    /// The a_f606w column. (No further description available)
     a_f606w,
+    /// The a_f606w_n column. (No further description available)
     a_f606w_n,
+    /// The a_f606w_sigma column. (No further description available)
     a_f606w_sigma,
+    /// The a_f625w column. (No further description available)
     a_f625w,
+    /// The a_f625w_n column. (No further description available)
     a_f625w_n,
+    /// The a_f625w_sigma column. (No further description available)
     a_f625w_sigma,
+    /// The a_f658n column. (No further description available)
     a_f658n,
+    /// The a_f658n_n column. (No further description available)
     a_f658n_n,
+    /// The a_f658n_sigma column. (No further description available)
     a_f658n_sigma,
+    /// The a_f660n column. (No further description available)
     a_f660n,
+    /// The a_f660n_n column. (No further description available)
     a_f660n_n,
+    /// The a_f660n_sigma column. (No further description available)
     a_f660n_sigma,
+    /// The a_f775w column. (No further description available)
     a_f775w,
+    /// The a_f775w_n column. (No further description available)
     a_f775w_n,
+    /// The a_f775w_sigma column. (No further description available)
     a_f775w_sigma,
+    /// The a_f814w column. (No further description available)
     a_f814w,
+    /// The a_f814w_n column. (No further description available)
     a_f814w_n,
+    /// The a_f814w_sigma column. (No further description available)
     a_f814w_sigma,
+    /// The a_f850lp column. (No further description available)
     a_f850lp,
+    /// The a_f850lp_n column. (No further description available)
     a_f850lp_n,
+    /// The a_f850lp_sigma column. (No further description available)
     a_f850lp_sigma,
+    /// The ci column. (No further description available)
     ci,
+    /// The ci_sigma column. (No further description available)
     ci_sigma,
+    /// The dsigma column. (No further description available)
     dsigma,
+    /// The extinction column. (No further description available)
     extinction,
+    /// The htmid column. (No further description available)
     htmid,
+    /// The kronradius column. (No further description available)
     kronradius,
+    /// The kronradius_sigma column. (No further description available)
     kronradius_sigma,
+    /// The matchdec column. (No further description available)
     matchdec,
+    /// The match_id column. (No further description available)
     match_id,
+    /// The matchra column. (No further description available)
     matchra,
+    /// The numfilters column. (No further description available)
     numfilters,
+    /// The numimages column. (No further description available)
     numimages,
+    /// The numvisits column. (No further description available)
     numvisits,
+    /// The startmjd column. (No further description available)
     startmjd,
+    /// The starttime column. (No further description available)
     starttime,
+    /// The stopmjd column. (No further description available)
     stopmjd,
+    /// The stoptime column. (No further description available)
     stoptime,
+    /// The targetname column. (No further description available)
     targetname,
+    /// The w2_f1042m column. (No further description available)
     w2_f1042m,
+    /// The w2_f1042m_n column. (No further description available)
     w2_f1042m_n,
+    /// The w2_f1042m_sigma column. (No further description available)
     w2_f1042m_sigma,
+    /// The w2_f122m column. (No further description available)
     w2_f122m,
+    /// The w2_f122m_n column. (No further description available)
     w2_f122m_n,
+    /// The w2_f122m_sigma column. (No further description available)
     w2_f122m_sigma,
+    /// The w2_f160bn15 column. (No further description available)
     w2_f160bn15,
+    /// The w2_f160bn15_n column. (No further description available)
     w2_f160bn15_n,
+    /// The w2_f160bn15_sigma column. (No further description available)
     w2_f160bn15_sigma,
+    /// The w2_f160bw column. (No further description available)
     w2_f160bw,
+    /// The w2_f160bw_n column. (No further description available)
     w2_f160bw_n,
+    /// The w2_f160bw_sigma column. (No further description available)
     w2_f160bw_sigma,
+    /// The w2_f170w column. (No further description available)
     w2_f170w,
+    /// The w2_f170w_n column. (No further description available)
     w2_f170w_n,
+    /// The w2_f170w_sigma column. (No further description available)
     w2_f170w_sigma,
+    /// The w2_f185w column. (No further description available)
     w2_f185w,
+    /// The w2_f185w_n column. (No further description available)
     w2_f185w_n,
+    /// The w2_f185w_sigma column. (No further description available)
     w2_f185w_sigma,
+    /// The w2_f218w column. (No further description available)
     w2_f218w,
+    /// The w2_f218w_n column. (No further description available)
     w2_f218w_n,
+    /// The w2_f218w_sigma column. (No further description available)
     w2_f218w_sigma,
+    /// The w2_f255w column. (No further description available)
     w2_f255w,
+    /// The w2_f255w_n column. (No further description available)
     w2_f255w_n,
+    /// The w2_f255w_sigma column. (No further description available)
     w2_f255w_sigma,
+    /// The w2_f300w column. (No further description available)
     w2_f300w,
+    /// The w2_f300w_n column. (No further description available)
     w2_f300w_n,
+    /// The w2_f300w_sigma column. (No further description available)
     w2_f300w_sigma,
+    /// The w2_f336w column. (No further description available)
     w2_f336w,
+    /// The w2_f336w_n column. (No further description available)
     w2_f336w_n,
+    /// The w2_f336w_sigma column. (No further description available)
     w2_f336w_sigma,
+    /// The w2_f343n column. (No further description available)
     w2_f343n,
+    /// The w2_f343n_n column. (No further description available)
     w2_f343n_n,
+    /// The w2_f343n_sigma column. (No further description available)
     w2_f343n_sigma,
+    /// The w2_f375n column. (No further description available)
     w2_f375n,
+    /// The w2_f375n_n column. (No further description available)
     w2_f375n_n,
+    /// The w2_f375n_sigma column. (No further description available)
     w2_f375n_sigma,
+    /// The w2_f380w column. (No further description available)
     w2_f380w,
+    /// The w2_f380w_n column. (No further description available)
     w2_f380w_n,
+    /// The w2_f380w_sigma column. (No further description available)
     w2_f380w_sigma,
+    /// The w2_f390n column. (No further description available)
     w2_f390n,
+    /// The w2_f390n_n column. (No further description available)
     w2_f390n_n,
+    /// The w2_f390n_sigma column. (No further description available)
     w2_f390n_sigma,
+    /// The w2_f410m column. (No further description available)
     w2_f410m,
+    /// The w2_f410m_n column. (No further description available)
     w2_f410m_n,
+    /// The w2_f410m_sigma column. (No further description available)
     w2_f410m_sigma,
+    /// The w2_f437n column. (No further description available)
     w2_f437n,
+    /// The w2_f437n_n column. (No further description available)
     w2_f437n_n,
+    /// The w2_f437n_sigma column. (No further description available)
     w2_f437n_sigma,
+    /// The w2_f439w column. (No further description available)
     w2_f439w,
+    /// The w2_f439w_n column. (No further description available)
     w2_f439w_n,
+    /// The w2_f439w_sigma column. (No further description available)
     w2_f439w_sigma,
+    /// The w2_f450w column. (No further description available)
     w2_f450w,
+    /// The w2_f450w_n column. (No further description available)
     w2_f450w_n,
+    /// The w2_f450w_sigma column. (No further description available)
     w2_f450w_sigma,
+    /// The w2_f467m column. (No further description available)
     w2_f467m,
+    /// The w2_f467m_n column. (No further description available)
     w2_f467m_n,
+    /// The w2_f467m_sigma column. (No further description available)
     w2_f467m_sigma,
+    /// The w2_f469n column. (No further description available)
     w2_f469n,
+    /// The w2_f469n_n column. (No further description available)
     w2_f469n_n,
+    /// The w2_f469n_sigma column. (No further description available)
     w2_f469n_sigma,
+    /// The w2_f487n column. (No further description available)
     w2_f487n,
+    /// The w2_f487n_n column. (No further description available)
     w2_f487n_n,
+    /// The w2_f487n_sigma column. (No further description available)
     w2_f487n_sigma,
+    /// The w2_f502n column. (No further description available)
     w2_f502n,
+    /// The w2_f502n_n column. (No further description available)
     w2_f502n_n,
+    /// The w2_f502n_sigma column. (No further description available)
     w2_f502n_sigma,
+    /// The w2_f547m column. (No further description available)
     w2_f547m,
+    /// The w2_f547m_n column. (No further description available)
     w2_f547m_n,
+    /// The w2_f547m_sigma column. (No further description available)
     w2_f547m_sigma,
+    /// The w2_f555w column. (No further description available)
     w2_f555w,
+    /// The w2_f555w_n column. (No further description available)
     w2_f555w_n,
+    /// The w2_f555w_sigma column. (No further description available)
     w2_f555w_sigma,
+    /// The w2_f569w column. (No further description available)
     w2_f569w,
+    /// The w2_f569w_n column. (No further description available)
     w2_f569w_n,
+    /// The w2_f569w_sigma column. (No further description available)
     w2_f569w_sigma,
+    /// The w2_f588n column. (No further description available)
     w2_f588n,
+    /// The w2_f588n_n column. (No further description available)
     w2_f588n_n,
+    /// The w2_f588n_sigma column. (No further description available)
     w2_f588n_sigma,
+    /// The w2_f606w column. (No further description available)
     w2_f606w,
+    /// The w2_f606w_n column. (No further description available)
     w2_f606w_n,
+    /// The w2_f606w_sigma column. (No further description available)
     w2_f606w_sigma,
+    /// The w2_f622w column. (No further description available)
     w2_f622w,
+    /// The w2_f622w_n column. (No further description available)
     w2_f622w_n,
+    /// The w2_f622w_sigma column. (No further description available)
     w2_f622w_sigma,
+    /// The w2_f631n column. (No further description available)
     w2_f631n,
+    /// The w2_f631n_n column. (No further description available)
     w2_f631n_n,
+    /// The w2_f631n_sigma column. (No further description available)
     w2_f631n_sigma,
+    /// The w2_f656n column. (No further description available)
     w2_f656n,
+    /// The w2_f656n_n column. (No further description available)
     w2_f656n_n,
+    /// The w2_f656n_sigma column. (No further description available)
     w2_f656n_sigma,
+    /// The w2_f658n column. (No further description available)
     w2_f658n,
+    /// The w2_f658n_n column. (No further description available)
     w2_f658n_n,
+    /// The w2_f658n_sigma column. (No further description available)
     w2_f658n_sigma,
+    /// The w2_f673n column. (No further description available)
     w2_f673n,
+    /// The w2_f673n_n column. (No further description available)
     w2_f673n_n,
+    /// The w2_f673n_sigma column. (No further description available)
     w2_f673n_sigma,
+    /// The w2_f675w column. (No further description available)
     w2_f675w,
+    /// The w2_f675w_n column. (No further description available)
     w2_f675w_n,
+    /// The w2_f675w_sigma column. (No further description available)
     w2_f675w_sigma,
+    /// The w2_f702w column. (No further description available)
     w2_f702w,
+    /// The w2_f702w_n column. (No further description available)
     w2_f702w_n,
+    /// The w2_f702w_sigma column. (No further description available)
     w2_f702w_sigma,
+    /// The w2_f785lp column. (No further description available)
     w2_f785lp,
+    /// The w2_f785lp_n column. (No further description available)
     w2_f785lp_n,
+    /// The w2_f785lp_sigma column. (No further description available)
     w2_f785lp_sigma,
+    /// The w2_f791w column. (No further description available)
     w2_f791w,
+    /// The w2_f791w_n column. (No further description available)
     w2_f791w_n,
+    /// The w2_f791w_sigma column. (No further description available)
     w2_f791w_sigma,
+    /// The w2_f814w column. (No further description available)
     w2_f814w,
+    /// The w2_f814w_n column. (No further description available)
     w2_f814w_n,
+    /// The w2_f814w_sigma column. (No further description available)
     w2_f814w_sigma,
+    /// The w2_f850lp column. (No further description available)
     w2_f850lp,
+    /// The w2_f850lp_n column. (No further description available)
     w2_f850lp_n,
+    /// The w2_f850lp_sigma column. (No further description available)
     w2_f850lp_sigma,
+    /// The w2_f953n column. (No further description available)
     w2_f953n,
+    /// The w2_f953n_n column. (No further description available)
     w2_f953n_n,
+    /// The w2_f953n_sigma column. (No further description available)
     w2_f953n_sigma,
+    /// The w3_blank column. (No further description available)
     w3_blank,
+    /// The w3_blank_n column. (No further description available)
     w3_blank_n,
+    /// The w3_blank_sigma column. (No further description available)
     w3_blank_sigma,
+    /// The w3_f098m column. (No further description available)
     w3_f098m,
+    /// The w3_f098m_n column. (No further description available)
     w3_f098m_n,
+    /// The w3_f098m_sigma column. (No further description available)
     w3_f098m_sigma,
+    /// The w3_f105w column. (No further description available)
     w3_f105w,
+    /// The w3_f105w_n column. (No further description available)
     w3_f105w_n,
+    /// The w3_f105w_sigma column. (No further description available)
     w3_f105w_sigma,
+    /// The w3_f110w column. (No further description available)
     w3_f110w,
+    /// The w3_f110w_n column. (No further description available)
     w3_f110w_n,
+    /// The w3_f110w_sigma column. (No further description available)
     w3_f110w_sigma,
+    /// The w3_f125w column. (No further description available)
     w3_f125w,
+    /// The w3_f125w_n column. (No further description available)
     w3_f125w_n,
+    /// The w3_f125w_sigma column. (No further description available)
     w3_f125w_sigma,
+    /// The w3_f126n column. (No further description available)
     w3_f126n,
+    /// The w3_f126n_n column. (No further description available)
     w3_f126n_n,
+    /// The w3_f126n_sigma column. (No further description available)
     w3_f126n_sigma,
+    /// The w3_f127m column. (No further description available)
     w3_f127m,
+    /// The w3_f127m_n column. (No further description available)
     w3_f127m_n,
+    /// The w3_f127m_sigma column. (No further description available)
     w3_f127m_sigma,
+    /// The w3_f128n column. (No further description available)
     w3_f128n,
+    /// The w3_f128n_n column. (No further description available)
     w3_f128n_n,
+    /// The w3_f128n_sigma column. (No further description available)
     w3_f128n_sigma,
+    /// The w3_f130n column. (No further description available)
     w3_f130n,
+    /// The w3_f130n_n column. (No further description available)
     w3_f130n_n,
+    /// The w3_f130n_sigma column. (No further description available)
     w3_f130n_sigma,
+    /// The w3_f132n column. (No further description available)
     w3_f132n,
+    /// The w3_f132n_n column. (No further description available)
     w3_f132n_n,
+    /// The w3_f132n_sigma column. (No further description available)
     w3_f132n_sigma,
+    /// The w3_f139m column. (No further description available)
     w3_f139m,
+    /// The w3_f139m_n column. (No further description available)
     w3_f139m_n,
+    /// The w3_f139m_sigma column. (No further description available)
     w3_f139m_sigma,
+    /// The w3_f140w column. (No further description available)
     w3_f140w,
+    /// The w3_f140w_n column. (No further description available)
     w3_f140w_n,
+    /// The w3_f140w_sigma column. (No further description available)
     w3_f140w_sigma,
+    /// The w3_f153m column. (No further description available)
     w3_f153m,
+    /// The w3_f153m_n column. (No further description available)
     w3_f153m_n,
+    /// The w3_f153m_sigma column. (No further description available)
     w3_f153m_sigma,
+    /// The w3_f160w column. (No further description available)
     w3_f160w,
+    /// The w3_f160w_n column. (No further description available)
     w3_f160w_n,
+    /// The w3_f160w_sigma column. (No further description available)
     w3_f160w_sigma,
+    /// The w3_f164n column. (No further description available)
     w3_f164n,
+    /// The w3_f164n_n column. (No further description available)
     w3_f164n_n,
+    /// The w3_f164n_sigma column. (No further description available)
     w3_f164n_sigma,
+    /// The w3_f167n column. (No further description available)
     w3_f167n,
+    /// The w3_f167n_n column. (No further description available)
     w3_f167n_n,
+    /// The w3_f167n_sigma column. (No further description available)
     w3_f167n_sigma,
+    /// The w3_f200lp column. (No further description available)
     w3_f200lp,
+    /// The w3_f200lp_n column. (No further description available)
     w3_f200lp_n,
+    /// The w3_f200lp_sigma column. (No further description available)
     w3_f200lp_sigma,
+    /// The w3_f218w column. (No further description available)
     w3_f218w,
+    /// The w3_f218w_n column. (No further description available)
     w3_f218w_n,
+    /// The w3_f218w_sigma column. (No further description available)
     w3_f218w_sigma,
+    /// The w3_f225w column. (No further description available)
     w3_f225w,
+    /// The w3_f225w_n column. (No further description available)
     w3_f225w_n,
+    /// The w3_f225w_sigma column. (No further description available)
     w3_f225w_sigma,
+    /// The w3_f275w column. (No further description available)
     w3_f275w,
+    /// The w3_f275w_n column. (No further description available)
     w3_f275w_n,
+    /// The w3_f275w_sigma column. (No further description available)
     w3_f275w_sigma,
+    /// The w3_f280n column. (No further description available)
     w3_f280n,
+    /// The w3_f280n_n column. (No further description available)
     w3_f280n_n,
+    /// The w3_f280n_sigma column. (No further description available)
     w3_f280n_sigma,
+    /// The w3_f300x column. (No further description available)
     w3_f300x,
+    /// The w3_f300x_n column. (No further description available)
     w3_f300x_n,
+    /// The w3_f300x_sigma column. (No further description available)
     w3_f300x_sigma,
+    /// The w3_f336w column. (No further description available)
     w3_f336w,
+    /// The w3_f336w_n column. (No further description available)
     w3_f336w_n,
+    /// The w3_f336w_sigma column. (No further description available)
     w3_f336w_sigma,
+    /// The w3_f343n column. (No further description available)
     w3_f343n,
+    /// The w3_f343n_n column. (No further description available)
     w3_f343n_n,
+    /// The w3_f343n_sigma column. (No further description available)
     w3_f343n_sigma,
+    /// The w3_f350lp column. (No further description available)
     w3_f350lp,
+    /// The w3_f350lp_n column. (No further description available)
     w3_f350lp_n,
+    /// The w3_f350lp_sigma column. (No further description available)
     w3_f350lp_sigma,
+    /// The w3_f373n column. (No further description available)
     w3_f373n,
+    /// The w3_f373n_n column. (No further description available)
     w3_f373n_n,
+    /// The w3_f373n_sigma column. (No further description available)
     w3_f373n_sigma,
+    /// The w3_f390m column. (No further description available)
     w3_f390m,
+    /// The w3_f390m_n column. (No further description available)
     w3_f390m_n,
+    /// The w3_f390m_sigma column. (No further description available)
     w3_f390m_sigma,
+    /// The w3_f390w column. (No further description available)
     w3_f390w,
+    /// The w3_f390w_n column. (No further description available)
     w3_f390w_n,
+    /// The w3_f390w_sigma column. (No further description available)
     w3_f390w_sigma,
+    /// The w3_f395n column. (No further description available)
     w3_f395n,
+    /// The w3_f395n_n column. (No further description available)
     w3_f395n_n,
+    /// The w3_f395n_sigma column. (No further description available)
     w3_f395n_sigma,
+    /// The w3_f410m column. (No further description available)
     w3_f410m,
+    /// The w3_f410m_n column. (No further description available)
     w3_f410m_n,
+    /// The w3_f410m_sigma column. (No further description available)
     w3_f410m_sigma,
+    /// The w3_f438w column. (No further description available)
     w3_f438w,
+    /// The w3_f438w_n column. (No further description available)
     w3_f438w_n,
+    /// The w3_f438w_sigma column. (No further description available)
     w3_f438w_sigma,
+    /// The w3_f467m column. (No further description available)
     w3_f467m,
+    /// The w3_f467m_n column. (No further description available)
     w3_f467m_n,
+    /// The w3_f467m_sigma column. (No further description available)
     w3_f467m_sigma,
+    /// The w3_f469n column. (No further description available)
     w3_f469n,
+    /// The w3_f469n_n column. (No further description available)
     w3_f469n_n,
+    /// The w3_f469n_sigma column. (No further description available)
     w3_f469n_sigma,
+    /// The w3_f475w column. (No further description available)
     w3_f475w,
+    /// The w3_f475w_n column. (No further description available)
     w3_f475w_n,
+    /// The w3_f475w_sigma column. (No further description available)
     w3_f475w_sigma,
+    /// The w3_f475x column. (No further description available)
     w3_f475x,
+    /// The w3_f475x_n column. (No further description available)
     w3_f475x_n,
+    /// The w3_f475x_sigma column. (No further description available)
     w3_f475x_sigma,
+    /// The w3_f487n column. (No further description available)
     w3_f487n,
+    /// The w3_f487n_n column. (No further description available)
     w3_f487n_n,
+    /// The w3_f487n_sigma column. (No further description available)
     w3_f487n_sigma,
+    /// The w3_f502n column. (No further description available)
     w3_f502n,
+    /// The w3_f502n_n column. (No further description available)
     w3_f502n_n,
+    /// The w3_f502n_sigma column. (No further description available)
     w3_f502n_sigma,
+    /// The w3_f547m column. (No further description available)
     w3_f547m,
+    /// The w3_f547m_n column. (No further description available)
     w3_f547m_n,
+    /// The w3_f547m_sigma column. (No further description available)
     w3_f547m_sigma,
+    /// The w3_f555w column. (No further description available)
     w3_f555w,
+    /// The w3_f555w_n column. (No further description available)
     w3_f555w_n,
+    /// The w3_f555w_sigma column. (No further description available)
     w3_f555w_sigma,
+    /// The w3_f600lp column. (No further description available)
     w3_f600lp,
+    /// The w3_f600lp_n column. (No further description available)
     w3_f600lp_n,
+    /// The w3_f600lp_sigma column. (No further description available)
     w3_f600lp_sigma,
+    /// The w3_f606w column. (No further description available)
     w3_f606w,
+    /// The w3_f606w_n column. (No further description available)
     w3_f606w_n,
+    /// The w3_f606w_sigma column. (No further description available)
     w3_f606w_sigma,
+    /// The w3_f621m column. (No further description available)
     w3_f621m,
+    /// The w3_f621m_n column. (No further description available)
     w3_f621m_n,
+    /// The w3_f621m_sigma column. (No further description available)
     w3_f621m_sigma,
+    /// The w3_f625w column. (No further description available)
     w3_f625w,
+    /// The w3_f625w_n column. (No further description available)
     w3_f625w_n,
+    /// The w3_f625w_sigma column. (No further description available)
     w3_f625w_sigma,
+    /// The w3_f631n column. (No further description available)
     w3_f631n,
+    /// The w3_f631n_n column. (No further description available)
     w3_f631n_n,
+    /// The w3_f631n_sigma column. (No further description available)
     w3_f631n_sigma,
+    /// The w3_f645n column. (No further description available)
     w3_f645n,
+    /// The w3_f645n_n column. (No further description available)
     w3_f645n_n,
+    /// The w3_f645n_sigma column. (No further description available)
     w3_f645n_sigma,
+    /// The w3_f656n column. (No further description available)
     w3_f656n,
+    /// The w3_f656n_n column. (No further description available)
     w3_f656n_n,
+    /// The w3_f656n_sigma column. (No further description available)
     w3_f656n_sigma,
+    /// The w3_f657n column. (No further description available)
     w3_f657n,
+    /// The w3_f657n_n column. (No further description available)
     w3_f657n_n,
+    /// The w3_f657n_sigma column. (No further description available)
     w3_f657n_sigma,
+    /// The w3_f658n column. (No further description available)
     w3_f658n,
+    /// The w3_f658n_n column. (No further description available)
     w3_f658n_n,
+    /// The w3_f658n_sigma column. (No further description available)
     w3_f658n_sigma,
+    /// The w3_f665n column. (No further description available)
     w3_f665n,
+    /// The w3_f665n_f6 column. (No further description available)
     w3_f665n_f6,
+    /// The w3_f665n_f6_n column. (No further description available)
     w3_f665n_f6_n,
+    /// The w3_f665n_f6_sigma column. (No further description available)
     w3_f665n_f6_sigma,
+    /// The w3_f665n_n column. (No further description available)
     w3_f665n_n,
+    /// The w3_f665n_sigma column. (No further description available)
     w3_f665n_sigma,
+    /// The w3_f673n column. (No further description available)
     w3_f673n,
+    /// The w3_f673n_n column. (No further description available)
     w3_f673n_n,
+    /// The w3_f673n_sigma column. (No further description available)
     w3_f673n_sigma,
+    /// The w3_f680n column. (No further description available)
     w3_f680n,
+    /// The w3_f680n_n column. (No further description available)
     w3_f680n_n,
+    /// The w3_f680n_sigma column. (No further description available)
     w3_f680n_sigma,
+    /// The w3_f689m column. (No further description available)
     w3_f689m,
+    /// The w3_f689m_n column. (No further description available)
     w3_f689m_n,
+    /// The w3_f689m_sigma column. (No further description available)
     w3_f689m_sigma,
+    /// The w3_f763m column. (No further description available)
     w3_f763m,
+    /// The w3_f763m_n column. (No further description available)
     w3_f763m_n,
+    /// The w3_f763m_sigma column. (No further description available)
     w3_f763m_sigma,
+    /// The w3_f775w column. (No further description available)
     w3_f775w,
+    /// The w3_f775w_n column. (No further description available)
     w3_f775w_n,
+    /// The w3_f775w_sigma column. (No further description available)
     w3_f775w_sigma,
+    /// The w3_f814w column. (No further description available)
     w3_f814w,
+    /// The w3_f814w_n column. (No further description available)
     w3_f814w_n,
+    /// The w3_f814w_sigma column. (No further description available)
     w3_f814w_sigma,
+    /// The w3_f845m column. (No further description available)
     w3_f845m,
+    /// The w3_f845m_n column. (No further description available)
     w3_f845m_n,
+    /// The w3_f845m_sigma column. (No further description available)
     w3_f845m_sigma,
+    /// The w3_f850lp column. (No further description available)
     w3_f850lp,
+    /// The w3_f850lp_n column. (No further description available)
     w3_f850lp_n,
+    /// The w3_f850lp_sigma column. (No further description available)
     w3_f850lp_sigma,
+    /// The w3_f953n column. (No further description available)
     w3_f953n,
+    /// The w3_f953n_n column. (No further description available)
     w3_f953n_n,
+    /// The w3_f953n_sigma column. (No further description available)
     w3_f953n_sigma,
+    /// The w3_fq232n column. (No further description available)
     w3_fq232n,
+    /// The w3_fq232n_n column. (No further description available)
     w3_fq232n_n,
+    /// The w3_fq232n_sigma column. (No further description available)
     w3_fq232n_sigma,
+    /// The w3_fq243n column. (No further description available)
     w3_fq243n,
+    /// The w3_fq243n_n column. (No further description available)
     w3_fq243n_n,
+    /// The w3_fq243n_sigma column. (No further description available)
     w3_fq243n_sigma,
+    /// The w3_fq378n column. (No further description available)
     w3_fq378n,
+    /// The w3_fq378n_n column. (No further description available)
     w3_fq378n_n,
+    /// The w3_fq378n_sigma column. (No further description available)
     w3_fq378n_sigma,
+    /// The w3_fq387n column. (No further description available)
     w3_fq387n,
+    /// The w3_fq387n_n column. (No further description available)
     w3_fq387n_n,
+    /// The w3_fq387n_sigma column. (No further description available)
     w3_fq387n_sigma,
+    /// The w3_fq422m column. (No further description available)
     w3_fq422m,
+    /// The w3_fq422m_n column. (No further description available)
     w3_fq422m_n,
+    /// The w3_fq422m_sigma column. (No further description available)
     w3_fq422m_sigma,
+    /// The w3_fq436n column. (No further description available)
     w3_fq436n,
+    /// The w3_fq436n_n column. (No further description available)
     w3_fq436n_n,
+    /// The w3_fq436n_sigma column. (No further description available)
     w3_fq436n_sigma,
+    /// The w3_fq437n column. (No further description available)
     w3_fq437n,
+    /// The w3_fq437n_n column. (No further description available)
     w3_fq437n_n,
+    /// The w3_fq437n_sigma column. (No further description available)
     w3_fq437n_sigma,
+    /// The w3_fq492n column. (No further description available)
     w3_fq492n,
+    /// The w3_fq492n_n column. (No further description available)
     w3_fq492n_n,
+    /// The w3_fq492n_sigma column. (No further description available)
     w3_fq492n_sigma,
+    /// The w3_fq508n column. (No further description available)
     w3_fq508n,
+    /// The w3_fq508n_n column. (No further description available)
     w3_fq508n_n,
+    /// The w3_fq508n_sigma column. (No further description available)
     w3_fq508n_sigma,
+    /// The w3_fq575n column. (No further description available)
     w3_fq575n,
+    /// The w3_fq575n_n column. (No further description available)
     w3_fq575n_n,
+    /// The w3_fq575n_sigma column. (No further description available)
     w3_fq575n_sigma,
+    /// The w3_fq619n column. (No further description available)
     w3_fq619n,
+    /// The w3_fq619n_n column. (No further description available)
     w3_fq619n_n,
+    /// The w3_fq619n_sigma column. (No further description available)
     w3_fq619n_sigma,
+    /// The w3_fq634n column. (No further description available)
     w3_fq634n,
+    /// The w3_fq634n_n column. (No further description available)
     w3_fq634n_n,
+    /// The w3_fq634n_sigma column. (No further description available)
     w3_fq634n_sigma,
+    /// The w3_fq672n column. (No further description available)
     w3_fq672n,
+    /// The w3_fq672n_n column. (No further description available)
     w3_fq672n_n,
+    /// The w3_fq672n_sigma column. (No further description available)
     w3_fq672n_sigma,
+    /// The w3_fq674n column. (No further description available)
     w3_fq674n,
+    /// The w3_fq674n_n column. (No further description available)
     w3_fq674n_n,
+    /// The w3_fq674n_sigma column. (No further description available)
     w3_fq674n_sigma,
+    /// The w3_fq727n column. (No further description available)
     w3_fq727n,
+    /// The w3_fq727n_n column. (No further description available)
     w3_fq727n_n,
+    /// The w3_fq727n_sigma column. (No further description available)
     w3_fq727n_sigma,
+    /// The w3_fq750n column. (No further description available)
     w3_fq750n,
+    /// The w3_fq750n_n column. (No further description available)
     w3_fq750n_n,
+    /// The w3_fq750n_sigma column. (No further description available)
     w3_fq750n_sigma,
+    /// The w3_fq889n column. (No further description available)
     w3_fq889n,
+    /// The w3_fq889n_n column. (No further description available)
     w3_fq889n_n,
+    /// The w3_fq889n_sigma column. (No further description available)
     w3_fq889n_sigma,
+    /// The w3_fq906n column. (No further description available)
     w3_fq906n,
+    /// The w3_fq906n_n column. (No further description available)
     w3_fq906n_n,
+    /// The w3_fq906n_sigma column. (No further description available)
     w3_fq906n_sigma,
+    /// The w3_fq924n column. (No further description available)
     w3_fq924n,
+    /// The w3_fq924n_n column. (No further description available)
     w3_fq924n_n,
+    /// The w3_fq924n_sigma column. (No further description available)
     w3_fq924n_sigma,
+    /// The w3_fq937n column. (No further description available)
     w3_fq937n,
+    /// The w3_fq937n_n column. (No further description available)
     w3_fq937n_n,
+    /// The w3_fq937n_sigma column. (No further description available)
     w3_fq937n_sigma,
+    /// The w3_g102 column. (No further description available)
     w3_g102,
+    /// The w3_g102_n column. (No further description available)
     w3_g102_n,
+    /// The w3_g102_sigma column. (No further description available)
     w3_g102_sigma,
+    /// The w3_g141 column. (No further description available)
     w3_g141,
+    /// The w3_g141_n column. (No further description available)
     w3_g141_n,
+    /// The w3_g141_sigma column. (No further description available)
     w3_g141_sigma,
+    /// The w3_g280 column. (No further description available)
     w3_g280,
+    /// The w3_g280_n column. (No further description available)
     w3_g280_n,
+    /// The w3_g280_sigma column. (No further description available)
     w3_g280_sigma,
+    /// The x column. (No further description available)
     x,
+    /// The y column. (No further description available)
     y,
+    /// The z column. (No further description available)
     z,
 }
 

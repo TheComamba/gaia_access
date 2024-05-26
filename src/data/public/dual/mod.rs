@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The dual table.
+/// The DUAL table is a special one-row, one-column table present in several database <a href="https://en.wikipedia.org/wiki/DUAL_table">installations</a>. It is useful to compute queries that do not require any tables (like mathematical operations) and other specific queries, like the build-in positional cross-match offered in this Archive (see the Query examples available in <a href="https://www.cosmos.esa.int/web/gaia-users/archive/writing-queries">here</a>).
 #[allow(non_camel_case_types)]
 pub struct dual;
 
@@ -18,6 +18,7 @@ impl Table for dual {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The dummy column. (No further description available)
     dummy,
 }
 

@@ -4,7 +4,8 @@
 
 use crate::traits::{Column, Table};
 
-/// The sso_reflectance_spectrum table.
+/// This table contains the mean BP/RP reflectance spectra of asteroids computed as the ratio between the asteroid flux and an averaged solar analogue flux. In each row, the reflectance spectrum of a given asteroid is given at a given wavelength. Entries for all asteroids are concatenated into a single table.
+///
 #[allow(non_camel_case_types)]
 pub struct sso_reflectance_spectrum;
 
@@ -18,15 +19,25 @@ impl Table for sso_reflectance_spectrum {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Source identifier
     source_id,
+    /// Solution Identifier
     solution_id,
+    /// Minor Planet number
     number_mp,
+    /// standard MPC denomination of the asteroid
     denomination,
+    /// Nb samples in spectrum
     nb_samples,
+    /// number of epoch spectra used to compute the average
     num_of_spectra,
+    /// Reflectance spectrum
     reflectance_spectrum,
+    /// Error in reflectance spectrum
     reflectance_spectrum_err,
+    /// Internally-calibrated wavelength of reflectance spectrum
     wavelength,
+    /// Reflectance spectrum value flag
     reflectance_spectrum_flag,
 }
 

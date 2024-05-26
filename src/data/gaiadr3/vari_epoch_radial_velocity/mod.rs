@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_epoch_radial_velocity table.
+/// This table contains the epoch radial velocity data points for a sub-set of variable stars. Each entry is a radial velocity in the solar barycentric reference frame for a given object and observation time.
 #[allow(non_camel_case_types)]
 pub struct vari_epoch_radial_velocity;
 
@@ -18,12 +18,19 @@ impl Table for vari_epoch_radial_velocity {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Transit unique identifier
     transit_id,
+    /// Observing time of the transit
     rv_obs_time,
+    /// Barycentric radial velocity
     radial_velocity,
+    /// Barycentric radial velocity error
     radial_velocity_error,
+    /// Rejected by DPAC variability processing (or variability analysis)
     rejected_by_variability,
+    /// Solution Identifier
     solution_id,
 }
 

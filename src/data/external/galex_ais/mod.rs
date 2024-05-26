@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The galex_ais table.
+/// The revised GALEX catalog of UV sources (GUVcat_AIS) from GR6+7 (82,992,086 sources). Reference: The ultraviolet sky: An overview from the GALEX surveys https://doi.org/10.1016/j.asr.2013.07.045
+/// Bibliographic Code: 2017ApJS..230...24B
+/// Table copied from TAP Vizier http://tapvizier.u-strasbg.fr/TAPVizieR/tap, table: II/335/galex_ais.
+/// Abstract: The Galaxy Evolution Explorer (GALEX) imaged the sky in two ultraviolet (UV) bands, far-UV (FUV, lambda_eff∼1528A), and near-UV (NUV, lambda_eff∼2310A), delivering the first comprehensive sky surveys at these wavelengths. The GALEX database contains FUV and NUV images, ∼500 million source measurements and over 100000 low-resolution UV spectra. The UV surveys are a unique resource for statistical studies of hot stellar objects, z≲2 QSOs, star-forming galaxies, nebulae and the interstellar medium, and provide a roadmap for planning future UV instrumentation and follow-up observing programs. We present science-enhanced, "clean" catalogs of GALEX UV sources, with useful tags to facilitate scientific investigations. The catalogs are an improved and expanded version of our previous catalogs of UV sources (BCScat; Bianchi+, 2011, J/MNRAS/411/2770 ; II/312 and 2014AdSpR..53..900B 2014AdSpR..53..900B). With respect to BCScat, we have patched 640 fields for which the pipeline had improperly coadded non-overlapping observations, and we provide a version with a larger sky coverage (about 10%) by relaxing the restriction to the central area of the GALEX field to 1.1 deg diameter (GUVcatAISfov055: GUVcat_AIS FOV_radius <0.55 deg), as well as the cleaner, more restrictive version using only the 1 deg central portion of each field as in BCScat (GUVcatAISfov050: GUVcat_AIS FOV_radius <0.50 deg). We added new tags to facilitate selection and cleaning of statistical samples for science applications: we flag sources within the footprint of extended objects (nearby galaxies, stellar clusters) so that these regions can be excluded for estimating source density. As in our previous catalogs, in GUVcat duplicate measurements of the same source are removed, so that each astrophysical object has only one entry. Such a unique-source catalog is needed to study the density and distributions of sources, and to match UV sources with catalogs at other wavelengths. The catalog includes all observations from the All-Sky Imaging Survey (AIS), the survey with the largest area coverage, with both FUV and NUV detectors exposed: over 28700 fields, made up of a total of 57000 observations ("visits"). The total area covered, when overlaps are removed and gaps are accounted for, is 24790 square degrees for GUVcatAISfov055 (GUVcatAISfov055) and 22125 square degrees for (GUVcatAISfov050). The total numbers of "unique" AIS sources (eliminating duplicate measurements) are 82,992,086 (GUVcatAISfov055) and 69,772,677 (GUVcatAISfov050). The typical depth of the GUVcat_AIS catalog is FUV=19.9, NUV=20.8 AB mag.
 #[allow(non_camel_case_types)]
 pub struct galex_ais;
 
@@ -18,95 +21,185 @@ impl Table for galex_ais {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Source's right ascension (J2000) (RA)
     raj2000,
+    /// Source's declination (J2000) (DEC)
     dej2000,
+    /// GALEX identifier in JHHMMSS.s+DDMMSS format; column added by CDS
     name,
+    /// GALEX identifier for the source (objid)
     objid,
+    /// Pointer to photoExtract Table (id of original observation on which the measurement was taken) (photoextractid)
     phid,
+    /// Survey type (always &quot;AIS&quot; = All-sky Imaging Survey) (mpstype)
     cat,
+    /// RA of center of field (avaspra)
     rafdeg,
+    /// DE of center of field (avaspdec)
     defdeg,
+    /// [30/709] FUV exposure time
     fuvexp,
+    /// [30/1134] NUV exposure time
     nuvexp,
+    /// Galactic longitude
     glon,
+    /// Galactic latitude
     glat,
+    /// [50000/50491] Tile number (tilenum)
     tile,
+    /// [33/3172] Image number (img)
     img,
+    /// [1/99] Number of subvisit if exposure was divided (subvisit)
     sv,
+    /// [/0.6] Distance of source from center of the field (fov_radius)
     r_fov,
+    /// [1] Observation type (1=multi) (type)
     obs,
+    /// [1/3] bands: 1=NUV, 2=FUV, 3=both (band)
     b,
+    /// [0.0007/0.5] E(B-V) Galactic Reddening (from Schlegel+ 1998ApJ...500..525S maps) (E_bv)
     e_b_v,
+    /// [0/1] 1 if a spectrum exists (istherespectrum)
     sp_,
+    /// [0/1] Astrometry check type (chkobj_type)
     chkf,
+    /// [10.6/23.8]? GALEX FUV calibrated magnitude in AB system (fuv_mag)
     fuvmag,
+    /// [0.001/0.6]? FUV mag error (fuv_magerr)
     e_fuvmag,
+    /// [9.6/24.5] GALEX NUV calibrated magnitude in AB system (nuv_mag)
     nuvmag,
+    /// [0.0007/0.5] NUV mag error (nuv_magerr)
     e_nuvmag,
+    /// [-8.2/5]? FUV Kron-like elliptical aperture magnitude (fuv_mag_auto)
     fuv_a,
+    /// [0.001/0.6]? FUV RMS error for AUTO magnitude (fuv_magerr_auto)
     e_fuv_a,
+    /// [-10.5/4.4] NUV Kron-like elliptical aperture magnitude (nuv_mag_auto)
     nuv_a,
+    /// [0.0007/0.5] NUV RMS error for AUTO magnitude (nuv_magerr_auto)
     e_nuv_a,
+    /// [-7.2/99]? FUV mag aperture (8 pix diameter) (fuv_mag_aper_4)
     fuv_4,
+    /// [0.002/4911]? FUV mag aperture error (8 pix diameter) (fuv_magerr_aper_4)
     e_fuv_4,
+    /// [-7.5/99] NUV mag aperture (8 pix diameter) (nuv_mag_aper_4)
     nuv_4,
+    /// [0.001/2559] NUV mag aperture error (8 pix diameter) (nuv_magerr_aper_4)
     e_nuv_4,
+    /// [-7.4/99]? FUV mag aperture (17 pix diameter) (fuv_mag_aper_6)
     fuv_6,
+    /// [0.001/37286]? FUV mag aperture error (17 pix diameter) (fuv_magerr_aper_6)
     e_fuv_6,
+    /// [-8.3/99] NUV mag aperture (17 pix diameter) (nuv_mag_aper_6)
     nuv_6,
+    /// [0.001/15473111] NUV mag aperture error (17 pix diameter) (nuv_magerr_aper_6)
     e_nuv_6,
+    /// [0/416]? FUV artifact flag (logical OR near source) (fuv_artifact)
     fafl,
+    /// [0/913] NUV artifact flag (logical OR near source) (nuv_artifact)
     nafl,
+    /// [0/19]? Extraction flags for FUV band (fuv_flags)
     fexf,
+    /// [0/51] Extraction flags for NUV band (nuv_flags)
     nexf,
+    /// [1/201899]? FUV calibrated flux (fuv_flux)
     fflux,
+    /// [0.5/18719]? FUV flux error (fuv_fluxerr)
     e_fflux,
+    /// [0.6/202886] NUV calibrated flux (nuv_flux)
     nflux,
+    /// [0.2/3649] NUV flux error (nuv_fluxerr)
     e_nflux,
+    /// ? Source position in FUV image along x (fuv_x_image)
     fxpos,
+    /// ? Source position in UV image along y (fuv_y_image)
     fypos,
+    /// Source position in NUV image along x (nuv_x_image)
     nxpos,
+    /// Source position in NUV image along y (nuv_y_image)
     nypos,
+    /// ? Source FWHM in FUV assuming a gaussian core (fuv_fwhm_image)
     fima,
+    /// Source FWHM in NUV assuming a gaussian core (nuv_fwhm_image)
     nima,
+    /// [-0.2/0.3]? Source FWHM in FUV assuming a gaussian core (fuv_fwhm_world)
     fr,
+    /// [-0.1/0.5] Source FWHM in NUV assuming a gaussian core (nuv_fwhm_world)
     nr,
+    /// Star/galaxy classifier from NUV (nuv_class_star)
     ns_g,
+    /// ? Star/galaxy classifier from FUV (fuv_class_star)
     fs_g,
+    /// 1-b/a in NUV (nuv_ellipticity)
     nell,
+    /// ? 1-b/a in FUV (fuv_ellipticity)
     fell,
+    /// Position angle in NUV (nuv_theta_j2000)
     npa,
+    /// [-90/] Position angle error in NUV (nuv_errtheta_j2000)
     e_npa,
+    /// ? Position angle in FUV (fuv_theta_j2000)
     fpa,
+    /// [-90/]? Position angle error in FUV (fuv_errtheta_j2000)
     e_fpa,
+    /// [/965]? FUV FWHM IMAGE value from -fd-ncat.fits (fuv_ncat_fwhm_image) (4)
     fnr,
+    /// [/1.98E7]? FUV flux radius (fuv_ncat_flux_rad_3) (4)
     f3r,
+    /// [3.5/13.2] Kron apertures in units of a or b (nuv_kron_radius)
     nar,
+    /// [0.0002/0.1] Profile RMS along major axis (nuv_a_world)
     narms,
+    /// [0.00004/0.06] Profile RMS along minor axis (nuv_b_world)
     nbrms,
+    /// [3.5/11]? Kron apertures in units of a or b (fuv_kron_radius)
     far,
+    /// [0.0002/0.06]? Profile RMS along major axis (fuv_a_world)
     farms,
+    /// [0.0001/0.03]? Profile RMS along minor axis (fuv_b_world)
     fbrms,
+    /// [0/964] NUV effective exposure (flat-field response value) at the source position (nuv_weight)
     nuvw,
+    /// [0/700] FUV effective exposure (fuv_weight)
     fuvw,
+    /// ? Probability of the FUVxNUV match (prob)
     prob,
+    /// [0/7.1]? Separation between FUV and NUV position of the source in the same observation (sep)
     sep,
+    /// [0.4/3.3] Position error of the source in the NUV image (nuv_poserr)
     nerr,
+    /// [0.4/2.4]? Position error of the source in the FUV image (fuv_poserr)
     ferr,
+    /// [0.4/3.4]? Inter-band position error (ib_poserr)
     ierr,
+    /// [0.001/2.8] NUV Poisson position error (nuv_pperr)
     nperr,
+    /// [0.001/1.6]? FUV Poisson position error (fuv_pperr)
     fperr,
+    /// [CV] Whether the source comes from a coadd or visit (corv)
     cv,
+    /// [-1/1] Neighbours rank (grank) (1)
     g,
+    /// [1/12] Number of sources within 2.5&quot;, if this is a primary (ngrank)
     n,
+    /// objid of the primary (only of use for the &quot;plus&quot; catalog) (primgid)
     primid,
+    /// objid's of all sources (AIS) within 2.5&quot;, concatenated by &quot;+&quot; (groupgid)
     groupid,
+    /// [-1/1] as for &quot;G&quot; (grank), but based on distance criterion (grankdist) (1)
     gd,
+    /// [1/12] as for &quot;N&quot; (ngrank), but based on distance criterion (ngrankdist)
     nd,
+    /// objid of the closest primary, based on distance criterion (primgiddist)
     primidd,
+    /// objid's of all sources (AIS) within 2.5&quot;, based on distance criterion (groupgiddist)
     groupidd,
+    /// objid's of all sources within 2.5&quot; (groupgidtot)
     grouptot,
+    /// Extended object? (if not: &quot;N&quot;) (inlargeobj) (2)
     oname,
+    /// [/38740]? Size of the extended object (largeobjsize) (3)
     #[strum(serialize = "\"size\"")]
     size,
 }

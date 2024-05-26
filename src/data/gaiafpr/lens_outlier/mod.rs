@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The lens_outlier table.
+/// This table contains the individual observations that have been discarded from the analysis of the gravitational lenses around the list of sourceIds tabulated in the lens candidate table. These are observations that could not be associated with any of the components assigned to the source of interest.
 #[allow(non_camel_case_types)]
 pub struct lens_outlier;
 
@@ -18,14 +18,23 @@ impl Table for lens_outlier {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Counter for the outliers of each component
     outlier_id,
+    /// Right ascension of each individual outlier observation
     ra_obs,
+    /// Declination of each individual outlier observation
     dec_obs,
+    /// Flux value of each individual outlier observation
     g_flux_obs,
+    /// Flux error value of each individual outlier observation
     g_flux_obs_error,
+    /// Onboard G magnitudes of each individual outlier observation
     g_mag_obs,
+    /// Epoch of the individual outlier observation
     epoch_obs,
 }
 

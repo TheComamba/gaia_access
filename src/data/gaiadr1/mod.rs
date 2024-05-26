@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The gaiadr1 schema.
+/// Gaia Data Release 1
 #[allow(non_camel_case_types)]
 pub struct gaiadr1;
 

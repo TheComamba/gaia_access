@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The properties table.
+/// The properties table. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct properties;
 
@@ -18,8 +18,10 @@ impl Table for properties {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The "key" column. (No further description available)
     #[strum(serialize = "\"key\"")]
     key,
+    /// The "value" column. (No further description available)
     #[strum(serialize = "\"value\"")]
     value,
 }

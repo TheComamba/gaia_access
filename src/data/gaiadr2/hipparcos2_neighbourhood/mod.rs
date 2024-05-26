@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The hipparcos2_neighbourhood table.
+/// Hipparcos-2 Neighbourhood table includes all good neighbours for each
+/// matched external catalogue object. A good neighbour for a given external
+/// catalogue object is a nearby object in Gaia whose position is compatible
+/// (within position errors) with the target.
 #[allow(non_camel_case_types)]
 pub struct hipparcos2_neighbourhood;
 
@@ -18,10 +21,15 @@ impl Table for hipparcos2_neighbourhood {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Score of neighbours
     score,
+    /// Number of Gaia astrometric params used
     gaia_astrometric_params,
 }
 

@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_rotation_modulation table.
+/// This table describes the solar-like stars with rotational modulation.
 #[allow(non_camel_case_types)]
 pub struct vari_rotation_modulation;
 
@@ -18,71 +18,137 @@ impl Table for vari_rotation_modulation {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Number of segments
     num_segments,
+    /// Times at which segments start
     segments_start_time,
+    /// Times at which segments end
     segments_end_time,
+    /// Colour-Magnitude Intercept in segments
     segments_colour_mag_intercept,
+    /// Colour-Magnitude Intercept uncertainty in segments
     segments_colour_mag_intercept_error,
+    /// Colour-Magnitude Slope in segments
     segments_colour_mag_slope,
+    /// Colour-Magnitude Slope uncertainty in segments
     segments_colour_mag_slope_error,
+    /// Correlation coefficient in segments
     segments_correlation_coefficient,
+    /// Correlation coefficient significance in segments
     segments_correlation_significance,
+    /// Number of outliers
     num_outliers,
+    /// Times at which outliers occurs
     outliers_time,
+    /// Rotation period in segment
     segments_rotation_period,
+    /// Rotation period uncertainty in segment
     segments_rotation_period_error,
+    /// FAP on rotation period in segment
     segments_rotation_period_fap,
+    /// Best rotation period
     best_rotation_period,
+    /// Error on best rotation period
     best_rotation_period_error,
+    /// The unspotted G mags in segment
     segments_g_unspotted,
+    /// The unspotted G mag uncertainties in segment
     segments_g_unspotted_error,
+    /// The unspotted BP mag in segment
     segments_bp_unspotted,
+    /// The unspotted BP mag uncertainties in segment
     segments_bp_unspotted_error,
+    /// The unspotted RP mag in segment
     segments_rp_unspotted,
+    /// The unspotted RP mag uncertainties in segment
     segments_rp_unspotted_error,
+    /// Unspotted G mag
     g_unspotted,
+    /// Unspotted G mag uncertainty
     g_unspotted_error,
+    /// Unspotted BP mag
     bp_unspotted,
+    /// Unspotted BP mag uncertainty
     bp_unspotted_error,
+    /// Unspotted RP mag
     rp_unspotted,
+    /// Unspotted RP mag uncertainty
     rp_unspotted_error,
+    /// Coefficient of cosine term of linear fit in segment in the G band
     segments_g_cos_term,
+    /// Errors on cosine terms in the G band
     segments_g_cos_term_error,
+    /// Coefficient of sine term of linear fit in segment in the G band
     segments_g_sin_term,
+    /// Errors on sine terms in the G band
     segments_g_sin_term_error,
+    /// Constant term (A0) of linear fit in segment in the G band
     segments_g_a0_term,
+    /// Errors on constant terms in the G band
     segments_g_a0_term_error,
+    /// Coefficient of cosine term of linear fit in segment in the BP band
     segments_bp_cos_term,
+    /// Errors on cosine terms in the BP band
     segments_bp_cos_term_error,
+    /// Coefficient of sine term of linear fit in segment in the BP band
     segments_bp_sin_term,
+    /// Errors on sine terms in the BP band
     segments_bp_sin_term_error,
+    /// Constant term (A0) of linear fit in segment in the BP band
     segments_bp_a0_term,
+    /// Errors on constant terms in the BP band
     segments_bp_a0_term_error,
+    /// Coefficient of cosine term of linear fit in segment in the RP band
     segments_rp_cos_term,
+    /// Errors on cosine terms in the RP band
     segments_rp_cos_term_error,
+    /// Coefficient of sine term of linear fit in segment in the RP band
     segments_rp_sin_term,
+    /// Errors on sine terms in the RP band
     segments_rp_sin_term_error,
+    /// Constant term (A0) of linear fit in segment in the RP band
     segments_rp_a0_term,
+    /// Errors on constant terms in the RP band
     segments_rp_a0_term_error,
+    /// Activity Index in segment (computed in G band)
     segments_g_activity_index,
+    /// error on Activity index in segment (computed in G band)
     segments_g_activity_index_error,
+    /// Activity Index in segment (computed in BP band)
     segments_bp_activity_index,
+    /// error on Activity index in segment (computed in BP band)
     segments_bp_activity_index_error,
+    /// Activity Index in segment (computed in RP band)
     segments_rp_activity_index,
+    /// error on Activity index in segment (computed in RP band)
     segments_rp_activity_index_error,
+    /// The maximum Activity Index in the G band
     max_activity_index_g,
+    /// Error on maximum activity index in the G band
     max_activity_index_g_error,
+    /// Pearson coefficient between BP and RP in segment
     segments_bp_rp_corr_coeff,
+    /// Significance associated with Pearson coefficient
     segments_bp_rp_corr_signif,
+    /// Intercept of regression fit of RP vs BP magnitudes in the segment
     segments_bp_rp_intercept,
+    /// Error on intercept of regression fit of RP vs BP magnitudes in the segment
     segments_bp_rp_intercept_error,
+    /// Slope of regression fit of RP vs BP magnitudes in the segment
     segments_bp_rp_slope,
+    /// Error on slope of regression fit of RP vs BP magnitudes in the segment
     segments_bp_rp_slope_error,
+    /// Time used as reference time for the period search procedure in the segment
     segments_model_reference_time,
+    /// Array of chisquares for linear models (G band)
     segments_g_chi_square,
+    /// Array of chisquares for linear models (BP band)
     segments_bp_chi_square,
+    /// Array of chisquares for linear models (RP band)
     segments_rp_chi_square,
 }
 

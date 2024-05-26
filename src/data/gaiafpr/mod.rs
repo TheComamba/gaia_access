@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The gaiafpr schema.
+/// Gaia Focused Product Release
 #[allow(non_camel_case_types)]
 pub struct gaiafpr;
 

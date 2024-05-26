@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The interstellar_medium_spectra table.
+/// Table of the stacked Interstellar Medium Spectra
 #[allow(non_camel_case_types)]
 pub struct interstellar_medium_spectra;
 
@@ -18,13 +18,21 @@ impl Table for interstellar_medium_spectra {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// The HEALPix Identification
     healpix,
+    /// Central galactic longitude of voxel
     lc,
+    /// Central galactic latitude of voxel
     bc,
+    /// Central heliocentric distance of voxel
     dc,
+    /// Wavelength
     lambda,
+    /// Normalised flux
     flux,
+    /// Uncertainty in the flux parameter
     flux_uncertainty,
 }
 

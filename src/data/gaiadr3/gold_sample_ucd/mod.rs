@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The gold_sample_ucd table.
+/// The table contains the bolometric luminosities and radii in solar units for a subset of ultracool dwarfs from the Gaia DR3 catalogue, as well as some intermediate quantities used in the selection of sources and in the derivation of the luminosities and radii.
+///
+/// For more details please refer to \cite{DR3-DPACP-123}.
 #[allow(non_camel_case_types)]
 pub struct gold_sample_ucd;
 
@@ -18,12 +20,19 @@ impl Table for gold_sample_ucd {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Correction factor applied to obtain the total SED flux
     ftot_fobs,
+    /// Bolometric luminosity in solar units
     lum,
+    /// Uncertainty in bolometric luminosity
     lum_uncertainty,
+    /// Radius in solar unit
     radius,
+    /// Uncertainty in radius
     radius_uncertainty,
+    /// Reduced chi-square of the SED fit
     reduced_chi2,
 }
 

@@ -4,7 +4,39 @@
 
 use crate::traits::{Column, Table};
 
-/// The hipparcos_newreduction table.
+/// Hipparcos New Reduction: The Astrometric Catalogue
+///
+/// Hipparcos, the new Reduction of the Raw data
+///      van Leeuwen F.
+/// Astron. Astrophys. 474, 653 (2007)
+/// http://dx.doi.org/10.1051/0004-6361:20078357
+///
+/// A new reduction of the astrometric data as produced by the Hipparcos
+///     mission has been published, claiming accuracies for nearly all stars
+///     brighter than magnitude Hp=8 to be better, by up to a factor 4, than
+///     in the original catalogue.
+///
+///     The new Hipparcos astrometric catalogue is checked for the quality of
+///     the data and the consistency of the formal errors as well as the
+///     possible presence of error correlations. The differences with the
+///     earlier publication are explained.
+///
+///     Methods. The internal errors are followed through the reduction
+///     process, and the external errors are investigated on the basis of a
+///     comparison with radio observations of a small selection of stars, and
+///     the distribution of negative parallaxes. Error correlation levels are
+///     investigated and the reduction by more than a factor 10 as obtained in
+///     the new catalogue is explained.
+///
+///     Results. The formal errors on the parallaxes for the new catalogue are
+///     confirmed. The presence of a small amount of additional noise, though
+///     unlikely, cannot be ruled out.
+///
+///     Conclusions. The new reduction of the Hipparcos astrometric data
+///     provides an improvement by a factor 2.2 in the total weight compared
+///     to the catalogue published in 1997, and provides much improved data
+///     for a wide range of studies on stellar luminosities and local galactic
+///     kinematics.
 #[allow(non_camel_case_types)]
 pub struct hipparcos_newreduction;
 
@@ -18,48 +50,338 @@ impl Table for hipparcos_newreduction {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Hipparcos identifier
     hip,
+    /// Entry in one of the suppl.catalogues
     ic,
+    /// Right Ascension in ICRS, Ep=1991.25
     ra,
+    /// Declination in ICRS, Ep=1991.25
     dec,
+    /// Right Ascension in ICRS, Ep=1991.25
     ra_rad,
+    /// Declination in ICRS, Ep=1991.25
     de_rad,
+    /// Parallax
     plx,
+    /// Proper motion in Right Ascension
     pm_ra,
+    /// Proper motion in Declination
     pm_de,
+    /// Formal error on RArad
     e_ra_rad,
+    /// Formal error on DErad
     e_de_rad,
+    /// Formal error on Plx
     e_plx,
+    /// Formal error on pmRA
     e_pm_ra,
+    /// Formal error on pmDE
     e_pm_de,
+    /// Percentage rejected data
     f1,
+    /// Goodness of fit
     f2,
+    /// Number of components
     nc,
+    /// Number of field transits used
     ntr,
+    /// Upper-triangular weight matrix element 3
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u3,
+    /// Upper-triangular weight matrix element 4
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u4,
+    /// Upper-triangular weight matrix element 5
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u5,
+    /// Upper-triangular weight matrix element 6
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u6,
+    /// Upper-triangular weight matrix element 7
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u7,
+    /// Upper-triangular weight matrix element 8
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u8,
+    /// Upper-triangular weight matrix element 9
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u9,
+    /// [0,159] Solution type new reduction
+    ///
+    /// The solution type is a number 10xd+s consisting of two parts d and s:
+    ///     - s describes the type of solution adopted:
+    ///       1 = stochastic solution (dispersion is given in the 'var' column)
+    ///       3 = VIM solution (additional parameters in file hipvim.dat)
+    ///       5 = 5-parameter solution (this file)
+    ///       7 = 7-parameter solution (additional parameters in hip7p.dat)
+    ///       9 = 9-parameter solution (additional parameters in hip9p.dat)
+    ///     - d describes peculiarities, as a combination of values:
+    ///       0 = single star
+    ///       1 = double star
+    ///       2 = variable in the system with amplitude > 0.2mag
+    ///       4 = astrometry refers to the photocenter
+    ///       8 = measurements concern the secondary (fainter) in the double system
     sn,
+    /// [0,5] Solution type old reduction
+    ///
+    /// as follows:
+    ///       0 = standard 5-parameter solution
+    ///       1 = 7- or 9-parameter solution
+    ///       2 = stochastic solution
+    ///       3 = double and multiple stars
+    ///       4 = orbital binary as resolved in the published catalog
+    ///       5 = VIM (variability-induced mover) solution
     so,
+    /// Cosmic dispersion added (stochastic solution)
     var,
+    /// Upper-triangular weight matrix element 1
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u1,
+    /// Upper-triangular weight matrix element 2
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u2,
+    /// Upper-triangular weight matrix element 10
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u10,
+    /// Upper-triangular weight matrix element 11
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u11,
+    /// Upper-triangular weight matrix element 12
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u12,
+    /// Upper-triangular weight matrix element 13
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u13,
+    /// Upper-triangular weight matrix element 14
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u14,
+    /// Upper-triangular weight matrix element 15
+    ///
+    /// The upper-triangular weight matrix U is related to the
+    ///      covariance matrix C by
+    ///          C-1 = ∼U U    (∼U represents transposed U)
+    ///      The elements Ui forming the upper triangular matrix are stored as
+    ///          ±                         -+
+    ///          |  (1)  (2)  (4)  (7)  (11) |
+    ///          |   0   (3)  (5)  (8)  (12) |
+    ///          |   0    0   (6)  (9)  (13) |
+    ///          |   0    0    0  (10)  (14) |
+    ///          |   0    0    0    0   (15) |
+    ///          ±                         -+
+    ///      on the astrometric parameters RA, Dec, plx, pmRA, pmDE,
+    ///      and derivatives of proper motions for 7- and 9-parameter
+    ///      solutions.
     u15,
+    /// Hipparcos magnitude
     hp_mag,
+    /// Colour index
     b_v,
+    /// V-I colour index
     v_i,
+    /// Error on mean Hpmag
     e_hp_mag,
+    /// Formal error on colour index
     e_b_v,
+    /// Scatter of Hpmag
     s_hp,
+    /// [0,2] Reference to variability annex
     va,
 }
 

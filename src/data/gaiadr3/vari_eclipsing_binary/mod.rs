@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_eclipsing_binary table.
+/// This table describes the properties of the eclipsing binaries resulting from the variability analysis.
 #[allow(non_camel_case_types)]
 pub struct vari_eclipsing_binary;
 
@@ -18,44 +18,83 @@ impl Table for vari_eclipsing_binary {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Number between 0 (worst) and 1 (best)
     global_ranking,
+    /// Reference time used for the geometric model fit
     reference_time,
+    /// Frequency of geometric model of the eclipsing binary light curve
     frequency,
+    /// Uncertainty of \texttt{frequency}
     frequency_error,
+    /// Magnitude reference level of geometric model
     geom_model_reference_level,
+    /// Uncertainty of \texttt{geomModelReferenceLevel}
     geom_model_reference_level_error,
+    /// Phase of the Gaussian 1 component
     geom_model_gaussian1_phase,
+    /// Uncertainty of \texttt{geomModelGaussian1Phase}
     geom_model_gaussian1_phase_error,
+    /// Standard deviation [phase] of Gaussian 1 component
     geom_model_gaussian1_sigma,
+    /// Uncertainty of \texttt{geomModelGaussian1Sigma}
     geom_model_gaussian1_sigma_error,
+    /// Magnitude depth of Gaussian 1 component
     geom_model_gaussian1_depth,
+    /// Uncertainty of \texttt{geomModelGaussian1Depth}
     geom_model_gaussian1_depth_error,
+    /// Phase of Gaussian 2 component
     geom_model_gaussian2_phase,
+    /// Uncertainty of \texttt{geomModelGaussian2Phase}
     geom_model_gaussian2_phase_error,
+    /// Standard deviation [phase] of Gaussian 2 component
     geom_model_gaussian2_sigma,
+    /// Uncertainty of \texttt{geomModelGaussian2Sigma}
     geom_model_gaussian2_sigma_error,
+    /// Magnitude depth of Gaussian2 component
     geom_model_gaussian2_depth,
+    /// Uncertainty of \texttt{geomModelGaussian2Depth}
     geom_model_gaussian2_depth_error,
+    /// Amplitude of the cosine component with half the period of the geometric model
     geom_model_cosine_half_period_amplitude,
+    /// Uncertainty of \texttt{geomModelCosineHalfPeriodAmplitude}
     geom_model_cosine_half_period_amplitude_error,
+    /// Reference phase of the cosine component with half the period of the geometric model
     geom_model_cosine_half_period_phase,
+    /// Uncertainty of \texttt{geomModelCosineHalfPeriodPhase}
     geom_model_cosine_half_period_phase_error,
+    /// Type of geometrical model of the light curve
     model_type,
+    /// Number of free parameters of the geometric model
     num_model_parameters,
+    /// Reduced Chi2 of the geometrical model fit
     reduced_chi2,
+    /// Primary eclipse: phase at geometrically deepest point
     derived_primary_ecl_phase,
+    /// Primary eclipse: uncertainty of \texttt{derivedPrimaryEclPhase}
     derived_primary_ecl_phase_error,
+    /// Primary eclipse: duration [phase fraction]
     derived_primary_ecl_duration,
+    /// Primary eclipse: uncertainty of \texttt{derivedPrimaryEclDuration}
     derived_primary_ecl_duration_error,
+    /// Primary eclipse: depth
     derived_primary_ecl_depth,
+    /// Primary eclipse: uncertainty of \texttt{derivedPrimaryEclDepth}
     derived_primary_ecl_depth_error,
+    /// Secondary eclipse: phase at geometrically second deepest point
     derived_secondary_ecl_phase,
+    /// Secondary eclipse: uncertainty of \texttt{derivedSecondaryEclPhase}
     derived_secondary_ecl_phase_error,
+    /// Secondary eclipse: duration [phase fraction]
     derived_secondary_ecl_duration,
+    /// Secondary eclipse: uncertainty of \texttt{derivedSecondaryEclDuration}
     derived_secondary_ecl_duration_error,
+    /// Secondary eclipse: depth
     derived_secondary_ecl_depth,
+    /// Secondary eclipse: uncertainty of \texttt{derivedSecondaryEclDepth}
     derived_secondary_ecl_depth_error,
 }
 

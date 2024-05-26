@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The interstellar_medium_params table.
+/// This is the main table of DIB parameters from DIB-Spec, derived from spectra binned in galactic latitude, longitude and distance.
 #[allow(non_camel_case_types)]
 pub struct interstellar_medium_params;
 
@@ -18,42 +18,79 @@ impl Table for interstellar_medium_params {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// HEALPix identification
     healpix,
+    /// Central galactic longitude of voxel
     lc,
+    /// Central galactic latitude of voxel
     bc,
+    /// Central heliocentric distance of voxel
     dc,
+    /// Number of target stars in a voxel
     n_targets,
+    /// SNR  of the stacked ISM spectrum at 862.0 nm
     snr,
+    /// DIB equivalent width  at 862.0 nm
     ew8620,
+    /// Lower confidence level (16%) of DIB equivalent width at 862.0 nm
     ew8620_lower,
+    /// Upper confidence level (84%) of DIB equivalent width at 862.0 nm
     ew8620_upper,
+    /// Quality flag of DIB parameters at 862.0 nm
     flags8620,
+    /// p0 parameter at 862.0 nm
     p08620,
+    /// Lower confidence level (16%) of p0 parameter at 862.0 nm
     p08620_lower,
+    /// Upper confidence level (84%) of p0 parameter at 862.0 nm
     p08620_upper,
+    /// p1 parameter at 862.0 nm
     p18620,
+    /// Lower confidence level (16%) of p1 parameter at 862.0 nm
     p18620_lower,
+    /// Upper confidence level (84%) of p1 parameter at 862.0 nm
     p18620_upper,
+    /// p2 parameter at 862.0 nm
     p28620,
+    /// Lower confidence level (16%) of p2 parameter at 862.0 nm
     p28620_lower,
+    /// Upper confidence level (84%) of p2 parameter at 862.0 nm
     p28620_upper,
+    /// DIB equivalent width at 864.8 nm
     ew8648,
+    /// Lower confidence level (16%) of DIB equivalent width at 864.8 nm
     ew8648_lower,
+    /// Upper confidence level (84%) of DIB equivalent width at 864.8 nm
     ew8648_upper,
+    /// Quality flag of DIB parameters at 864.8 nm
     flags8648,
+    /// p0 parameter at 864.8 nm
     p08648,
+    /// Lower confidence level (16%) of p0 parameter at 864.8 nm
     p08648_lower,
+    /// Upper confidence level (84%) of p0 parameter at 864.8 nm
     p08648_upper,
+    /// p1 parameter at 864.8 nm
     p18648,
+    /// Lower confidence level (16%) of p1 parameter at 864.8 nm
     p18648_lower,
+    /// Upper confidence level (84%) of p1 parameter at 864.8 nm
     p18648_upper,
+    /// p2 parameter at 864.8 nm
     p28648,
+    /// Lower confidence level (16%) of p2 parameter at 864.8 nm
     p28648_lower,
+    /// Upper confidence level (84%) of p2 parameter at 864.8 nm
     p28648_upper,
+    /// Slope a0 of the global continuum fit of the full stacked spectrum
     dibcont_a0,
+    /// Lower confidence level (16%) of the slope a0 of the global continuum fit
     dibcont_a0_lower,
+    /// Upper confidence level (84%) of the slope a0 of the global continuum fit
     dibcont_a0_upper,
+    /// Intercept a1 of the global continuum fit of the full stacked spectrum
     dibcont_a1,
 }
 

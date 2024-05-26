@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The sdss_dr9_neighbourhood table.
+/// URAT-1 implementation of BaseNeighbourhood
 #[allow(non_camel_case_types)]
 pub struct sdss_dr9_neighbourhood;
 
@@ -18,11 +18,27 @@ impl Table for sdss_dr9_neighbourhood {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The additional numeric unique source identifier of the External
+    /// catalogue, increasing with Declination.
     sdssdr9_oid,
+    /// Unique identifier of the Gaia source, the attribute corresponds to
+    /// GaiaSource.sourceId
     source_id,
+    /// The unique source identifier in the original External catalogue.
     original_ext_source_id,
+    /// Angular distance between a Gaia source and its nearest neighbour in the
+    /// External Catalogue
     angular_distance,
+    /// Score of a given neighbour.  
+    /// For the first Gaia release the score will be a likelihood ratio based on
+    /// geometric distance and local density of the external catalogue: the
+    /// higher the score, the most probable the match is.
     score,
+    /// This flag is set to 0 if Gaia proper motions were not available and were
+    /// thus not used in the XMatch.  
+    /// This flag is set to 1 if Gaia proper motions were available and were
+    /// thus used in the XMatch (for the First Gaia release the TGASS
+    /// sub-sample.
     proper_motion_flag,
 }
 

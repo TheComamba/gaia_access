@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The xp_summary table.
+/// This tables contains auxiliary information about the mean BP/RP spectrum of a given source. It should be used in order to refine queries on spectra and build dedicated samples before interrogating the DataLink protocol to download the results of those queries.
 #[allow(non_camel_case_types)]
 pub struct xp_summary;
 
@@ -18,25 +18,45 @@ impl Table for xp_summary {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Solution Identifier
     solution_id,
+    /// Number of bases that are relevant for the representation of this mean BP spectrum
     bp_n_relevant_bases,
+    /// Measure of the relative shrinking of the coefficient vector when truncation is applied for the mean BP spectrum
     bp_relative_shrinking,
+    /// Number of measurements used for the BP spectrum generation
     bp_n_measurements,
+    /// Number of rejected measurements in the BP spectrum generation
     bp_n_rejected_measurements,
+    /// Standard deviation for the BP spectrum representation
     bp_standard_deviation,
+    /// Chi squared for the BP spectrum representation
     bp_chi_squared,
+    /// Number of transits contributing to the mean in BP
     bp_n_transits,
+    /// Number of contaminated transits in BP
     bp_n_contaminated_transits,
+    /// Number of blended transits in BP
     bp_n_blended_transits,
+    /// Number of bases that are relevant for the representation of this mean RP spectrum
     rp_n_relevant_bases,
+    /// Measure of the relative shrinking of the coefficient vector when truncation is applied for the mean RP spectrum
     rp_relative_shrinking,
+    /// Number of measurements used for the RP spectrum generation
     rp_n_measurements,
+    /// Number of rejected measurements in the RP spectrum generation
     rp_n_rejected_measurements,
+    /// Standard deviation for the RP spectrum representation
     rp_standard_deviation,
+    /// Chi squared for the RP spectrum representation
     rp_chi_squared,
+    /// Number of transits contributing to the mean in RP
     rp_n_transits,
+    /// Number of contaminated transits in RP
     rp_n_contaminated_transits,
+    /// Number of blended transits in RP
     rp_n_blended_transits,
 }
 

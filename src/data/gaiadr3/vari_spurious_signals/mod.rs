@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_spurious_signals table.
+/// Several statistics computed for all sources with published photometric time series which can help in the identification of sources that are affected by calibration issues resulting in, for example, spurious variability signals.
+///
+/// The table has a row for every source with {\tt GaiaSource.hasEpochPhotometry} set to TRUE and is described in detail in \cite{DR3-DPACP-164}.
 #[allow(non_camel_case_types)]
 pub struct vari_spurious_signals;
 
@@ -18,43 +20,81 @@ impl Table for vari_spurious_signals {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Source Identifier
     source_id,
+    /// Photometric variability flag
     phot_variable_flag,
+    /// Flag indicating that the source is present in the Gaia Andromeda Photometric Survey (GAPS)
     in_andromeda_survey,
+    /// Number of observations in common for G, BP and RP bands, used in computation of the Spearman correlation excess factor fields
     num_obs_common_all_bands,
+    /// Number of selected observations of G FoV transits, used in the frequency fields
     num_obs_g_fov,
+    /// Frequency identified by Generalised Least Squares period search on G FoV timeseries
     gls_freq_g_fov,
+    /// Normalised amplitude of the frequency identified by Generalised Least Squares period search on G FoV timeseries
     gls_freq_ampl_g_fov,
+    /// Signal Detection Efficiency (SDE) of the frequency identified by Generalised Least Squares period search on G FoV timeseries
     gls_freq_sde_g_fov,
+    /// False Alarm Probability (FAP) of the frequency identified by Generalised Least Squares period search on G FoV timeseries
     gls_freq_fap_g_fov,
+    /// Fundamental frequency identified by non-linear harmonic modelling on G FoV timeseries, initialised by the Generalised Least Squares frequency
     nhm_fund_freq_g_fov,
+    /// Uncertainty of the fundamental frequency identified by non-linear harmonic modelling on G FoV timeseries
     nhm_fund_freq_error_g_fov,
+    /// G-band FoV photometry Spearman correlation with corrected flux excess factor
     spearman_corr_exf_g_fov,
+    /// Number of G-band FoV photometry observations excluding EPSL, used for the IPD correlation and scan angle modelling in the G band
     num_obs_excl_epsl_g_fov,
+    /// G-band FoV photometry Spearman correlation with IPD model
     spearman_corr_ipd_g_fov,
+    /// Magnitude offset of the scan angle model fit to G-band FoV photometry
     scan_angle_model_offset_g_fov,
+    /// Amplitude of the scan angle model fit to G-band FoV photometry
     scan_angle_model_ampl_g_fov,
+    /// Significance of the amplitude of the scan angle model fit to G-band FoV photometry
     scan_angle_model_ampl_sig_g_fov,
+    /// Phase of the scan angle model fit to G-band FoV photometry
     scan_angle_model_phase_g_fov,
+    /// Reduced Chi2 of the scan angle model fit to G-band FoV photometry
     scan_angle_model_red_chi2_g_fov,
+    /// F2 goodness-of-fit of the scan angle model fit to G-band FoV photometry
     scan_angle_model_f2_g_fov,
+    /// BP-band photometry Spearman correlation with corrected flux excess factor
     spearman_corr_exf_bp,
+    /// Number of BP-band photometry observations excluding EPSL, used for the IPD correlation and scan angle modelling in the BP band
     num_obs_excl_epsl_bp,
+    /// BP-band Spearman correlation with IPD model
     spearman_corr_ipd_bp,
+    /// Magnitude offset of the scan angle model fit to BP-band photometry
     scan_angle_model_offset_bp,
+    /// Amplitude of the scan angle model fit to BP-band photometry
     scan_angle_model_ampl_bp,
+    /// Significance of the amplitude of the scan angle model fit to BP-band photometry
     scan_angle_model_ampl_sig_bp,
+    /// Phase of the scan angle model fit to BP-band photometry
     scan_angle_model_phase_bp,
+    /// Reduced Chi2 of the scan angle model fit to BP-band photometry
     scan_angle_model_red_chi2_bp,
+    /// F2 goodness-of-fit of the scan angle model fit to BP-band photometry
     scan_angle_model_f2_bp,
+    /// RP-band photometry Spearman correlation with corrected flux excess factor
     spearman_corr_exf_rp,
+    /// Number of RP-band photometry observations excluding EPSL, used for the IPD correlation and scan angle modelling in the RP band
     num_obs_excl_epsl_rp,
+    /// RP-band Spearman correlation with IPD model
     spearman_corr_ipd_rp,
+    /// Magnitude offset of the scan angle model fit to RP-band photometry
     scan_angle_model_offset_rp,
+    /// Amplitude of the scan angle model fit to RP-band photometry
     scan_angle_model_ampl_rp,
+    /// Significance of the amplitude of the scan angle model fit to RP-band photometry
     scan_angle_model_ampl_sig_rp,
+    /// Phase of the scan angle model fit to RP-band photometry
     scan_angle_model_phase_rp,
+    /// Reduced Chi2 of the scan angle model fit to RP-band photometry
     scan_angle_model_red_chi2_rp,
+    /// F2 goodness-of-fit of the scan angle model fit to RP-band photometry
     scan_angle_model_f2_rp,
 }
 

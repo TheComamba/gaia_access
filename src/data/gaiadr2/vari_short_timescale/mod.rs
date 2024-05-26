@@ -4,7 +4,8 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_short_timescale table.
+/// This table describes the short-timescale sources. For DR2, all sources
+/// in this table were selected according to their variogram analysis.
 #[allow(non_camel_case_types)]
 pub struct vari_short_timescale;
 
@@ -18,14 +19,23 @@ impl Table for vari_short_timescale {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Amplitude estimate of all per CCD G-band photometry (quantile(95%)-quantile(5%))
     amplitude_estimate,
+    /// Number of FoV transits with more than 7 CCD measurements after time series cleaning
     number_of_fov_transits,
+    /// Mean of per-FOV Abbe values derived from CCD G-band photometry
     mean_of_fov_abbe_values,
+    /// Number of points in the variogram
     variogram_num_points,
+    /// Characteristic time scales of variability
     variogram_char_timescales,
+    /// Variogram values associated with the variogramCharTimescales
     variogram_values,
+    /// Frequency search result for either G CCD, G FoV, BP or RP photometry (Null if no periodicity detected)
     frequency,
 }
 

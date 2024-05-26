@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The tap_upload schema.
+/// The tap_upload schema. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct tap_upload;
 

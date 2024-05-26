@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The panstarrs1_best_neighbour table.
+/// Pan-STARRS1 BestNeighbour table lists each matched Gaia object with its
+/// best neighbour in the external catalogue.
+/// There are 1 327 157 objects in the filtered version of Pan-STARRS1 used
+/// to compute this cross-match that have too early epochMean.
 #[allow(non_camel_case_types)]
 pub struct panstarrs1_best_neighbour;
 
@@ -18,12 +21,19 @@ impl Table for panstarrs1_best_neighbour {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Number of neighbours in External Catalogue
     number_of_neighbours,
+    /// Number of mates in Gaia Catalogue
     number_of_mates,
+    /// Number of neighbours with same probability as best neighbour
     best_neighbour_multiplicity,
+    /// Number of Gaia astrometric params used
     gaia_astrometric_params,
 }
 

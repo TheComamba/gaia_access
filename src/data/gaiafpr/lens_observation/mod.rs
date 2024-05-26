@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The lens_observation table.
+/// This table contains the observations associated with the components found in the lens candidates table.
 #[allow(non_camel_case_types)]
 pub struct lens_observation;
 
@@ -18,15 +18,25 @@ impl Table for lens_observation {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Index of the component for this sourceId
     component_id,
+    /// Counter for the observations of each component
     observation_id,
+    /// Right ascension of each individual observation belonging to this component, as decoded from the transitId
     ra_obs,
+    /// Declination of each individual observation belonging to this component, as decoded from the transitId
     dec_obs,
+    /// Flux value of each individual observation belonging to this component
     g_flux_obs,
+    /// Flux error value of each individual observation belonging to this component
     g_flux_obs_error,
+    /// Onboard G magnitudes of each individual observation belonging to this component
     g_mag_obs,
+    /// Epoch of the individual observation belonging to this component
     epoch_obs,
 }
 

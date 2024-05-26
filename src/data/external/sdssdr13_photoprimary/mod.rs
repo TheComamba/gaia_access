@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The sdssdr13_photoprimary table.
+/// DR13 photometric catalog quantities for SDSS imaging. Only primary sources are included. It is a copy of CasJobs PhotoPrimary view of table PhotoObjAll. Reference: Albareti 2017 ApJS 233, 25A. CasJobs available through SciServer http://www.sciserver.org/. This table contains the associated photometric parameters measured by PHOTO, and astrometrically and photometrically calibrated for all photo objects that are primary (the best version of the object). Star: Primary objects that are classified as stars. Galaxy: Primary objects that are classified as galaxies. Sky:Primary objects which are sky samples. Unknown: Primary objects which are none of the above. Each physical object on the sky has only one primary object associated with it. Upon subsequent observations secondary objects are generated. Since the survey stripes overlap, there will be secondary objects for over 10% of all primary objects, and in the southern stripes there will be a multitude of secondary objects for each primary (i.e. reobservations).
 #[allow(non_camel_case_types)]
 pub struct sdssdr13_photoprimary;
 
@@ -18,515 +18,1024 @@ impl Table for sdssdr13_photoprimary {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique SDSS identifier composed from [skyVersion,rerun,run,camcol,field,obj].
     objid,
+    /// Layer of catalog (currently only one layer, 0; 0-15 available)
     skyversion,
+    /// Run number
     run,
+    /// Rerun number
     rerun,
+    /// Camera column
     camcol,
+    /// Field number
     field,
+    /// The object id within a field. Usually changes between reruns of the same field
     obj,
+    /// 1: primary, 2: secondary, 3: other
     mode,
+    /// Number
     nchild,
+    /// Type classification of the object (star, galaxy, cosmic ray, etc.)
     #[strum(serialize = "type")]
     type_col,
+    /// Clean photometry flag (1=clean, 0=unclean).
     clean,
+    /// Probability that the object is a star. Currently 0 if type == 3 (galaxy), 1 if type == 6 (star).
     probpsf,
+    /// Flag to indicate whether object is inside a mask and why
     insidemask,
+    /// Photo Object Attribute Flags
     flags,
+    /// Row center position (r-band coordinates)
     rowc,
+    /// Row center position error (r-band coordinates)
     rowcerr,
+    /// Column center position (r-band coordinates)
     colc,
+    /// Column center position error (r-band coordinates)
     colcerr,
+    /// Row-component of objects velocity
     rowv,
+    /// Row-component of objects velocity error
     rowverr,
+    /// Column-component of objects velocity
     colv,
+    /// Column-component of objects velocity error
     colverr,
+    /// Row center, u-band
     rowc_u,
+    /// Row center, g-band
     rowc_g,
+    /// Row center, r-band
     rowc_r,
+    /// Row center, i-band
     rowc_i,
+    /// Row center, z-band
     rowc_z,
+    /// ERROR Row center error, u-band
     rowcerr_u,
+    /// ERROR Row center error, g-band
     rowcerr_g,
+    /// ERROR Row center error, r-band
     rowcerr_r,
+    /// ERROR Row center error, i-band
     rowcerr_i,
+    /// ERROR Row center error, z-band
     rowcerr_z,
+    /// Column center, u-band
     colc_u,
+    /// Column center, g-band
     colc_g,
+    /// Column center, r-band
     colc_r,
+    /// Column center, i-band
     colc_i,
+    /// Column center, z-band
     colc_z,
+    /// Column center error, u-band
     colcerr_u,
+    /// Column center error, g-band
     colcerr_g,
+    /// Column center error, r-band
     colcerr_r,
+    /// Column center error, i-band
     colcerr_i,
+    /// Column center error, z-band
     colcerr_z,
+    /// Sky flux at the center of object (allowing for siblings if blended).
     sky_u,
+    /// Sky flux at the center of object (allowing for siblings if blended).
     sky_g,
+    /// Sky flux at the center of object (allowing for siblings if blended).
     sky_r,
+    /// Sky flux at the center of object (allowing for siblings if blended).
     sky_i,
+    /// Sky flux at the center of object (allowing for siblings if blended).
     sky_z,
+    /// Sky flux inverse variance
     skyivar_u,
+    /// Sky flux inverse variance
     skyivar_g,
+    /// Sky flux inverse variance
     skyivar_r,
+    /// Sky flux inverse variance
     skyivar_i,
+    /// Sky flux inverse variance
     skyivar_z,
+    /// PSF magnitude
     psfmag_u,
+    /// PSF magnitude
     psfmag_g,
+    /// PSF magnitude
     psfmag_r,
+    /// PSF magnitude
     psfmag_i,
+    /// PSF magnitude
     psfmag_z,
+    /// PSF magnitude error
     psfmagerr_u,
+    /// PSF magnitude error
     psfmagerr_g,
+    /// PSF magnitude error
     psfmagerr_r,
+    /// PSF magnitude error
     psfmagerr_i,
+    /// PSF magnitude error
     psfmagerr_z,
+    /// Magnitude in 3 arcsec diameter fiber radius
     fibermag_u,
+    /// Magnitude in 3 arcsec diameter fiber radius
     fibermag_g,
+    /// Magnitude in 3 arcsec diameter fiber radius
     fibermag_r,
+    /// Magnitude in 3 arcsec diameter fiber radius
     fibermag_i,
+    /// Magnitude in 3 arcsec diameter fiber radius
     fibermag_z,
+    /// Error in magnitude in 3 arcsec diameter fiber radius
     fibermagerr_u,
+    /// Error in magnitude in 3 arcsec diameter fiber radius
     fibermagerr_g,
+    /// Error in magnitude in 3 arcsec diameter fiber radius
     fibermagerr_r,
+    /// Error in magnitude in 3 arcsec diameter fiber radius
     fibermagerr_i,
+    /// Error in magnitude in 3 arcsec diameter fiber radius
     fibermagerr_z,
+    /// Magnitude in 2 arcsec diameter fiber radius
     fiber2mag_u,
+    /// Magnitude in 2 arcsec diameter fiber radius
     fiber2mag_g,
+    /// Magnitude in 2 arcsec diameter fiber radius
     fiber2mag_r,
+    /// Magnitude in 2 arcsec diameter fiber radius
     fiber2mag_i,
+    /// Magnitude in 2 arcsec diameter fiber radius
     fiber2mag_z,
+    /// Error in magnitude in 2 arcsec diameter fiber radius
     fiber2magerr_u,
+    /// Error in magnitude in 2 arcsec diameter fiber radius
     fiber2magerr_g,
+    /// Error in magnitude in 2 arcsec diameter fiber radius
     fiber2magerr_r,
+    /// Error in magnitude in 2 arcsec diameter fiber radius
     fiber2magerr_i,
+    /// Error in magnitude in 2 arcsec diameter fiber radius
     fiber2magerr_z,
+    /// Petrosian magnitude
     petromag_u,
+    /// Petrosian magnitude
     petromag_g,
+    /// Petrosian magnitude
     petromag_r,
+    /// Petrosian magnitude
     petromag_i,
+    /// Petrosian magnitude
     petromag_z,
+    /// Petrosian magnitude error
     petromagerr_u,
+    /// Petrosian magnitude error
     petromagerr_g,
+    /// Petrosian magnitude error
     petromagerr_r,
+    /// Petrosian magnitude error
     petromagerr_i,
+    /// Petrosian magnitude error
     petromagerr_z,
+    /// PSF flux
     psfflux_u,
+    /// PSF flux
     psfflux_g,
+    /// PSF flux
     psfflux_r,
+    /// PSF flux
     psfflux_i,
+    /// PSF flux
     psfflux_z,
+    /// PSF flux inverse variance
     psffluxivar_u,
+    /// PSF flux inverse variance
     psffluxivar_g,
+    /// PSF flux inverse variance
     psffluxivar_r,
+    /// PSF flux inverse variance
     psffluxivar_i,
+    /// PSF flux inverse variance
     psffluxivar_z,
+    /// Flux in 3 arcsec diameter fiber radius
     fiberflux_u,
+    /// Flux in 3 arcsec diameter fiber radius
     fiberflux_g,
+    /// Flux in 3 arcsec diameter fiber radius
     fiberflux_r,
+    /// Flux in 3 arcsec diameter fiber radius
     fiberflux_i,
+    /// Flux in 3 arcsec diameter fiber radius
     fiberflux_z,
+    /// Inverse variance in flux in 3 arcsec diameter fiber radius
     fiberfluxivar_u,
+    /// Inverse variance in flux in 3 arcsec diameter fiber radius
     fiberfluxivar_g,
+    /// Inverse variance in flux in 3 arcsec diameter fiber radius
     fiberfluxivar_r,
+    /// Inverse variance in flux in 3 arcsec diameter fiber radius
     fiberfluxivar_i,
+    /// Inverse variance in flux in 3 arcsec diameter fiber radius
     fiberfluxivar_z,
+    /// Flux in 2 arcsec diameter fiber radius
     fiber2flux_u,
+    /// Flux in 2 arcsec diameter fiber radius
     fiber2flux_g,
+    /// Flux in 2 arcsec diameter fiber radius
     fiber2flux_r,
+    /// Flux in 2 arcsec diameter fiber radius
     fiber2flux_i,
+    /// Flux in 2 arcsec diameter fiber radius
     fiber2flux_z,
+    /// Inverse variance in flux in 2 arcsec diameter fiber radius
     fiber2fluxivar_u,
+    /// Inverse variance in flux in 2 arcsec diameter fiber radius
     fiber2fluxivar_g,
+    /// Inverse variance in flux in 2 arcsec diameter fiber radius
     fiber2fluxivar_r,
+    /// Inverse variance in flux in 2 arcsec diameter fiber radius
     fiber2fluxivar_i,
+    /// Inverse variance in flux in 2 arcsec diameter fiber radius
     fiber2fluxivar_z,
+    /// Petrosian flux
     petroflux_u,
+    /// Petrosian flux
     petroflux_g,
+    /// Petrosian flux
     petroflux_r,
+    /// Petrosian flux
     petroflux_i,
+    /// Petrosian flux
     petroflux_z,
+    /// Petrosian flux inverse variance
     petrofluxivar_u,
+    /// Petrosian flux inverse variance
     petrofluxivar_g,
+    /// Petrosian flux inverse variance
     petrofluxivar_r,
+    /// Petrosian flux inverse variance
     petrofluxivar_i,
+    /// Petrosian flux inverse variance
     petrofluxivar_z,
+    /// Petrosian radius
     petrorad_u,
+    /// Petrosian radius
     petrorad_g,
+    /// Petrosian radius
     petrorad_r,
+    /// Petrosian radius
     petrorad_i,
+    /// Petrosian radius
     petrorad_z,
+    /// Petrosian radius error
     petroraderr_u,
+    /// Petrosian radius error
     petroraderr_g,
+    /// Petrosian radius error
     petroraderr_r,
+    /// Petrosian radius error
     petroraderr_i,
+    /// Petrosian radius error
     petroraderr_z,
+    /// Radius containing 50% of Petrosian flux
     petror50_u,
+    /// Radius containing 50% of Petrosian flux
     petror50_g,
+    /// Radius containing 50% of Petrosian flux
     petror50_r,
+    /// Radius containing 50% of Petrosian flux
     petror50_i,
+    /// Radius containing 50% of Petrosian flux
     petror50_z,
+    /// Error in radius with 50% of Petrosian flux error
     petror50err_u,
+    /// Error in radius with 50% of Petrosian flux error
     petror50err_g,
+    /// Error in radius with 50% of Petrosian flux error
     petror50err_r,
+    /// Error in radius with 50% of Petrosian flux error
     petror50err_i,
+    /// Error in radius with 50% of Petrosian flux error
     petror50err_z,
+    /// Radius containing 90% of Petrosian flux
     petror90_u,
+    /// Radius containing 90% of Petrosian flux
     petror90_g,
+    /// Radius containing 90% of Petrosian flux
     petror90_r,
+    /// Radius containing 90% of Petrosian flux
     petror90_i,
+    /// Radius containing 90% of Petrosian flux
     petror90_z,
+    /// Error in radius with 90% of Petrosian flux error
     petror90err_u,
+    /// Error in radius with 90% of Petrosian flux error
     petror90err_g,
+    /// Error in radius with 90% of Petrosian flux error
     petror90err_r,
+    /// Error in radius with 90% of Petrosian flux error
     petror90err_i,
+    /// Error in radius with 90% of Petrosian flux error
     petror90err_z,
+    /// Stokes Q parameter
     q_u,
+    /// Stokes Q parameter
     q_g,
+    /// Stokes Q parameter
     q_r,
+    /// Stokes Q parameter
     q_i,
+    /// Stokes Q parameter
     q_z,
+    /// Stokes Q parameter error
     qerr_u,
+    /// Stokes Q parameter error
     qerr_g,
+    /// Stokes Q parameter error
     qerr_r,
+    /// Stokes Q parameter error
     qerr_i,
+    /// Stokes Q parameter error
     qerr_z,
+    /// Stokes U parameter
     u_u,
+    /// Stokes U parameter
     u_g,
+    /// Stokes U parameter
     u_r,
+    /// Stokes U parameter
     u_i,
+    /// Stokes U parameter
     u_z,
+    /// Stokes U parameter error
     uerr_u,
+    /// Stokes U parameter error
     uerr_g,
+    /// Stokes U parameter error
     uerr_r,
+    /// Stokes U parameter error
     uerr_i,
+    /// Stokes U parameter error
     uerr_z,
+    /// Adaptive E1 shape measure (pixel coordinates)
     me1_u,
+    /// Adaptive E1 shape measure (pixel coordinates)
     me1_g,
+    /// Adaptive E1 shape measure (pixel coordinates)
     me1_r,
+    /// Adaptive E1 shape measure (pixel coordinates)
     me1_i,
+    /// Adaptive E1 shape measure (pixel coordinates)
     me1_z,
+    /// Adaptive E2 shape measure (pixel coordinates)
     me2_u,
+    /// Adaptive E2 shape measure (pixel coordinates)
     me2_g,
+    /// Adaptive E2 shape measure (pixel coordinates)
     me2_r,
+    /// Adaptive E2 shape measure (pixel coordinates)
     me2_i,
+    /// Adaptive E2 shape measure (pixel coordinates)
     me2_z,
+    /// Covariance in E1/E1 shape measure (pixel coordinates)
     me1e1err_u,
+    /// Covariance in E1/E1 shape measure (pixel coordinates)
     me1e1err_g,
+    /// Covariance in E1/E1 shape measure (pixel coordinates)
     me1e1err_r,
+    /// Covariance in E1/E1 shape measure (pixel coordinates)
     me1e1err_i,
+    /// Covariance in E1/E1 shape measure (pixel coordinates)
     me1e1err_z,
+    /// Covariance in E1/E2 shape measure (pixel coordinates)
     me1e2err_u,
+    /// Covariance in E1/E2 shape measure (pixel coordinates)
     me1e2err_g,
+    /// Covariance in E1/E2 shape measure (pixel coordinates)
     me1e2err_r,
+    /// Covariance in E1/E2 shape measure (pixel coordinates)
     me1e2err_i,
+    /// Covariance in E1/E2 shape measure (pixel coordinates)
     me1e2err_z,
+    /// Covariance in E2/E2 shape measure (pixel coordinates)
     me2e2err_u,
+    /// Covariance in E2/E2 shape measure (pixel coordinates)
     me2e2err_g,
+    /// Covariance in E2/E2 shape measure (pixel coordinates)
     me2e2err_r,
+    /// Covariance in E2/E2 shape measure (pixel coordinates)
     me2e2err_i,
+    /// Covariance in E2/E2 shape measure (pixel coordinates)
     me2e2err_z,
+    /// Adaptive ( + ) (pixel coordinates)
     mrrcc_u,
+    /// Adaptive ( + ) (pixel coordinates)
     mrrcc_g,
+    /// Adaptive ( + ) (pixel coordinates)
     mrrcc_r,
+    /// Adaptive ( + ) (pixel coordinates)
     mrrcc_i,
+    /// Adaptive ( + ) (pixel coordinates)
     mrrcc_z,
+    /// Error in adaptive ( + ) (pixel coordinates)
     mrrccerr_u,
+    /// Error in adaptive ( + ) (pixel coordinates)
     mrrccerr_g,
+    /// Error in adaptive ( + ) (pixel coordinates)
     mrrccerr_r,
+    /// Error in adaptive ( + ) (pixel coordinates)
     mrrccerr_i,
+    /// Error in adaptive ( + ) (pixel coordinates)
     mrrccerr_z,
+    /// Adaptive fourth moment of object (pixel coordinates)
     mcr4_u,
+    /// Adaptive fourth moment of object (pixel coordinates)
     mcr4_g,
+    /// Adaptive fourth moment of object (pixel coordinates)
     mcr4_r,
+    /// Adaptive fourth moment of object (pixel coordinates)
     mcr4_i,
+    /// Adaptive fourth moment of object (pixel coordinates)
     mcr4_z,
+    /// Adaptive E1 for PSF (pixel coordinates)
     me1psf_u,
+    /// Adaptive E1 for PSF (pixel coordinates)
     me1psf_g,
+    /// Adaptive E1 for PSF (pixel coordinates)
     me1psf_r,
+    /// Adaptive E1 for PSF (pixel coordinates)
     me1psf_i,
+    /// Adaptive E1 for PSF (pixel coordinates)
     me1psf_z,
+    /// Adaptive E2 for PSF (pixel coordinates)
     me2psf_u,
+    /// Adaptive E2 for PSF (pixel coordinates)
     me2psf_g,
+    /// Adaptive E2 for PSF (pixel coordinates)
     me2psf_r,
+    /// Adaptive E2 for PSF (pixel coordinates)
     me2psf_i,
+    /// Adaptive E2 for PSF (pixel coordinates)
     me2psf_z,
+    /// Adaptive ( + ) for PSF (pixel coordinates)
     mrrccpsf_u,
+    /// Adaptive ( + ) for PSF (pixel coordinates)
     mrrccpsf_g,
+    /// Adaptive ( + ) for PSF (pixel coordinates)
     mrrccpsf_r,
+    /// Adaptive ( + ) for PSF (pixel coordinates)
     mrrccpsf_i,
+    /// Adaptive ( + ) for PSF (pixel coordinates)
     mrrccpsf_z,
+    /// Adaptive fourth moment for PSF (pixel coordinates)
     mcr4psf_u,
+    /// Adaptive fourth moment for PSF (pixel coordinates)
     mcr4psf_g,
+    /// Adaptive fourth moment for PSF (pixel coordinates)
     mcr4psf_r,
+    /// Adaptive fourth moment for PSF (pixel coordinates)
     mcr4psf_i,
+    /// Adaptive fourth moment for PSF (pixel coordinates)
     mcr4psf_z,
+    /// de Vaucouleurs fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     devrad_u,
+    /// de Vaucouleurs fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     devrad_g,
+    /// de Vaucouleurs fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     devrad_r,
+    /// de Vaucouleurs fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     devrad_i,
+    /// de Vaucouleurs fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     devrad_z,
+    /// Error in de Vaucouleurs fit scale radius error
     devraderr_u,
+    /// Error in de Vaucouleurs fit scale radius error
     devraderr_g,
+    /// Error in de Vaucouleurs fit scale radius error
     devraderr_r,
+    /// Error in de Vaucouleurs fit scale radius error
     devraderr_i,
+    /// Error in de Vaucouleurs fit scale radius error
     devraderr_z,
+    /// de Vaucouleurs fit b/a
     devab_u,
+    /// de Vaucouleurs fit b/a
     devab_g,
+    /// de Vaucouleurs fit b/a
     devab_r,
+    /// de Vaucouleurs fit b/a
     devab_i,
+    /// de Vaucouleurs fit b/a
     devab_z,
+    /// de Vaucouleurs fit b/a error
     devaberr_u,
+    /// de Vaucouleurs fit b/a error
     devaberr_g,
+    /// de Vaucouleurs fit b/a error
     devaberr_r,
+    /// de Vaucouleurs fit b/a error
     devaberr_i,
+    /// de Vaucouleurs fit b/a error
     devaberr_z,
+    /// de Vaucouleurs fit position angle (+N thru E)
     devphi_u,
+    /// de Vaucouleurs fit position angle (+N thru E)
     devphi_g,
+    /// de Vaucouleurs fit position angle (+N thru E)
     devphi_r,
+    /// de Vaucouleurs fit position angle (+N thru E)
     devphi_i,
+    /// de Vaucouleurs fit position angle (+N thru E)
     devphi_z,
+    /// de Vaucouleurs magnitude fit
     devmag_u,
+    /// de Vaucouleurs magnitude fit
     devmag_g,
+    /// de Vaucouleurs magnitude fit
     devmag_r,
+    /// de Vaucouleurs magnitude fit
     devmag_i,
+    /// de Vaucouleurs magnitude fit
     devmag_z,
+    /// de Vaucouleurs magnitude fit error
     devmagerr_u,
+    /// de Vaucouleurs magnitude fit error
     devmagerr_g,
+    /// de Vaucouleurs magnitude fit error
     devmagerr_r,
+    /// de Vaucouleurs magnitude fit error
     devmagerr_i,
+    /// de Vaucouleurs magnitude fit error
     devmagerr_z,
+    /// de Vaucouleurs magnitude fit
     devflux_u,
+    /// de Vaucouleurs magnitude fit
     devflux_g,
+    /// de Vaucouleurs magnitude fit
     devflux_r,
+    /// de Vaucouleurs magnitude fit
     devflux_i,
+    /// de Vaucouleurs magnitude fit
     devflux_z,
+    /// de Vaucouleurs magnitude fit inverse variance
     devfluxivar_u,
+    /// de Vaucouleurs magnitude fit inverse variance
     devfluxivar_g,
+    /// de Vaucouleurs magnitude fit inverse variance
     devfluxivar_r,
+    /// de Vaucouleurs magnitude fit inverse variance
     devfluxivar_i,
+    /// de Vaucouleurs magnitude fit inverse variance
     devfluxivar_z,
+    /// Exponential fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     exprad_u,
+    /// Exponential fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     exprad_g,
+    /// Exponential fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     exprad_r,
+    /// Exponential fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     exprad_i,
+    /// Exponential fit scale radius, here defined to be the same as the half-light radius, also called the effective radius.
     exprad_z,
+    /// Exponential fit scale radius error
     expraderr_u,
+    /// Exponential fit scale radius error
     expraderr_g,
+    /// Exponential fit scale radius error
     expraderr_r,
+    /// Exponential fit scale radius error
     expraderr_i,
+    /// Exponential fit scale radius error
     expraderr_z,
+    /// Exponential fit b/a
     expab_u,
+    /// Exponential fit b/a
     expab_g,
+    /// Exponential fit b/a
     expab_r,
+    /// Exponential fit b/a
     expab_i,
+    /// Exponential fit b/a
     expab_z,
+    /// Exponential fit b/a
     expaberr_u,
+    /// Exponential fit b/a
     expaberr_g,
+    /// Exponential fit b/a
     expaberr_r,
+    /// Exponential fit b/a
     expaberr_i,
+    /// Exponential fit b/a
     expaberr_z,
+    /// Exponential fit position angle (+N thru E)
     expphi_u,
+    /// Exponential fit position angle (+N thru E)
     expphi_g,
+    /// Exponential fit position angle (+N thru E)
     expphi_r,
+    /// Exponential fit position angle (+N thru E)
     expphi_i,
+    /// Exponential fit position angle (+N thru E)
     expphi_z,
+    /// Exponential fit magnitude
     expmag_u,
+    /// Exponential fit magnitude
     expmag_g,
+    /// Exponential fit magnitude
     expmag_r,
+    /// Exponential fit magnitude
     expmag_i,
+    /// Exponential fit magnitude
     expmag_z,
+    /// Exponential fit magnitude error
     expmagerr_u,
+    /// Exponential fit magnitude error
     expmagerr_g,
+    /// Exponential fit magnitude error
     expmagerr_r,
+    /// Exponential fit magnitude error
     expmagerr_i,
+    /// Exponential fit magnitude error
     expmagerr_z,
+    /// better of DeV/Exp magnitude fit
     modelmag_u,
+    /// better of DeV/Exp magnitude fit
     modelmag_g,
+    /// better of DeV/Exp magnitude fit
     modelmag_r,
+    /// better of DeV/Exp magnitude fit
     modelmag_i,
+    /// better of DeV/Exp magnitude fit
     modelmag_z,
+    /// Error in better of DeV/Exp magnitude fit
     modelmagerr_u,
+    /// Error in better of DeV/Exp magnitude fit
     modelmagerr_g,
+    /// Error in better of DeV/Exp magnitude fit
     modelmagerr_r,
+    /// Error in better of DeV/Exp magnitude fit
     modelmagerr_i,
+    /// Error in better of DeV/Exp magnitude fit
     modelmagerr_z,
+    /// DeV+Exp magnitude
     cmodelmag_u,
+    /// DeV+Exp magnitude
     cmodelmag_g,
+    /// DeV+Exp magnitude
     cmodelmag_r,
+    /// DeV+Exp magnitude
     cmodelmag_i,
+    /// DeV+Exp magnitude
     cmodelmag_z,
+    /// DeV+Exp magnitude error
     cmodelmagerr_u,
+    /// DeV+Exp magnitude error
     cmodelmagerr_g,
+    /// DeV+Exp magnitude error
     cmodelmagerr_r,
+    /// DeV+Exp magnitude error
     cmodelmagerr_i,
+    /// DeV+Exp magnitude error
     cmodelmagerr_z,
+    /// Exponential fit flux
     expflux_u,
+    /// Exponential fit flux
     expflux_g,
+    /// Exponential fit flux
     expflux_r,
+    /// Exponential fit flux
     expflux_i,
+    /// Exponential fit flux
     expflux_z,
+    /// Exponential fit flux inverse variance
     expfluxivar_u,
+    /// Exponential fit flux inverse variance
     expfluxivar_g,
+    /// Exponential fit flux inverse variance
     expfluxivar_r,
+    /// Exponential fit flux inverse variance
     expfluxivar_i,
+    /// Exponential fit flux inverse variance
     expfluxivar_z,
+    /// better of DeV/Exp flux fit
     modelflux_u,
+    /// better of DeV/Exp flux fit
     modelflux_g,
+    /// better of DeV/Exp flux fit
     modelflux_r,
+    /// better of DeV/Exp flux fit
     modelflux_i,
+    /// better of DeV/Exp flux fit
     modelflux_z,
+    /// Inverse variance in better of DeV/Exp flux fit
     modelfluxivar_u,
+    /// Inverse variance in better of DeV/Exp flux fit
     modelfluxivar_g,
+    /// Inverse variance in better of DeV/Exp flux fit
     modelfluxivar_r,
+    /// Inverse variance in better of DeV/Exp flux fit
     modelfluxivar_i,
+    /// Inverse variance in better of DeV/Exp flux fit
     modelfluxivar_z,
+    /// better of DeV+Exp flux
     cmodelflux_u,
+    /// better of DeV+Exp flux
     cmodelflux_g,
+    /// better of DeV+Exp flux
     cmodelflux_r,
+    /// better of DeV+Exp flux
     cmodelflux_i,
+    /// better of DeV+Exp flux
     cmodelflux_z,
+    /// Inverse variance in DeV+Exp flux fit
     cmodelfluxivar_u,
+    /// Inverse variance in DeV+Exp flux fit
     cmodelfluxivar_g,
+    /// Inverse variance in DeV+Exp flux fit
     cmodelfluxivar_r,
+    /// Inverse variance in DeV+Exp flux fit
     cmodelfluxivar_i,
+    /// Inverse variance in DeV+Exp flux fit
     cmodelfluxivar_z,
+    /// Aperture flux within 7.3 arcsec
     aperflux7_u,
+    /// Aperture flux within 7.3 arcsec
     aperflux7_g,
+    /// Aperture flux within 7.3 arcsec
     aperflux7_r,
+    /// Aperture flux within 7.3 arcsec
     aperflux7_i,
+    /// Aperture flux within 7.3 arcsec
     aperflux7_z,
+    /// Inverse variance of aperture flux within 7.3 arcsec
     aperflux7ivar_u,
+    /// Inverse variance of aperture flux within 7.3 arcsec
     aperflux7ivar_g,
+    /// Inverse variance of aperture flux within 7.3 arcsec
     aperflux7ivar_r,
+    /// Inverse variance of aperture flux within 7.3 arcsec
     aperflux7ivar_i,
+    /// Inverse variance of aperture flux within 7.3 arcsec
     aperflux7ivar_z,
+    /// Star ln(likelihood)
     lnlstar_u,
+    /// Star ln(likelihood)
     lnlstar_g,
+    /// Star ln(likelihood)
     lnlstar_r,
+    /// Star ln(likelihood)
     lnlstar_i,
+    /// Star ln(likelihood)
     lnlstar_z,
+    /// Exponential disk fit ln(likelihood)
     lnlexp_u,
+    /// Exponential disk fit ln(likelihood)
     lnlexp_g,
+    /// Exponential disk fit ln(likelihood)
     lnlexp_r,
+    /// Exponential disk fit ln(likelihood)
     lnlexp_i,
+    /// Exponential disk fit ln(likelihood)
     lnlexp_z,
+    /// de Vaucouleurs fit ln(likelihood)
     lnldev_u,
+    /// de Vaucouleurs fit ln(likelihood)
     lnldev_g,
+    /// de Vaucouleurs fit ln(likelihood)
     lnldev_r,
+    /// de Vaucouleurs fit ln(likelihood)
     lnldev_i,
+    /// de Vaucouleurs fit ln(likelihood)
     lnldev_z,
+    /// Weight of deV component in deV+Exp model
     fracdev_u,
+    /// Weight of deV component in deV+Exp model
     fracdev_g,
+    /// Weight of deV component in deV+Exp model
     fracdev_r,
+    /// Weight of deV component in deV+Exp model
     fracdev_i,
+    /// Weight of deV component in deV+Exp model
     fracdev_z,
+    /// Object detection flags per band
     flags_u,
+    /// Object detection flags per band
     flags_g,
+    /// Object detection flags per band
     flags_r,
+    /// Object detection flags per band
     flags_i,
+    /// Object detection flags per band
     flags_z,
+    /// Object type classification per band
     type_u,
+    /// Object type classification per band
     type_g,
+    /// Object type classification per band
     type_r,
+    /// Object type classification per band
     type_i,
+    /// Object type classification per band
     type_z,
+    /// Probablity object is a star in each filter.
     probpsf_u,
+    /// Probablity object is a star in each filter.
     probpsf_g,
+    /// Probablity object is a star in each filter.
     probpsf_r,
+    /// Probablity object is a star in each filter.
     probpsf_i,
+    /// Probablity object is a star in each filter.
     probpsf_z,
+    /// J2000 Right Ascension (r-band)
     ra,
+    /// J2000 Declination (r-band)
     dec,
+    /// unit vector for ra+dec
     cx,
+    /// unit vector for ra+dec
     cy,
+    /// unit vector for ra+dec
     cz,
+    /// Error in RA (* cos(Dec), that is, proper units)
     raerr,
+    /// Error in Dec
     decerr,
+    /// Galactic latitude
     b,
+    /// Galactic longitude
     l,
+    /// filter position RA minus final RA (* cos(Dec), that is, proper units)
     offsetra_u,
+    /// filter position RA minus final RA (* cos(Dec), that is, proper units)
     offsetra_g,
+    /// filter position RA minus final RA (* cos(Dec), that is, proper units)
     offsetra_r,
+    /// filter position RA minus final RA (* cos(Dec), that is, proper units)
     offsetra_i,
+    /// filter position RA minus final RA (* cos(Dec), that is, proper units)
     offsetra_z,
+    /// filter position Dec minus final Dec
     offsetdec_u,
+    /// filter position Dec minus final Dec
     offsetdec_g,
+    /// filter position Dec minus final Dec
     offsetdec_r,
+    /// filter position Dec minus final Dec
     offsetdec_i,
+    /// filter position Dec minus final Dec
     offsetdec_z,
+    /// Extinction in u-band
     extinction_u,
+    /// Extinction in g-band
     extinction_g,
+    /// Extinction in r-band
     extinction_r,
+    /// Extinction in i-band
     extinction_i,
+    /// Extinction in z-band
     extinction_z,
+    /// FWHM in u-band
     psffwhm_u,
+    /// FWHM in g-band
     psffwhm_g,
+    /// FWHM in r-band
     psffwhm_r,
+    /// FWHM in i-band
     psffwhm_i,
+    /// FWHM in z-band
     psffwhm_z,
+    /// Date of observation
     mjd,
+    /// Airmass at time of observation in u-band
     airmass_u,
+    /// Airmass at time of observation in g-band
     airmass_g,
+    /// Airmass at time of observation in r-band
     airmass_r,
+    /// Airmass at time of observation in i-band
     airmass_i,
+    /// Airmass at time of observation in z-band
     airmass_z,
+    /// Degrees to add to CCD-aligned angle to convert to E of N
     phioffset_u,
+    /// Degrees to add to CCD-aligned angle to convert to E of N
     phioffset_g,
+    /// Degrees to add to CCD-aligned angle to convert to E of N
     phioffset_r,
+    /// Degrees to add to CCD-aligned angle to convert to E of N
     phioffset_i,
+    /// Degrees to add to CCD-aligned angle to convert to E of N
     phioffset_z,
+    /// Number of Profile Bins
     nprof_u,
+    /// Number of Profile Bins
     nprof_g,
+    /// Number of Profile Bins
     nprof_r,
+    /// Number of Profile Bins
     nprof_i,
+    /// Number of Profile Bins
     nprof_z,
+    /// Load Version
     loadversion,
+    /// 20-deep hierarchical trangular mesh ID of this object
     htmid,
+    /// Link to the field this object is in
     fieldid,
+    /// Pointer to parent (if object deblended) or BRIGHT detection (if object has one), else 0
     parentid,
+    /// Pointer to the spectrum of object, if exists, else 0
     specobjid,
+    /// Shorthand alias for modelMag
     u,
+    /// Shorthand alias for modelMag
     g,
+    /// Shorthand alias for modelMag
     r,
+    /// Shorthand alias for modelMag
     i,
+    /// Shorthand alias for modelMag
     z,
+    /// Error in modelMag alias
     err_u,
+    /// Error in modelMag alias
     err_g,
+    /// Error in modelMag alias
     err_r,
+    /// Error in modelMag alias
     err_i,
+    /// Error in modelMag alias
     err_z,
+    /// Simplified mag, corrected for extinction: modelMag-extinction
     dered_u,
+    /// Simplified mag, corrected for extinction: modelMag-extinction
     dered_g,
+    /// Simplified mag, corrected for extinction: modelMag-extinction
     dered_r,
+    /// Simplified mag, corrected for extinction: modelMag-extinction
     dered_i,
+    /// Simplified mag, corrected for extinction: modelMag-extinction
     dered_z,
+    /// Cloud camera status for observation in u-band
     cloudcam_u,
+    /// Cloud camera status for observation in g-band
     cloudcam_g,
+    /// Cloud camera status for observation in r-band
     cloudcam_r,
+    /// Cloud camera status for observation in i-band
     cloudcam_i,
+    /// Cloud camera status for observation in z-band
     cloudcam_z,
+    /// Resolve status of object
     resolvestatus,
+    /// Unique identifier from global resolve
     thingid,
+    /// What balkan object is in from window
     balkanid,
+    /// Number of observations of this object
     nobserve,
+    /// Number of detections of this object
     ndetect,
+    /// Number of observations of this object near an edge
     nedge,
+    /// Quality of field (0-1)
     score,
+    /// Calibration status in u-band
     calibstatus_u,
+    /// Calibration status in g-band
     calibstatus_g,
+    /// Calibration status in r-band
     calibstatus_r,
+    /// Calibration status in i-band
     calibstatus_i,
+    /// Calibration status in z-band
     calibstatus_z,
+    /// nanomaggies per count in u-band
     nmgypercount_u,
+    /// nanomaggies per count in g-band
     nmgypercount_g,
+    /// nanomaggies per count in r-band
     nmgypercount_r,
+    /// nanomaggies per count in i-band
     nmgypercount_i,
+    /// nanomaggies per count in z-band
     nmgypercount_z,
+    /// time of observation (TAI) in each filter
     tai_u,
+    /// time of observation (TAI) in each filter
     tai_g,
+    /// time of observation (TAI) in each filter
     tai_r,
+    /// time of observation (TAI) in each filter
     tai_i,
+    /// time of observation (TAI) in each filter
     tai_z,
 }
 

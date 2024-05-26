@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The skymapperdr2_join table.
+/// Convenience table to be used to join SkyMapper DR2 catalogue with the
+/// cross-match results. It lists all the SkyMapper DR2 sources which were
+/// used in the cross-match. See Documentation, [chap:crossmatch], for more
+/// details on the catalogue.
 #[allow(non_camel_case_types)]
 pub struct skymapperdr2_join;
 
@@ -18,6 +21,7 @@ impl Table for skymapperdr2_join {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Original External Catalogue source identifier
     original_ext_source_id,
 }
 

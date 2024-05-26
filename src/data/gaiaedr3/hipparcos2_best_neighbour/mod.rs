@@ -4,7 +4,28 @@
 
 use crate::traits::{Column, Table};
 
-/// The hipparcos2_best_neighbour table.
+/// <p>Hipparcos2 BestNeighbour table lists each matched external catalogue object with its best
+/// neighbour in Gaia.
+/// The cross-match algorithm is not symmetric and searches Hipparcos2 sources counterparts in Gaia.<br/>
+/// The best neighbour is chosen among good neighbours as the one with the highest value of
+/// the figure of merit, which evaluates the ratio between two opposite models/hypotheses:
+/// the counterpart candidate is a match or it is found by chance.
+/// Good neighbours are nearby objects in Gaia whose position is
+/// compatible within position errors with the external catalogue target.<br/>
+/// The cross-match algorithm is positional and exploits the full 5
+/// parameters covariance matrix of Gaia astrometric solution when available and the
+/// external catalogue positions and position errors. In addition it takes into account the
+/// Gaia environment using the local density.<br/>
+/// <br/>
+/// Please note that the cross-match algorithm is a trade-off between multiple requirements, in
+/// particular between completeness and correctness. It is thus not limited to a simple cone search.<br/>
+/// <br/>
+/// Reference papers:<br/>
+/// </p>
+/// <p>DR1-DPACP-17<br/>
+/// </p>
+/// <p>DR2-DPACP-41<br/>
+/// </p>
 #[allow(non_camel_case_types)]
 pub struct hipparcos2_best_neighbour;
 
@@ -18,10 +39,15 @@ impl Table for hipparcos2_best_neighbour {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Number of neighbours in Gaia Catalogue
     number_of_neighbours,
+    /// Cross-match algorithm flag
     xm_flag,
 }
 

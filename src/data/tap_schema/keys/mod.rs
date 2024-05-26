@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The keys table.
+/// TAP SCHEMA keys
 #[allow(non_camel_case_types)]
 pub struct keys;
 
@@ -18,10 +18,15 @@ impl Table for keys {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The description column. (No further description available)
     description,
+    /// The from_table column. (No further description available)
     from_table,
+    /// The key_id column. (No further description available)
     key_id,
+    /// The target_table column. (No further description available)
     target_table,
+    /// The utype column. (No further description available)
     utype,
 }
 

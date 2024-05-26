@@ -4,7 +4,8 @@
 
 use crate::traits::{Column, Table};
 
-/// The apassdr9_best_neighbour table.
+/// APASS DR9 BestNeighbour table lists each matched Gaia object with its
+/// best neighbour in the external catalogue.
 #[allow(non_camel_case_types)]
 pub struct apassdr9_best_neighbour;
 
@@ -18,13 +19,21 @@ impl Table for apassdr9_best_neighbour {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Number of Gaia astrometric params used
     gaia_astrometric_params,
+    /// External Catalogue source identifier
     apassdr9_oid,
+    /// Number of neighbours in External Catalogue
     number_of_neighbours,
+    /// Number of mates in Gaia Catalogue
     number_of_mates,
+    /// Number of neighbours with same probability as best neighbour
     best_neighbour_multiplicity,
 }
 

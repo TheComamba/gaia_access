@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The tap_schema schema.
+/// The tap_schema schema. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct tap_schema;
 

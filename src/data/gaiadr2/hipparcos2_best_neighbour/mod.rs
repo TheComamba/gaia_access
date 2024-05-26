@@ -4,7 +4,8 @@
 
 use crate::traits::{Column, Table};
 
-/// The hipparcos2_best_neighbour table.
+/// Hipparcos-2 BestNeighbour table lists each matched external catalogue
+/// object with its best neighbour in Gaia.
 #[allow(non_camel_case_types)]
 pub struct hipparcos2_best_neighbour;
 
@@ -18,10 +19,15 @@ impl Table for hipparcos2_best_neighbour {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Number of neighbours in Gaia Catalogue
     number_of_neighbours,
+    /// Number of Gaia astrometric params used
     gaia_astrometric_params,
 }
 

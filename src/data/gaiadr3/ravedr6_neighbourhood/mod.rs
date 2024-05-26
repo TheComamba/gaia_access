@@ -4,7 +4,21 @@
 
 use crate::traits::{Column, Table};
 
-/// The ravedr6_neighbourhood table.
+/// Table {\tt Ravedr6Neighbourhood} includes all good neighbours for each matched RAVE DR6 object.
+/// A good neighbour for a given RAVE DR6 source is a nearby Gaia object whose
+/// position is compatible (within position errors) with the RAVE DR6 target.
+/// The cross-match algorithm is not symmetric and searches RAVE DR6 sources counterparts in Gaia.
+/// The cross-match algorithm is positional and exploits the full~5
+/// parameter covariance matrix of the Gaia astrometric solution when available and the
+/// external catalogue positions and position errors. In addition it takes into account the
+/// Gaia environment using the local density.
+///
+/// Please note that the cross-match algorithm is a trade-off between multiple requirements, in
+/// particular between completeness and correctness. It is thus not limited to a simple cone search.
+///
+/// Reference papers:\\
+/// \citet{DR1-DPACP-17}\\
+/// \citet{DR2-DPACP-41}\\
 #[allow(non_camel_case_types)]
 pub struct ravedr6_neighbourhood;
 
@@ -18,11 +32,17 @@ impl Table for ravedr6_neighbourhood {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Score of neighbours
     score,
+    /// Cross-match algorithm flag
     xm_flag,
+    /// External Catalogue source identifier
     ravedr6_oid,
 }
 

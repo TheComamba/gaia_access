@@ -4,7 +4,12 @@
 
 use crate::traits::{Column, Table};
 
-/// The science_alerts table.
+/// Table containing all Gaia Photometric Science Alerts triggered in the period 25-07-2014 to 28-05-2017, i.e.~the time span covered by DR3.
+///
+/// A Gaia Photometric Science Alert is known to the community by its name Gaiannxyz where nn is the year number and xyz is an incrementing, alphabetic sequence starting at aaa. Science alerts have their details published on the WWW. Given the name of an alert, the URL for the published details can be derived, e.g.
+/// \url{https://gsaweb.ast.cam.ac.uk/alerts/alert/Gaia18ahj} for alert Gaia18ahj.
+///
+/// The {\tt sourceId} associated to the alert may have other alternative matches in Gaia DR3. These other identifiers are listed in table \texttt{AlertsMixedinSourceids}.
 #[allow(non_camel_case_types)]
 pub struct science_alerts;
 
@@ -18,9 +23,13 @@ impl Table for science_alerts {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Alerting transit identifier
     transit_id,
+    /// Name of alert
     name,
+    /// Solution Identifier
     solution_id,
 }
 

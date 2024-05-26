@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The ext_phot_zero_point table.
+/// Definition of the Gaia photometric system: for GDR1 only zero-points
+/// will be computed, one for G and one for each integrated BP and
+/// integrated RP. The adopted photometric system will be Vega.
 #[allow(non_camel_case_types)]
 pub struct ext_phot_zero_point;
 
@@ -18,12 +20,26 @@ impl Table for ext_phot_zero_point {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// All Gaia data processed by the Data Processing and Analysis Consortium
+    /// comes tagged with a solution identifier. This is a numeric field
+    /// attached to each table row that can be used to unequivocally identify
+    /// the version of all the subsystems that where used in the generation of
+    /// the data as well as the input data used. It is mainly for internal DPAC
+    /// use but is included in the published data releases to enable end users
+    /// to examine the provenance of processed data products. To decode a given
+    /// solution ID visit
     solution_id,
+    /// The magnitude zero point on the Vega scale for the G passband.
     g_mag_zero_point,
+    /// Error on the magnitude zero point for the G passband.
     g_mag_zero_point_error,
+    /// The magnitude zero point on the Vega scale for the BP passband.
     bp_mag_zero_point,
+    /// Error on the magnitude zero point for the G passband.
     bp_mag_zero_point_error,
+    /// The magnitude zero point on the Vega scale for the RP passband.
     rp_mag_zero_point,
+    /// Error on the magnitude zero point for the RP passband.
     rp_mag_zero_point_error,
 }
 

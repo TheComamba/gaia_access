@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The gold_sample_carbon_stars table.
+/// List of \textit{Gaia} DR3 source IDs for carbon stars extracted from the main list of candidate carbon stars for having C2 and CN molecular bands significantly stronger than usual M stars \citep{DR3-DPACP-123}.
 #[allow(non_camel_case_types)]
 pub struct gold_sample_carbon_stars;
 
@@ -18,6 +18,7 @@ impl Table for gold_sample_carbon_stars {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
 }
 

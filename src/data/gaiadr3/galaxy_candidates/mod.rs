@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The galaxy_candidates table.
+/// This table contains parameters derived from various modules dedicated to the classification and characterisation of sources considered as galaxy candidates. This table has been constructed with the intention to be complete rather than pure and, as such, it will contain a large fraction of non-genuine extragalactic sources. Purer samples can be drawn using dedicated flags or queries. Please refer to Chapter~\ref{chap:cu3qso} of the on-line documentation for details about how this table was built, its content, and for recommendations regarding its exploitation.
 #[allow(non_camel_case_types)]
 pub struct galaxy_candidates;
 
@@ -18,43 +18,81 @@ impl Table for galaxy_candidates {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Name of best class, see table VariClassifierClassDefinition for details of the class
     vari_best_class_name,
+    /// Score of the best class
     vari_best_class_score,
+    /// Probability from DSC-Combmod of being a galaxy (data used: BP/RP spectrum, photometry, astrometry)
     classprob_dsc_combmod_galaxy,
+    /// Probability from DSC-Combmod of being a quasar (data used: BP/RP spectrum, photometry, astrometry)
     classprob_dsc_combmod_quasar,
+    /// Class assigned by DSC based on the probability from its Combmod classifier
     classlabel_dsc,
+    /// Class assigned by DSC based on the probability from its Specmod and Allosmod classifiers
     classlabel_dsc_joint,
+    /// Class assigned by OA the neuron that represents the source
     classlabel_oa,
+    /// Redshift from UGC
     redshift_ugc,
+    /// Redshift prediction lower limit from UGC
     redshift_ugc_lower,
+    /// Redshift prediction upper limit from UGC
     redshift_ugc_upper,
+    /// Number of transits used for the morphological analysis
     n_transits,
+    /// Fitted position angle of the source for the Sersic Profile
     posangle_sersic,
+    /// Error on the fitted position angle of the source for the Sersic Profile
     posangle_sersic_error,
+    /// Fitted intensity of the source for the Sersic Profile
     intensity_sersic,
+    /// Error on the fitted intensity of the source at effective radius radiusSersic
     intensity_sersic_error,
+    /// Fitted effective radius of the source for the Sersic Profile
     radius_sersic,
+    /// Error on the fitted effective radius of the source for the Sersic Profile
     radius_sersic_error,
+    /// Fitted ellipticity of source for the Sersic Profile
     ellipticity_sersic,
+    /// Error on the fitted ellipticity of the source for the Sersic Profile
     ellipticity_sersic_error,
+    /// Fitted Sersic Index for Sersic Profile
     n_sersic,
+    /// Error on the fitted Sersic Index for Sersic Profile
     n_sersic_error,
+    /// L2 norm for the Sersic Profile
     l2_sersic,
+    /// Vector form of the upper triangle of the correlation matrix for the fitted parameters for the Sersic Profile
     morph_params_corr_vec_sersic,
+    /// Flag indicative of processing or scientific quality for the morphological parameters fitting for the Sersic Profile
     flags_sersic,
+    /// Fitted position angle of the source for the de Vaucouleurs Profile
     posangle_de_vaucouleurs,
+    /// Error on the fitted position angle of the source for the de Vaucouleurs Profile
     posangle_de_vaucouleurs_error,
+    /// Fitted intensity of the source for the de Vaucouleurs Profile
     intensity_de_vaucouleurs,
+    /// Error on the fitted intensity of the bulge for the de Vaucouleurs Profile
     intensity_de_vaucouleurs_error,
+    /// Fitted effective radius of the source for de Vaucouleurs Profile
     radius_de_vaucouleurs,
+    /// Error on the fitted effective radius of the source for the de Vaucouleurs Profile
     radius_de_vaucouleurs_error,
+    /// Fitted ellipticity of source for the de Vaucouleurs Profile
     ellipticity_de_vaucouleurs,
+    /// Error on the fitted ellipticity of the source for the de Vaucouleurs Profile
     ellipticity_de_vaucouleurs_error,
+    /// L2 norm for the de Vaucouleurs Profile
     l2_de_vaucouleurs,
+    /// Vector form of the upper triangle of the correlation matrix for the fitted parameters for the de Vaucouleurs Profile
     morph_params_corr_vec_de_vaucouleurs,
+    /// Flag indicative of processing or scientific quality for the morphological parameters fitting for the de Vaucouleurs Profile
     flags_de_vaucouleurs,
+    /// Bit indicative of whether the input data from a given module met the source list eligibility criteria for the source of interest
     source_selection_flags,
 }
 

@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_long_period_variable table.
+/// This table describes the Long Period Variable stars.
+///
+/// Some entries can be NaN when absent.
 #[allow(non_camel_case_types)]
 pub struct vari_long_period_variable;
 
@@ -18,14 +20,23 @@ impl Table for vari_long_period_variable {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Absolute bolometric magnitude of the star
     abs_mag_bol,
+    /// Error of absolute bolometric magnitude
     abs_mag_bol_error,
+    /// Red supergiant flag
     rsg_flag,
+    /// Bolometric correction for LPVs
     bolometric_corr,
+    /// Error of the bolometric correction
     bolometric_corr_error,
+    /// Frequency of the LPV
     frequency,
+    /// Error on the frequency
     frequency_error,
 }
 

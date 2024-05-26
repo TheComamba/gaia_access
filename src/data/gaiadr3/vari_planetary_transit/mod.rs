@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_planetary_transit table.
+/// This table describes the Planetary Transit candidate events.
 #[allow(non_camel_case_types)]
 pub struct vari_planetary_transit;
 
@@ -18,12 +18,19 @@ impl Table for vari_planetary_transit {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Mid-transit reference time
     transit_reference_time,
+    /// Most probable transit period
     transit_period,
+    /// Transit depth
     transit_depth,
+    /// Transit duration
     transit_duration,
+    /// Number of in-transit observations
     num_in_transit,
 }
 

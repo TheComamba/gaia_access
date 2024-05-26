@@ -4,7 +4,7 @@
 
 use crate::traits::Schema;
 
-/// The external schema.
+/// TAP Schema for external catalogues
 #[allow(non_camel_case_types)]
 pub struct external;
 

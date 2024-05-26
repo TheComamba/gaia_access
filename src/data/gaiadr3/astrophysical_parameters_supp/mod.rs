@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The astrophysical_parameters_supp table.
+/// This table contains additional parameters from the Apsis processing chain, compared to the main table {\tt AstrophysicalParameters} (see Chapter~\ref{chap:cu8par}), from modules that produce more than one result for a parameter. It contains (1) the individual library results from GSP-Phot (see Section~\ref{ssec:cu8par_apsis_gspphot_method}), (2) FLAME results from processing GSP-Spec parameters given in the {\tt AstrophysicalParameters} table (see Section~\ref{ssec:cu8par_apsis_flame}), and (3) results from the GSP-Spec ANN algorithm (see Section~\ref{ssec:cu8par_apsis_gspspec}).
 #[allow(non_camel_case_types)]
 pub struct astrophysical_parameters_supp;
 
@@ -18,180 +18,355 @@ impl Table for astrophysical_parameters_supp {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Source Identifier
     source_id,
+    /// Name of library that achieves the highest mean log-posterior in MCMC samples from GSP-Phot Aeneas
     libname_best_gspphot,
+    /// Effective temperature from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     teff_gspphot_marcs,
+    /// Lower confidence level (16%) of effective temperature from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     teff_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of effective temperature from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     teff_gspphot_marcs_upper,
+    /// Surface gravity from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     logg_gspphot_marcs,
+    /// Lower confidence level (16%) of surface gravity from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     logg_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of surface gravity from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     logg_gspphot_marcs_upper,
+    /// Iron abundance from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     mh_gspphot_marcs,
+    /// Lower confidence level (16%) of iron abundance from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     mh_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of iron abundance from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     mh_gspphot_marcs_upper,
+    /// Distance from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     distance_gspphot_marcs,
+    /// Lower confidence level (16%) of distance from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     distance_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of distance from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     distance_gspphot_marcs_upper,
+    /// Monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     azero_gspphot_marcs,
+    /// Lower confidence level (16%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     azero_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     azero_gspphot_marcs_upper,
+    /// Extinction in G band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     ag_gspphot_marcs,
+    /// Lower confidence level (16%) of extinction in G band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     ag_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of extinction in G band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     ag_gspphot_marcs_upper,
+    /// Extinction in $G_{BP}$ band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     abp_gspphot_marcs,
+    /// Lower confidence level (16%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     abp_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     abp_gspphot_marcs_upper,
+    /// Extinction in $G_{RP}$ band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     arp_gspphot_marcs,
+    /// Lower confidence level (16%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     arp_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     arp_gspphot_marcs_upper,
+    /// Reddening $E(BP-RP)$ from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     ebpminrp_gspphot_marcs,
+    /// Lower confidence level (16%) of reddening  $E(BP-RP)$ from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     ebpminrp_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of reddening  $E(BP-RP)$ from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     ebpminrp_gspphot_marcs_upper,
+    /// Absolute magnitude $M_G$ from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     mg_gspphot_marcs,
+    /// Lower confidence level (16%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     mg_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     mg_gspphot_marcs_upper,
+    /// Radius from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     radius_gspphot_marcs,
+    /// Lower confidence level (16%) of radius from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     radius_gspphot_marcs_lower,
+    /// Upper confidence level (84%) of radius from GSP-Phot Aeneas for MARCS library using BP/RP spectra
     radius_gspphot_marcs_upper,
+    /// Goodness-of-fit score (mean log-posterior of MCMC) of GSP-Phot Aeneas MCMC for MARCS library
     logposterior_gspphot_marcs,
+    /// MCMC acceptance rate of GSP-Phot Aeneas MCMC for MARCS library
     mcmcaccept_gspphot_marcs,
+    /// Effective temperature from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     teff_gspphot_phoenix,
+    /// Lower confidence level (16%) of effective temperature from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     teff_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of effective temperature from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     teff_gspphot_phoenix_upper,
+    /// Surface gravity from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     logg_gspphot_phoenix,
+    /// Lower confidence level (16%) of surface gravity from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     logg_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of surface gravity from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     logg_gspphot_phoenix_upper,
+    /// Iron abundance from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     mh_gspphot_phoenix,
+    /// Lower confidence level (16%) of iron abundance from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     mh_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of iron abundance from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     mh_gspphot_phoenix_upper,
+    /// Distance from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     distance_gspphot_phoenix,
+    /// Lower confidence level (16%) of distance from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     distance_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of distance from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     distance_gspphot_phoenix_upper,
+    /// Monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     azero_gspphot_phoenix,
+    /// Lower confidence level (16%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     azero_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     azero_gspphot_phoenix_upper,
+    /// Extinction in G band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     ag_gspphot_phoenix,
+    /// Lower confidence level (16%) of extinction in G band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     ag_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of extinction in G band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     ag_gspphot_phoenix_upper,
+    /// Extinction in $G_{BP}$ band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     abp_gspphot_phoenix,
+    /// Lower confidence level (16%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     abp_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     abp_gspphot_phoenix_upper,
+    /// Extinction in $G_{RP}$ band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     arp_gspphot_phoenix,
+    /// Lower confidence level (16%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     arp_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     arp_gspphot_phoenix_upper,
+    /// Reddening $E(BP-RP)$ from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     ebpminrp_gspphot_phoenix,
+    /// Lower confidence level (16%) of reddening  $E(BP-RP)$ from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     ebpminrp_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of reddening  $E(BP-RP)$ from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     ebpminrp_gspphot_phoenix_upper,
+    /// Absolute magnitude $M_G$ from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     mg_gspphot_phoenix,
+    /// Lower confidence level (16%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     mg_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     mg_gspphot_phoenix_upper,
+    /// Radius from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     radius_gspphot_phoenix,
+    /// Lower confidence level (16%) of radius from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     radius_gspphot_phoenix_lower,
+    /// Upper confidence level (84%) of radius from GSP-Phot Aeneas for PHOENIX library using BP/RP spectra
     radius_gspphot_phoenix_upper,
+    /// Goodness-of-fit score (mean log-posterior of MCMC) of GSP-Phot Aeneas MCMC for PHOENIX library
     logposterior_gspphot_phoenix,
+    /// MCMC acceptance rate of GSP-Phot Aeneas MCMC for PHOENIX library
     mcmcaccept_gspphot_phoenix,
+    /// Effective temperature from GSP-Phot Aeneas for OB library using BP/RP spectra
     teff_gspphot_ob,
+    /// Lower confidence level (16%) of effective temperature from GSP-Phot Aeneas for OB library using BP/RP spectra
     teff_gspphot_ob_lower,
+    /// Upper confidence level (84%) of effective temperature from GSP-Phot Aeneas for OB library using BP/RP spectra
     teff_gspphot_ob_upper,
+    /// Surface gravity from GSP-Phot Aeneas for OB library using BP/RP spectra
     logg_gspphot_ob,
+    /// Lower confidence level (16%) of surface gravity from GSP-Phot Aeneas for OB library using BP/RP spectra
     logg_gspphot_ob_lower,
+    /// Upper confidence level (84%) of surface gravity from GSP-Phot Aeneas for OB library using BP/RP spectra
     logg_gspphot_ob_upper,
+    /// Iron abundance from GSP-Phot Aeneas for OB library using BP/RP spectra
     mh_gspphot_ob,
+    /// Lower confidence level (16%) of iron abundance from GSP-Phot Aeneas for OB library using BP/RP spectra
     mh_gspphot_ob_lower,
+    /// Upper confidence level (84%) of iron abundance from GSP-Phot Aeneas for OB library using BP/RP spectra
     mh_gspphot_ob_upper,
+    /// Distance from GSP-Phot Aeneas for OB library using BP/RP spectra
     distance_gspphot_ob,
+    /// Lower confidence level (16%) of distance from GSP-Phot Aeneas for OB library using BP/RP spectra
     distance_gspphot_ob_lower,
+    /// Upper confidence level (84%) of distance from GSP-Phot Aeneas for OB library using BP/RP spectra
     distance_gspphot_ob_upper,
+    /// Monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for OB library using BP/RP spectra
     azero_gspphot_ob,
+    /// Lower confidence level (16%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for OB library using BP/RP spectra
     azero_gspphot_ob_lower,
+    /// Upper confidence level (84%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for OB library using BP/RP spectra
     azero_gspphot_ob_upper,
+    /// Extinction in G band from GSP-Phot Aeneas for OB library using BP/RP spectra
     ag_gspphot_ob,
+    /// Lower confidence level (16%) of extinction in G band from GSP-Phot Aeneas for OB library using BP/RP spectra
     ag_gspphot_ob_lower,
+    /// Upper confidence level (84%) of extinction in G band from GSP-Phot Aeneas for OB library using BP/RP spectra
     ag_gspphot_ob_upper,
+    /// Extinction in $G_{BP}$ band from GSP-Phot Aeneas for OB library using BP/RP spectra
     abp_gspphot_ob,
+    /// Lower confidence level (16%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for OB library using BP/RP spectra
     abp_gspphot_ob_lower,
+    /// Upper confidence level (84%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for OB library using BP/RP spectra
     abp_gspphot_ob_upper,
+    /// Extinction in $G_{RP}$ band from GSP-Phot Aeneas for OB library using BP/RP spectra
     arp_gspphot_ob,
+    /// Lower confidence level (16%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for OB library using BP/RP spectra
     arp_gspphot_ob_lower,
+    /// Upper confidence level (84%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for OB library using BP/RP spectra
     arp_gspphot_ob_upper,
+    /// Reddening E(BP-RP) from GSP-Phot Aeneas for OB library using BP/RP spectra
     ebpminrp_gspphot_ob,
+    /// Lower confidence level (16%) of reddening  E(BP-RP) from GSP-Phot Aeneas for OB library using BP/RP spectra
     ebpminrp_gspphot_ob_lower,
+    /// Upper confidence level (84%) of reddening  E(BP-RP) from GSP-Phot Aeneas for OB library using BP/RP spectra
     ebpminrp_gspphot_ob_upper,
+    /// Absolute magnitude $M_G$ from GSP-Phot Aeneas for OB library using BP/RP spectra
     mg_gspphot_ob,
+    /// Lower confidence level (16%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for OB library using BP/RP spectra
     mg_gspphot_ob_lower,
+    /// Upper confidence level (84%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for OB library using BP/RP spectra
     mg_gspphot_ob_upper,
+    /// Radius from GSP-Phot Aeneas for OB library using BP/RP spectra
     radius_gspphot_ob,
+    /// Lower confidence level (16%) of radius from GSP-Phot Aeneas for OB library using BP/RP spectra
     radius_gspphot_ob_lower,
+    /// Upper confidence level (84%) of radius from GSP-Phot Aeneas for OB library using BP/RP spectra
     radius_gspphot_ob_upper,
+    /// Goodness-of-fit score (mean log-posterior of MCMC) of GSP-Phot Aeneas MCMC for OB library
     logposterior_gspphot_ob,
+    /// MCMC acceptance rate of GSP-Phot Aeneas MCMC for OB library
     mcmcaccept_gspphot_ob,
+    /// Effective temperature from GSP-Phot Aeneas for A library using BP/RP spectra
     teff_gspphot_a,
+    /// Lower confidence level (16%) of effective temperature from GSP-Phot Aeneas for A library using BP/RP spectra
     teff_gspphot_a_lower,
+    /// Upper confidence level (84%) of effective temperature from GSP-Phot Aeneas for A library using BP/RP spectra
     teff_gspphot_a_upper,
+    /// Surface gravity from GSP-Phot Aeneas for A library using BP/RP spectra
     logg_gspphot_a,
+    /// Lower confidence level (16%) of surface gravity from GSP-Phot Aeneas for A library using BP/RP spectra
     logg_gspphot_a_lower,
+    /// Upper confidence level (84%) of surface gravity from GSP-Phot Aeneas for A library using BP/RP spectra
     logg_gspphot_a_upper,
+    /// Iron abundance from GSP-Phot Aeneas for A library using BP/RP spectra
     mh_gspphot_a,
+    /// Lower confidence level (16%) of iron abundance from GSP-Phot Aeneas for A library using BP/RP spectra
     mh_gspphot_a_lower,
+    /// Upper confidence level (84%) of iron abundance from GSP-Phot Aeneas for A library using BP/RP spectra
     mh_gspphot_a_upper,
+    /// Distance from GSP-Phot Aeneas for A library using BP/RP spectra
     distance_gspphot_a,
+    /// Lower confidence level (16%) of distance from GSP-Phot Aeneas for A library using BP/RP spectra
     distance_gspphot_a_lower,
+    /// Upper confidence level (84%) of distance from GSP-Phot Aeneas for A library using BP/RP spectra
     distance_gspphot_a_upper,
+    /// Monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for A library using BP/RP spectra
     azero_gspphot_a,
+    /// Lower confidence level (16%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for A library using BP/RP spectra
     azero_gspphot_a_lower,
+    /// Upper confidence level (84%) of monochromatic extinction $A_0$ at 547.7nm from GSP-Phot Aeneas for A library using BP/RP spectra
     azero_gspphot_a_upper,
+    /// Extinction in G band from GSP-Phot Aeneas for A library using BP/RP spectra
     ag_gspphot_a,
+    /// Lower confidence level (16%) of extinction in G band from GSP-Phot Aeneas for A library using BP/RP spectra
     ag_gspphot_a_lower,
+    /// Upper confidence level (84%) of extinction in G band from GSP-Phot Aeneas for A library using BP/RP spectra
     ag_gspphot_a_upper,
+    /// Extinction in $G_{BP}$ band from GSP-Phot Aeneas for A library using BP/RP spectra
     abp_gspphot_a,
+    /// Lower confidence level (16%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for A library using BP/RP spectra
     abp_gspphot_a_lower,
+    /// Upper confidence level (84%) of extinction in $G_{BP}$ band from GSP-Phot Aeneas for A library using BP/RP spectra
     abp_gspphot_a_upper,
+    /// Extinction in $G_{RP}$ band from GSP-Phot Aeneas for A library using BP/RP spectra
     arp_gspphot_a,
+    /// Lower confidence level (16%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for A library using BP/RP spectra
     arp_gspphot_a_lower,
+    /// Upper confidence level (84%) of extinction in $G_{RP}$ band from GSP-Phot Aeneas for A library using BP/RP spectra
     arp_gspphot_a_upper,
+    /// Reddening $E(BP-RP)$ from GSP-Phot Aeneas for A library using BP/RP spectra
     ebpminrp_gspphot_a,
+    /// Lower confidence level (16%) of reddening  $E(BP-RP)$ from GSP-Phot Aeneas for A library using BP/RP spectra
     ebpminrp_gspphot_a_lower,
+    /// Upper confidence level (84%) of reddening  $E(BP-RP)$ from GSP-Phot Aeneas for A library using BP/RP spectra
     ebpminrp_gspphot_a_upper,
+    /// Absolute magnitude $M_G$ from GSP-Phot Aeneas for A library using BP/RP spectra
     mg_gspphot_a,
+    /// Lower confidence level (16%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for A library using BP/RP spectra
     mg_gspphot_a_lower,
+    /// Upper confidence level (84%) of absolute magnitude $M_G$ from GSP-Phot Aeneas for A library using BP/RP spectra
     mg_gspphot_a_upper,
+    /// Radius from GSP-Phot Aeneas for A library using BP/RP spectra
     radius_gspphot_a,
+    /// Lower confidence level (16%) of radius from GSP-Phot Aeneas for A library using BP/RP spectra
     radius_gspphot_a_lower,
+    /// Upper confidence level (84%) of radius from GSP-Phot Aeneas for A library using BP/RP spectra
     radius_gspphot_a_upper,
+    /// Goodness-of-fit score (mean log-posterior of MCMC) of GSP-Phot Aeneas MCMC for A library
     logposterior_gspphot_a,
+    /// MCMC acceptance rate of GSP-Phot Aeneas MCMC for A library
     mcmcaccept_gspphot_a,
+    /// Effective temperature from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     teff_gspspec_ann,
+    /// Lower confidence level (16%) of effective temperature from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     teff_gspspec_ann_lower,
+    /// Upper confidence level (84%) of effective temperature from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     teff_gspspec_ann_upper,
+    /// Surface gravity from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     logg_gspspec_ann,
+    /// Lower confidence level (16%) of surface gravity from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     logg_gspspec_ann_lower,
+    /// Upper confidence level (84%) of surface gravity from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     logg_gspspec_ann_upper,
+    /// Global metallicity from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     mh_gspspec_ann,
+    /// Lower confidence level (16%) of global metallicity from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     mh_gspspec_ann_lower,
+    /// Upper confidence level (84%) of global metallicity  from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     mh_gspspec_ann_upper,
+    /// Abundance of alpha-elements with respect to iron from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     alphafe_gspspec_ann,
+    /// Lower confidence level (16%) of alpha-elements with respect to iron from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     alphafe_gspspec_ann_lower,
+    /// Upper confidence level (84%) of alpha-elements with respect to iron from GSP-Spec ANN using RVS spectra and Monte Carlo realisations
     alphafe_gspspec_ann_upper,
+    /// Logarithm of the goodness-of-fit for the GSP-Spec ANN parameters
     logchisq_gspspec_ann,
+    /// Catalogue flags for GSP-Spec ANN
     flags_gspspec_ann,
+    /// Radius of the star from FLAME using {\tt teffGspspec} and {\tt lumFlameSpec}
     radius_flame_spec,
+    /// Lower confidence level (16%) of {\tt radiusFlameSpec}
     radius_flame_spec_lower,
+    /// Upper confidence level (84%) of {\tt radiusFlameSpec}
     radius_flame_spec_upper,
+    /// Luminosity of the star from FLAME using G band magnitude, extinction ({\tt agGspphot}),  parallax and a bolometric correction {\tt bcFlameSpec}
     lum_flame_spec,
+    /// Lower confidence level (16%) of {\tt lumFlameSpec}
     lum_flame_spec_lower,
+    /// Upper confidence level (84%) of {\tt lumFlameSpec}
     lum_flame_spec_upper,
+    /// Mass of the star from FLAME using stellar models,  {\tt lumFlameSpec} and {\tt teffGspspec}
     mass_flame_spec,
+    /// Lower confidence level (16%) of {\tt massFlameSpec}
     mass_flame_spec_lower,
+    /// Upper confidence level (84%) of {\tt massFlameSpec}
     mass_flame_spec_upper,
+    /// Age of the star from FLAME using stellar models, see {\tt massFlameSpec} for details
     age_flame_spec,
+    /// Lower confidence level (16%) of {\tt ageFlameSpec}
     age_flame_spec_lower,
+    /// Upper confidence level (84%) of {\tt ageFlameSpec}
     age_flame_spec_upper,
+    /// Flag indicating quality of parameters from FLAME using GSP-Spec parameters
     flags_flame_spec,
+    /// Evolutionary stage of the star from FLAME using stellar models, see {\tt massFlameSpec} for details
     evolstage_flame_spec,
+    /// Gravitational redshift from FLAME using GSP-Spec parameters
     gravredshift_flame_spec,
+    /// Lower confidence interval of {\tt gravredshiftFlameSpec}
     gravredshift_flame_spec_lower,
+    /// Upper confidence interval of {\tt gravredshiftFlameSpec}
     gravredshift_flame_spec_upper,
+    /// Bolometric correction applied to derive {\tt lumFlameSpec} using GSP-Spec parameters
     bc_flame_spec,
 }
 

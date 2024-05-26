@@ -4,7 +4,15 @@
 
 use crate::traits::{Column, Table};
 
-/// The synthetic_photometry_gspc table.
+/// Gaia Synthetic Photometry Catalogue (GSPC)
+///
+/// This is a catalogue of synthetic photometry generated from the Gaia BP/RP mean spectra in Data Release 3 and standardised using wide and reliable sets of external standard stars.
+///
+/// Only sources that have BP/RP mean spectra in Gaia DR3 can be included in this catalogue. Individual magnitudes and fluxes are included only if $F/\sigma_F>30$ in that passband, where $F$ and $\sigma_F$ are the flux and its uncertainty.
+///
+/// Synthetic photometry is provided in a selection of photometric systems.
+///
+/// Further details on the generation and composition of the catalogue are available in \cite{DR3-DPACP-93}.
 #[allow(non_camel_case_types)]
 pub struct synthetic_photometry_gspc;
 
@@ -18,59 +26,113 @@ impl Table for synthetic_photometry_gspc {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// BP/RP excess factor corrected for the expected colour dependency
     c_star,
+    /// U flux in the Johnson-Kron-Cousins system
     u_jkc_flux,
+    /// Error on the U flux in the Johnson-Kron-Cousins system
     u_jkc_flux_error,
+    /// U magnitude in the Johnson-Kron-Cousins system
     u_jkc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     u_jkc_flag,
+    /// B flux in the Johnson-Kron-Cousins system
     b_jkc_flux,
+    /// Error on the B flux in the Johnson-Kron-Cousins system
     b_jkc_flux_error,
+    /// B magnitude in the Johnson-Kron-Cousins system
     b_jkc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     b_jkc_flag,
+    /// V flux in the Johnson-Kron-Cousins system
     v_jkc_flux,
+    /// Error on the V flux in the Johnson-Kron-Cousins system
     v_jkc_flux_error,
+    /// V magnitude in the Johnson-Kron-Cousins system
     v_jkc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     v_jkc_flag,
+    /// R flux in the Johnson-Kron-Cousins system
     r_jkc_flux,
+    /// Error on the R flux in the Johnson-Kron-Cousins system
     r_jkc_flux_error,
+    /// R magnitude in the Johnson-Kron-Cousins system
     r_jkc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     r_jkc_flag,
+    /// I flux in the Johnson-Kron-Cousins system
     i_jkc_flux,
+    /// Error on the I flux in the Johnson-Kron-Cousins system
     i_jkc_flux_error,
+    /// I magnitude in the Johnson-Kron-Cousins system
     i_jkc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     i_jkc_flag,
+    /// u flux in the SDSS system
     u_sdss_flux,
+    /// Error on the u flux in the SDSS system
     u_sdss_flux_error,
+    /// u magnitude in the SDSS system
     u_sdss_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     u_sdss_flag,
+    /// g flux in the SDSS system
     g_sdss_flux,
+    /// Error on the g flux in the SDSS system
     g_sdss_flux_error,
+    /// g magnitude in the SDSS system
     g_sdss_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     g_sdss_flag,
+    /// r flux in the SDSS system
     r_sdss_flux,
+    /// Error on the r flux in the SDSS system
     r_sdss_flux_error,
+    /// r magnitude in the SDSS system
     r_sdss_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     r_sdss_flag,
+    /// i flux in the SDSS system
     i_sdss_flux,
+    /// Error on the i flux in the SDSS system
     i_sdss_flux_error,
+    /// i magnitude in the SDSS system
     i_sdss_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     i_sdss_flag,
+    /// z flux in the SDSS system
     z_sdss_flux,
+    /// Error on the z flux in the SDSS system
     z_sdss_flux_error,
+    /// z magnitude in the SDSS system
     z_sdss_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     z_sdss_flag,
+    /// y flux in the Pan-STARRS1 system
     y_ps1_flux,
+    /// Error on the y flux in the Pan-STARRS1 system
     y_ps1_flux_error,
+    /// y magnitude in the Pan-STARRS1 system
     y_ps1_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     y_ps1_flag,
+    /// F606W flux in the HST ACS/WFC system
     f606w_acswfc_flux,
+    /// Error on the F606W flux in the HST ACS/WFC system
     f606w_acswfc_flux_error,
+    /// F606W magnitude in the HST ACS/WFC system
     f606w_acswfc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     f606w_acswfc_flag,
+    /// F814W flux in the HST ACS/WFC system
     f814w_acswfc_flux,
+    /// Error on the F814W flux in the HST ACS/WFC system
     f814w_acswfc_flux_error,
+    /// F814W magnitude in the HST ACS/WFC system
     f814w_acswfc_mag,
+    /// Flag indicating if G mag and BP-RP color of the source lie in the validated range
     f814w_acswfc_flag,
 }
 

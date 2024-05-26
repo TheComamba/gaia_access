@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_long_period_variable table.
+/// This table describes the Long Period Variable stars.
 #[allow(non_camel_case_types)]
 pub struct vari_long_period_variable;
 
@@ -18,16 +18,27 @@ impl Table for vari_long_period_variable {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Frequency from G FoV time series
     frequency,
+    /// Uncertainty on the frequency from G FoV time series
     frequency_error,
+    /// Variability amplitude based on the best-fit model to the G FoV time series
     amplitude,
+    /// Median of the pseudo-wavelength separations between the two highest peaks in RP spectra
     median_delta_wl_rp,
+    /// Flag to mark C-stars
     is_cstar,
+    /// Frequency from radial velocity time series
     frequency_rv,
+    /// Uncertainty on the frequency from radial velocity time series
     frequency_rv_error,
+    /// Variability amplitude based on the best-fit model to the radial velocity time series
     amplitude_rv,
+    /// Flag identifying a top-quality subsample
     flag_rv,
 }
 

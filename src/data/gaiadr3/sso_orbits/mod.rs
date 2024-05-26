@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The sso_orbits table.
+/// Orbital parameters and uncertainties computed from the {\tt sso\_observation} astrometric data. The content of the table is described in the DR3 publication \cite{DR3-DPACP-150}.  
 #[allow(non_camel_case_types)]
 pub struct sso_orbits;
 
@@ -18,20 +18,35 @@ impl Table for sso_orbits {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// SSO Number
     number_mp,
+    /// Solar system object name
     denomination,
+    /// Reference epoch for osculating orbit
     osc_epoch,
+    /// Mean anomaly
     mean_anomaly,
+    /// Argument of perihelion
     arg_perihelion,
+    /// Longitude of ascending node
     long_asc_node,
+    /// Inclination
     inclination,
+    /// Eccentricity
     eccentricity,
+    /// Semimajor axis
     semi_major_axis,
+    /// var-covar matrix on elliptical elements at reference Epoch
     orbital_elements_var_covar_matrix,
+    /// Standard deviation on Semimajor axis
     std_dev_semi_major_axis,
+    /// Heliocentric State Vector at reference Epoch
     h_state_vector,
+    /// Covariance matrix of the State Vector
     h_state_vector_var_covar_matrix,
+    /// Orbital arc length spanned by the observations
     arc_length,
+    /// Number of observations
     num_observations,
 }
 

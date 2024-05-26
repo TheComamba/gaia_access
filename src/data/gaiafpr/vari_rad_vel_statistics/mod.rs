@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_rad_vel_statistics table.
+/// Statistical parameters of radial velocity time series using only transits retained and not rejected (see the relevant rejection flag in the epoch radial velocity variability table).
 #[allow(non_camel_case_types)]
 pub struct vari_rad_vel_statistics;
 
@@ -18,21 +18,37 @@ impl Table for vari_rad_vel_statistics {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Total number of radial velocity transits selected for variability analysis
     num_selected_rv,
+    /// Mean observation time for radial velocity transits
     mean_obs_time_rv,
+    /// Time duration of the time series for radial velocity transits
     time_duration_rv,
+    /// Minimum radial velocity
     min_rv,
+    /// Maximum radial velocity
     max_rv,
+    /// Mean radial velocity
     mean_rv,
+    /// Median radial velocity
     median_rv,
+    /// Difference between the highest and lowest radial velocity transits
     range_rv,
+    /// Square root of the unweighted radial velocity variance
     std_dev_rv,
+    /// Standardized unweighted radial velocity skewness
     skewness_rv,
+    /// Standardized unweighted radial velocity kurtosis
     kurtosis_rv,
+    /// Median Absolute Deviation (MAD) for radial velocity transits
     mad_rv,
+    /// Abbe value for radial velocity transits
     abbe_rv,
+    /// Interquartile range for radial velocity transits
     iqr_rv,
 }
 

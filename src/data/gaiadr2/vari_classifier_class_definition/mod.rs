@@ -4,7 +4,12 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_classifier_class_definition table.
+/// Table with detailed descriptions of published classes for each
+/// classifier described in VariClassifierDefinition and used in table
+/// VariClassifierResult.
+///
+/// In DR2 this table contains the details of a classifier with
+/// classifierName=‘nTransits:2+’.
 #[allow(non_camel_case_types)]
 pub struct vari_classifier_class_definition;
 
@@ -18,9 +23,13 @@ impl Table for vari_classifier_class_definition {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Name of the classifier that is detailed in this entry
     classifier_name,
+    /// Name of the published class from this classifier
     class_name,
+    /// Description of the published class from this classifier
     class_description,
 }
 

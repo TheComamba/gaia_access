@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The gaiaedr3_spurious table.
+/// Rybizki, et al. (2022): A classifier for spurious astrometric solutions in Gaia EDR3 (2022, MNRAS, accepted). Data replicated from the gedr3spur.main table at the GAVO Data Center TAP service https://dc.g-vo.org/tap and TAP metadata as of December 2021.
+/// Original table description.
+/// The Gaia mission is delivering exquisite astrometric data for 1.47 billion sources, which are revolutionizing many fields in astronomy. For a small fraction of these sources the astrometric solutions are poor, and the reported values and uncertainties may not apply. Before any analysis, it is important to recognize and excise these spurious results, commonly done by means of quality flags in the Gaia catalog. Here we devise and apply a path to separating “good” from “bad” astrometric solutions that is an order-of-magnitude cleaner than any single flag: 99.3% pure and 97.3% complete, as validated on our test data. We devise an extensive sample of manifestly bad astrometric solutions: sources whose inferred parallax is negative at ≥ 4.5 sigma; and a corresponding sample of presumably good solutions falling into a number of categories, including sources in HEALPix pixels on the sky that do not contain extremely negative parallaxes, and sources that fall on the main sequence in a color–absolute magnitude diagram. We then train a neural network that uses 17 pertinent Gaia catalog entries and information about nearby sources to discriminate these two samples, captured in a single “astrometric fidelity” parameter. An extensive and diverse set of verification tests shows that our approach to assessing astrometric fidelity works very cleanly, including in the regime where no negative parallaxes are involved. The main limitations of our approach are in the very low-SNR, crowded regime. Our astrometric fidelities for all of eDR3 can be queried via the Virtual Observatory. In the spirit of open science, we make our code and training/validation data public, so that our results can be easily reproduced.
 #[allow(non_camel_case_types)]
 pub struct gaiaedr3_spurious;
 
@@ -18,16 +20,27 @@ impl Table for gaiaedr3_spurious {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Gaia eDR3 unique source identifier. Note that this *cannot* be matched against the DR1 or DR2 source_ids.
     source_id,
+    /// A probability that eDR3 has a good astrometric solution for this source, with values between 0 (meaning likely spurious solution) and 1 (meaning likely good solution). This is the published probability estimate.
     fidelity_v2,
+    /// Distance to the eDR3 source within 30 arcsec of the object for which ΔG-θ is maximal. See norm_dg for details.
     theta_arcsec_worst_source,
+    /// This is a heuristic measure for contamination by bright stars in the neighbourhood. It is computed as ΔG-θ, where θ is the distance to another Gaia eDR3 object in arcsec (reported in theta_arcsec_worst_source), and ΔG is the magnitude difference in mag. This column gives the maximum of the values for all eDR3 sources within 30 arcsecs of the object.
     norm_dg,
+    /// Distance to the nearest neighbour in gaia_source at least 2 m fainter than this source.
     dist_nearest_neighbor_at_least_m2_brighter,
+    /// Distance to the nearest neighbour in gaia_source at least as bright as this source.
     dist_nearest_neighbor_at_least_0_brighter,
+    /// Distance to the nearest neighbour in gaia_source at least 2 m brighter than this source.
     dist_nearest_neighbor_at_least_2_brighter,
+    /// Distance to the nearest neighbour in gaia_source at least 4 m brighter than this source.
     dist_nearest_neighbor_at_least_4_brighter,
+    /// Distance to the nearest neighbour in gaia_source at least 6 m brighter than this source.
     dist_nearest_neighbor_at_least_6_brighter,
+    /// Distance to the nearest neighbour in gaia_source at least 10 m brighter than this source.
     dist_nearest_neighbor_at_least_10_brighter,
+    /// A probablity that eDR3 has a good astrometric solution for this source, with values between 0 (meaning likely spurious solution) and 1 (meaning likely good solution). This comes from a first version of the estimator that was reviewed based on an astro-ph paper.
     fidelity_v1,
 }
 

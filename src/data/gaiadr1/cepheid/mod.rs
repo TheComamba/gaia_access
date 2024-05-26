@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The cepheid table.
+/// This table describes the Cepheid stars identified in table
+/// VariableSummary as classification=“CEP”. In the analyses only
+/// observations with rejectedByVariabilityProcessing=false are included, as
+/// found in table PhotVariableTimeSeriesGfov.
 #[allow(non_camel_case_types)]
 pub struct cepheid;
 
@@ -18,23 +21,142 @@ impl Table for cepheid {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Classification of a Cepheid into “DCEP”, “T2CEP” or “ACEP” using the
+    /// period-luminosity relations, which are different for the three different
+    /// types of Cepheids.
     type_best_classification,
+    /// Sub-classification of a T2CEP Cepheids into BL Herculis (“BL_HER”), W
+    /// Virginis (“W_VIR”) or RV Tauris (“RV_TAU”) sub-types depending on the
+    /// source periodicity.
     type2_best_sub_classification,
+    /// Best mode classification estimate:
+    ///
+    /// -   “FUNDAMENTAL”: fundamental mode for typeBestClassification=“DCEP” or
+    ///     “ACEP”
+    ///
+    /// -   “FIRST_OVERTONE”: first overtone for typeBestClassification=“DCEP”
+    ///     or “ACEP”
+    ///
+    /// -   “SECOND_OVERTONE”: second overtone for typeBestClassification=“DCEP”
+    ///     or “ACEP”
+    ///
+    /// -   “UNDEFINED”: if mode could not be clearly determined for
+    ///     typeBestClassification=“DCEP” or “ACEP”
+    ///
+    /// -   “NOT_APPLICABLE”: when typeBestClassification=“T2CEP”
+    ///
+    /// Cepheid pulsation mode is assigned using the period-luminosity
+    /// relations, which are different for the various pulsation modes, and the
+    /// plot of the Fourier parameter R21 vs Period.
     mode_best_classification,
+    /// All Gaia data processed by the Data Processing and Analysis Consortium
+    /// comes tagged with a solution identifier. This is a numeric field
+    /// attached to each table row that can be used to unequivocally identify
+    /// the version of all the subsystems that where used in the generation of
+    /// the data as well as the input data used. It is mainly for internal DPAC
+    /// use but is included in the published data releases to enable end users
+    /// to examine the provenance of processed data products. To decode a given
+    /// solution ID visit
     solution_id,
+    /// A unique single numerical identifier of the source obtained from
+    /// GaiaSource (for a detailed description see GaiaSource.sourceId)
     source_id,
+    /// This parameter is filled with the period of the maximum power peak in
+    /// the frequencygram obtained from the modeling of the time series. The
+    /// light curve of the target star is modeled with a truncated Fourier
+    /// series (mag(t_j)=zp+\sum[A_i sin(i \times 2 \pi \nu_{max}t_j +\phi_i)]).
+    /// Zero-point (zp), period (1/\nu_{max}), number of harmonics (i),
+    /// amplitudes (A_i), and phases (\phi_i) of the harmonics, for the G-band
+    /// light curve are determined using the Levenberg-Marquardt non linear
+    /// fitting algorithm.
     p1,
+    /// This parameter is filled with the uncertainty value of the p1 parameter.
+    /// Its value is derived with Monte Carlo simulations that generate several
+    /// (100) time series with the same time path as the data points but with
+    /// magnitudes generated randomly around the corresponding data value. For
+    /// each of these time series the period is derived from the non linear
+    /// modeling with a truncated Fourier series of the light curve. The mean of
+    /// all the periods found and its standard deviation are then computed, and
+    /// the latter value is kept as value to fill the p1Error parameter.
     p1_error,
+    /// The epoch of maximum light for the Gaia integrated G band. It
+    /// corresponds to the Baricentric Julian day (BJD) of the maximum value of
+    /// the light curve model which is closest to the BJD of the first
+    /// observations -3\timesp1.
+    ///
+    /// The mentioned BJD is offset by JD 2455197.5 (= J2010.0).
     epoch_g,
+    /// The uncertainty value of the epochG parameter. Its value is three times
+    /// the error on the p1.
     epoch_g_error,
+    /// The intensity-averaged magnitude in the G-band. The intensity-averaged
+    /// magnitude is obtained by computing the average flux and then converting
+    /// the average flux to magnitude.
     int_average_g,
+    /// This parameter is filled with the uncertainty value of the intAverageG
+    /// parameter. The uncertainty is computed as the error(zp), where zp is the
+    /// zero point obtained by the non linear Fourier modeling of the light
+    /// curve.
     int_average_g_error,
+    /// This parameter is filled with the peak-to-peak amplitude value of the G
+    /// band light curve. The peak-to-peak amplitude is calculated as the
+    /// (maximum) - (minimum) of the folded modeled light curve in the G band.
+    /// The light curve of the target star is modeled with a truncated Fourier
+    /// series (mag(t_j)=zp+\sum[A_i sin(i \times 2 \pi \nu_{max}t_j
+    ///   +\phi_i)]). Zero-point (zp), period (1/\nu_{max}), number of harmonics
+    /// (i), amplitudes (A_i), and phases (\phi_i) of the harmonics, for the
+    /// G-band light curve are determined using the Levenberg-Marquardt non
+    /// linear fitting algorithm.
     peak_to_peak_g,
+    /// This parameter is filled with the uncertainty value of the peakToPeakG
+    /// parameter. The uncertainty is computed as the \sqrt{2}\times error(zp),
+    /// where zp is the zero point obtained by the non linear Fourier modeling
+    /// of the light curve.
     peak_to_peak_g_error,
+    /// This parameter is filled with the number of harmonics used to model P1
+    /// of the light curve. The light curve of the target star is modeled with a
+    /// truncated Fourier series
+    /// (mag(t_j)=zp+\sum[A_i sin(i \times 2 \pi \nu_{max}t_j +\phi_i)]).
+    /// Zero-point (zp), period (1/\nu_{max}), number of harmonics (i),
+    /// amplitudes (A_i), and phases (\phi_i) of the harmonics are determined
+    /// using the Levenberg-Marquardt non linear fitting algorithm.
     num_harmonics_for_p1,
+    /// This parameter is filled with the Fourier decomposition parameter
+    /// R_{21} = A_2/A_1, where A_2 is the amplitude of the 2nd harmonic and
+    /// A_{1} is the amplitude of the fundamental harmonic of the truncated
+    /// Fourier series defined hereafter. The light curve of the target star is
+    /// modeled with a truncated Fourier series
+    /// (mag(t_j)=zp+\sum[A_i sin(i \times 2 \pi \nu_{max}t_j +\phi_i)]).
+    /// Zero-point (zp), period (1/\nu_{max}), number of harmonics (i),
+    /// amplitudes (A_i), and phases (\phi_i) of the harmonics, are determined
+    /// using the Levenberg-Marquardt non linear fitting algorithm.
     r21_g,
+    /// This parameter is filled with the uncertainty value on the r21G
+    /// parameter. Its value isderived by propagation of the errors in the A2
+    /// and A1 parameters. Errors in A1,A2 are computed from Monte Carlo
+    /// simulations that generate several (100) time series with the same time
+    /// path as the data points but with magnitudes generated randomly around
+    /// the corresponding data value. The mean for each of these values and
+    /// their standard deviations are then computed, and the latter values are
+    /// kept as value to fill the uncertainty of the A1, A2 parameters.
     r21_g_error,
+    /// This parameter is filled with the Fourier decomposition parameter
+    /// \phi_{21}: \phi_2 - 2\phi_1 value. The light curve of the target star is
+    /// modeled with a truncated Fourier series (mag(t_j)=zp+\sum[A_i
+    ///   sin(i \times 2 \pi \nu_{max} t_j +\phi_i)]). Zero-point (zp), period
+    /// (1/\nu_{max}), number of harmonics (i), amplitudes (A_i), and phases
+    /// (\phi_i) of the harmonics, for the G-band light curve are determined
+    /// using the Levenberg-Marquardt non linear fitting algorithm.
     phi21_g,
+    /// This parameter is filled with the uncertainty of the phi21G parameter.
+    /// Its value is derived by propagation of the errors in the phi1 and phi2
+    /// parameters. Errors in phi1,phi2 are computed from Monte Carlo
+    /// simulations that generate several (100) time series with the same time
+    /// path as the data points but with magnitudes generated randomly around
+    /// the corresponding data value. For each of these time series the phi1,
+    /// phi2 values are computed. The mean for each of these values and their
+    /// standard deviation are then computed, and the latter values are kept as
+    /// value to fill the uncertainty of the phi1 and phi2 parameters.
     phi21_g_error,
 }
 

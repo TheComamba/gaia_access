@@ -4,7 +4,15 @@
 
 use crate::traits::{Column, Table};
 
-/// The ppmxl_original_valid table.
+/// PPMXL Catalogue  
+/// Reference papers:  
+/// PPMXL: Roeser et al. 2010, AJ 139, 2440  
+/// PPMX: Roeser et al. 2008,A&A 488, 401  
+/// Original Catalogue:  
+/// VO access: http://vo.uni-hd.de/ppmxl
+/// Catalogue curator:
+/// SSDC - ASI Space Science Data Center
+/// https://www.ssdc.asi.it/
 #[allow(non_camel_case_types)]
 pub struct ppmxl_original_valid;
 
@@ -18,24 +26,126 @@ impl Table for ppmxl_original_valid {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Incremental unique numeric identifier (increasing with declination).
+    /// This field was not in the original PPMXL catalogue, but was added for
+    /// cross-match purposes.
     ppmxl_oid,
+    /// Identifier (Q3C ipix of the USNO-B 1.0 object)
     ipix,
+    /// J2000 right ascension with respect to the ICRS, epoch 2000.0
     ra,
+    /// J2000 declination with respect to the ICRS, epoch 2000.0.
     dec,
+    /// Mean error in RA*cos(DEC) at mean epoch.
     ra_error_epra,
+    /// Mean error in DEC at mean epoch.
     dec_error_epde,
+    /// Proper motion in RA*cos(DEC).
     pmra,
+    /// Proper motion in Declination.
     pmde,
+    /// Mean error in proper motion in RA*cos(DEC).
     pmra_error,
+    /// Mean error in proper motion in DEC.
     pmde_error,
+    /// Number of catalogs (epoch) used for proper motions.  
+    /// May be blank (null) for stars coming from ARIHIP or Tycho-2 via PPMX
+    /// (i.e. bit#1 is set in “fl”).
     n_epochs,
+    /// Mean Epoch for RA.
     epra,
+    /// Mean Epoch for DEC.
     epde,
+    /// B mag from USNO-B, first epoch.  
+    ///
+    /// Magnitudes from USNO-B should be used with care, photometric calibration
+    /// may be severely off for some plates.  
+    /// For objects from PPMX (bit#1 set in “fl”), these magnitudes have a
+    /// special meaning:  
+    /// ————————————————————  
+    /// Column [PPMX] Content  
+    /// ————————————————————  
+    /// b1mag [Cmag] Catalogue magnitude from source  
+    /// b2mag [Bmag] Johnson B magnitude  
+    /// r1mag [Rmag] calculated Ru (UCAC) magnitude from source  
+    /// r2mag — (always empty)  
+    /// imag [Vmag] Johnson V magnitude
     b1mag,
+    /// B mag from USNO-B, second epoch.  
+    ///
+    /// Magnitudes from USNO-B should be used with care, photometric calibration
+    /// may be severely off for some plates.  
+    /// For objects from PPMX (bit#1 set in “fl”), these magnitudes have a
+    /// special meaning:  
+    /// ————————————————————  
+    /// Column [PPMX] Content  
+    /// ————————————————————  
+    /// b1mag [Cmag] Catalogue magnitude from source  
+    /// b2mag [Bmag] Johnson B magnitude  
+    /// r1mag [Rmag] calculated Ru (UCAC) magnitude from source  
+    /// r2mag — (always empty)  
+    /// imag [Vmag] Johnson V magnitude
     b2mag,
+    /// R mag from USNO-B, first epoch.  
+    ///
+    /// Magnitudes from USNO-B should be used with care, photometric calibration
+    /// may be severely off for some plates.  
+    /// For objects from PPMX (bit#1 set in “fl”), these magnitudes have a
+    /// special meaning:  
+    /// ————————————————————  
+    /// Column [PPMX] Content  
+    /// ————————————————————  
+    /// b1mag [Cmag] Catalogue magnitude from source  
+    /// b2mag [Bmag] Johnson B magnitude  
+    /// r1mag [Rmag] calculated Ru (UCAC) magnitude from source  
+    /// r2mag — (always empty)  
+    /// imag [Vmag] Johnson V magnitude
     r1mag,
+    /// R mag from USNO-B, second epoch.  
+    ///
+    /// Magnitudes from USNO-B should be used with care, photometric calibration
+    /// may be severely off for some plates.  
+    /// For objects from PPMX (bit#1 set in “fl”), these magnitudes have a
+    /// special meaning:  
+    /// ————————————————————  
+    /// Column [PPMX] Content  
+    /// ————————————————————  
+    /// b1mag [Cmag] Catalogue magnitude from source  
+    /// b2mag [Bmag] Johnson B magnitude  
+    /// r1mag [Rmag] calculated Ru (UCAC) magnitude from source  
+    /// r2mag — (always empty)  
+    /// imag [Vmag] Johnson V magnitude
     r2mag,
+    /// I mag from USNO-B.  
+    ///
+    /// Magnitudes from USNO-B should be used with care, photometric calibration
+    /// may be severely off for some plates.  
+    /// For objects from PPMX (bit#1 set in “fl”), these magnitudes have a
+    /// special meaning:  
+    /// ————————————————————  
+    /// Column [PPMX] Content  
+    /// ————————————————————  
+    /// b1mag [Cmag] Catalogue magnitude from source  
+    /// b2mag [Bmag] Johnson B magnitude  
+    /// r1mag [Rmag] calculated Ru (UCAC) magnitude from source  
+    /// r2mag — (always empty)  
+    /// imag [Vmag] Johnson V magnitude
     imag,
+    /// The flag is a bitwise or number (\Sigma 2^i) where each bit number (i)
+    /// has the meaning:  
+    /// #0 (1) = if set, one of the coordinates had an excessively large chi
+    /// square.  
+    /// #1 (2) = Row is from PPMX. These objects are mostly Tycho stars that
+    /// were masked out of USNO-B. When this bit is set, the USNO magnitudes
+    /// (b1mag through imag) have special meanings.  
+    /// #2 (4) = Row is from PPMX and replaces a single row from USNO-B. This is
+    /// done when the astrometry from PPMX was better (in terms of error
+    /// estimates) than the astrometry of the corresponding PPMXL object.  
+    /// #3 (8) = Row replaces multiple USNO-B1.0 objects. When PPMX contains an
+    /// object that has more than one counterpart in PPMXL, all such
+    /// counterparts are discarded on the assumption that they should have been
+    /// matched in USNO-B1.0 or result from erroneous matches. For these rows,
+    /// bit#1 is always 1.
     flags,
 }
 

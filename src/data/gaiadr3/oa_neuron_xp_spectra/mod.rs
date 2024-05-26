@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The oa_neuron_xp_spectra table.
+/// This is the table hosting the prototype BP/RP spectrum corresponding to each of the neurons of the Self-Organised-Map produced by the Apsis module OA. Other neuron attributes, such as statistics on various parameters, are available in another table: {\tt OaNeuronInformation}. See Section~\ref{ssec:cu8par_apsis_oa} for further details.
 #[allow(non_camel_case_types)]
 pub struct oa_neuron_xp_spectra;
 
@@ -18,12 +18,19 @@ impl Table for oa_neuron_xp_spectra {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Neuron identifier
     neuron_id,
+    /// Row index of the neuron in the Self-Organised Map lattice
     neuron_row_index,
+    /// Column index of the neuron in the Self-Organised Map lattice
     neuron_column_index,
+    /// Normalised flux at wavelength {\tt xpSpectrumPrototypeWavelength} for the preprocessed XP spectrum that best represents the neuron (prototype)
     xp_spectrum_prototype_flux,
+    /// Wavelength associated with the XP spectrum flux values
     xp_spectrum_prototype_wavelength,
+    /// Normalised flux at wavelength {\tt xpSpectrumPrototypeWavelength} for the preprocessed XP spectrum corresponding to the neuron template  
     xp_spectrum_template_flux,
 }
 

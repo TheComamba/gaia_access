@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The igsl_source table.
+/// null
 #[allow(non_camel_case_types)]
 pub struct igsl_source;
 
@@ -18,48 +18,114 @@ impl Table for igsl_source {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The data in the MDB will be described by means of a "Solution identifier" parameter. This will be a numeric field attached to each table row that can be used to unequivocally identify the version of all the subsystems that where used in the generation of the data as well as the input data used.Each DPC generating the data will have the freedom to choose the Solution identifier number, but they must ensure that given the Solution identifier they can provide detailed information about the "conditions" used to generate the data: versions of the software, version of the data used,...
     solution_id,
+    /// Source identifier as defined in GAIA-CD-TN-ARI-BAS-020-01
     source_id,
+    /// The right ascension at epoch  and equinox J2000
     ra,
+    /// The declination at epoch  and equinox J2000
     dec,
+    /// The mean error in the right ascension at mean epoch
     ra_error,
+    /// The mean error in the declination at mean epoch
     dec_error,
+    /// The mean epoch of the right ascension Julian Year in TCB. Note if there are proper motions the actual position will be at J2000 to have a consistent catalog and this is provided if the user wishes to add new information or find the best position.
     ra_epoch,
+    /// The mean epoch of the declination Julian Year in TCB. Note if there are proper motions the actual position will be at J2000 to have a consistent catalog and this is provided if the user wishes to add new information or find the best position.
     dec_epoch,
+    ///
+    /// The code that  appears in the IgslReferences that describes where the positional information comes from.
+    ///
     source_position,
+    /// Proper motion in right ascension multiplied by cos(declination).
     pm_ra,
+    /// Proper motion in declination
     pm_dec,
+    /// Mean error of proper motion in RA * cos(declination)
     pm_ra_error,
+    /// Mean error of proper motion in declination
     pm_dec_error,
+    ///
+    /// The code that  appears in the IgslReferences that describes where this
+    /// data point comes from.
+    ///
     source_mu,
+    /// Galactic Longditude calculated in float to use for indexing
     galactic_lon,
+    /// Galactic Latitude calculated in float to use for indexing
     galactic_lat,
+    /// Ecliptic Longditude calculated in float to use for indexing
     ecliptic_lon,
+    /// Ecliptic Latitude calculated in float to use for indexing
     ecliptic_lat,
+    /// The $B_J$ magnitude from the GSC23 when present or estimated from transformations when not present in the GSC23 or too bright to be reliable from GSC23. Very similar to B Johnson.
     mag_bj,
+    /// Error in the $B_J$ magnitude
     mag_bj_error,
+    /// Code in IgslReferences that describes where this magnitude comes from.
     source_mag_bj,
+    /// The $R_F$ magnitude from the GSC23 when present or estimated from transformations when not present in the GSC23 or too bright to be reliable from GSC23.  Very similar to R cousins.
     mag_rf,
+    /// Error in $R_F$
     mag_rf_error,
+    /// Code in IgslReferences that describes where this magnitude comes from.
     source_mag_rf,
+    /// Estimated $G$ magnitude based on transformations in livelink document RLS 001
     mag_g,
+    /// Estimated of error on G magnitude
     mag_g_error,
+    /// Code in IgslReferences that describes which transformation used.
     source_mag_g,
+    /// Estimated $G_rvs$ magnitude based on transformations in livelink document RLS 004
     mag_grvs,
+    /// Estimated of error on $G_rvs$ magnitude
     mag_grvs_error,
+    /// Code in SourceCatalogIDs that describes where base magnitudes came from
     source_mag_grvs,
+    /// Classification, simply a 0=star and 1=nonstar taken from different sources as given in the souceClass field
     classification,
+    /// Code in IgslReferences that describes where this datapoint comes from.
     source_classification,
+    /// A boolean that indicates if the objects is to be used for the Atittude Star Catalog.
     toggle_asc,
+    /// A boolean that indicates if the objects is present in the GSC2.3 cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences  table.
+    /// If yes the GSC2.3 id is in the SourceCatalogIDs as idGSC23.
     aux_gsc23,
+    /// A boolean that indicates if the objects is present in the SDSS cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences  table.
+    /// If yes the ID is in the the SourceCatalogIDs  as idSDSS
     aux_sdss,
+    /// A boolean that indicates if the objects is present in the UCAC cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences table.
+    /// If yes the ID is in the the iSourceCatalogIDs as idUCAC.
     aux_ucac,
+    /// A boolean that indicates if the objects is present in the CU3 QSO Aux cat GIQC, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences table.
+    /// If yes the ID is in the the SourceCatalogIDs  as idLQRF.
     aux_lqrf,
+    /// A boolean that indicates if the objects is present in theTYCHO2 cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences table.
+    /// If yes the ID is in the the SourceCatalogIDs as idTYCHO
     aux_tycho,
+    /// A boolean that indicates if the objects is present in the Hipparcos catalog, 0=no, 1=yes=true.
     aux_hip,
+    /// A boolean that indicates if the objects is present in the PPMXL cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences table.
+    /// If yes the ID is in the the SourceCatalogIDs as idPPMXL
     aux_ppmxl,
+    /// A boolean that indicates if the objects is present in the OGLE cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences  table.
+    /// If yes the ID is in the the SourceCatalogIDs  as idOGLE
     aux_ogle,
+    /// A boolean that indicates if the objects is present in the Two-MASS cat, 0=no, 1=yes.
+    /// Version and catalog details in the SourceCatalogReferences table.
+    /// If yes the ID is in the the SourceCatalogIDs as idTMASS.
     aux_tmass,
+    /// A boolean that indicates if the objects is present in the EPC, false=no, true=yes.
+    /// Version and catalog details in the SourceCatalogReference table.
+    /// If yes, the number in the SourceCatalogIDs table is the number in EPC.
     aux_epc,
 }
 

@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_long_period_variable table.
+/// This table describes the Long Period Variable stars.
+///
+/// Some entries can be NaN when absent.
 #[allow(non_camel_case_types)]
 pub struct vari_long_period_variable;
 
@@ -18,12 +20,19 @@ impl Table for vari_long_period_variable {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Frequency of the LPV
     frequency,
+    /// Error on the frequency
     frequency_error,
+    /// Amplitude of the LPV variability
     amplitude,
+    /// Median of the pseudo-wavelength separations between the two highest peaks in RP spectra
     median_delta_wl_rp,
+    /// Flag to mark C-stars
     is_cstar,
 }
 

@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_classifier_result table.
+/// Table with variability classification results of all classifiers, which are identified by the {\tt classifierName} column. In DR3, multiple classifiers (depending on class) are combined into a single classifier with {\tt classifierName}=`nTransits:5+, which is described in {\tt VariClassifierDefinition} and identifies the classes defined in {\tt VariClassifierClassDefinition}.
+///
+///
 #[allow(non_camel_case_types)]
 pub struct vari_classifier_result;
 
@@ -18,10 +20,15 @@ impl Table for vari_classifier_result {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Classifier name used to produce this result, use for lookup in \texttt{VariClassifierDefinition} table
     classifier_name,
+    /// Name of best class, see table \texttt{VariClassifierClassDefinition} for details of the class
     best_class_name,
+    /// Score of the best class
     best_class_score,
 }
 

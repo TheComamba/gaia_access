@@ -30,7 +30,7 @@ SCHEMA_TEMPLATE = """
 
 use crate::traits::Schema;
 
-/// The {name} schema.
+{description}
 #[allow(non_camel_case_types)]
 pub struct {name};
 
@@ -61,7 +61,7 @@ TABLE_TEMPLATE = """
 
 use crate::traits::{{Column, Table}};
 
-/// The {name} table.
+{description}
 #[allow(non_camel_case_types)]
 pub struct {name};
 
@@ -124,27 +124,27 @@ def read_xml_file():
         for schema in root:
             schema_name = schema.find("name").text
             if schema.find("description") is None:
-                schema_description = "The " + schema_name + " schema. (No further description available)"
+                schema_description = "/// The " + schema_name + " schema. (No further description available)"
             else:
-                schema_description = schema.find("description").text
+                schema_description = "/// " + schema.find("description").text.replace("\n", "\n/// ")
             tables = {}
             for table in schema:
                 if table.tag != "table":
                     continue
                 table_name = table.find("name").text.split('.')[-1]
                 if table.find("description") is None:
-                    table_description = "The " + table_name + " table. (No further description available)"
+                    table_description = "/// The " + table_name + " table. (No further description available)"
                 else:
-                    table_description = table.find("description").text
+                    table_description = "/// " + table.find("description").text.replace("\n", "\n/// ")
                 columns = []
                 for column in table:
                     if column.tag != "column":
                         continue
                     column_name = column.find("name").text
                     if column.find("description") is None:
-                        column_description = "The " + column_name + " column. (No further description available)"
+                        column_description = "/// The " + column_name + " column. (No further description available)"
                     else:
-                        column_description = column.find("description").text
+                        column_description = "/// " + column.find("description").text.replace("\n", "\n/// ")
                     columns.append({ "name": column_name, "description": column_description })
                 tables[table_name] = { "columns": columns, "description": table_description }
             gaia_schemas[schema_name] = { "tables": tables, "description": schema_description }
@@ -181,16 +181,16 @@ def write_data_file(schema, data_path):
     with open(os.path.join(data_path, 'mod.rs'), 'w') as data_file:
         data_file.write(DATA_TEMPLATE.format(schema_modules=schema_mods, known_schemas=known_schemas))
 
-def write_schema_file(schema_folder_path, schema_name, tables):
+def write_schema_file(schema_folder_path, schema_name, schema_description, tables):
     os.makedirs(schema_folder_path, exist_ok=True)
 
     table_mods = "\n".join([f'#[cfg(any(feature = "{schema_name}_{table}", test))] pub mod {table};' for table in tables])
     known_tables = "\n".join([f"{table}::collect_known(&mut tables);" for table in tables])
 
     with open(os.path.join(schema_folder_path, 'mod.rs'), 'w') as schema_file:
-        schema_file.write(SCHEMA_TEMPLATE.format(name=schema_name, modules=table_mods, known_tables=known_tables))
+        schema_file.write(SCHEMA_TEMPLATE.format(name=schema_name, description=schema_description, modules=table_mods, known_tables=known_tables))
 
-def write_table_file(table_folder_path, table_name, columns):
+def write_table_file(table_folder_path, table_name, table_description, columns):
     os.makedirs(table_folder_path, exist_ok=True)
 
     columns_for_enum = copy.deepcopy(columns)
@@ -216,11 +216,11 @@ def write_table_file(table_folder_path, table_name, columns):
         if column["name"] == "\"value\"":
             column["name"] = "value"
 
-    column_enums = "\n".join([f'{column["name"]},' for column in columns_for_enum])
+    column_enums = "\n".join([f'{column["description"]}\n{column["name"]},' for column in columns_for_enum])
     known_columns = "\n".join([f'col_strings.push(Col::{column["name"]}.to_string());' for column in columns_for_known])
 
     with open(os.path.join(table_folder_path, 'mod.rs'), 'w') as table_file:
-        table_file.write(TABLE_TEMPLATE.format(name=table_name, columns=column_enums, known_columns=known_columns))
+        table_file.write(TABLE_TEMPLATE.format(name=table_name, description=table_description, columns=column_enums, known_columns=known_columns))
 
 import os
 
@@ -268,11 +268,13 @@ def generate_code(schema):
     for schema_name in schema.keys():
         tables = schema[schema_name]["tables"]
         schema_folder_path = os.path.join(data_path, schema_name)
-        write_schema_file(schema_folder_path, schema_name, tables)
+        schema_description = schema[schema_name]["description"]
+        write_schema_file(schema_folder_path, schema_name, schema_description, tables)
         for table_name in tables.keys():
             columns = tables[table_name]["columns"]
             table_folder_path = os.path.join(schema_folder_path, table_name)
-            write_table_file(table_folder_path, table_name, columns)
+            table_description = tables[table_name]["description"]
+            write_table_file(table_folder_path, table_name, table_description, columns)
 
     update_cargo_toml(schema)
 

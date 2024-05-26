@@ -4,7 +4,8 @@
 
 use crate::traits::{Column, Table};
 
-/// The ravedr5_best_neighbour table.
+/// RAVE DR5 table lists each matched external catalogue object with its
+/// best neighbour in Gaia.
 #[allow(non_camel_case_types)]
 pub struct ravedr5_best_neighbour;
 
@@ -18,11 +19,17 @@ impl Table for ravedr5_best_neighbour {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique Gaia source identifier
     source_id,
+    /// Original External Catalogue source identifier
     original_ext_source_id,
+    /// Angular Distance between the two sources
     angular_distance,
+    /// Number of Gaia astrometric params used
     gaia_astrometric_params,
+    /// External Catalogue source identifier
     ravedr5_oid,
+    /// Number of neighbours in Gaia Catalogue
     number_of_neighbours,
 }
 

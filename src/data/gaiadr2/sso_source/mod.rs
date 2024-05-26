@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The sso_source table.
+/// This table contains data related to Solar System objects observed by
+/// Gaia. The quantities in the table are derived from data reduction and
+/// are associated to single objects.
 #[allow(non_camel_case_types)]
 pub struct sso_source;
 
@@ -18,10 +20,15 @@ impl Table for sso_source {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Source identifier
     source_id,
+    /// number of observations
     num_of_obs,
+    /// Minor Planet number
     number_mp,
+    /// standard MPC denomination of the asteroid
     denomination,
 }
 

@@ -4,7 +4,24 @@
 
 use crate::traits::{Column, Table};
 
-/// The qso_catalogue_name table.
+/// This table provides the list of input catalogues that have been used to select any given source for which morphological analysis parameters are provided in table \texttt{QsoCandidates}.
+///
+/// Each source may have been cross-matched to more than one catalogue and therefore can have several entries in the table.
+///
+/// For DR3, the catalogues considered for this selection are mostly external, although sources identified by DPAC based on the classification performed by other processing have also been included here.
+///
+/// Each catalogue is assigned a \texttt{catalogueId}. For DR3 the following applies:
+/// \begin{itemize}
+/// \item 1: CU7 GaiaVariQso2018
+/// \item 2: ICRF2
+/// \item 3: SDSS-DR12Q
+/// \item 4: LQAC3
+/// \item 5: Half Million Quasars
+/// \item 6: Secrest+2015
+/// \item 7: Assef+2018\_R90
+/// \end{itemize}
+///
+/// Further details on these catalogues are given in the chapter on extended object processing (\secref{sec:cu4eo_list}).
 #[allow(non_camel_case_types)]
 pub struct qso_catalogue_name;
 
@@ -18,8 +35,11 @@ impl Table for qso_catalogue_name {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// The unique identifier for the catalogue(s) used to select the sources in the morphological analysis
     catalogue_id,
 }
 

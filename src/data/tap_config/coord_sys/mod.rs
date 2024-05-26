@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The coord_sys table.
+/// The coord_sys table. (No further description available)
 #[allow(non_camel_case_types)]
 pub struct coord_sys;
 
@@ -18,10 +18,15 @@ impl Table for coord_sys {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// The epoch column. (No further description available)
     epoch,
+    /// The equinox column. (No further description available)
     equinox,
+    /// The id column. (No further description available)
     id,
+    /// The system column. (No further description available)
     system,
+    /// The xml_output column. (No further description available)
     xml_output,
 }
 

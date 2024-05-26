@@ -4,7 +4,11 @@
 
 use crate::traits::{Column, Table};
 
-/// The gaia_source table.
+/// This table has an entry for every Gaia observed source as listed in the
+/// Main Database accumulating catalogue version from which the catalogue
+/// release has been generated. It contains the basic source parameters,
+/// that is only final data (no epoch data) and no spectra (neither final
+/// nor epoch).
 #[allow(non_camel_case_types)]
 pub struct gaia_source;
 
@@ -18,101 +22,197 @@ impl Table for gaia_source {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source designation (unique across all Data Releases)
     designation,
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Random index used to select subsets
     random_index,
+    /// Reference epoch
     ref_epoch,
+    /// Right ascension
     ra,
+    /// Standard error of right ascension
     ra_error,
+    /// Declination
     dec,
+    /// Standard error of declination
     dec_error,
+    /// Parallax
     parallax,
+    /// Standard error of parallax
     parallax_error,
+    /// Parallax divided by its error
     parallax_over_error,
+    /// Proper motion in right ascension direction
     pmra,
+    /// Standard error of proper motion in right ascension direction
     pmra_error,
+    /// Proper motion in declination direction
     pmdec,
+    /// Standard error of proper motion in declination direction
     pmdec_error,
+    /// Correlation between right ascension and declination
     ra_dec_corr,
+    /// Correlation between right ascension and parallax
     ra_parallax_corr,
+    /// Correlation between right ascension and proper motion in right ascension
     ra_pmra_corr,
+    /// Correlation between right ascension and proper motion in declination
     ra_pmdec_corr,
+    /// Correlation between declination and parallax
     dec_parallax_corr,
+    /// Correlation between declination and proper motion in right ascension
     dec_pmra_corr,
+    /// Correlation between declination and proper motion in declination
     dec_pmdec_corr,
+    /// Correlation between parallax and proper motion in right ascension
     parallax_pmra_corr,
+    /// Correlation between parallax and proper motion in declination
     parallax_pmdec_corr,
+    /// Correlation between proper motion in right ascension and proper motion in declination
     pmra_pmdec_corr,
+    /// Total number of observations AL
     astrometric_n_obs_al,
+    /// Total number of observations AC
     astrometric_n_obs_ac,
+    /// Number of good observations AL
     astrometric_n_good_obs_al,
+    /// Number of bad observations AL
     astrometric_n_bad_obs_al,
+    /// Goodness of fit statistic of model wrt along-scan observations
     astrometric_gof_al,
+    /// AL chi-square value
     astrometric_chi2_al,
+    /// Excess noise of the source
     astrometric_excess_noise,
+    /// Significance of excess noise
     astrometric_excess_noise_sig,
+    /// Which parameters have been solved for?
     astrometric_params_solved,
+    /// Primary or seconday
     astrometric_primary_flag,
+    /// Mean astrometric weight of the source
     astrometric_weight_al,
+    /// Astrometrically determined pseudocolour of the source
     astrometric_pseudo_colour,
+    /// Standard error of the pseudocolour of the source
     astrometric_pseudo_colour_error,
+    /// Mean Parallax factor AL
     mean_varpi_factor_al,
+    /// Matched FOV transits used in the AGIS solution
     astrometric_matched_observations,
+    /// Number of visibility periods used in Astrometric solution
     visibility_periods_used,
+    /// The longest semi-major axis of the 5-d error ellipsoid
     astrometric_sigma5d_max,
+    /// The type of the source mainly used for frame rotation
     frame_rotator_object_type,
+    /// Amount of observations matched to this source
     matched_observations,
+    /// Source with duplicate sources
     duplicated_source,
+    /// Number of observations contributing to G photometry
     phot_g_n_obs,
+    /// G-band mean flux
     phot_g_mean_flux,
+    /// Error on G-band mean flux
     phot_g_mean_flux_error,
+    /// G-band mean flux divided by its error
     phot_g_mean_flux_over_error,
+    /// G-band mean magnitude
     phot_g_mean_mag,
+    /// Number of observations contributing to BP photometry
     phot_bp_n_obs,
+    /// Integrated BP mean flux
     phot_bp_mean_flux,
+    /// Error on the integrated BP mean flux
     phot_bp_mean_flux_error,
+    /// Integrated BP mean flux divided by its error
     phot_bp_mean_flux_over_error,
+    /// Integrated BP mean magnitude
     phot_bp_mean_mag,
+    /// Number of observations contributing to RP photometry
     phot_rp_n_obs,
+    /// Integrated RP mean flux
     phot_rp_mean_flux,
+    /// Error on the integrated RP mean flux
     phot_rp_mean_flux_error,
+    /// Integrated RP mean flux divided by its error
     phot_rp_mean_flux_over_error,
+    /// Integrated RP mean magnitude
     phot_rp_mean_mag,
+    /// BP/RP excess factor
     phot_bp_rp_excess_factor,
+    /// Photometry processing mode
     phot_proc_mode,
+    /// BP - RP colour
     bp_rp,
+    /// BP - G colour
     bp_g,
+    /// G - RP colour
     g_rp,
+    /// Radial velocity
     radial_velocity,
+    /// Radial velocity error
     radial_velocity_error,
+    /// Number of transits used to compute radial velocity
     rv_nb_transits,
+    /// Teff of the template used to compute radial velocity
     rv_template_teff,
+    /// logg of the template used to compute radial velocity
     rv_template_logg,
+    /// Fe/H of the template used to compute radial velocity
     rv_template_fe_h,
+    /// Photometric variability flag
     phot_variable_flag,
+    /// Galactic longitude
     l,
+    /// Galactic latitude
     b,
+    /// Ecliptic longitude
     ecl_lon,
+    /// Ecliptic latitude
     ecl_lat,
+    /// flags for the Apsis-Priam results
     priam_flags,
+    /// stellar effective temperature
     teff_val,
+    /// teffVal lower uncertainty
     teff_percentile_lower,
+    /// teffVal upper uncertainty
     teff_percentile_upper,
+    /// line-of-sight extinction in the G band, A_G)
     a_g_val,
+    /// aGVal lower uncertainty
     a_g_percentile_lower,
+    /// aGVal upper uncertainty
     a_g_percentile_upper,
+    /// line-of-sight reddening E(BP-RP)
     e_bp_min_rp_val,
+    /// eBPminRPVal lower uncertainty
     e_bp_min_rp_percentile_lower,
+    /// eBPminRPVal upper uncertainty
     e_bp_min_rp_percentile_upper,
+    /// Flags for the Apsis-FLAME results
     flame_flags,
+    /// stellar radius
     radius_val,
+    /// radiusVal lower uncertainty
     radius_percentile_lower,
+    /// radiusVal upper uncertainty
     radius_percentile_upper,
+    /// stellar luminosity
     lum_val,
+    /// lumVal lower uncertainty
     lum_percentile_lower,
+    /// lumVal upper uncertainty
     lum_percentile_upper,
+    /// datalink url
     datalink_url,
+    /// The epoch_photometry_url column. (No further description available)
     epoch_photometry_url,
 }
 

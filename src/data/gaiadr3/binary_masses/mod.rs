@@ -4,7 +4,25 @@
 
 use crate::traits::{Column, Table};
 
-/// The binary_masses table.
+/// Masses derived from the non-single stars (NSS) solutions with orbital parameters in table {\tt gaiadr3.nss\_two\_body\_orbit}. The table below is described in detail in \cite{DR3-DPACP-100}. The table presents the different types of NSS orbital solutions combined and which parameters each combination allows to constrain:
+///
+/// \begin{tabular}{llccc}
+/// \hline\hline
+/// {\tt combinationMethod} & {\tt m1} & {\tt m2} & {\tt fluxratio} \\
+/// \hline
+/// Orbital+SB2               & \checkmark & \checkmark & \checkmark \\
+/// EclipsingSpectro(SB2)  & \checkmark & \checkmark & \\
+/// Eclipsing+SB2           & \checkmark & \checkmark & \\
+/// AstroSpectroSB1+M1   & & \checkmark & \checkmark \\
+/// Orbital+SB1+M1         & & \checkmark & \checkmark \\
+/// EclipsingSpectro+M1  & & \checkmark & \\
+/// Eclipsing+SB1+M1     & & \checkmark & \\
+/// SB2+M1                  & & \checkmark & \\
+/// Orbital+M1                & & lower/upper & \\
+/// SB1+M1               & & lower & \\
+/// \hline
+/// \end{tabular}
+///
 #[allow(non_camel_case_types)]
 pub struct binary_masses;
 
@@ -18,18 +36,31 @@ impl Table for binary_masses {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Source Identifier
     source_id,
+    /// Primary mass
     m1,
+    /// Lower confidence level (16%) of the primary mass
     m1_lower,
+    /// Upper confidence level (84%) of the primary mass
     m1_upper,
+    /// Secondary mass
     m2,
+    /// Lower confidence level (16%) of the secondary mass
     m2_lower,
+    /// Upper confidence level (84%) of the secondary mass
     m2_upper,
+    /// Flux ratio of the secondary to the primary in the G-band
     fluxratio,
+    /// Lower value of the flux ratio
     fluxratio_lower,
+    /// Upper value of the flux ratio
     fluxratio_upper,
+    /// Combination of NSS solutions used
     combination_method,
+    /// Reference for the primary mass
     m1_ref,
+    /// Flag
     flag,
 }
 

@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The gold_sample_oba_stars table.
+/// List of \textit{Gaia} DR3 source IDs of O, B, and A-type stars having an effective temperature estimate provided by ESP-HS or/and GSP-Phot greater than 7\,500~K. Based on the information available in the \textit{Gaia} DR3 catalogue, various filters were applied in order to reduce as much as possible the pollution from other types of targets. See \cite{DR3-DPACP-123} for more details.
 #[allow(non_camel_case_types)]
 pub struct gold_sample_oba_stars;
 
@@ -18,7 +18,9 @@ impl Table for gold_sample_oba_stars {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
+    /// Flag indicating whether the tangential velocity is above 180 km/s
     vtan_flag,
 }
 

@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The alerts_mixedin_sourceids table.
+/// Some photometric science alerts mix transits from their primary source and other sources in the catalogue. This is done when those sources are believed to be associated with a single, astrophysical source.
+///
+/// This table lists the identifier for these mixed-in sources, linking them to the primary sourceIds listed in table \texttt{ScienceAlerts}.
 #[allow(non_camel_case_types)]
 pub struct alerts_mixedin_sourceids;
 
@@ -18,8 +20,11 @@ impl Table for alerts_mixedin_sourceids {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Primary sourceId associated to the alert
     alert_source_id,
+    /// Additional sourceId, if any, associated to the alert
     mixed_in_source_id,
 }
 

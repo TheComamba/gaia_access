@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The oa_neuron_information table.
+/// This is the table hosting the content of a Self-Organized Map calculated from a dataset composed by outliers by the Apsis module OA. Each entry corresponds to parameters estimated for one particular neuron of the map. The prototype BP/RP spectrum for a particular neuron is available in another table: {\tt OaNeuronXpSpectra}. See Section~\ref{ssec:cu8par_apsis_oa} for further details.
 #[allow(non_camel_case_types)]
 pub struct oa_neuron_information;
 
@@ -18,83 +18,167 @@ impl Table for oa_neuron_information {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Self-Organized Map identifier
     som_id,
+    /// Neuron identifier
     neuron_id,
+    /// Row index of the neuron in the Self-Organised Map lattice
     neuron_row_index,
+    /// Column index of the neuron in the Self-Organised Map lattice
     neuron_column_index,
+    /// Number of sources populating the neuron
     hits,
+    /// Astronomical class estimated for the neuron
     class_label,
+    /// Identifier of the Gaia source that minimizes the classification distance to the neuron
     centroid_id,
+    /// Squared Euclidean distance between the centroid XP spectrum and the neuron XP prototype
     centroid_distance,
+    /// Squared Euclidean distance between the reference XP template and the neuron XP prototype
     template_distance,
+    /// Mean $G$ value for the sources that belong to the neuron
     g_mag_mean,
+    /// Standard deviation of $G$ values for the sources that belong to the neuron
     g_mag_std_dev,
+    /// Minimum $G$ value for the sources that belong to the neuron
     g_mag_min,
+    /// Maximum $G$ value for the sources that belong to the neuron
     g_mag_max,
+    /// Mean $G_{\rm BP}$ value for the sources that belong to the neuron
     bp_mag_mean,
+    /// Standard deviation of $G_{\rm BP}$ values for the sources that belong to the neuron
     bp_mag_std_dev,
+    /// Minimum value of $G_{\rm BP}$ for the sources that belong to the neuron
     bp_mag_min,
+    /// Maximum value of $G_{\rm BP}$ for the sources that belong to the neuron
     bp_mag_max,
+    /// Mean $G_{\rm RP}$ value for the sources that belong to the neuron neuron
     rp_mag_mean,
+    /// Standard deviation of $G_{\rm RP}$ values for the sources that belong to the neuron
     rp_mag_std_dev,
+    /// Minimum value of $G_{\rm RP}$ for the sources that belong to the neuron  
     rp_mag_min,
+    /// Maximum value of $G_{\rm RP}$ for the sources that belong to the neuron
     rp_mag_max,
+    /// Mean value of the proper motion in right ascension for the sources that belong to the neuron
     pm_ra_mean,
+    /// Standard deviation of the proper motion in right ascension for the sources that belong to the neuron
     pm_ra_std_dev,
+    /// Minimum value of the proper motion in right ascension for the sources that belong to the neuron
     pm_ra_min,
+    /// Maximum value of the proper motion in right ascension for the sources that belong to the neuron
     pm_ra_max,
+    /// Mean value of the proper motion in declination for the sources that belong to the neuron
     pm_dec_mean,
+    /// Standard deviation of the proper motion in declination for the sources that belong to the neuron
     pm_dec_std_dev,
+    /// Minimum value of the proper motion in declination for the sources that belong to the neuron
     pm_dec_min,
+    /// Maximum value of the proper motion in declination for the sources that belong to the neuron
     pm_dec_max,
+    /// Mean parallax value for the sources that belong to the neuron
     parallax_mean,
+    /// Standard deviation of the parallax values for the sources that belong to the neuron
     parallax_std_dev,
+    /// Minimum parallax value for the sources that belong to the neuron
     parallax_min,
+    /// Maximum parallax value for the sources that belong to the neuron
     parallax_max,
+    /// Mean galactic latitude for the sources that belong to the neuron
     gal_latitude_mean,
+    /// Standard deviation of the galactic latitude values for the sources that belong to the neuron
     gal_latitude_std_dev,
+    /// Minimum galactic latitude for the sources that belong to the neuron
     gal_latitude_min,
+    /// Maximum galactic latitude for the sources that belong to the neuron
     gal_latitude_max,
+    /// Mean value of the squared Euclidean distance between each of the XP sources in the neuron and the neuron prototype
     intra_neuron_distance_mean,
+    /// Standard deviation of the squared Euclidean distance between each of the XP sources in the neuron and the neuron prototype
     intra_neuron_distance_std_dev,
+    /// Minimum squared Euclidean distance between each of the XP sources in the neuron and the neuron prototype
     intra_neuron_distance_min,
+    /// Maximum squared Euclidean distance between each of the XP sources in the neuron and the neuron prototype
     intra_neuron_distance_max,
+    /// Mean value of the squared Euclidean distance between the neuron XP prototype and the XP prototypes of its immediate neighbours
     inter_neuron_distance_mean,
+    /// Standard deviation of the squared Euclidean distance between the neuron XP prototype and the XP prototypes of its immediate neighbours
     inter_neuron_distance_std_dev,
+    /// Minimum value of the squared Euclidean distance between the neuron XP prototype and the XP prototypes of its immediate neighbours
     inter_neuron_distance_min,
+    /// Maximum value of the squared Euclidean distance between the neuron XP prototype and the XP prototypes of its immediate neighbours
     inter_neuron_distance_max,
+    /// Name of the template used to describe the neuron
     template_name,
+    /// 25th percentile value for the intra-neuron distance distribution
     distance_percentile25,
+    /// 50th percentile value for the intra-neuron distance distribution
     distance_percentile50,
+    /// 68th percentile value for the intra-neuron distance distribution
+    ///
     distance_percentile68,
+    /// 75th percentile value for the intra-neuron distance distribution
+    ///
     distance_percentile75,
+    /// 95th percentile value for the intra-neuron distance distribution
+    ///
     distance_percentile95,
+    /// Full Width at Half Maximum value for the intra-neuron distance distribution
     distance_fwhm,
+    /// Skewness value for the intra-neuron distance distribution
     distance_skew,
+    /// Kurtosis value for the intra-neuron distance distribution
     distance_kurtosis,
+    /// Inter-Quartile Range value for the intra-neuron distance distribution
     distance_i_q_r,
+    /// Normalized FWHM value for the intra-neuron distance distribution
     distance_fwhm_norm,
+    /// Quality category assigned to the neuron, where 0 corresponds to the most homogeneous neurons and 6 to the most heterogeneous ones
     quality_category,
+    /// Mean value of the number of  BP transits for the sources that belong to the neuron
     bp_transits_mean,
+    /// Standard deviation of the number of BP transits for the sources that belong to the neuron
     bp_transits_std_dev,
+    /// Minimum value of the number of BP transits for the sources that belong to the neuron
+    ///
     bp_transits_min,
+    /// Maximum value of the number of BP transits for the sources that belong to the neuron
     bp_transits_max,
+    /// Mean value of the number of  RP transits for the sources that belong to the neuron
+    ///
     rp_transits_mean,
+    /// Standard deviation of the number of RP transits for the sources that belong to the neuron
     rp_transits_std_dev,
+    /// Minimum value of the number of RP transits for the sources that belong to the neuron
     rp_transits_min,
+    /// Maximum value of the number of RP transits for the sources that belong to the neuron
     rp_transits_max,
+    /// Mean value of the renormalised unit weight error for the sources that belong to the neuron
     ruwe_mean,
+    /// Standard deviation of the renormalised unit weight error for the sources that belong to the neuron
     ruwe_std_dev,
+    /// Minimum value of the renormalised unit weight error for the sources that belong to the neuron
     ruwe_min,
+    /// Maximum value of the renormalised unit weight error for the sources that belong to the neuron
+    ///
     ruwe_max,
+    /// Mean value of the BP/RP flux excess for the sources that belong to the neuron
     bprp_mean_flux_excess_mean,
+    /// Standard deviation of the BP/RP flux excess for the sources that belong to the neuron
     bprp_mean_flux_excess_std_dev,
+    /// Minimum value of the BP/RP flux excess for the sources that belong to the neuron
     bprp_mean_flux_excess_min,
+    /// Maximum value of the BP/RP flux excess for the sources that belong to the neuron
     bprp_mean_flux_excess_max,
+    /// Mean value of the $G_{\rm BP}-G_{\rm RP}$ colour for the sources that belong to the neuron
     bprp_colour_mean,
+    /// Standard deviation of the $G_{\rm BP}-G_{\rm RP}$ colour for the sources that belong to the neuron
     bprp_colour_std_dev,
+    /// Minimum value of the $G_{\rm BP}-G_{\rm RP}$ colour for the sources that belong to the neuron
     bprp_colour_min,
+    /// Maximum value of the $G_{\rm BP}-G_{\rm RP}$ colour for the sources that belong to the neuron
     bprp_colour_max,
 }
 

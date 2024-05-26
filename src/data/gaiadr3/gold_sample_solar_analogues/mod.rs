@@ -4,7 +4,8 @@
 
 use crate::traits::{Column, Table};
 
-/// The gold_sample_solar_analogues table.
+/// \textit{Gaia} DR3 source IDs of candidates for solar analogues selected from GSP-Spec via effective temperature, surface gravity and metallicity and from FLAME via mass and radius.
+/// For more details please refer to \cite{DR3-DPACP-123}.
 #[allow(non_camel_case_types)]
 pub struct gold_sample_solar_analogues;
 
@@ -18,6 +19,7 @@ impl Table for gold_sample_solar_analogues {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Unique source identifier (unique within a particular Data Release)
     source_id,
 }
 

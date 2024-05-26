@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The vari_classifier_result table.
+/// Table with variability classification results of all classifiers,
+/// identified by the classifierName column. In DR2 it contains a classifier
+/// with classifierName=‘nTransits:2+’, description of which can be found in
+/// VariClassifierDefinition and classes in VariClassifierClassDefinition.
 #[allow(non_camel_case_types)]
 pub struct vari_classifier_result;
 
@@ -18,10 +21,15 @@ impl Table for vari_classifier_result {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Unique source identifier
     source_id,
+    /// Classifier name used to produce this result, use for lookup in VariClassifierDefinition table
     classifier_name,
+    /// Name of best class, see table VariClassifierDefinition for details of the class
     best_class_name,
+    /// Score of the best class
     best_class_score,
 }
 

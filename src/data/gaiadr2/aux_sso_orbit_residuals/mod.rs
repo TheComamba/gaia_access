@@ -4,7 +4,10 @@
 
 use crate::traits::{Column, Table};
 
-/// The aux_sso_orbit_residuals table.
+/// Residuals with respect to an orbital fit considering only the Gaia
+/// observations. Each entry has a corresponding record in the table
+/// sso_observation. A flag is given, indicating if the observation has been
+/// rejected by the fit procedure.
 #[allow(non_camel_case_types)]
 pub struct aux_sso_orbit_residuals;
 
@@ -18,15 +21,25 @@ impl Table for aux_sso_orbit_residuals {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Source identifier
     source_id,
+    /// Transit Identifier
     transit_id,
+    /// Observation Identifier
     observation_id,
+    /// minor planet number attributed by MPC
     number_mp,
+    /// Gaiacentric epoch TCB(Gaia)
     epoch,
+    /// post-orbital fit residual in RA*cos(Dec)
     residual_ra,
+    /// post-orbital fit residual in Dec
     residual_dec,
+    /// post-orbital fit residual AL
     residual_al,
+    /// post-orbital fit residual AC
     residual_ac,
+    /// observation not rejected by orbital fit
     selected,
 }
 

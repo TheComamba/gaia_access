@@ -4,7 +4,9 @@
 
 use crate::traits::{Column, Table};
 
-/// The aux_sso_orbits table.
+/// Auxiliary information on asteroid orbits and basic photometric
+/// parameters. Ready to ingest the astorb data base:
+/// ftp://cdsarc.u-strasbg.fr/pub/cats/B/astorb/astorb.html
 #[allow(non_camel_case_types)]
 pub struct aux_sso_orbits;
 
@@ -18,24 +20,43 @@ impl Table for aux_sso_orbits {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
+    /// Solution Identifier
     solution_id,
+    /// Asteroid MPC number
     number_mp,
+    /// MPC name
     designation,
+    /// absolute magnitude
     mag_h,
+    /// slope parameter
     slope_g,
+    /// object specific flags
     code,
+    /// arc spanned by the observations
     obs_arc,
+    /// number of observations used
     obs_num,
+    /// epoch of osculation
     osc_epoch,
+    /// mean anomaly
     orb_m,
+    /// argument of perihelion
     omega,
+    /// longitude of ascending node
     node_omega,
+    /// orbit inclination
     inclination,
+    /// orbit eccentricity
     eccentricity,
+    /// semimajor axis
     a,
+    /// date of orbit computation
     orb_date,
+    /// current orbit uncertainty
     ceu,
+    /// rate of change of the orbit uncertainty
     ceu_rate,
+    /// date of the CEU
     ceu_epoch,
 }
 
