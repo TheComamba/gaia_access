@@ -22,7 +22,7 @@ serde_json = { version = "1.0", default-features = false, features = ["std"] }
 strum_macros = "0.26.0" # Derive string from enum
 
 [dev-dependencies]
-xmltree = "0.10.0" # XML DeSerialization
+xmltree = "0.11.0" # XML DeSerialization
 
 [features]
 # begin generated
