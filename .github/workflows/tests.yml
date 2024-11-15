@@ -26,7 +26,7 @@ jobs:
 
       - name: run tests
         run: |
-          ./test.sh
+          ./scripts/test.sh
 
       - uses: clechasseur/rs-cargo@v1
         with:

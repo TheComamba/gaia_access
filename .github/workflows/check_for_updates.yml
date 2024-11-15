@@ -12,7 +12,7 @@ jobs:
         - uses: actions/checkout@v2
 
         - name: Run generate_code.sh
-          run: ./generate_code.sh
+          run: ./scripts/generate_code.sh
 
         - name: Check for unstaged changes
           run: |

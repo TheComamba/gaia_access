@@ -12,6 +12,8 @@ else
     exit 1
 fi
 
+cd $(git rev-parse --show-toplevel)
+
 # Create a virtual environment
 $PYTHON_CMD -m venv venv
 
@@ -22,7 +24,7 @@ source venv/bin/activate
 pip install requests chardet
 
 # Execute the script
-$PYTHON_CMD generate_code.py
+$PYTHON_CMD scripts/generate_code.py
 
 # Deactivate the virtual environment
 deactivate
