@@ -1,3 +1,8 @@
+# [0.1.2]
+
+## Changed
+- Switched to default-tls feature for reqwest crate to avoid downstream dependances with copyleft license.
+
 # [0.1.1]
 
 ## Added

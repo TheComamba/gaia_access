@@ -26,6 +26,7 @@ pub mod schemas;
 pub mod tables;
 
 #[cfg(test)]
+/// Collects all the known tables in the tap_schema schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

@@ -154,6 +154,7 @@ pub enum Col {
 impl Column for Col {}
 
 #[cfg(test)]
+/// Collects all the known columns in the gsc23_original_valid table.
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
     let mut col_strings = Vec::new();
     col_strings.push(Col::gsc23_oid.to_string());

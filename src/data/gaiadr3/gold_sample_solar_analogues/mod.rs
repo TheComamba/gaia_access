@@ -26,6 +26,7 @@ pub enum Col {
 impl Column for Col {}
 
 #[cfg(test)]
+/// Collects all the known columns in the gold_sample_solar_analogues table.
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
     let mut col_strings = Vec::new();
     col_strings.push(Col::source_id.to_string());

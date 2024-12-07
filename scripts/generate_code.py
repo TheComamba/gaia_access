@@ -15,6 +15,7 @@ DATA_TEMPLATE = """
 {schema_modules}
 
 #[cfg(test)]
+/// Collects all the known schemas and tables in the Gaia database.
 pub(crate) fn collect_known_schemas(
 ) -> std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>> {{
     let mut known = std::collections::HashMap::new();
@@ -43,6 +44,7 @@ impl Schema for {name} {{
 {modules}
 
 #[cfg(test)]
+/// Collects all the known tables in the {name} schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {{
@@ -81,6 +83,7 @@ pub enum Col {{
 impl Column for Col {{}}
 
 #[cfg(test)]
+/// Collects all the known columns in the {name} table.
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {{
     let mut col_strings = Vec::new();
     {known_columns}
