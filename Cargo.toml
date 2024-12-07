@@ -15,7 +15,7 @@ name         = "gaia_access"
 crate-type   = ["rlib"]
 
 [dependencies]
-reqwest = { version = "0.12.0", default-features = false, features = ["blocking", "rustls-tls"] } # Downloading files
+reqwest = { version = "0.12.0", default-features = false, features = ["blocking", "default-tls"] } # Downloading files
 strum = { version = "0.26.0", no-default-features = true, features = ["derive"] } # Derive string from enum
 serde = { version = "1.0", default-features = false, features = ["derive"] } # (De)Serialization
 serde_json = { version = "1.0", default-features = false, features = ["std"] }
