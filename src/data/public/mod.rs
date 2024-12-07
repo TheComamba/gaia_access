@@ -30,6 +30,7 @@ pub mod igsl_source_catalog_ids;
 pub mod tycho2;
 
 #[cfg(test)]
+/// Collects all the known tables in the public schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

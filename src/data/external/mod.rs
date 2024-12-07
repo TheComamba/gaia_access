@@ -58,6 +58,7 @@ pub mod xgboost_table1;
 pub mod xgboost_table2;
 
 #[cfg(test)]
+/// Collects all the known tables in the external schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

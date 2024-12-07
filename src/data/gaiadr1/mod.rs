@@ -79,6 +79,7 @@ pub mod urat1_original_valid;
 pub mod variable_summary;
 
 #[cfg(test)]
+/// Collects all the known tables in the gaiadr1 schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

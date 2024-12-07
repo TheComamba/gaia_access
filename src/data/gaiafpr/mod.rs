@@ -40,6 +40,7 @@ pub mod vari_long_period_variable;
 pub mod vari_rad_vel_statistics;
 
 #[cfg(test)]
+/// Collects all the known tables in the gaiafpr schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

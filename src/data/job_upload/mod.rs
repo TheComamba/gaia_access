@@ -15,6 +15,7 @@ impl Schema for job_upload {
 }
 
 #[cfg(test)]
+/// Collects all the known tables in the job_upload schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

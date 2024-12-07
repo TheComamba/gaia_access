@@ -98,6 +98,7 @@ pub mod vari_short_timescale;
 pub mod vari_time_series_statistics;
 
 #[cfg(test)]
+/// Collects all the known tables in the gaiadr2 schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

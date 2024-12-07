@@ -20,6 +20,7 @@ pub mod coord_sys;
 pub mod properties;
 
 #[cfg(test)]
+/// Collects all the known tables in the tap_config schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

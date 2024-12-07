@@ -215,6 +215,7 @@ pub enum Col {
 impl Column for Col {}
 
 #[cfg(test)]
+/// Collects all the known columns in the ucac4_original_valid table.
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
     let mut col_strings = Vec::new();
     col_strings.push(Col::objt.to_string());

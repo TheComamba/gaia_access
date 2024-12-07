@@ -27,6 +27,7 @@ pub enum Col {
 impl Column for Col {}
 
 #[cfg(test)]
+/// Collects all the known columns in the aux_allwise_agn_gdr2_cross_id table.
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
     let mut col_strings = Vec::new();
     col_strings.push(Col::allwise_name.to_string());

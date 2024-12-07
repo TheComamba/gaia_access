@@ -90,6 +90,7 @@ pub mod urat1_best_neighbour;
 pub mod urat1_neighbourhood;
 
 #[cfg(test)]
+/// Collects all the known tables in the gaiaedr3 schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {

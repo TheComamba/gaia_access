@@ -198,6 +198,7 @@ pub mod vari_summary;
 pub mod xp_summary;
 
 #[cfg(test)]
+/// Collects all the known tables in the gaiadr3 schema.
 pub(crate) fn collect_known(
     map: &mut std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>>,
 ) {
