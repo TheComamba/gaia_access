@@ -1,4 +1,4 @@
-# GaiaAccess
+# Gaia Access
 
 A simple, type-safe crate to access data from the [Gaia ESA Archive](https://gea.esac.esa.int/archive/), which contains data on hundreds of thousands of stars.
 

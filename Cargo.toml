@@ -7,8 +7,8 @@ keywords = ["gaia", "astronomy", "ADQL"]
 license = "MIT"
 name = "gaia_access"
 readme = "README.md"
-repository = "https://github.com/TheComamba/GaiaAccess"
-version = "0.1.1"
+repository = "https://github.com/TheComamba/gaia_access"
+version = "0.1.2"
 
 [lib]
 name         = "gaia_access"
