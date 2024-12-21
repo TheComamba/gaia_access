@@ -34,6 +34,10 @@ pub mod gaiaedr3_gcns_rejected_1;
 pub mod gaiaedr3_spurious;
 #[cfg(any(feature = "external_galex_ais", test))]
 pub mod galex_ais;
+#[cfg(any(feature = "external_lamost_dr9_lrs", test))]
+pub mod lamost_dr9_lrs;
+#[cfg(any(feature = "external_lamost_dr9_mrs", test))]
+pub mod lamost_dr9_mrs;
 #[cfg(any(feature = "external_ravedr5_com", test))]
 pub mod ravedr5_com;
 #[cfg(any(feature = "external_ravedr5_dr5", test))]
@@ -75,6 +79,8 @@ pub(crate) fn collect_known(
     gaiaedr3_spurious::collect_known(&mut tables);
     gaia_eso_survey::collect_known(&mut tables);
     galex_ais::collect_known(&mut tables);
+    lamost_dr9_lrs::collect_known(&mut tables);
+    lamost_dr9_mrs::collect_known(&mut tables);
     ravedr5_com::collect_known(&mut tables);
     ravedr5_dr5::collect_known(&mut tables);
     ravedr5_gra::collect_known(&mut tables);

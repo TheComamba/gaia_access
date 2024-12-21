@@ -1,3 +1,8 @@
+# [0.1.3]
+
+## Added
+- Support for LAMOST DR9 Tables
+
 # [0.1.2]
 
 ## Changed

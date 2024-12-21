@@ -15,6 +15,8 @@
     feature = "external_gaiaedr3_spurious",
     feature = "external_gaia_eso_survey",
     feature = "external_galex_ais",
+    feature = "external_lamost_dr9_lrs",
+    feature = "external_lamost_dr9_mrs",
     feature = "external_ravedr5_com",
     feature = "external_ravedr5_dr5",
     feature = "external_ravedr5_gra",
