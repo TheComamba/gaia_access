@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// Hubble Source Catalogue
+/// The Hubble Source Catalog (HSC) combines the tens of thousands of visit-based source lists in the Hubble Legacy Archive into a single master catalogue. Version 1 of the Hubble Source Catalog includes roughly 80 million detections of nearly 30 million objects involving about 160,000 HST exposures taken with 112 different detector/filter combinations covering WFPC2, ACS/WFC, WFC3/UVIS, and WFC3/IR. The mean photometric accuracy for the catalogue as a whole is better than 0.10 mag, with relative accuracy as good as 0.02 mag in certain circumstances (e.g., bright isolated stars). The relative astrometric residuals are typically within 10 mas, with a value for the mode of 2.3 mas. The absolute astrometric accuracy is better than approximately 0.1 arcsec for most sources but can be much larger for fields that could not be matched to the PanSTARRS, SDSS, or 2MASS reference systems. Further details can be found in https://ui.adsabs.harvard.edu/abs/2016AJ....151..134W/abstract (DOI: 10.3847/0004-6256/151/6/134)
 #[allow(non_camel_case_types)]
 pub struct hubble_sc;
 
@@ -18,848 +18,848 @@ impl Table for hubble_sc {
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::Display)]
 pub enum Col {
-    /// The abscorr column. (No further description available)
-    abscorr,
-    /// The a_f435w column. (No further description available)
-    a_f435w,
-    /// The a_f435w_n column. (No further description available)
-    a_f435w_n,
-    /// The a_f435w_sigma column. (No further description available)
-    a_f435w_sigma,
-    /// The a_f475w column. (No further description available)
-    a_f475w,
-    /// The a_f475w_n column. (No further description available)
-    a_f475w_n,
-    /// The a_f475w_sigma column. (No further description available)
-    a_f475w_sigma,
-    /// The a_f502n column. (No further description available)
-    a_f502n,
-    /// The a_f502n_n column. (No further description available)
-    a_f502n_n,
-    /// The a_f502n_sigma column. (No further description available)
-    a_f502n_sigma,
-    /// The a_f550m column. (No further description available)
-    a_f550m,
-    /// The a_f550m_n column. (No further description available)
-    a_f550m_n,
-    /// The a_f550m_sigma column. (No further description available)
-    a_f550m_sigma,
-    /// The a_f555w column. (No further description available)
-    a_f555w,
-    /// The a_f555w_n column. (No further description available)
-    a_f555w_n,
-    /// The a_f555w_sigma column. (No further description available)
-    a_f555w_sigma,
-    /// The a_f606w column. (No further description available)
-    a_f606w,
-    /// The a_f606w_n column. (No further description available)
-    a_f606w_n,
-    /// The a_f606w_sigma column. (No further description available)
-    a_f606w_sigma,
-    /// The a_f625w column. (No further description available)
-    a_f625w,
-    /// The a_f625w_n column. (No further description available)
-    a_f625w_n,
-    /// The a_f625w_sigma column. (No further description available)
-    a_f625w_sigma,
-    /// The a_f658n column. (No further description available)
-    a_f658n,
-    /// The a_f658n_n column. (No further description available)
-    a_f658n_n,
-    /// The a_f658n_sigma column. (No further description available)
-    a_f658n_sigma,
-    /// The a_f660n column. (No further description available)
-    a_f660n,
-    /// The a_f660n_n column. (No further description available)
-    a_f660n_n,
-    /// The a_f660n_sigma column. (No further description available)
-    a_f660n_sigma,
-    /// The a_f775w column. (No further description available)
-    a_f775w,
-    /// The a_f775w_n column. (No further description available)
-    a_f775w_n,
-    /// The a_f775w_sigma column. (No further description available)
-    a_f775w_sigma,
-    /// The a_f814w column. (No further description available)
-    a_f814w,
-    /// The a_f814w_n column. (No further description available)
-    a_f814w_n,
-    /// The a_f814w_sigma column. (No further description available)
-    a_f814w_sigma,
-    /// The a_f850lp column. (No further description available)
-    a_f850lp,
-    /// The a_f850lp_n column. (No further description available)
-    a_f850lp_n,
-    /// The a_f850lp_sigma column. (No further description available)
-    a_f850lp_sigma,
-    /// The ci column. (No further description available)
-    ci,
-    /// The ci_sigma column. (No further description available)
-    ci_sigma,
-    /// The dsigma column. (No further description available)
-    dsigma,
-    /// The extinction column. (No further description available)
-    extinction,
-    /// The htmid column. (No further description available)
-    htmid,
-    /// The kronradius column. (No further description available)
-    kronradius,
-    /// The kronradius_sigma column. (No further description available)
-    kronradius_sigma,
-    /// The matchdec column. (No further description available)
-    matchdec,
-    /// The match_id column. (No further description available)
+    /// Identifier for the match
     match_id,
-    /// The matchra column. (No further description available)
+    /// Right ascension for the match (J2000)
     matchra,
-    /// The numfilters column. (No further description available)
-    numfilters,
-    /// The numimages column. (No further description available)
-    numimages,
-    /// The numvisits column. (No further description available)
-    numvisits,
-    /// The startmjd column. (No further description available)
-    startmjd,
-    /// The starttime column. (No further description available)
-    starttime,
-    /// The stopmjd column. (No further description available)
-    stopmjd,
-    /// The stoptime column. (No further description available)
-    stoptime,
-    /// The targetname column. (No further description available)
-    targetname,
-    /// The w2_f1042m column. (No further description available)
-    w2_f1042m,
-    /// The w2_f1042m_n column. (No further description available)
-    w2_f1042m_n,
-    /// The w2_f1042m_sigma column. (No further description available)
-    w2_f1042m_sigma,
-    /// The w2_f122m column. (No further description available)
-    w2_f122m,
-    /// The w2_f122m_n column. (No further description available)
-    w2_f122m_n,
-    /// The w2_f122m_sigma column. (No further description available)
-    w2_f122m_sigma,
-    /// The w2_f160bn15 column. (No further description available)
-    w2_f160bn15,
-    /// The w2_f160bn15_n column. (No further description available)
-    w2_f160bn15_n,
-    /// The w2_f160bn15_sigma column. (No further description available)
-    w2_f160bn15_sigma,
-    /// The w2_f160bw column. (No further description available)
-    w2_f160bw,
-    /// The w2_f160bw_n column. (No further description available)
-    w2_f160bw_n,
-    /// The w2_f160bw_sigma column. (No further description available)
-    w2_f160bw_sigma,
-    /// The w2_f170w column. (No further description available)
-    w2_f170w,
-    /// The w2_f170w_n column. (No further description available)
-    w2_f170w_n,
-    /// The w2_f170w_sigma column. (No further description available)
-    w2_f170w_sigma,
-    /// The w2_f185w column. (No further description available)
-    w2_f185w,
-    /// The w2_f185w_n column. (No further description available)
-    w2_f185w_n,
-    /// The w2_f185w_sigma column. (No further description available)
-    w2_f185w_sigma,
-    /// The w2_f218w column. (No further description available)
-    w2_f218w,
-    /// The w2_f218w_n column. (No further description available)
-    w2_f218w_n,
-    /// The w2_f218w_sigma column. (No further description available)
-    w2_f218w_sigma,
-    /// The w2_f255w column. (No further description available)
-    w2_f255w,
-    /// The w2_f255w_n column. (No further description available)
-    w2_f255w_n,
-    /// The w2_f255w_sigma column. (No further description available)
-    w2_f255w_sigma,
-    /// The w2_f300w column. (No further description available)
-    w2_f300w,
-    /// The w2_f300w_n column. (No further description available)
-    w2_f300w_n,
-    /// The w2_f300w_sigma column. (No further description available)
-    w2_f300w_sigma,
-    /// The w2_f336w column. (No further description available)
-    w2_f336w,
-    /// The w2_f336w_n column. (No further description available)
-    w2_f336w_n,
-    /// The w2_f336w_sigma column. (No further description available)
-    w2_f336w_sigma,
-    /// The w2_f343n column. (No further description available)
-    w2_f343n,
-    /// The w2_f343n_n column. (No further description available)
-    w2_f343n_n,
-    /// The w2_f343n_sigma column. (No further description available)
-    w2_f343n_sigma,
-    /// The w2_f375n column. (No further description available)
-    w2_f375n,
-    /// The w2_f375n_n column. (No further description available)
-    w2_f375n_n,
-    /// The w2_f375n_sigma column. (No further description available)
-    w2_f375n_sigma,
-    /// The w2_f380w column. (No further description available)
-    w2_f380w,
-    /// The w2_f380w_n column. (No further description available)
-    w2_f380w_n,
-    /// The w2_f380w_sigma column. (No further description available)
-    w2_f380w_sigma,
-    /// The w2_f390n column. (No further description available)
-    w2_f390n,
-    /// The w2_f390n_n column. (No further description available)
-    w2_f390n_n,
-    /// The w2_f390n_sigma column. (No further description available)
-    w2_f390n_sigma,
-    /// The w2_f410m column. (No further description available)
-    w2_f410m,
-    /// The w2_f410m_n column. (No further description available)
-    w2_f410m_n,
-    /// The w2_f410m_sigma column. (No further description available)
-    w2_f410m_sigma,
-    /// The w2_f437n column. (No further description available)
-    w2_f437n,
-    /// The w2_f437n_n column. (No further description available)
-    w2_f437n_n,
-    /// The w2_f437n_sigma column. (No further description available)
-    w2_f437n_sigma,
-    /// The w2_f439w column. (No further description available)
-    w2_f439w,
-    /// The w2_f439w_n column. (No further description available)
-    w2_f439w_n,
-    /// The w2_f439w_sigma column. (No further description available)
-    w2_f439w_sigma,
-    /// The w2_f450w column. (No further description available)
-    w2_f450w,
-    /// The w2_f450w_n column. (No further description available)
-    w2_f450w_n,
-    /// The w2_f450w_sigma column. (No further description available)
-    w2_f450w_sigma,
-    /// The w2_f467m column. (No further description available)
-    w2_f467m,
-    /// The w2_f467m_n column. (No further description available)
-    w2_f467m_n,
-    /// The w2_f467m_sigma column. (No further description available)
-    w2_f467m_sigma,
-    /// The w2_f469n column. (No further description available)
-    w2_f469n,
-    /// The w2_f469n_n column. (No further description available)
-    w2_f469n_n,
-    /// The w2_f469n_sigma column. (No further description available)
-    w2_f469n_sigma,
-    /// The w2_f487n column. (No further description available)
-    w2_f487n,
-    /// The w2_f487n_n column. (No further description available)
-    w2_f487n_n,
-    /// The w2_f487n_sigma column. (No further description available)
-    w2_f487n_sigma,
-    /// The w2_f502n column. (No further description available)
-    w2_f502n,
-    /// The w2_f502n_n column. (No further description available)
-    w2_f502n_n,
-    /// The w2_f502n_sigma column. (No further description available)
-    w2_f502n_sigma,
-    /// The w2_f547m column. (No further description available)
-    w2_f547m,
-    /// The w2_f547m_n column. (No further description available)
-    w2_f547m_n,
-    /// The w2_f547m_sigma column. (No further description available)
-    w2_f547m_sigma,
-    /// The w2_f555w column. (No further description available)
-    w2_f555w,
-    /// The w2_f555w_n column. (No further description available)
-    w2_f555w_n,
-    /// The w2_f555w_sigma column. (No further description available)
-    w2_f555w_sigma,
-    /// The w2_f569w column. (No further description available)
-    w2_f569w,
-    /// The w2_f569w_n column. (No further description available)
-    w2_f569w_n,
-    /// The w2_f569w_sigma column. (No further description available)
-    w2_f569w_sigma,
-    /// The w2_f588n column. (No further description available)
-    w2_f588n,
-    /// The w2_f588n_n column. (No further description available)
-    w2_f588n_n,
-    /// The w2_f588n_sigma column. (No further description available)
-    w2_f588n_sigma,
-    /// The w2_f606w column. (No further description available)
-    w2_f606w,
-    /// The w2_f606w_n column. (No further description available)
-    w2_f606w_n,
-    /// The w2_f606w_sigma column. (No further description available)
-    w2_f606w_sigma,
-    /// The w2_f622w column. (No further description available)
-    w2_f622w,
-    /// The w2_f622w_n column. (No further description available)
-    w2_f622w_n,
-    /// The w2_f622w_sigma column. (No further description available)
-    w2_f622w_sigma,
-    /// The w2_f631n column. (No further description available)
-    w2_f631n,
-    /// The w2_f631n_n column. (No further description available)
-    w2_f631n_n,
-    /// The w2_f631n_sigma column. (No further description available)
-    w2_f631n_sigma,
-    /// The w2_f656n column. (No further description available)
-    w2_f656n,
-    /// The w2_f656n_n column. (No further description available)
-    w2_f656n_n,
-    /// The w2_f656n_sigma column. (No further description available)
-    w2_f656n_sigma,
-    /// The w2_f658n column. (No further description available)
-    w2_f658n,
-    /// The w2_f658n_n column. (No further description available)
-    w2_f658n_n,
-    /// The w2_f658n_sigma column. (No further description available)
-    w2_f658n_sigma,
-    /// The w2_f673n column. (No further description available)
-    w2_f673n,
-    /// The w2_f673n_n column. (No further description available)
-    w2_f673n_n,
-    /// The w2_f673n_sigma column. (No further description available)
-    w2_f673n_sigma,
-    /// The w2_f675w column. (No further description available)
-    w2_f675w,
-    /// The w2_f675w_n column. (No further description available)
-    w2_f675w_n,
-    /// The w2_f675w_sigma column. (No further description available)
-    w2_f675w_sigma,
-    /// The w2_f702w column. (No further description available)
-    w2_f702w,
-    /// The w2_f702w_n column. (No further description available)
-    w2_f702w_n,
-    /// The w2_f702w_sigma column. (No further description available)
-    w2_f702w_sigma,
-    /// The w2_f785lp column. (No further description available)
-    w2_f785lp,
-    /// The w2_f785lp_n column. (No further description available)
-    w2_f785lp_n,
-    /// The w2_f785lp_sigma column. (No further description available)
-    w2_f785lp_sigma,
-    /// The w2_f791w column. (No further description available)
-    w2_f791w,
-    /// The w2_f791w_n column. (No further description available)
-    w2_f791w_n,
-    /// The w2_f791w_sigma column. (No further description available)
-    w2_f791w_sigma,
-    /// The w2_f814w column. (No further description available)
-    w2_f814w,
-    /// The w2_f814w_n column. (No further description available)
-    w2_f814w_n,
-    /// The w2_f814w_sigma column. (No further description available)
-    w2_f814w_sigma,
-    /// The w2_f850lp column. (No further description available)
-    w2_f850lp,
-    /// The w2_f850lp_n column. (No further description available)
-    w2_f850lp_n,
-    /// The w2_f850lp_sigma column. (No further description available)
-    w2_f850lp_sigma,
-    /// The w2_f953n column. (No further description available)
-    w2_f953n,
-    /// The w2_f953n_n column. (No further description available)
-    w2_f953n_n,
-    /// The w2_f953n_sigma column. (No further description available)
-    w2_f953n_sigma,
-    /// The w3_blank column. (No further description available)
-    w3_blank,
-    /// The w3_blank_n column. (No further description available)
-    w3_blank_n,
-    /// The w3_blank_sigma column. (No further description available)
-    w3_blank_sigma,
-    /// The w3_f098m column. (No further description available)
-    w3_f098m,
-    /// The w3_f098m_n column. (No further description available)
-    w3_f098m_n,
-    /// The w3_f098m_sigma column. (No further description available)
-    w3_f098m_sigma,
-    /// The w3_f105w column. (No further description available)
-    w3_f105w,
-    /// The w3_f105w_n column. (No further description available)
-    w3_f105w_n,
-    /// The w3_f105w_sigma column. (No further description available)
-    w3_f105w_sigma,
-    /// The w3_f110w column. (No further description available)
-    w3_f110w,
-    /// The w3_f110w_n column. (No further description available)
-    w3_f110w_n,
-    /// The w3_f110w_sigma column. (No further description available)
-    w3_f110w_sigma,
-    /// The w3_f125w column. (No further description available)
-    w3_f125w,
-    /// The w3_f125w_n column. (No further description available)
-    w3_f125w_n,
-    /// The w3_f125w_sigma column. (No further description available)
-    w3_f125w_sigma,
-    /// The w3_f126n column. (No further description available)
-    w3_f126n,
-    /// The w3_f126n_n column. (No further description available)
-    w3_f126n_n,
-    /// The w3_f126n_sigma column. (No further description available)
-    w3_f126n_sigma,
-    /// The w3_f127m column. (No further description available)
-    w3_f127m,
-    /// The w3_f127m_n column. (No further description available)
-    w3_f127m_n,
-    /// The w3_f127m_sigma column. (No further description available)
-    w3_f127m_sigma,
-    /// The w3_f128n column. (No further description available)
-    w3_f128n,
-    /// The w3_f128n_n column. (No further description available)
-    w3_f128n_n,
-    /// The w3_f128n_sigma column. (No further description available)
-    w3_f128n_sigma,
-    /// The w3_f130n column. (No further description available)
-    w3_f130n,
-    /// The w3_f130n_n column. (No further description available)
-    w3_f130n_n,
-    /// The w3_f130n_sigma column. (No further description available)
-    w3_f130n_sigma,
-    /// The w3_f132n column. (No further description available)
-    w3_f132n,
-    /// The w3_f132n_n column. (No further description available)
-    w3_f132n_n,
-    /// The w3_f132n_sigma column. (No further description available)
-    w3_f132n_sigma,
-    /// The w3_f139m column. (No further description available)
-    w3_f139m,
-    /// The w3_f139m_n column. (No further description available)
-    w3_f139m_n,
-    /// The w3_f139m_sigma column. (No further description available)
-    w3_f139m_sigma,
-    /// The w3_f140w column. (No further description available)
-    w3_f140w,
-    /// The w3_f140w_n column. (No further description available)
-    w3_f140w_n,
-    /// The w3_f140w_sigma column. (No further description available)
-    w3_f140w_sigma,
-    /// The w3_f153m column. (No further description available)
-    w3_f153m,
-    /// The w3_f153m_n column. (No further description available)
-    w3_f153m_n,
-    /// The w3_f153m_sigma column. (No further description available)
-    w3_f153m_sigma,
-    /// The w3_f160w column. (No further description available)
-    w3_f160w,
-    /// The w3_f160w_n column. (No further description available)
-    w3_f160w_n,
-    /// The w3_f160w_sigma column. (No further description available)
-    w3_f160w_sigma,
-    /// The w3_f164n column. (No further description available)
-    w3_f164n,
-    /// The w3_f164n_n column. (No further description available)
-    w3_f164n_n,
-    /// The w3_f164n_sigma column. (No further description available)
-    w3_f164n_sigma,
-    /// The w3_f167n column. (No further description available)
-    w3_f167n,
-    /// The w3_f167n_n column. (No further description available)
-    w3_f167n_n,
-    /// The w3_f167n_sigma column. (No further description available)
-    w3_f167n_sigma,
-    /// The w3_f200lp column. (No further description available)
-    w3_f200lp,
-    /// The w3_f200lp_n column. (No further description available)
-    w3_f200lp_n,
-    /// The w3_f200lp_sigma column. (No further description available)
-    w3_f200lp_sigma,
-    /// The w3_f218w column. (No further description available)
-    w3_f218w,
-    /// The w3_f218w_n column. (No further description available)
-    w3_f218w_n,
-    /// The w3_f218w_sigma column. (No further description available)
-    w3_f218w_sigma,
-    /// The w3_f225w column. (No further description available)
-    w3_f225w,
-    /// The w3_f225w_n column. (No further description available)
-    w3_f225w_n,
-    /// The w3_f225w_sigma column. (No further description available)
-    w3_f225w_sigma,
-    /// The w3_f275w column. (No further description available)
-    w3_f275w,
-    /// The w3_f275w_n column. (No further description available)
-    w3_f275w_n,
-    /// The w3_f275w_sigma column. (No further description available)
-    w3_f275w_sigma,
-    /// The w3_f280n column. (No further description available)
-    w3_f280n,
-    /// The w3_f280n_n column. (No further description available)
-    w3_f280n_n,
-    /// The w3_f280n_sigma column. (No further description available)
-    w3_f280n_sigma,
-    /// The w3_f300x column. (No further description available)
-    w3_f300x,
-    /// The w3_f300x_n column. (No further description available)
-    w3_f300x_n,
-    /// The w3_f300x_sigma column. (No further description available)
-    w3_f300x_sigma,
-    /// The w3_f336w column. (No further description available)
-    w3_f336w,
-    /// The w3_f336w_n column. (No further description available)
-    w3_f336w_n,
-    /// The w3_f336w_sigma column. (No further description available)
-    w3_f336w_sigma,
-    /// The w3_f343n column. (No further description available)
-    w3_f343n,
-    /// The w3_f343n_n column. (No further description available)
-    w3_f343n_n,
-    /// The w3_f343n_sigma column. (No further description available)
-    w3_f343n_sigma,
-    /// The w3_f350lp column. (No further description available)
-    w3_f350lp,
-    /// The w3_f350lp_n column. (No further description available)
-    w3_f350lp_n,
-    /// The w3_f350lp_sigma column. (No further description available)
-    w3_f350lp_sigma,
-    /// The w3_f373n column. (No further description available)
-    w3_f373n,
-    /// The w3_f373n_n column. (No further description available)
-    w3_f373n_n,
-    /// The w3_f373n_sigma column. (No further description available)
-    w3_f373n_sigma,
-    /// The w3_f390m column. (No further description available)
-    w3_f390m,
-    /// The w3_f390m_n column. (No further description available)
-    w3_f390m_n,
-    /// The w3_f390m_sigma column. (No further description available)
-    w3_f390m_sigma,
-    /// The w3_f390w column. (No further description available)
-    w3_f390w,
-    /// The w3_f390w_n column. (No further description available)
-    w3_f390w_n,
-    /// The w3_f390w_sigma column. (No further description available)
-    w3_f390w_sigma,
-    /// The w3_f395n column. (No further description available)
-    w3_f395n,
-    /// The w3_f395n_n column. (No further description available)
-    w3_f395n_n,
-    /// The w3_f395n_sigma column. (No further description available)
-    w3_f395n_sigma,
-    /// The w3_f410m column. (No further description available)
-    w3_f410m,
-    /// The w3_f410m_n column. (No further description available)
-    w3_f410m_n,
-    /// The w3_f410m_sigma column. (No further description available)
-    w3_f410m_sigma,
-    /// The w3_f438w column. (No further description available)
-    w3_f438w,
-    /// The w3_f438w_n column. (No further description available)
-    w3_f438w_n,
-    /// The w3_f438w_sigma column. (No further description available)
-    w3_f438w_sigma,
-    /// The w3_f467m column. (No further description available)
-    w3_f467m,
-    /// The w3_f467m_n column. (No further description available)
-    w3_f467m_n,
-    /// The w3_f467m_sigma column. (No further description available)
-    w3_f467m_sigma,
-    /// The w3_f469n column. (No further description available)
-    w3_f469n,
-    /// The w3_f469n_n column. (No further description available)
-    w3_f469n_n,
-    /// The w3_f469n_sigma column. (No further description available)
-    w3_f469n_sigma,
-    /// The w3_f475w column. (No further description available)
-    w3_f475w,
-    /// The w3_f475w_n column. (No further description available)
-    w3_f475w_n,
-    /// The w3_f475w_sigma column. (No further description available)
-    w3_f475w_sigma,
-    /// The w3_f475x column. (No further description available)
-    w3_f475x,
-    /// The w3_f475x_n column. (No further description available)
-    w3_f475x_n,
-    /// The w3_f475x_sigma column. (No further description available)
-    w3_f475x_sigma,
-    /// The w3_f487n column. (No further description available)
-    w3_f487n,
-    /// The w3_f487n_n column. (No further description available)
-    w3_f487n_n,
-    /// The w3_f487n_sigma column. (No further description available)
-    w3_f487n_sigma,
-    /// The w3_f502n column. (No further description available)
-    w3_f502n,
-    /// The w3_f502n_n column. (No further description available)
-    w3_f502n_n,
-    /// The w3_f502n_sigma column. (No further description available)
-    w3_f502n_sigma,
-    /// The w3_f547m column. (No further description available)
-    w3_f547m,
-    /// The w3_f547m_n column. (No further description available)
-    w3_f547m_n,
-    /// The w3_f547m_sigma column. (No further description available)
-    w3_f547m_sigma,
-    /// The w3_f555w column. (No further description available)
-    w3_f555w,
-    /// The w3_f555w_n column. (No further description available)
-    w3_f555w_n,
-    /// The w3_f555w_sigma column. (No further description available)
-    w3_f555w_sigma,
-    /// The w3_f600lp column. (No further description available)
-    w3_f600lp,
-    /// The w3_f600lp_n column. (No further description available)
-    w3_f600lp_n,
-    /// The w3_f600lp_sigma column. (No further description available)
-    w3_f600lp_sigma,
-    /// The w3_f606w column. (No further description available)
-    w3_f606w,
-    /// The w3_f606w_n column. (No further description available)
-    w3_f606w_n,
-    /// The w3_f606w_sigma column. (No further description available)
-    w3_f606w_sigma,
-    /// The w3_f621m column. (No further description available)
-    w3_f621m,
-    /// The w3_f621m_n column. (No further description available)
-    w3_f621m_n,
-    /// The w3_f621m_sigma column. (No further description available)
-    w3_f621m_sigma,
-    /// The w3_f625w column. (No further description available)
-    w3_f625w,
-    /// The w3_f625w_n column. (No further description available)
-    w3_f625w_n,
-    /// The w3_f625w_sigma column. (No further description available)
-    w3_f625w_sigma,
-    /// The w3_f631n column. (No further description available)
-    w3_f631n,
-    /// The w3_f631n_n column. (No further description available)
-    w3_f631n_n,
-    /// The w3_f631n_sigma column. (No further description available)
-    w3_f631n_sigma,
-    /// The w3_f645n column. (No further description available)
-    w3_f645n,
-    /// The w3_f645n_n column. (No further description available)
-    w3_f645n_n,
-    /// The w3_f645n_sigma column. (No further description available)
-    w3_f645n_sigma,
-    /// The w3_f656n column. (No further description available)
-    w3_f656n,
-    /// The w3_f656n_n column. (No further description available)
-    w3_f656n_n,
-    /// The w3_f656n_sigma column. (No further description available)
-    w3_f656n_sigma,
-    /// The w3_f657n column. (No further description available)
-    w3_f657n,
-    /// The w3_f657n_n column. (No further description available)
-    w3_f657n_n,
-    /// The w3_f657n_sigma column. (No further description available)
-    w3_f657n_sigma,
-    /// The w3_f658n column. (No further description available)
-    w3_f658n,
-    /// The w3_f658n_n column. (No further description available)
-    w3_f658n_n,
-    /// The w3_f658n_sigma column. (No further description available)
-    w3_f658n_sigma,
-    /// The w3_f665n column. (No further description available)
-    w3_f665n,
-    /// The w3_f665n_f6 column. (No further description available)
-    w3_f665n_f6,
-    /// The w3_f665n_f6_n column. (No further description available)
-    w3_f665n_f6_n,
-    /// The w3_f665n_f6_sigma column. (No further description available)
-    w3_f665n_f6_sigma,
-    /// The w3_f665n_n column. (No further description available)
-    w3_f665n_n,
-    /// The w3_f665n_sigma column. (No further description available)
-    w3_f665n_sigma,
-    /// The w3_f673n column. (No further description available)
-    w3_f673n,
-    /// The w3_f673n_n column. (No further description available)
-    w3_f673n_n,
-    /// The w3_f673n_sigma column. (No further description available)
-    w3_f673n_sigma,
-    /// The w3_f680n column. (No further description available)
-    w3_f680n,
-    /// The w3_f680n_n column. (No further description available)
-    w3_f680n_n,
-    /// The w3_f680n_sigma column. (No further description available)
-    w3_f680n_sigma,
-    /// The w3_f689m column. (No further description available)
-    w3_f689m,
-    /// The w3_f689m_n column. (No further description available)
-    w3_f689m_n,
-    /// The w3_f689m_sigma column. (No further description available)
-    w3_f689m_sigma,
-    /// The w3_f763m column. (No further description available)
-    w3_f763m,
-    /// The w3_f763m_n column. (No further description available)
-    w3_f763m_n,
-    /// The w3_f763m_sigma column. (No further description available)
-    w3_f763m_sigma,
-    /// The w3_f775w column. (No further description available)
-    w3_f775w,
-    /// The w3_f775w_n column. (No further description available)
-    w3_f775w_n,
-    /// The w3_f775w_sigma column. (No further description available)
-    w3_f775w_sigma,
-    /// The w3_f814w column. (No further description available)
-    w3_f814w,
-    /// The w3_f814w_n column. (No further description available)
-    w3_f814w_n,
-    /// The w3_f814w_sigma column. (No further description available)
-    w3_f814w_sigma,
-    /// The w3_f845m column. (No further description available)
-    w3_f845m,
-    /// The w3_f845m_n column. (No further description available)
-    w3_f845m_n,
-    /// The w3_f845m_sigma column. (No further description available)
-    w3_f845m_sigma,
-    /// The w3_f850lp column. (No further description available)
-    w3_f850lp,
-    /// The w3_f850lp_n column. (No further description available)
-    w3_f850lp_n,
-    /// The w3_f850lp_sigma column. (No further description available)
-    w3_f850lp_sigma,
-    /// The w3_f953n column. (No further description available)
-    w3_f953n,
-    /// The w3_f953n_n column. (No further description available)
-    w3_f953n_n,
-    /// The w3_f953n_sigma column. (No further description available)
-    w3_f953n_sigma,
-    /// The w3_fq232n column. (No further description available)
-    w3_fq232n,
-    /// The w3_fq232n_n column. (No further description available)
-    w3_fq232n_n,
-    /// The w3_fq232n_sigma column. (No further description available)
-    w3_fq232n_sigma,
-    /// The w3_fq243n column. (No further description available)
-    w3_fq243n,
-    /// The w3_fq243n_n column. (No further description available)
-    w3_fq243n_n,
-    /// The w3_fq243n_sigma column. (No further description available)
-    w3_fq243n_sigma,
-    /// The w3_fq378n column. (No further description available)
-    w3_fq378n,
-    /// The w3_fq378n_n column. (No further description available)
-    w3_fq378n_n,
-    /// The w3_fq378n_sigma column. (No further description available)
-    w3_fq378n_sigma,
-    /// The w3_fq387n column. (No further description available)
-    w3_fq387n,
-    /// The w3_fq387n_n column. (No further description available)
-    w3_fq387n_n,
-    /// The w3_fq387n_sigma column. (No further description available)
-    w3_fq387n_sigma,
-    /// The w3_fq422m column. (No further description available)
-    w3_fq422m,
-    /// The w3_fq422m_n column. (No further description available)
-    w3_fq422m_n,
-    /// The w3_fq422m_sigma column. (No further description available)
-    w3_fq422m_sigma,
-    /// The w3_fq436n column. (No further description available)
-    w3_fq436n,
-    /// The w3_fq436n_n column. (No further description available)
-    w3_fq436n_n,
-    /// The w3_fq436n_sigma column. (No further description available)
-    w3_fq436n_sigma,
-    /// The w3_fq437n column. (No further description available)
-    w3_fq437n,
-    /// The w3_fq437n_n column. (No further description available)
-    w3_fq437n_n,
-    /// The w3_fq437n_sigma column. (No further description available)
-    w3_fq437n_sigma,
-    /// The w3_fq492n column. (No further description available)
-    w3_fq492n,
-    /// The w3_fq492n_n column. (No further description available)
-    w3_fq492n_n,
-    /// The w3_fq492n_sigma column. (No further description available)
-    w3_fq492n_sigma,
-    /// The w3_fq508n column. (No further description available)
-    w3_fq508n,
-    /// The w3_fq508n_n column. (No further description available)
-    w3_fq508n_n,
-    /// The w3_fq508n_sigma column. (No further description available)
-    w3_fq508n_sigma,
-    /// The w3_fq575n column. (No further description available)
-    w3_fq575n,
-    /// The w3_fq575n_n column. (No further description available)
-    w3_fq575n_n,
-    /// The w3_fq575n_sigma column. (No further description available)
-    w3_fq575n_sigma,
-    /// The w3_fq619n column. (No further description available)
-    w3_fq619n,
-    /// The w3_fq619n_n column. (No further description available)
-    w3_fq619n_n,
-    /// The w3_fq619n_sigma column. (No further description available)
-    w3_fq619n_sigma,
-    /// The w3_fq634n column. (No further description available)
-    w3_fq634n,
-    /// The w3_fq634n_n column. (No further description available)
-    w3_fq634n_n,
-    /// The w3_fq634n_sigma column. (No further description available)
-    w3_fq634n_sigma,
-    /// The w3_fq672n column. (No further description available)
-    w3_fq672n,
-    /// The w3_fq672n_n column. (No further description available)
-    w3_fq672n_n,
-    /// The w3_fq672n_sigma column. (No further description available)
-    w3_fq672n_sigma,
-    /// The w3_fq674n column. (No further description available)
-    w3_fq674n,
-    /// The w3_fq674n_n column. (No further description available)
-    w3_fq674n_n,
-    /// The w3_fq674n_sigma column. (No further description available)
-    w3_fq674n_sigma,
-    /// The w3_fq727n column. (No further description available)
-    w3_fq727n,
-    /// The w3_fq727n_n column. (No further description available)
-    w3_fq727n_n,
-    /// The w3_fq727n_sigma column. (No further description available)
-    w3_fq727n_sigma,
-    /// The w3_fq750n column. (No further description available)
-    w3_fq750n,
-    /// The w3_fq750n_n column. (No further description available)
-    w3_fq750n_n,
-    /// The w3_fq750n_sigma column. (No further description available)
-    w3_fq750n_sigma,
-    /// The w3_fq889n column. (No further description available)
-    w3_fq889n,
-    /// The w3_fq889n_n column. (No further description available)
-    w3_fq889n_n,
-    /// The w3_fq889n_sigma column. (No further description available)
-    w3_fq889n_sigma,
-    /// The w3_fq906n column. (No further description available)
-    w3_fq906n,
-    /// The w3_fq906n_n column. (No further description available)
-    w3_fq906n_n,
-    /// The w3_fq906n_sigma column. (No further description available)
-    w3_fq906n_sigma,
-    /// The w3_fq924n column. (No further description available)
-    w3_fq924n,
-    /// The w3_fq924n_n column. (No further description available)
-    w3_fq924n_n,
-    /// The w3_fq924n_sigma column. (No further description available)
-    w3_fq924n_sigma,
-    /// The w3_fq937n column. (No further description available)
-    w3_fq937n,
-    /// The w3_fq937n_n column. (No further description available)
-    w3_fq937n_n,
-    /// The w3_fq937n_sigma column. (No further description available)
-    w3_fq937n_sigma,
-    /// The w3_g102 column. (No further description available)
-    w3_g102,
-    /// The w3_g102_n column. (No further description available)
-    w3_g102_n,
-    /// The w3_g102_sigma column. (No further description available)
-    w3_g102_sigma,
-    /// The w3_g141 column. (No further description available)
-    w3_g141,
-    /// The w3_g141_n column. (No further description available)
-    w3_g141_n,
-    /// The w3_g141_sigma column. (No further description available)
-    w3_g141_sigma,
-    /// The w3_g280 column. (No further description available)
-    w3_g280,
-    /// The w3_g280_n column. (No further description available)
-    w3_g280_n,
-    /// The w3_g280_sigma column. (No further description available)
-    w3_g280_sigma,
-    /// The x column. (No further description available)
+    /// Declination for the match (J2000)
+    matchdec,
+    /// Hierarchical triangular index (htm) level 20 identifier for object position
+    htmid,
+    /// X coordinate of object position on unit celestial sphere
     x,
-    /// The y column. (No further description available)
+    /// Y coordinate of object position on unit celestial sphere
     y,
-    /// The z column. (No further description available)
+    /// Z coordinate of object position on unit celestial sphere
     z,
+    /// Standard deviation of the distance (D) between source and match positions
+    dsigma,
+    /// [Y/N] Was absolute astrometry correction made?
+    abscorr,
+    /// Observation start time (YYYY-MM-DD hh:mm:ss.sss)
+    starttime,
+    /// Observation stop time (YYYY-MM-DD hh:mm:ss.sss)
+    stoptime,
+    /// Observation start time in MJD (Mean Julian Date)
+    startmjd,
+    /// Observation stop time in MJD (Mean Julian Date)
+    stopmjd,
+    /// Target name for one of the observations
+    targetname,
+    /// Normalized (by detector and filter) mean value of concentration index defined as difference between magnitude in small and large apertures
+    ci,
+    /// Standard deviation in measurements of normalized Concentration Index
+    ci_sigma,
+    /// Mean value of the Kron radius from Source Extractor
+    kronradius,
+    /// Standard deviation in measurements of Kron radius
+    kronradius_sigma,
+    /// E(B-V) from Schlegel et al. (1998)
+    extinction,
+    /// Number of filters used in the match
+    numfilters,
+    /// Number of visits used in the match
+    numvisits,
+    /// Number of images used in the match
+    numimages,
+    /// Mean magnitude using ACS with f435w filter
+    a_f435w,
+    /// Standard deviation around mean magnitude using ACS with f435w filter
+    a_f435w_sigma,
+    /// Number of measurements using ACS with f435w filter
+    a_f435w_n,
+    /// Mean magnitude using ACS with f475w filter
+    a_f475w,
+    /// Standard deviation around mean magnitude using ACS with f475w filter
+    a_f475w_sigma,
+    /// Number of measurements using ACS with f475w filter
+    a_f475w_n,
+    /// Mean magnitude using ACS with f502n filter
+    a_f502n,
+    /// Standard deviation around mean magnitude using ACS with f502n filter
+    a_f502n_sigma,
+    /// Number of measurements using ACS with f502n filter
+    a_f502n_n,
+    /// Mean magnitude using ACS with f550m filter
+    a_f550m,
+    /// Standard deviation around mean magnitude using ACS with f550m filter
+    a_f550m_sigma,
+    /// Number of measurements using ACS with f550m filter
+    a_f550m_n,
+    /// Mean magnitude using ACS with f555w filter
+    a_f555w,
+    /// Standard deviation around mean magnitude using ACS with f555w filter
+    a_f555w_sigma,
+    /// Number of measurements using ACS with f555w filter
+    a_f555w_n,
+    /// Mean magnitude using ACS with f606w filter
+    a_f606w,
+    /// Standard deviation around mean magnitude using ACS with f606w filter
+    a_f606w_sigma,
+    /// Number of measurements using ACS with f606w filter
+    a_f606w_n,
+    /// Mean magnitude using ACS with f625w filter
+    a_f625w,
+    /// Standard deviation around mean magnitude using ACS with f625w filter
+    a_f625w_sigma,
+    /// Number of measurements using ACS with f625w filter
+    a_f625w_n,
+    /// Mean magnitude using ACS with f658n filter
+    a_f658n,
+    /// Standard deviation around mean magnitude using ACS with f658n filter
+    a_f658n_sigma,
+    /// Number of measurements using ACS with f658n filter
+    a_f658n_n,
+    /// Mean magnitude using ACS with f660n filter
+    a_f660n,
+    /// Standard deviation around mean magnitude using ACS with f660n filter
+    a_f660n_sigma,
+    /// Number of measurements using ACS with f660n filter
+    a_f660n_n,
+    /// Mean magnitude using ACS with f775w filter
+    a_f775w,
+    /// Standard deviation around mean magnitude using ACS with f775w filter
+    a_f775w_sigma,
+    /// Number of measurements using ACS with f775w filter
+    a_f775w_n,
+    /// Mean magnitude using ACS with f814w filter
+    a_f814w,
+    /// Standard deviation around mean magnitude using ACS with f814w filter
+    a_f814w_sigma,
+    /// Number of measurements using ACS with f814w filter
+    a_f814w_n,
+    /// Mean magnitude using ACS with f850lp filter
+    a_f850lp,
+    /// Standard deviation around mean magnitude using ACS with f850lp filter
+    a_f850lp_sigma,
+    /// Number of measurements using ACS with f850lp filter
+    a_f850lp_n,
+    /// Mean magnitude using WFPC2 with f122m filter
+    w2_f122m,
+    /// Standard deviation around mean magnitude using WFPC2 with f122m filter
+    w2_f122m_sigma,
+    /// Number of measurements using WFPC2 with f122m filter
+    w2_f122m_n,
+    /// Mean magnitude using WFPC2 with f160bn15 filter
+    w2_f160bn15,
+    /// Standard deviation around mean magnitude using WFPC2 with f160bn15 filter
+    w2_f160bn15_sigma,
+    /// Number of measurements using WFPC2 with f160bn15 filter
+    w2_f160bn15_n,
+    /// Mean magnitude using WFPC2 with f160bw filter
+    w2_f160bw,
+    /// Standard deviation around mean magnitude using WFPC2 with f160bw filter
+    w2_f160bw_sigma,
+    /// Number of measurements using WFPC2 with f160bw filter
+    w2_f160bw_n,
+    /// Mean magnitude using WFPC2 with f170w filter
+    w2_f170w,
+    /// Standard deviation around mean magnitude using WFPC2 with f170w filter
+    w2_f170w_sigma,
+    /// Number of measurements using WFPC2 with f170w filter
+    w2_f170w_n,
+    /// Mean magnitude using WFPC2 with f185w filter
+    w2_f185w,
+    /// Standard deviation around mean magnitude using WFPC2 with f185w filter
+    w2_f185w_sigma,
+    /// Number of measurements using WFPC2 with f185w filter
+    w2_f185w_n,
+    /// Mean magnitude using WFPC2 with f218w filter
+    w2_f218w,
+    /// Standard deviation around mean magnitude using WFPC2 with f218w filter
+    w2_f218w_sigma,
+    /// Number of measurements using WFPC2 with f218w filter
+    w2_f218w_n,
+    /// Mean magnitude using WFPC2 f255w filter
+    w2_f255w,
+    /// Standard deviation around mean magnitude using WFPC2 with f255w filter
+    w2_f255w_sigma,
+    /// Number of measurements using WFPC2 with f255w filter
+    w2_f255w_n,
+    /// Mean magnitude using WFPC2 with f300w filter
+    w2_f300w,
+    /// Standard deviation around mean magnitude using WFPC2 with f300w filter
+    w2_f300w_sigma,
+    /// Number of measurements using WFPC2 with f300w filter
+    w2_f300w_n,
+    /// Mean magnitude using WFPC2 with f336w filter
+    w2_f336w,
+    /// Standard deviation around mean magnitude using WFPC2 with f336w filter
+    w2_f336w_sigma,
+    /// Number of measurements using WFPC2 with f336w filter
+    w2_f336w_n,
+    /// Mean magnitude using WFPC2 with f343n filter
+    w2_f343n,
+    /// Standard deviation around mean magnitude using WFPC2 with f343n filter
+    w2_f343n_sigma,
+    /// Number of measurements using WFPC2 with f343n filter
+    w2_f343n_n,
+    /// Mean magnitude using WFPC2 with f375n filter
+    w2_f375n,
+    /// Standard deviation around mean magnitude using WFPC2 with f375n filter
+    w2_f375n_sigma,
+    /// Number of measurements using WFPC2 with f375n filter
+    w2_f375n_n,
+    /// Mean magnitude using WFPC2 with f380w filter
+    w2_f380w,
+    /// Standard deviation around mean magnitude using WFPC2 with f380w filter
+    w2_f380w_sigma,
+    /// Number of measurements using WFPC2 with f380w filter
+    w2_f380w_n,
+    /// Mean magnitude using WFPC2 with f390n filter
+    w2_f390n,
+    /// Standard deviation around mean magnitude using WFPC2 with f390n filter
+    w2_f390n_sigma,
+    /// Number of measurements using WFPC2 with f390n filter
+    w2_f390n_n,
+    /// Mean magnitude using WFPC2 with f410m filter
+    w2_f410m,
+    /// Standard deviation around mean magnitude using WFPC2 with f410m filter
+    w2_f410m_sigma,
+    /// Number of measurements using WFPC2 with f410m filter
+    w2_f410m_n,
+    /// Mean magnitude using WFPC2 with f437n filter
+    w2_f437n,
+    /// Standard deviation around mean magnitude using WFPC2 with f437n filter
+    w2_f437n_sigma,
+    /// Number of measurements using WFPC2 with f437n filter
+    w2_f437n_n,
+    /// Mean magnitude using WFPC2 with f439w filter
+    w2_f439w,
+    /// Standard deviation around mean magnitude using WFPC2 with f439w filter
+    w2_f439w_sigma,
+    /// Number of measurements using WFPC2 with f439w filter
+    w2_f439w_n,
+    /// Mean magnitude using WFPC2 with f450w filter
+    w2_f450w,
+    /// Standard deviation around mean magnitude using WFPC2 with f450w filter
+    w2_f450w_sigma,
+    /// Number of measurements using WFPC2 with f450w filter
+    w2_f450w_n,
+    /// Mean magnitude using WFPC2 with f467m filter
+    w2_f467m,
+    /// Standard deviation around mean magnitude using WFPC2 with f467m filter
+    w2_f467m_sigma,
+    /// Number of measurements using WFPC2 with f467m filter
+    w2_f467m_n,
+    /// Mean magnitude using WFPC2 with f469n filter
+    w2_f469n,
+    /// Standard deviation around mean magnitude using WFPC2 with f469n filter
+    w2_f469n_sigma,
+    /// Number of measurements using WFPC2 with f469n filter
+    w2_f469n_n,
+    /// Mean magnitude using WFPC2 with f487n filter
+    w2_f487n,
+    /// Standard deviation around mean magnitude using WFPC2 with f487n filter
+    w2_f487n_sigma,
+    /// Number of measurements using WFPC2 with f487n filter
+    w2_f487n_n,
+    /// Mean magnitude using WFPC2 with f502n filter
+    w2_f502n,
+    /// Standard deviation around mean magnitude using WFPC2 with f502n filter
+    w2_f502n_sigma,
+    /// Number of measurements using WFPC2 with f502n filter
+    w2_f502n_n,
+    /// Mean magnitude using WFPC2 with f547m filter
+    w2_f547m,
+    /// Standard deviation around mean magnitude using WFPC2 with f547m filter
+    w2_f547m_sigma,
+    /// Number of measurements using WFPC2 with f547m filter
+    w2_f547m_n,
+    /// Mean magnitude using WFPC2 with f555w filter
+    w2_f555w,
+    /// Standard deviation around mean magnitude using WFPC2 with f555w filter
+    w2_f555w_sigma,
+    /// Number of measurements using WFPC2 with f555w filter
+    w2_f555w_n,
+    /// Mean magnitude using WFPC2 with f569w filter
+    w2_f569w,
+    /// Standard deviation around mean magnitude using WFPC2 with f569w filter
+    w2_f569w_sigma,
+    /// Number of measurements using WFPC2 with f569w filter
+    w2_f569w_n,
+    /// Mean magnitude using WFPC2 with f588n filter
+    w2_f588n,
+    /// Standard deviation around mean magnitude using WFPC2 with f588n filter
+    w2_f588n_sigma,
+    /// Number of measurements using WFPC2 with f588n filter
+    w2_f588n_n,
+    /// Mean magnitude using WFPC2 with f606w filter
+    w2_f606w,
+    /// Standard deviation around mean magnitude using WFPC2 with f606w filter
+    w2_f606w_sigma,
+    /// Number of measurements using WFPC2 with f606w filter
+    w2_f606w_n,
+    /// Mean magnitude using WFPC2 with f622w filter
+    w2_f622w,
+    /// Standard deviation around mean magnitude using WFPC2 with f622w filter
+    w2_f622w_sigma,
+    /// Number of measurements using WFPC2 with f622w filter
+    w2_f622w_n,
+    /// Mean magnitude using WFPC2 with f631n filter
+    w2_f631n,
+    /// Standard deviation around mean magnitude using WFPC2 with f631n filter
+    w2_f631n_sigma,
+    /// Number of measurements using WFPC2 with f631n filter
+    w2_f631n_n,
+    /// Mean magnitude using WFPC2 with f656n filter
+    w2_f656n,
+    /// Standard deviation around mean magnitude using WFPC2 with f656n filter
+    w2_f656n_sigma,
+    /// Number of measurements using WFPC2 with f656n filter
+    w2_f656n_n,
+    /// Mean magnitude using WFPC2 with f658n filter
+    w2_f658n,
+    /// Standard deviation around mean magnitude using WFPC2 with f658n filter
+    w2_f658n_sigma,
+    /// Number of measurements using WFPC2 with f658n filter
+    w2_f658n_n,
+    /// Mean magnitude using WFPC2 with f673n filter
+    w2_f673n,
+    /// Standard deviation around mean magnitude using WFPC2 with f673n filter
+    w2_f673n_sigma,
+    /// Number of measurements using WFPC2 with f673n filter
+    w2_f673n_n,
+    /// Mean magnitude using WFPC2 with f675w filter
+    w2_f675w,
+    /// Standard deviation around mean magnitude using WFPC2 with f675w filter
+    w2_f675w_sigma,
+    /// Number of measurements using WFPC2 with f675w filter
+    w2_f675w_n,
+    /// Mean magnitude using WFPC2 with f702w filter
+    w2_f702w,
+    /// Standard deviation around mean magnitude using WFPC2 with f702w filter
+    w2_f702w_sigma,
+    /// Number of measurements using with WFPC2 f702w filter
+    w2_f702w_n,
+    /// Mean magnitude using WFPC2 with f785lp filter
+    w2_f785lp,
+    /// Standard deviation around mean magnitude using WFPC2 with f785lp filter
+    w2_f785lp_sigma,
+    /// Number of measurements using WFPC2 with f785lp filter
+    w2_f785lp_n,
+    /// Mean magnitude using WFPC2 with f791w filter
+    w2_f791w,
+    /// Standard deviation around mean magnitude using WFPC2 with f791w filter
+    w2_f791w_sigma,
+    /// Number of measurements using WFPC2 with f791w filter
+    w2_f791w_n,
+    /// Mean magnitude using WFPC2 with f814w filter
+    w2_f814w,
+    /// Standard deviation around mean magnitude using WFPC2 with f814w filter
+    w2_f814w_sigma,
+    /// Number of measurements using WFPC2 with f814w filter
+    w2_f814w_n,
+    /// Mean magnitude using WFPC2 with f850lp filter
+    w2_f850lp,
+    /// Standard deviation around mean magnitude using WFPC2 with f850lp filter
+    w2_f850lp_sigma,
+    /// Number of measurements using WFPC2 with f850lp filter
+    w2_f850lp_n,
+    /// Mean magnitude using WFPC2 with f953n filter
+    w2_f953n,
+    /// Standard deviation around mean magnitude using WFPC2 with f953n filter
+    w2_f953n_sigma,
+    /// Number of measurements using WFPC2 with f953n filter
+    w2_f953n_n,
+    /// Mean magnitude using WFPC2 with f1042m filter
+    w2_f1042m,
+    /// Standard deviation around mean magnitude using WFPC2 with f1042m filter
+    w2_f1042m_sigma,
+    /// Number of measurements using WFPC2 with f1042m filter
+    w2_f1042m_n,
+    /// Mean magnitude using WFC3 with blank filter
+    w3_blank,
+    /// Standard deviation around mean magnitude using WFC3 with blank filter
+    w3_blank_sigma,
+    /// Number of measurements using WFC3 with blank filter
+    w3_blank_n,
+    /// Mean magnitude using WFC3 with f098m filter
+    w3_f098m,
+    /// Standard deviation around mean magnitude using WFC3 with f098m filter
+    w3_f098m_sigma,
+    /// Number of measurements using WFC3 with f098m filter
+    w3_f098m_n,
+    /// Mean magnitude using WFC3 with f105w filter
+    w3_f105w,
+    /// Standard deviation around mean magnitude using WFC3 with f105w filter
+    w3_f105w_sigma,
+    /// Number of measurements using WFC3 with f105w filter
+    w3_f105w_n,
+    /// Mean magnitude using WFC3 with f110w filter
+    w3_f110w,
+    /// Standard deviation around mean magnitude using WFC3 with f110w filter
+    w3_f110w_sigma,
+    /// Number of measurements using WFC3 with f110w filter
+    w3_f110w_n,
+    /// Mean magnitude using WFC3 with f125w filter
+    w3_f125w,
+    /// Standard deviation around mean magnitude using WFC3 with f125w filter
+    w3_f125w_sigma,
+    /// Number of measurements using WFC3 with f125w filter
+    w3_f125w_n,
+    /// Mean magnitude using WFC3 with f126n filter
+    w3_f126n,
+    /// Standard deviation around mean magnitude using WFC3 with f126n filter
+    w3_f126n_sigma,
+    /// Number of measurements using WFC3 with f126n filter
+    w3_f126n_n,
+    /// Mean magnitude using WFC3 with f127m filter
+    w3_f127m,
+    /// Standard deviation around mean magnitude using WFC3 with f127m filter
+    w3_f127m_sigma,
+    /// Number of measurements using WFC3 with f127m filter
+    w3_f127m_n,
+    /// Mean magnitude using WFC3 with f128n filter
+    w3_f128n,
+    /// Standard deviation around mean magnitude using WFC3 with f128n filter
+    w3_f128n_sigma,
+    /// Number of measurements using WFC3 with f128n filter
+    w3_f128n_n,
+    /// Mean magnitude using WFC3 with f130n filter
+    w3_f130n,
+    /// Standard deviation around mean magnitude using WFC3 with f130n filter
+    w3_f130n_sigma,
+    /// Number of measurements using WFC3 with f130n filter
+    w3_f130n_n,
+    /// Mean magnitude using WFC3 with f132n filter
+    w3_f132n,
+    /// Standard deviation around mean magnitude using WFC3 with f132n filter
+    w3_f132n_sigma,
+    /// Number of measurements using WFC3 with f132n filter
+    w3_f132n_n,
+    /// Mean magnitude using WFC3 with f139m filter
+    w3_f139m,
+    /// Standard deviation around mean magnitude using WFC3 with f139m filter
+    w3_f139m_sigma,
+    /// Number of measurements using WFC3 with f139m filter
+    w3_f139m_n,
+    /// Mean magnitude using WFC3 with f140w filter
+    w3_f140w,
+    /// Standard deviation around mean magnitude using WFC3 with f140w filter
+    w3_f140w_sigma,
+    /// Number of measurements using WFC3 with f140w filter
+    w3_f140w_n,
+    /// Mean magnitude using WFC3 with f153m filter
+    w3_f153m,
+    /// Standard deviation around mean magnitude using WFC3 with f153m filter
+    w3_f153m_sigma,
+    /// Number of measurements using WFC3 with f153m filter
+    w3_f153m_n,
+    /// Mean magnitude using WFC3 with f160w filter
+    w3_f160w,
+    /// Standard deviation around mean magnitude using WFC3 with f160w filter
+    w3_f160w_sigma,
+    /// Number of measurements using WFC3 with f160w filter
+    w3_f160w_n,
+    /// Mean magnitude using WFC3 with f164n filter
+    w3_f164n,
+    /// Standard deviation around mean magnitude using WFC3 with f164n filter
+    w3_f164n_sigma,
+    /// Number of measurements using WFC3 with f164n filter
+    w3_f164n_n,
+    /// Mean magnitude using WFC3 with f167n filter
+    w3_f167n,
+    /// Standard deviation around mean magnitude using WFC3 with f167n filter
+    w3_f167n_sigma,
+    /// Number of measurements using WFC3 with f167n filter
+    w3_f167n_n,
+    /// Mean magnitude using WFC3 with f200lp filter
+    w3_f200lp,
+    /// Standard deviation around mean magnitude using WFC3 with f200lp filter
+    w3_f200lp_sigma,
+    /// Number of measurements using WFC3 with f200lp filter
+    w3_f200lp_n,
+    /// Mean magnitude using WFC3 with f218w filter
+    w3_f218w,
+    /// Standard deviation around mean magnitude using WFC3 with f218w filter
+    w3_f218w_sigma,
+    /// Number of measurements using WFC3 with f218w filter
+    w3_f218w_n,
+    /// Mean magnitude using WFC3 with f225w filter
+    w3_f225w,
+    /// Standard deviation around mean magnitude using WFC3 with f225w filter
+    w3_f225w_sigma,
+    /// Number of measurements using WFC3 with f225w filter
+    w3_f225w_n,
+    /// Mean magnitude using WFC3 with fq232n filter
+    w3_fq232n,
+    /// Standard deviation around mean magnitude using WFC3 with fq232n filter
+    w3_fq232n_sigma,
+    /// Number of measurements using WFC3 with fq232n filter
+    w3_fq232n_n,
+    /// Mean magnitude using WFC3 with fq243n filter
+    w3_fq243n,
+    /// Standard deviation around mean magnitude using WFC3 with fq243n filter
+    w3_fq243n_sigma,
+    /// Number of measurements using WFC3 with fq243n filter
+    w3_fq243n_n,
+    /// Mean magnitude using WFC3 with f275w filter
+    w3_f275w,
+    /// Standard deviation around mean magnitude using WFC3 with f275w filter
+    w3_f275w_sigma,
+    /// Number of measurements using WFC3 with f275w filter
+    w3_f275w_n,
+    /// Mean magnitude using WFC3 with f280n filter
+    w3_f280n,
+    /// Standard deviation around mean magnitude using WFC3 with f280n filter
+    w3_f280n_sigma,
+    /// Number of measurements using WFC3 with f280n filter
+    w3_f280n_n,
+    /// Mean magnitude using WFC3 with f300x filter
+    w3_f300x,
+    /// Standard deviation around mean magnitude using WFC3 with f300x filter
+    w3_f300x_sigma,
+    /// Number of measurements using WFC3 with f300x filter
+    w3_f300x_n,
+    /// Mean magnitude using WFC3 with f336w filter
+    w3_f336w,
+    /// Standard deviation around mean magnitude using WFC3 with f336w filter
+    w3_f336w_sigma,
+    /// Number of measurements using WFC3 with f336w filter
+    w3_f336w_n,
+    /// Mean magnitude using WFC3 with f343n filter
+    w3_f343n,
+    /// Standard deviation around mean magnitude using WFC3 with f343n filter
+    w3_f343n_sigma,
+    /// Number of measurements using WFC3 with f343n filter
+    w3_f343n_n,
+    /// Mean magnitude using WFC3 with f350lp filter
+    w3_f350lp,
+    /// Standard deviation around mean magnitude using WFC3 with f350lp filter
+    w3_f350lp_sigma,
+    /// Number of measurements using WFC3 with f350lp filter
+    w3_f350lp_n,
+    /// Mean magnitude using WFC3 with f373n filter
+    w3_f373n,
+    /// Standard deviation around mean magnitude using WFC3 with f373n filter
+    w3_f373n_sigma,
+    /// Number of measurements using WFC3 with f373n filter
+    w3_f373n_n,
+    /// Mean magnitude using WFC3 with fq378n filter
+    w3_fq378n,
+    /// Standard deviation around mean magnitude using WFC3 with fq378n filter
+    w3_fq378n_sigma,
+    /// Number of measurements using WFC3 with fq378n filter
+    w3_fq378n_n,
+    /// Mean magnitude using WFC3 with fq387n filter
+    w3_fq387n,
+    /// Standard deviation around mean magnitude using WFC3 with fq387n filter
+    w3_fq387n_sigma,
+    /// Number of measurements using WFC3 with fq387n filter
+    w3_fq387n_n,
+    /// Mean magnitude using WFC3 with f390m filter
+    w3_f390m,
+    /// Standard deviation around mean magnitude using WFC3 with f390m filter
+    w3_f390m_sigma,
+    /// Number of measurements using WFC3 with f390m filter
+    w3_f390m_n,
+    /// Mean magnitude using WFC3 with f390w filter
+    w3_f390w,
+    /// Standard deviation around mean magnitude using WFC3 with f390w filter
+    w3_f390w_sigma,
+    /// Number of measurements using WFC3 with f390w filter
+    w3_f390w_n,
+    /// Mean magnitude using WFC3 with f395n filter
+    w3_f395n,
+    /// Standard deviation around mean magnitude using WFC3 with f395n filter
+    w3_f395n_sigma,
+    /// Number of measurements using WFC3 with f395n filter
+    w3_f395n_n,
+    /// Mean magnitude using WFC3 with f410m filter
+    w3_f410m,
+    /// Standard deviation around mean magnitude using WFC3 with f410m filter
+    w3_f410m_sigma,
+    /// Number of measurements using WFC3 with f410m filter
+    w3_f410m_n,
+    /// Mean magnitude using WFC3 with fq422m filter
+    w3_fq422m,
+    /// Standard deviation around mean magnitude using WFC3 with fq422m filter
+    w3_fq422m_sigma,
+    /// Number of measurements using WFC3 with fq422m filter
+    w3_fq422m_n,
+    /// Mean magnitude using WFC3 with fq436n filter
+    w3_fq436n,
+    /// Standard deviation around mean magnitude using WFC3 with fq436n filter
+    w3_fq436n_sigma,
+    /// Number of measurements using WFC3 with fq436n filter
+    w3_fq436n_n,
+    /// Mean magnitude using WFC3 with fq437n filter
+    w3_fq437n,
+    /// Standard deviation around mean magnitude using WFC3 with fq437n filter
+    w3_fq437n_sigma,
+    /// Number of measurements using WFC3 with fq437n filter
+    w3_fq437n_n,
+    /// Mean magnitude using WFC3 with f438w filter
+    w3_f438w,
+    /// Standard deviation around mean magnitude using WFC3 with f438w filter
+    w3_f438w_sigma,
+    /// Number of measurements using WFC3 with f438w filter
+    w3_f438w_n,
+    /// Mean magnitude using WFC3 with f467m filter
+    w3_f467m,
+    /// Standard deviation around mean magnitude using WFC3 with f467m filter
+    w3_f467m_sigma,
+    /// Number of measurements using WFC3 with f467m filter
+    w3_f467m_n,
+    /// Mean magnitude using WFC3 with f469n filter
+    w3_f469n,
+    /// Standard deviation around mean magnitude using WFC3 with f469n filter
+    w3_f469n_sigma,
+    /// Number of measurements using WFC3 with f469n filter
+    w3_f469n_n,
+    /// Mean magnitude using WFC3 with f475w filter
+    w3_f475w,
+    /// Standard deviation around mean magnitude using WFC3 with f475w filter
+    w3_f475w_sigma,
+    /// Number of measurements using WFC3 with f475w filter
+    w3_f475w_n,
+    /// Mean magnitude using WFC3 with f475x filter
+    w3_f475x,
+    /// Standard deviation around mean magnitude using WFC3 with f475x filter
+    w3_f475x_sigma,
+    /// Number of measurements using WFC3 with f475x filter
+    w3_f475x_n,
+    /// Mean magnitude using WFC3 with f487n filter
+    w3_f487n,
+    /// Standard deviation around mean magnitude using WFC3 with f487n filter
+    w3_f487n_sigma,
+    /// Number of measurements using WFC3 with f487n filter
+    w3_f487n_n,
+    /// Mean magnitude using WFC3 with fq492n filter
+    w3_fq492n,
+    /// Standard deviation around mean magnitude using WFC3 with fq492n filter
+    w3_fq492n_sigma,
+    /// Number of measurements using WFC3 with fq492n filter
+    w3_fq492n_n,
+    /// Mean magnitude using WFC3 with f502n filter
+    w3_f502n,
+    /// Standard deviation around mean magnitude using WFC3 with f502n filter
+    w3_f502n_sigma,
+    /// Number of measurements using WFC3 with f502n filter
+    w3_f502n_n,
+    /// Mean magnitude using WFC3 with fq508n filter
+    w3_fq508n,
+    /// Standard deviation around mean magnitude using WFC3 with fq508n filter
+    w3_fq508n_sigma,
+    /// Number of measurements using WFC3 with fq508n filter
+    w3_fq508n_n,
+    /// Mean magnitude using WFC3 with f547m filter
+    w3_f547m,
+    /// Standard deviation around mean magnitude using WFC3 with f547m filter
+    w3_f547m_sigma,
+    /// Number of measurements using WFC3 with f547m filter
+    w3_f547m_n,
+    /// Mean magnitude using WFC3 with f555w filter
+    w3_f555w,
+    /// Standard deviation around mean magnitude using WFC3 with f555w filter
+    w3_f555w_sigma,
+    /// Number of measurements using WFC3 with f555w filter
+    w3_f555w_n,
+    /// Mean magnitude using WFC3 with fq575n filter
+    w3_fq575n,
+    /// Standard deviation around mean magnitude using WFC3 with fq575n filter
+    w3_fq575n_sigma,
+    /// Number of measurements using WFC3 with fq575n filter
+    w3_fq575n_n,
+    /// Mean magnitude using WFC3 with f600lp filter
+    w3_f600lp,
+    /// Standard deviation around mean magnitude using WFC3 with f600lp filter
+    w3_f600lp_sigma,
+    /// Number of measurements using WFC3 with f600lp filter
+    w3_f600lp_n,
+    /// Mean magnitude using WFC3 with f606w filter
+    w3_f606w,
+    /// Standard deviation around mean magnitude using WFC3 with f606w filter
+    w3_f606w_sigma,
+    /// Number of measurements using WFC3 with f606w filter
+    w3_f606w_n,
+    /// Mean magnitude using WFC3 with fq619n filter
+    w3_fq619n,
+    /// Standard deviation around mean magnitude using WFC3 with fq619n filter
+    w3_fq619n_sigma,
+    /// Number of measurements using WFC3 with fq619n filter
+    w3_fq619n_n,
+    /// Mean magnitude using WFC3 with f621m filter
+    w3_f621m,
+    /// Standard deviation around mean magnitude using WFC3 with f621m filter
+    w3_f621m_sigma,
+    /// Number of measurements using WFC3 with f621m filter
+    w3_f621m_n,
+    /// Mean magnitude using WFC3 with f625w filter
+    w3_f625w,
+    /// Standard deviation around mean magnitude using WFC3 with f625w filter
+    w3_f625w_sigma,
+    /// Number of measurements using WFC3 with f625w filter
+    w3_f625w_n,
+    /// Mean magnitude using WFC3 with f631n filter
+    w3_f631n,
+    /// Standard deviation around mean magnitude using WFC3 with f631n filter
+    w3_f631n_sigma,
+    /// Number of measurements using WFC3 with f631n filter
+    w3_f631n_n,
+    /// Mean magnitude using WFC3 with fq634n filter
+    w3_fq634n,
+    /// Standard deviation around mean magnitude using WFC3 with fq634n filter
+    w3_fq634n_sigma,
+    /// Number of measurements using WFC3 with fq634n filter
+    w3_fq634n_n,
+    /// Mean magnitude using WFC3 with f645n filter
+    w3_f645n,
+    /// Standard deviation around mean magnitude using WFC3 with f645n filter
+    w3_f645n_sigma,
+    /// Number of measurements using WFC3 with f645n filter
+    w3_f645n_n,
+    /// Mean magnitude using WFC3 with f656n filter
+    w3_f656n,
+    /// Standard deviation around mean magnitude using WFC3 with f656n filter
+    w3_f656n_sigma,
+    /// Number of measurements using WFC3 with f656n filter
+    w3_f656n_n,
+    /// Mean magnitude using WFC3 with f657n filter
+    w3_f657n,
+    /// Standard deviation around mean magnitude using WFC3 with f657n filter
+    w3_f657n_sigma,
+    /// Number of measurements using WFC3 with f657n filter
+    w3_f657n_n,
+    /// Mean magnitude using WFC3 with f658n filter
+    w3_f658n,
+    /// Standard deviation around mean magnitude using WFC3 with f658n filter
+    w3_f658n_sigma,
+    /// Number of measurements using WFC3 with f658n filter
+    w3_f658n_n,
+    /// Mean magnitude using WFC3 with f665n filter
+    w3_f665n,
+    /// Standard deviation around mean magnitude using WFC3 with f665n filter
+    w3_f665n_sigma,
+    /// Number of measurements using WFC3 with f665n filter
+    w3_f665n_n,
+    /// Mean magnitude using WFC3 with f665n_f6 filter
+    w3_f665n_f6,
+    /// Standard deviation around mean magnitude using WFC3 with f665n_f6 filter
+    w3_f665n_f6_sigma,
+    /// Number of measurements using WFC3 with f665n_f6 filter
+    w3_f665n_f6_n,
+    /// Mean magnitude using WFC3 with fq672n filter
+    w3_fq672n,
+    /// Standard deviation around mean magnitude using WFC3 with fq672n filter
+    w3_fq672n_sigma,
+    /// Number of measurements using WFC3 with fq672n filter
+    w3_fq672n_n,
+    /// Mean magnitude using WFC3 with f673n filter
+    w3_f673n,
+    /// Standard deviation around mean magnitude using WFC3 with f673n filter
+    w3_f673n_sigma,
+    /// Number of measurements using WFC3 with f673n filter
+    w3_f673n_n,
+    /// Mean magnitude using WFC3 with fq674n filter
+    w3_fq674n,
+    /// Standard deviation around mean magnitude using WFC3 with fq674n filter
+    w3_fq674n_sigma,
+    /// Number of measurements using WFC3 with fq674n filter
+    w3_fq674n_n,
+    /// Mean magnitude using WFC3 with f680n filter
+    w3_f680n,
+    /// Standard deviation around mean magnitude using WFC3 with f680n filter
+    w3_f680n_sigma,
+    /// Number of measurements using WFC3 with f680n filter
+    w3_f680n_n,
+    /// Mean magnitude using WFC3 with f689m filter
+    w3_f689m,
+    /// Standard deviation around mean magnitude using WFC3 with f689m filter
+    w3_f689m_sigma,
+    /// Number of measurements using WFC3 with f689m filter
+    w3_f689m_n,
+    /// Mean magnitude using WFC3 with fq727n filter
+    w3_fq727n,
+    /// Standard deviation around mean magnitude using WFC3 with fq727n filter
+    w3_fq727n_sigma,
+    /// Number of measurements using WFC3 with fq727n filter
+    w3_fq727n_n,
+    /// Mean magnitude using WFC3 with fq750n filter
+    w3_fq750n,
+    /// Standard deviation around mean magnitude using WFC3 with fq750n filter
+    w3_fq750n_sigma,
+    /// Number of measurements using WFC3 with fq750n filter
+    w3_fq750n_n,
+    /// Mean magnitude using WFC3 with f763m filter
+    w3_f763m,
+    /// Standard deviation around mean magnitude using WFC3 with f763m filter
+    w3_f763m_sigma,
+    /// Number of measurements using WFC3 with f763m filter
+    w3_f763m_n,
+    /// Mean magnitude using WFC3 with f775w filter
+    w3_f775w,
+    /// Standard deviation around mean magnitude using WFC3 with f775w filter
+    w3_f775w_sigma,
+    /// Number of measurements using WFC3 with f775w filter
+    w3_f775w_n,
+    /// Mean magnitude using WFC3 with f814w filter
+    w3_f814w,
+    /// Standard deviation around mean magnitude using WFC3 with f814w filter
+    w3_f814w_sigma,
+    /// Number of measurements using WFC3 with f814w filter
+    w3_f814w_n,
+    /// Mean magnitude using WFC3 with f845m filter
+    w3_f845m,
+    /// Standard deviation around mean magnitude using WFC3 with f845m filter
+    w3_f845m_sigma,
+    /// Number of measurements using WFC3 with f845m filter
+    w3_f845m_n,
+    /// Mean magnitude using WFC3 with f850lp filter
+    w3_f850lp,
+    /// Standard deviation around mean magnitude using WFC3 with f850lp filter
+    w3_f850lp_sigma,
+    /// Number of measurements using WFC3 with f850lp filter
+    w3_f850lp_n,
+    /// Mean magnitude using WFC3 with fq889n filter
+    w3_fq889n,
+    /// Standard deviation around mean magnitude using WFC3 with fq889n filter
+    w3_fq889n_sigma,
+    /// Number of measurements using WFC3 with fq889n filter
+    w3_fq889n_n,
+    /// Mean magnitude using WFC3 with fq906n filter
+    w3_fq906n,
+    /// Standard deviation around mean magnitude using WFC3 with fq906n filter
+    w3_fq906n_sigma,
+    /// Number of measurements using WFC3 with fq906n filter
+    w3_fq906n_n,
+    /// Mean magnitude using WFC3 with fq924n filter
+    w3_fq924n,
+    /// Standard deviation around mean magnitude using WFC3 with fq924n filter
+    w3_fq924n_sigma,
+    /// Number of measurements using WFC3 with fq924n filter
+    w3_fq924n_n,
+    /// Mean magnitude using WFC3 with fq937n filter
+    w3_fq937n,
+    /// Standard deviation around mean magnitude using WFC3 with fq937n filter
+    w3_fq937n_sigma,
+    /// Number of measurements using WFC3 with fq937n filter
+    w3_fq937n_n,
+    /// Mean magnitude using WFC3 with f953n filter
+    w3_f953n,
+    /// Standard deviation around mean magnitude using WFC3 with f953n filter
+    w3_f953n_sigma,
+    /// Number of measurements using WFC3 with f953n filter
+    w3_f953n_n,
+    /// Mean magnitude using WFC3 with g102 filter
+    w3_g102,
+    /// Standard deviation around mean magnitude using WFC3 with g102 filter
+    w3_g102_sigma,
+    /// Number of measurements using WFC3 with g102 filter
+    w3_g102_n,
+    /// Mean magnitude using WFC3 with g141 filter
+    w3_g141,
+    /// Standard deviation around mean magnitude using WFC3 with g141 filter
+    w3_g141_sigma,
+    /// Number of measurements using WFC3 with g141 filter
+    w3_g141_n,
+    /// Mean magnitude using WFC3 with g280 filter
+    w3_g280,
+    /// Standard deviation around mean magnitude using WFC3 with g280 filter
+    w3_g280_sigma,
+    /// Number of measurements using WFC3 with g280 filter
+    w3_g280_n,
 }
 
 impl Column for Col {}
@@ -868,426 +868,426 @@ impl Column for Col {}
 /// Collects all the known columns in the hubble_sc table.
 pub fn collect_known(map: &mut std::collections::HashMap<String, Vec<String>>) {
     let mut col_strings = Vec::new();
-    col_strings.push(Col::abscorr.to_string());
-    col_strings.push(Col::a_f435w.to_string());
-    col_strings.push(Col::a_f435w_n.to_string());
-    col_strings.push(Col::a_f435w_sigma.to_string());
-    col_strings.push(Col::a_f475w.to_string());
-    col_strings.push(Col::a_f475w_n.to_string());
-    col_strings.push(Col::a_f475w_sigma.to_string());
-    col_strings.push(Col::a_f502n.to_string());
-    col_strings.push(Col::a_f502n_n.to_string());
-    col_strings.push(Col::a_f502n_sigma.to_string());
-    col_strings.push(Col::a_f550m.to_string());
-    col_strings.push(Col::a_f550m_n.to_string());
-    col_strings.push(Col::a_f550m_sigma.to_string());
-    col_strings.push(Col::a_f555w.to_string());
-    col_strings.push(Col::a_f555w_n.to_string());
-    col_strings.push(Col::a_f555w_sigma.to_string());
-    col_strings.push(Col::a_f606w.to_string());
-    col_strings.push(Col::a_f606w_n.to_string());
-    col_strings.push(Col::a_f606w_sigma.to_string());
-    col_strings.push(Col::a_f625w.to_string());
-    col_strings.push(Col::a_f625w_n.to_string());
-    col_strings.push(Col::a_f625w_sigma.to_string());
-    col_strings.push(Col::a_f658n.to_string());
-    col_strings.push(Col::a_f658n_n.to_string());
-    col_strings.push(Col::a_f658n_sigma.to_string());
-    col_strings.push(Col::a_f660n.to_string());
-    col_strings.push(Col::a_f660n_n.to_string());
-    col_strings.push(Col::a_f660n_sigma.to_string());
-    col_strings.push(Col::a_f775w.to_string());
-    col_strings.push(Col::a_f775w_n.to_string());
-    col_strings.push(Col::a_f775w_sigma.to_string());
-    col_strings.push(Col::a_f814w.to_string());
-    col_strings.push(Col::a_f814w_n.to_string());
-    col_strings.push(Col::a_f814w_sigma.to_string());
-    col_strings.push(Col::a_f850lp.to_string());
-    col_strings.push(Col::a_f850lp_n.to_string());
-    col_strings.push(Col::a_f850lp_sigma.to_string());
-    col_strings.push(Col::ci.to_string());
-    col_strings.push(Col::ci_sigma.to_string());
-    col_strings.push(Col::dsigma.to_string());
-    col_strings.push(Col::extinction.to_string());
-    col_strings.push(Col::htmid.to_string());
-    col_strings.push(Col::kronradius.to_string());
-    col_strings.push(Col::kronradius_sigma.to_string());
-    col_strings.push(Col::matchdec.to_string());
     col_strings.push(Col::match_id.to_string());
     col_strings.push(Col::matchra.to_string());
-    col_strings.push(Col::numfilters.to_string());
-    col_strings.push(Col::numimages.to_string());
-    col_strings.push(Col::numvisits.to_string());
-    col_strings.push(Col::startmjd.to_string());
-    col_strings.push(Col::starttime.to_string());
-    col_strings.push(Col::stopmjd.to_string());
-    col_strings.push(Col::stoptime.to_string());
-    col_strings.push(Col::targetname.to_string());
-    col_strings.push(Col::w2_f1042m.to_string());
-    col_strings.push(Col::w2_f1042m_n.to_string());
-    col_strings.push(Col::w2_f1042m_sigma.to_string());
-    col_strings.push(Col::w2_f122m.to_string());
-    col_strings.push(Col::w2_f122m_n.to_string());
-    col_strings.push(Col::w2_f122m_sigma.to_string());
-    col_strings.push(Col::w2_f160bn15.to_string());
-    col_strings.push(Col::w2_f160bn15_n.to_string());
-    col_strings.push(Col::w2_f160bn15_sigma.to_string());
-    col_strings.push(Col::w2_f160bw.to_string());
-    col_strings.push(Col::w2_f160bw_n.to_string());
-    col_strings.push(Col::w2_f160bw_sigma.to_string());
-    col_strings.push(Col::w2_f170w.to_string());
-    col_strings.push(Col::w2_f170w_n.to_string());
-    col_strings.push(Col::w2_f170w_sigma.to_string());
-    col_strings.push(Col::w2_f185w.to_string());
-    col_strings.push(Col::w2_f185w_n.to_string());
-    col_strings.push(Col::w2_f185w_sigma.to_string());
-    col_strings.push(Col::w2_f218w.to_string());
-    col_strings.push(Col::w2_f218w_n.to_string());
-    col_strings.push(Col::w2_f218w_sigma.to_string());
-    col_strings.push(Col::w2_f255w.to_string());
-    col_strings.push(Col::w2_f255w_n.to_string());
-    col_strings.push(Col::w2_f255w_sigma.to_string());
-    col_strings.push(Col::w2_f300w.to_string());
-    col_strings.push(Col::w2_f300w_n.to_string());
-    col_strings.push(Col::w2_f300w_sigma.to_string());
-    col_strings.push(Col::w2_f336w.to_string());
-    col_strings.push(Col::w2_f336w_n.to_string());
-    col_strings.push(Col::w2_f336w_sigma.to_string());
-    col_strings.push(Col::w2_f343n.to_string());
-    col_strings.push(Col::w2_f343n_n.to_string());
-    col_strings.push(Col::w2_f343n_sigma.to_string());
-    col_strings.push(Col::w2_f375n.to_string());
-    col_strings.push(Col::w2_f375n_n.to_string());
-    col_strings.push(Col::w2_f375n_sigma.to_string());
-    col_strings.push(Col::w2_f380w.to_string());
-    col_strings.push(Col::w2_f380w_n.to_string());
-    col_strings.push(Col::w2_f380w_sigma.to_string());
-    col_strings.push(Col::w2_f390n.to_string());
-    col_strings.push(Col::w2_f390n_n.to_string());
-    col_strings.push(Col::w2_f390n_sigma.to_string());
-    col_strings.push(Col::w2_f410m.to_string());
-    col_strings.push(Col::w2_f410m_n.to_string());
-    col_strings.push(Col::w2_f410m_sigma.to_string());
-    col_strings.push(Col::w2_f437n.to_string());
-    col_strings.push(Col::w2_f437n_n.to_string());
-    col_strings.push(Col::w2_f437n_sigma.to_string());
-    col_strings.push(Col::w2_f439w.to_string());
-    col_strings.push(Col::w2_f439w_n.to_string());
-    col_strings.push(Col::w2_f439w_sigma.to_string());
-    col_strings.push(Col::w2_f450w.to_string());
-    col_strings.push(Col::w2_f450w_n.to_string());
-    col_strings.push(Col::w2_f450w_sigma.to_string());
-    col_strings.push(Col::w2_f467m.to_string());
-    col_strings.push(Col::w2_f467m_n.to_string());
-    col_strings.push(Col::w2_f467m_sigma.to_string());
-    col_strings.push(Col::w2_f469n.to_string());
-    col_strings.push(Col::w2_f469n_n.to_string());
-    col_strings.push(Col::w2_f469n_sigma.to_string());
-    col_strings.push(Col::w2_f487n.to_string());
-    col_strings.push(Col::w2_f487n_n.to_string());
-    col_strings.push(Col::w2_f487n_sigma.to_string());
-    col_strings.push(Col::w2_f502n.to_string());
-    col_strings.push(Col::w2_f502n_n.to_string());
-    col_strings.push(Col::w2_f502n_sigma.to_string());
-    col_strings.push(Col::w2_f547m.to_string());
-    col_strings.push(Col::w2_f547m_n.to_string());
-    col_strings.push(Col::w2_f547m_sigma.to_string());
-    col_strings.push(Col::w2_f555w.to_string());
-    col_strings.push(Col::w2_f555w_n.to_string());
-    col_strings.push(Col::w2_f555w_sigma.to_string());
-    col_strings.push(Col::w2_f569w.to_string());
-    col_strings.push(Col::w2_f569w_n.to_string());
-    col_strings.push(Col::w2_f569w_sigma.to_string());
-    col_strings.push(Col::w2_f588n.to_string());
-    col_strings.push(Col::w2_f588n_n.to_string());
-    col_strings.push(Col::w2_f588n_sigma.to_string());
-    col_strings.push(Col::w2_f606w.to_string());
-    col_strings.push(Col::w2_f606w_n.to_string());
-    col_strings.push(Col::w2_f606w_sigma.to_string());
-    col_strings.push(Col::w2_f622w.to_string());
-    col_strings.push(Col::w2_f622w_n.to_string());
-    col_strings.push(Col::w2_f622w_sigma.to_string());
-    col_strings.push(Col::w2_f631n.to_string());
-    col_strings.push(Col::w2_f631n_n.to_string());
-    col_strings.push(Col::w2_f631n_sigma.to_string());
-    col_strings.push(Col::w2_f656n.to_string());
-    col_strings.push(Col::w2_f656n_n.to_string());
-    col_strings.push(Col::w2_f656n_sigma.to_string());
-    col_strings.push(Col::w2_f658n.to_string());
-    col_strings.push(Col::w2_f658n_n.to_string());
-    col_strings.push(Col::w2_f658n_sigma.to_string());
-    col_strings.push(Col::w2_f673n.to_string());
-    col_strings.push(Col::w2_f673n_n.to_string());
-    col_strings.push(Col::w2_f673n_sigma.to_string());
-    col_strings.push(Col::w2_f675w.to_string());
-    col_strings.push(Col::w2_f675w_n.to_string());
-    col_strings.push(Col::w2_f675w_sigma.to_string());
-    col_strings.push(Col::w2_f702w.to_string());
-    col_strings.push(Col::w2_f702w_n.to_string());
-    col_strings.push(Col::w2_f702w_sigma.to_string());
-    col_strings.push(Col::w2_f785lp.to_string());
-    col_strings.push(Col::w2_f785lp_n.to_string());
-    col_strings.push(Col::w2_f785lp_sigma.to_string());
-    col_strings.push(Col::w2_f791w.to_string());
-    col_strings.push(Col::w2_f791w_n.to_string());
-    col_strings.push(Col::w2_f791w_sigma.to_string());
-    col_strings.push(Col::w2_f814w.to_string());
-    col_strings.push(Col::w2_f814w_n.to_string());
-    col_strings.push(Col::w2_f814w_sigma.to_string());
-    col_strings.push(Col::w2_f850lp.to_string());
-    col_strings.push(Col::w2_f850lp_n.to_string());
-    col_strings.push(Col::w2_f850lp_sigma.to_string());
-    col_strings.push(Col::w2_f953n.to_string());
-    col_strings.push(Col::w2_f953n_n.to_string());
-    col_strings.push(Col::w2_f953n_sigma.to_string());
-    col_strings.push(Col::w3_blank.to_string());
-    col_strings.push(Col::w3_blank_n.to_string());
-    col_strings.push(Col::w3_blank_sigma.to_string());
-    col_strings.push(Col::w3_f098m.to_string());
-    col_strings.push(Col::w3_f098m_n.to_string());
-    col_strings.push(Col::w3_f098m_sigma.to_string());
-    col_strings.push(Col::w3_f105w.to_string());
-    col_strings.push(Col::w3_f105w_n.to_string());
-    col_strings.push(Col::w3_f105w_sigma.to_string());
-    col_strings.push(Col::w3_f110w.to_string());
-    col_strings.push(Col::w3_f110w_n.to_string());
-    col_strings.push(Col::w3_f110w_sigma.to_string());
-    col_strings.push(Col::w3_f125w.to_string());
-    col_strings.push(Col::w3_f125w_n.to_string());
-    col_strings.push(Col::w3_f125w_sigma.to_string());
-    col_strings.push(Col::w3_f126n.to_string());
-    col_strings.push(Col::w3_f126n_n.to_string());
-    col_strings.push(Col::w3_f126n_sigma.to_string());
-    col_strings.push(Col::w3_f127m.to_string());
-    col_strings.push(Col::w3_f127m_n.to_string());
-    col_strings.push(Col::w3_f127m_sigma.to_string());
-    col_strings.push(Col::w3_f128n.to_string());
-    col_strings.push(Col::w3_f128n_n.to_string());
-    col_strings.push(Col::w3_f128n_sigma.to_string());
-    col_strings.push(Col::w3_f130n.to_string());
-    col_strings.push(Col::w3_f130n_n.to_string());
-    col_strings.push(Col::w3_f130n_sigma.to_string());
-    col_strings.push(Col::w3_f132n.to_string());
-    col_strings.push(Col::w3_f132n_n.to_string());
-    col_strings.push(Col::w3_f132n_sigma.to_string());
-    col_strings.push(Col::w3_f139m.to_string());
-    col_strings.push(Col::w3_f139m_n.to_string());
-    col_strings.push(Col::w3_f139m_sigma.to_string());
-    col_strings.push(Col::w3_f140w.to_string());
-    col_strings.push(Col::w3_f140w_n.to_string());
-    col_strings.push(Col::w3_f140w_sigma.to_string());
-    col_strings.push(Col::w3_f153m.to_string());
-    col_strings.push(Col::w3_f153m_n.to_string());
-    col_strings.push(Col::w3_f153m_sigma.to_string());
-    col_strings.push(Col::w3_f160w.to_string());
-    col_strings.push(Col::w3_f160w_n.to_string());
-    col_strings.push(Col::w3_f160w_sigma.to_string());
-    col_strings.push(Col::w3_f164n.to_string());
-    col_strings.push(Col::w3_f164n_n.to_string());
-    col_strings.push(Col::w3_f164n_sigma.to_string());
-    col_strings.push(Col::w3_f167n.to_string());
-    col_strings.push(Col::w3_f167n_n.to_string());
-    col_strings.push(Col::w3_f167n_sigma.to_string());
-    col_strings.push(Col::w3_f200lp.to_string());
-    col_strings.push(Col::w3_f200lp_n.to_string());
-    col_strings.push(Col::w3_f200lp_sigma.to_string());
-    col_strings.push(Col::w3_f218w.to_string());
-    col_strings.push(Col::w3_f218w_n.to_string());
-    col_strings.push(Col::w3_f218w_sigma.to_string());
-    col_strings.push(Col::w3_f225w.to_string());
-    col_strings.push(Col::w3_f225w_n.to_string());
-    col_strings.push(Col::w3_f225w_sigma.to_string());
-    col_strings.push(Col::w3_f275w.to_string());
-    col_strings.push(Col::w3_f275w_n.to_string());
-    col_strings.push(Col::w3_f275w_sigma.to_string());
-    col_strings.push(Col::w3_f280n.to_string());
-    col_strings.push(Col::w3_f280n_n.to_string());
-    col_strings.push(Col::w3_f280n_sigma.to_string());
-    col_strings.push(Col::w3_f300x.to_string());
-    col_strings.push(Col::w3_f300x_n.to_string());
-    col_strings.push(Col::w3_f300x_sigma.to_string());
-    col_strings.push(Col::w3_f336w.to_string());
-    col_strings.push(Col::w3_f336w_n.to_string());
-    col_strings.push(Col::w3_f336w_sigma.to_string());
-    col_strings.push(Col::w3_f343n.to_string());
-    col_strings.push(Col::w3_f343n_n.to_string());
-    col_strings.push(Col::w3_f343n_sigma.to_string());
-    col_strings.push(Col::w3_f350lp.to_string());
-    col_strings.push(Col::w3_f350lp_n.to_string());
-    col_strings.push(Col::w3_f350lp_sigma.to_string());
-    col_strings.push(Col::w3_f373n.to_string());
-    col_strings.push(Col::w3_f373n_n.to_string());
-    col_strings.push(Col::w3_f373n_sigma.to_string());
-    col_strings.push(Col::w3_f390m.to_string());
-    col_strings.push(Col::w3_f390m_n.to_string());
-    col_strings.push(Col::w3_f390m_sigma.to_string());
-    col_strings.push(Col::w3_f390w.to_string());
-    col_strings.push(Col::w3_f390w_n.to_string());
-    col_strings.push(Col::w3_f390w_sigma.to_string());
-    col_strings.push(Col::w3_f395n.to_string());
-    col_strings.push(Col::w3_f395n_n.to_string());
-    col_strings.push(Col::w3_f395n_sigma.to_string());
-    col_strings.push(Col::w3_f410m.to_string());
-    col_strings.push(Col::w3_f410m_n.to_string());
-    col_strings.push(Col::w3_f410m_sigma.to_string());
-    col_strings.push(Col::w3_f438w.to_string());
-    col_strings.push(Col::w3_f438w_n.to_string());
-    col_strings.push(Col::w3_f438w_sigma.to_string());
-    col_strings.push(Col::w3_f467m.to_string());
-    col_strings.push(Col::w3_f467m_n.to_string());
-    col_strings.push(Col::w3_f467m_sigma.to_string());
-    col_strings.push(Col::w3_f469n.to_string());
-    col_strings.push(Col::w3_f469n_n.to_string());
-    col_strings.push(Col::w3_f469n_sigma.to_string());
-    col_strings.push(Col::w3_f475w.to_string());
-    col_strings.push(Col::w3_f475w_n.to_string());
-    col_strings.push(Col::w3_f475w_sigma.to_string());
-    col_strings.push(Col::w3_f475x.to_string());
-    col_strings.push(Col::w3_f475x_n.to_string());
-    col_strings.push(Col::w3_f475x_sigma.to_string());
-    col_strings.push(Col::w3_f487n.to_string());
-    col_strings.push(Col::w3_f487n_n.to_string());
-    col_strings.push(Col::w3_f487n_sigma.to_string());
-    col_strings.push(Col::w3_f502n.to_string());
-    col_strings.push(Col::w3_f502n_n.to_string());
-    col_strings.push(Col::w3_f502n_sigma.to_string());
-    col_strings.push(Col::w3_f547m.to_string());
-    col_strings.push(Col::w3_f547m_n.to_string());
-    col_strings.push(Col::w3_f547m_sigma.to_string());
-    col_strings.push(Col::w3_f555w.to_string());
-    col_strings.push(Col::w3_f555w_n.to_string());
-    col_strings.push(Col::w3_f555w_sigma.to_string());
-    col_strings.push(Col::w3_f600lp.to_string());
-    col_strings.push(Col::w3_f600lp_n.to_string());
-    col_strings.push(Col::w3_f600lp_sigma.to_string());
-    col_strings.push(Col::w3_f606w.to_string());
-    col_strings.push(Col::w3_f606w_n.to_string());
-    col_strings.push(Col::w3_f606w_sigma.to_string());
-    col_strings.push(Col::w3_f621m.to_string());
-    col_strings.push(Col::w3_f621m_n.to_string());
-    col_strings.push(Col::w3_f621m_sigma.to_string());
-    col_strings.push(Col::w3_f625w.to_string());
-    col_strings.push(Col::w3_f625w_n.to_string());
-    col_strings.push(Col::w3_f625w_sigma.to_string());
-    col_strings.push(Col::w3_f631n.to_string());
-    col_strings.push(Col::w3_f631n_n.to_string());
-    col_strings.push(Col::w3_f631n_sigma.to_string());
-    col_strings.push(Col::w3_f645n.to_string());
-    col_strings.push(Col::w3_f645n_n.to_string());
-    col_strings.push(Col::w3_f645n_sigma.to_string());
-    col_strings.push(Col::w3_f656n.to_string());
-    col_strings.push(Col::w3_f656n_n.to_string());
-    col_strings.push(Col::w3_f656n_sigma.to_string());
-    col_strings.push(Col::w3_f657n.to_string());
-    col_strings.push(Col::w3_f657n_n.to_string());
-    col_strings.push(Col::w3_f657n_sigma.to_string());
-    col_strings.push(Col::w3_f658n.to_string());
-    col_strings.push(Col::w3_f658n_n.to_string());
-    col_strings.push(Col::w3_f658n_sigma.to_string());
-    col_strings.push(Col::w3_f665n.to_string());
-    col_strings.push(Col::w3_f665n_f6.to_string());
-    col_strings.push(Col::w3_f665n_f6_n.to_string());
-    col_strings.push(Col::w3_f665n_f6_sigma.to_string());
-    col_strings.push(Col::w3_f665n_n.to_string());
-    col_strings.push(Col::w3_f665n_sigma.to_string());
-    col_strings.push(Col::w3_f673n.to_string());
-    col_strings.push(Col::w3_f673n_n.to_string());
-    col_strings.push(Col::w3_f673n_sigma.to_string());
-    col_strings.push(Col::w3_f680n.to_string());
-    col_strings.push(Col::w3_f680n_n.to_string());
-    col_strings.push(Col::w3_f680n_sigma.to_string());
-    col_strings.push(Col::w3_f689m.to_string());
-    col_strings.push(Col::w3_f689m_n.to_string());
-    col_strings.push(Col::w3_f689m_sigma.to_string());
-    col_strings.push(Col::w3_f763m.to_string());
-    col_strings.push(Col::w3_f763m_n.to_string());
-    col_strings.push(Col::w3_f763m_sigma.to_string());
-    col_strings.push(Col::w3_f775w.to_string());
-    col_strings.push(Col::w3_f775w_n.to_string());
-    col_strings.push(Col::w3_f775w_sigma.to_string());
-    col_strings.push(Col::w3_f814w.to_string());
-    col_strings.push(Col::w3_f814w_n.to_string());
-    col_strings.push(Col::w3_f814w_sigma.to_string());
-    col_strings.push(Col::w3_f845m.to_string());
-    col_strings.push(Col::w3_f845m_n.to_string());
-    col_strings.push(Col::w3_f845m_sigma.to_string());
-    col_strings.push(Col::w3_f850lp.to_string());
-    col_strings.push(Col::w3_f850lp_n.to_string());
-    col_strings.push(Col::w3_f850lp_sigma.to_string());
-    col_strings.push(Col::w3_f953n.to_string());
-    col_strings.push(Col::w3_f953n_n.to_string());
-    col_strings.push(Col::w3_f953n_sigma.to_string());
-    col_strings.push(Col::w3_fq232n.to_string());
-    col_strings.push(Col::w3_fq232n_n.to_string());
-    col_strings.push(Col::w3_fq232n_sigma.to_string());
-    col_strings.push(Col::w3_fq243n.to_string());
-    col_strings.push(Col::w3_fq243n_n.to_string());
-    col_strings.push(Col::w3_fq243n_sigma.to_string());
-    col_strings.push(Col::w3_fq378n.to_string());
-    col_strings.push(Col::w3_fq378n_n.to_string());
-    col_strings.push(Col::w3_fq378n_sigma.to_string());
-    col_strings.push(Col::w3_fq387n.to_string());
-    col_strings.push(Col::w3_fq387n_n.to_string());
-    col_strings.push(Col::w3_fq387n_sigma.to_string());
-    col_strings.push(Col::w3_fq422m.to_string());
-    col_strings.push(Col::w3_fq422m_n.to_string());
-    col_strings.push(Col::w3_fq422m_sigma.to_string());
-    col_strings.push(Col::w3_fq436n.to_string());
-    col_strings.push(Col::w3_fq436n_n.to_string());
-    col_strings.push(Col::w3_fq436n_sigma.to_string());
-    col_strings.push(Col::w3_fq437n.to_string());
-    col_strings.push(Col::w3_fq437n_n.to_string());
-    col_strings.push(Col::w3_fq437n_sigma.to_string());
-    col_strings.push(Col::w3_fq492n.to_string());
-    col_strings.push(Col::w3_fq492n_n.to_string());
-    col_strings.push(Col::w3_fq492n_sigma.to_string());
-    col_strings.push(Col::w3_fq508n.to_string());
-    col_strings.push(Col::w3_fq508n_n.to_string());
-    col_strings.push(Col::w3_fq508n_sigma.to_string());
-    col_strings.push(Col::w3_fq575n.to_string());
-    col_strings.push(Col::w3_fq575n_n.to_string());
-    col_strings.push(Col::w3_fq575n_sigma.to_string());
-    col_strings.push(Col::w3_fq619n.to_string());
-    col_strings.push(Col::w3_fq619n_n.to_string());
-    col_strings.push(Col::w3_fq619n_sigma.to_string());
-    col_strings.push(Col::w3_fq634n.to_string());
-    col_strings.push(Col::w3_fq634n_n.to_string());
-    col_strings.push(Col::w3_fq634n_sigma.to_string());
-    col_strings.push(Col::w3_fq672n.to_string());
-    col_strings.push(Col::w3_fq672n_n.to_string());
-    col_strings.push(Col::w3_fq672n_sigma.to_string());
-    col_strings.push(Col::w3_fq674n.to_string());
-    col_strings.push(Col::w3_fq674n_n.to_string());
-    col_strings.push(Col::w3_fq674n_sigma.to_string());
-    col_strings.push(Col::w3_fq727n.to_string());
-    col_strings.push(Col::w3_fq727n_n.to_string());
-    col_strings.push(Col::w3_fq727n_sigma.to_string());
-    col_strings.push(Col::w3_fq750n.to_string());
-    col_strings.push(Col::w3_fq750n_n.to_string());
-    col_strings.push(Col::w3_fq750n_sigma.to_string());
-    col_strings.push(Col::w3_fq889n.to_string());
-    col_strings.push(Col::w3_fq889n_n.to_string());
-    col_strings.push(Col::w3_fq889n_sigma.to_string());
-    col_strings.push(Col::w3_fq906n.to_string());
-    col_strings.push(Col::w3_fq906n_n.to_string());
-    col_strings.push(Col::w3_fq906n_sigma.to_string());
-    col_strings.push(Col::w3_fq924n.to_string());
-    col_strings.push(Col::w3_fq924n_n.to_string());
-    col_strings.push(Col::w3_fq924n_sigma.to_string());
-    col_strings.push(Col::w3_fq937n.to_string());
-    col_strings.push(Col::w3_fq937n_n.to_string());
-    col_strings.push(Col::w3_fq937n_sigma.to_string());
-    col_strings.push(Col::w3_g102.to_string());
-    col_strings.push(Col::w3_g102_n.to_string());
-    col_strings.push(Col::w3_g102_sigma.to_string());
-    col_strings.push(Col::w3_g141.to_string());
-    col_strings.push(Col::w3_g141_n.to_string());
-    col_strings.push(Col::w3_g141_sigma.to_string());
-    col_strings.push(Col::w3_g280.to_string());
-    col_strings.push(Col::w3_g280_n.to_string());
-    col_strings.push(Col::w3_g280_sigma.to_string());
+    col_strings.push(Col::matchdec.to_string());
+    col_strings.push(Col::htmid.to_string());
     col_strings.push(Col::x.to_string());
     col_strings.push(Col::y.to_string());
     col_strings.push(Col::z.to_string());
+    col_strings.push(Col::dsigma.to_string());
+    col_strings.push(Col::abscorr.to_string());
+    col_strings.push(Col::starttime.to_string());
+    col_strings.push(Col::stoptime.to_string());
+    col_strings.push(Col::startmjd.to_string());
+    col_strings.push(Col::stopmjd.to_string());
+    col_strings.push(Col::targetname.to_string());
+    col_strings.push(Col::ci.to_string());
+    col_strings.push(Col::ci_sigma.to_string());
+    col_strings.push(Col::kronradius.to_string());
+    col_strings.push(Col::kronradius_sigma.to_string());
+    col_strings.push(Col::extinction.to_string());
+    col_strings.push(Col::numfilters.to_string());
+    col_strings.push(Col::numvisits.to_string());
+    col_strings.push(Col::numimages.to_string());
+    col_strings.push(Col::a_f435w.to_string());
+    col_strings.push(Col::a_f435w_sigma.to_string());
+    col_strings.push(Col::a_f435w_n.to_string());
+    col_strings.push(Col::a_f475w.to_string());
+    col_strings.push(Col::a_f475w_sigma.to_string());
+    col_strings.push(Col::a_f475w_n.to_string());
+    col_strings.push(Col::a_f502n.to_string());
+    col_strings.push(Col::a_f502n_sigma.to_string());
+    col_strings.push(Col::a_f502n_n.to_string());
+    col_strings.push(Col::a_f550m.to_string());
+    col_strings.push(Col::a_f550m_sigma.to_string());
+    col_strings.push(Col::a_f550m_n.to_string());
+    col_strings.push(Col::a_f555w.to_string());
+    col_strings.push(Col::a_f555w_sigma.to_string());
+    col_strings.push(Col::a_f555w_n.to_string());
+    col_strings.push(Col::a_f606w.to_string());
+    col_strings.push(Col::a_f606w_sigma.to_string());
+    col_strings.push(Col::a_f606w_n.to_string());
+    col_strings.push(Col::a_f625w.to_string());
+    col_strings.push(Col::a_f625w_sigma.to_string());
+    col_strings.push(Col::a_f625w_n.to_string());
+    col_strings.push(Col::a_f658n.to_string());
+    col_strings.push(Col::a_f658n_sigma.to_string());
+    col_strings.push(Col::a_f658n_n.to_string());
+    col_strings.push(Col::a_f660n.to_string());
+    col_strings.push(Col::a_f660n_sigma.to_string());
+    col_strings.push(Col::a_f660n_n.to_string());
+    col_strings.push(Col::a_f775w.to_string());
+    col_strings.push(Col::a_f775w_sigma.to_string());
+    col_strings.push(Col::a_f775w_n.to_string());
+    col_strings.push(Col::a_f814w.to_string());
+    col_strings.push(Col::a_f814w_sigma.to_string());
+    col_strings.push(Col::a_f814w_n.to_string());
+    col_strings.push(Col::a_f850lp.to_string());
+    col_strings.push(Col::a_f850lp_sigma.to_string());
+    col_strings.push(Col::a_f850lp_n.to_string());
+    col_strings.push(Col::w2_f122m.to_string());
+    col_strings.push(Col::w2_f122m_sigma.to_string());
+    col_strings.push(Col::w2_f122m_n.to_string());
+    col_strings.push(Col::w2_f160bn15.to_string());
+    col_strings.push(Col::w2_f160bn15_sigma.to_string());
+    col_strings.push(Col::w2_f160bn15_n.to_string());
+    col_strings.push(Col::w2_f160bw.to_string());
+    col_strings.push(Col::w2_f160bw_sigma.to_string());
+    col_strings.push(Col::w2_f160bw_n.to_string());
+    col_strings.push(Col::w2_f170w.to_string());
+    col_strings.push(Col::w2_f170w_sigma.to_string());
+    col_strings.push(Col::w2_f170w_n.to_string());
+    col_strings.push(Col::w2_f185w.to_string());
+    col_strings.push(Col::w2_f185w_sigma.to_string());
+    col_strings.push(Col::w2_f185w_n.to_string());
+    col_strings.push(Col::w2_f218w.to_string());
+    col_strings.push(Col::w2_f218w_sigma.to_string());
+    col_strings.push(Col::w2_f218w_n.to_string());
+    col_strings.push(Col::w2_f255w.to_string());
+    col_strings.push(Col::w2_f255w_sigma.to_string());
+    col_strings.push(Col::w2_f255w_n.to_string());
+    col_strings.push(Col::w2_f300w.to_string());
+    col_strings.push(Col::w2_f300w_sigma.to_string());
+    col_strings.push(Col::w2_f300w_n.to_string());
+    col_strings.push(Col::w2_f336w.to_string());
+    col_strings.push(Col::w2_f336w_sigma.to_string());
+    col_strings.push(Col::w2_f336w_n.to_string());
+    col_strings.push(Col::w2_f343n.to_string());
+    col_strings.push(Col::w2_f343n_sigma.to_string());
+    col_strings.push(Col::w2_f343n_n.to_string());
+    col_strings.push(Col::w2_f375n.to_string());
+    col_strings.push(Col::w2_f375n_sigma.to_string());
+    col_strings.push(Col::w2_f375n_n.to_string());
+    col_strings.push(Col::w2_f380w.to_string());
+    col_strings.push(Col::w2_f380w_sigma.to_string());
+    col_strings.push(Col::w2_f380w_n.to_string());
+    col_strings.push(Col::w2_f390n.to_string());
+    col_strings.push(Col::w2_f390n_sigma.to_string());
+    col_strings.push(Col::w2_f390n_n.to_string());
+    col_strings.push(Col::w2_f410m.to_string());
+    col_strings.push(Col::w2_f410m_sigma.to_string());
+    col_strings.push(Col::w2_f410m_n.to_string());
+    col_strings.push(Col::w2_f437n.to_string());
+    col_strings.push(Col::w2_f437n_sigma.to_string());
+    col_strings.push(Col::w2_f437n_n.to_string());
+    col_strings.push(Col::w2_f439w.to_string());
+    col_strings.push(Col::w2_f439w_sigma.to_string());
+    col_strings.push(Col::w2_f439w_n.to_string());
+    col_strings.push(Col::w2_f450w.to_string());
+    col_strings.push(Col::w2_f450w_sigma.to_string());
+    col_strings.push(Col::w2_f450w_n.to_string());
+    col_strings.push(Col::w2_f467m.to_string());
+    col_strings.push(Col::w2_f467m_sigma.to_string());
+    col_strings.push(Col::w2_f467m_n.to_string());
+    col_strings.push(Col::w2_f469n.to_string());
+    col_strings.push(Col::w2_f469n_sigma.to_string());
+    col_strings.push(Col::w2_f469n_n.to_string());
+    col_strings.push(Col::w2_f487n.to_string());
+    col_strings.push(Col::w2_f487n_sigma.to_string());
+    col_strings.push(Col::w2_f487n_n.to_string());
+    col_strings.push(Col::w2_f502n.to_string());
+    col_strings.push(Col::w2_f502n_sigma.to_string());
+    col_strings.push(Col::w2_f502n_n.to_string());
+    col_strings.push(Col::w2_f547m.to_string());
+    col_strings.push(Col::w2_f547m_sigma.to_string());
+    col_strings.push(Col::w2_f547m_n.to_string());
+    col_strings.push(Col::w2_f555w.to_string());
+    col_strings.push(Col::w2_f555w_sigma.to_string());
+    col_strings.push(Col::w2_f555w_n.to_string());
+    col_strings.push(Col::w2_f569w.to_string());
+    col_strings.push(Col::w2_f569w_sigma.to_string());
+    col_strings.push(Col::w2_f569w_n.to_string());
+    col_strings.push(Col::w2_f588n.to_string());
+    col_strings.push(Col::w2_f588n_sigma.to_string());
+    col_strings.push(Col::w2_f588n_n.to_string());
+    col_strings.push(Col::w2_f606w.to_string());
+    col_strings.push(Col::w2_f606w_sigma.to_string());
+    col_strings.push(Col::w2_f606w_n.to_string());
+    col_strings.push(Col::w2_f622w.to_string());
+    col_strings.push(Col::w2_f622w_sigma.to_string());
+    col_strings.push(Col::w2_f622w_n.to_string());
+    col_strings.push(Col::w2_f631n.to_string());
+    col_strings.push(Col::w2_f631n_sigma.to_string());
+    col_strings.push(Col::w2_f631n_n.to_string());
+    col_strings.push(Col::w2_f656n.to_string());
+    col_strings.push(Col::w2_f656n_sigma.to_string());
+    col_strings.push(Col::w2_f656n_n.to_string());
+    col_strings.push(Col::w2_f658n.to_string());
+    col_strings.push(Col::w2_f658n_sigma.to_string());
+    col_strings.push(Col::w2_f658n_n.to_string());
+    col_strings.push(Col::w2_f673n.to_string());
+    col_strings.push(Col::w2_f673n_sigma.to_string());
+    col_strings.push(Col::w2_f673n_n.to_string());
+    col_strings.push(Col::w2_f675w.to_string());
+    col_strings.push(Col::w2_f675w_sigma.to_string());
+    col_strings.push(Col::w2_f675w_n.to_string());
+    col_strings.push(Col::w2_f702w.to_string());
+    col_strings.push(Col::w2_f702w_sigma.to_string());
+    col_strings.push(Col::w2_f702w_n.to_string());
+    col_strings.push(Col::w2_f785lp.to_string());
+    col_strings.push(Col::w2_f785lp_sigma.to_string());
+    col_strings.push(Col::w2_f785lp_n.to_string());
+    col_strings.push(Col::w2_f791w.to_string());
+    col_strings.push(Col::w2_f791w_sigma.to_string());
+    col_strings.push(Col::w2_f791w_n.to_string());
+    col_strings.push(Col::w2_f814w.to_string());
+    col_strings.push(Col::w2_f814w_sigma.to_string());
+    col_strings.push(Col::w2_f814w_n.to_string());
+    col_strings.push(Col::w2_f850lp.to_string());
+    col_strings.push(Col::w2_f850lp_sigma.to_string());
+    col_strings.push(Col::w2_f850lp_n.to_string());
+    col_strings.push(Col::w2_f953n.to_string());
+    col_strings.push(Col::w2_f953n_sigma.to_string());
+    col_strings.push(Col::w2_f953n_n.to_string());
+    col_strings.push(Col::w2_f1042m.to_string());
+    col_strings.push(Col::w2_f1042m_sigma.to_string());
+    col_strings.push(Col::w2_f1042m_n.to_string());
+    col_strings.push(Col::w3_blank.to_string());
+    col_strings.push(Col::w3_blank_sigma.to_string());
+    col_strings.push(Col::w3_blank_n.to_string());
+    col_strings.push(Col::w3_f098m.to_string());
+    col_strings.push(Col::w3_f098m_sigma.to_string());
+    col_strings.push(Col::w3_f098m_n.to_string());
+    col_strings.push(Col::w3_f105w.to_string());
+    col_strings.push(Col::w3_f105w_sigma.to_string());
+    col_strings.push(Col::w3_f105w_n.to_string());
+    col_strings.push(Col::w3_f110w.to_string());
+    col_strings.push(Col::w3_f110w_sigma.to_string());
+    col_strings.push(Col::w3_f110w_n.to_string());
+    col_strings.push(Col::w3_f125w.to_string());
+    col_strings.push(Col::w3_f125w_sigma.to_string());
+    col_strings.push(Col::w3_f125w_n.to_string());
+    col_strings.push(Col::w3_f126n.to_string());
+    col_strings.push(Col::w3_f126n_sigma.to_string());
+    col_strings.push(Col::w3_f126n_n.to_string());
+    col_strings.push(Col::w3_f127m.to_string());
+    col_strings.push(Col::w3_f127m_sigma.to_string());
+    col_strings.push(Col::w3_f127m_n.to_string());
+    col_strings.push(Col::w3_f128n.to_string());
+    col_strings.push(Col::w3_f128n_sigma.to_string());
+    col_strings.push(Col::w3_f128n_n.to_string());
+    col_strings.push(Col::w3_f130n.to_string());
+    col_strings.push(Col::w3_f130n_sigma.to_string());
+    col_strings.push(Col::w3_f130n_n.to_string());
+    col_strings.push(Col::w3_f132n.to_string());
+    col_strings.push(Col::w3_f132n_sigma.to_string());
+    col_strings.push(Col::w3_f132n_n.to_string());
+    col_strings.push(Col::w3_f139m.to_string());
+    col_strings.push(Col::w3_f139m_sigma.to_string());
+    col_strings.push(Col::w3_f139m_n.to_string());
+    col_strings.push(Col::w3_f140w.to_string());
+    col_strings.push(Col::w3_f140w_sigma.to_string());
+    col_strings.push(Col::w3_f140w_n.to_string());
+    col_strings.push(Col::w3_f153m.to_string());
+    col_strings.push(Col::w3_f153m_sigma.to_string());
+    col_strings.push(Col::w3_f153m_n.to_string());
+    col_strings.push(Col::w3_f160w.to_string());
+    col_strings.push(Col::w3_f160w_sigma.to_string());
+    col_strings.push(Col::w3_f160w_n.to_string());
+    col_strings.push(Col::w3_f164n.to_string());
+    col_strings.push(Col::w3_f164n_sigma.to_string());
+    col_strings.push(Col::w3_f164n_n.to_string());
+    col_strings.push(Col::w3_f167n.to_string());
+    col_strings.push(Col::w3_f167n_sigma.to_string());
+    col_strings.push(Col::w3_f167n_n.to_string());
+    col_strings.push(Col::w3_f200lp.to_string());
+    col_strings.push(Col::w3_f200lp_sigma.to_string());
+    col_strings.push(Col::w3_f200lp_n.to_string());
+    col_strings.push(Col::w3_f218w.to_string());
+    col_strings.push(Col::w3_f218w_sigma.to_string());
+    col_strings.push(Col::w3_f218w_n.to_string());
+    col_strings.push(Col::w3_f225w.to_string());
+    col_strings.push(Col::w3_f225w_sigma.to_string());
+    col_strings.push(Col::w3_f225w_n.to_string());
+    col_strings.push(Col::w3_fq232n.to_string());
+    col_strings.push(Col::w3_fq232n_sigma.to_string());
+    col_strings.push(Col::w3_fq232n_n.to_string());
+    col_strings.push(Col::w3_fq243n.to_string());
+    col_strings.push(Col::w3_fq243n_sigma.to_string());
+    col_strings.push(Col::w3_fq243n_n.to_string());
+    col_strings.push(Col::w3_f275w.to_string());
+    col_strings.push(Col::w3_f275w_sigma.to_string());
+    col_strings.push(Col::w3_f275w_n.to_string());
+    col_strings.push(Col::w3_f280n.to_string());
+    col_strings.push(Col::w3_f280n_sigma.to_string());
+    col_strings.push(Col::w3_f280n_n.to_string());
+    col_strings.push(Col::w3_f300x.to_string());
+    col_strings.push(Col::w3_f300x_sigma.to_string());
+    col_strings.push(Col::w3_f300x_n.to_string());
+    col_strings.push(Col::w3_f336w.to_string());
+    col_strings.push(Col::w3_f336w_sigma.to_string());
+    col_strings.push(Col::w3_f336w_n.to_string());
+    col_strings.push(Col::w3_f343n.to_string());
+    col_strings.push(Col::w3_f343n_sigma.to_string());
+    col_strings.push(Col::w3_f343n_n.to_string());
+    col_strings.push(Col::w3_f350lp.to_string());
+    col_strings.push(Col::w3_f350lp_sigma.to_string());
+    col_strings.push(Col::w3_f350lp_n.to_string());
+    col_strings.push(Col::w3_f373n.to_string());
+    col_strings.push(Col::w3_f373n_sigma.to_string());
+    col_strings.push(Col::w3_f373n_n.to_string());
+    col_strings.push(Col::w3_fq378n.to_string());
+    col_strings.push(Col::w3_fq378n_sigma.to_string());
+    col_strings.push(Col::w3_fq378n_n.to_string());
+    col_strings.push(Col::w3_fq387n.to_string());
+    col_strings.push(Col::w3_fq387n_sigma.to_string());
+    col_strings.push(Col::w3_fq387n_n.to_string());
+    col_strings.push(Col::w3_f390m.to_string());
+    col_strings.push(Col::w3_f390m_sigma.to_string());
+    col_strings.push(Col::w3_f390m_n.to_string());
+    col_strings.push(Col::w3_f390w.to_string());
+    col_strings.push(Col::w3_f390w_sigma.to_string());
+    col_strings.push(Col::w3_f390w_n.to_string());
+    col_strings.push(Col::w3_f395n.to_string());
+    col_strings.push(Col::w3_f395n_sigma.to_string());
+    col_strings.push(Col::w3_f395n_n.to_string());
+    col_strings.push(Col::w3_f410m.to_string());
+    col_strings.push(Col::w3_f410m_sigma.to_string());
+    col_strings.push(Col::w3_f410m_n.to_string());
+    col_strings.push(Col::w3_fq422m.to_string());
+    col_strings.push(Col::w3_fq422m_sigma.to_string());
+    col_strings.push(Col::w3_fq422m_n.to_string());
+    col_strings.push(Col::w3_fq436n.to_string());
+    col_strings.push(Col::w3_fq436n_sigma.to_string());
+    col_strings.push(Col::w3_fq436n_n.to_string());
+    col_strings.push(Col::w3_fq437n.to_string());
+    col_strings.push(Col::w3_fq437n_sigma.to_string());
+    col_strings.push(Col::w3_fq437n_n.to_string());
+    col_strings.push(Col::w3_f438w.to_string());
+    col_strings.push(Col::w3_f438w_sigma.to_string());
+    col_strings.push(Col::w3_f438w_n.to_string());
+    col_strings.push(Col::w3_f467m.to_string());
+    col_strings.push(Col::w3_f467m_sigma.to_string());
+    col_strings.push(Col::w3_f467m_n.to_string());
+    col_strings.push(Col::w3_f469n.to_string());
+    col_strings.push(Col::w3_f469n_sigma.to_string());
+    col_strings.push(Col::w3_f469n_n.to_string());
+    col_strings.push(Col::w3_f475w.to_string());
+    col_strings.push(Col::w3_f475w_sigma.to_string());
+    col_strings.push(Col::w3_f475w_n.to_string());
+    col_strings.push(Col::w3_f475x.to_string());
+    col_strings.push(Col::w3_f475x_sigma.to_string());
+    col_strings.push(Col::w3_f475x_n.to_string());
+    col_strings.push(Col::w3_f487n.to_string());
+    col_strings.push(Col::w3_f487n_sigma.to_string());
+    col_strings.push(Col::w3_f487n_n.to_string());
+    col_strings.push(Col::w3_fq492n.to_string());
+    col_strings.push(Col::w3_fq492n_sigma.to_string());
+    col_strings.push(Col::w3_fq492n_n.to_string());
+    col_strings.push(Col::w3_f502n.to_string());
+    col_strings.push(Col::w3_f502n_sigma.to_string());
+    col_strings.push(Col::w3_f502n_n.to_string());
+    col_strings.push(Col::w3_fq508n.to_string());
+    col_strings.push(Col::w3_fq508n_sigma.to_string());
+    col_strings.push(Col::w3_fq508n_n.to_string());
+    col_strings.push(Col::w3_f547m.to_string());
+    col_strings.push(Col::w3_f547m_sigma.to_string());
+    col_strings.push(Col::w3_f547m_n.to_string());
+    col_strings.push(Col::w3_f555w.to_string());
+    col_strings.push(Col::w3_f555w_sigma.to_string());
+    col_strings.push(Col::w3_f555w_n.to_string());
+    col_strings.push(Col::w3_fq575n.to_string());
+    col_strings.push(Col::w3_fq575n_sigma.to_string());
+    col_strings.push(Col::w3_fq575n_n.to_string());
+    col_strings.push(Col::w3_f600lp.to_string());
+    col_strings.push(Col::w3_f600lp_sigma.to_string());
+    col_strings.push(Col::w3_f600lp_n.to_string());
+    col_strings.push(Col::w3_f606w.to_string());
+    col_strings.push(Col::w3_f606w_sigma.to_string());
+    col_strings.push(Col::w3_f606w_n.to_string());
+    col_strings.push(Col::w3_fq619n.to_string());
+    col_strings.push(Col::w3_fq619n_sigma.to_string());
+    col_strings.push(Col::w3_fq619n_n.to_string());
+    col_strings.push(Col::w3_f621m.to_string());
+    col_strings.push(Col::w3_f621m_sigma.to_string());
+    col_strings.push(Col::w3_f621m_n.to_string());
+    col_strings.push(Col::w3_f625w.to_string());
+    col_strings.push(Col::w3_f625w_sigma.to_string());
+    col_strings.push(Col::w3_f625w_n.to_string());
+    col_strings.push(Col::w3_f631n.to_string());
+    col_strings.push(Col::w3_f631n_sigma.to_string());
+    col_strings.push(Col::w3_f631n_n.to_string());
+    col_strings.push(Col::w3_fq634n.to_string());
+    col_strings.push(Col::w3_fq634n_sigma.to_string());
+    col_strings.push(Col::w3_fq634n_n.to_string());
+    col_strings.push(Col::w3_f645n.to_string());
+    col_strings.push(Col::w3_f645n_sigma.to_string());
+    col_strings.push(Col::w3_f645n_n.to_string());
+    col_strings.push(Col::w3_f656n.to_string());
+    col_strings.push(Col::w3_f656n_sigma.to_string());
+    col_strings.push(Col::w3_f656n_n.to_string());
+    col_strings.push(Col::w3_f657n.to_string());
+    col_strings.push(Col::w3_f657n_sigma.to_string());
+    col_strings.push(Col::w3_f657n_n.to_string());
+    col_strings.push(Col::w3_f658n.to_string());
+    col_strings.push(Col::w3_f658n_sigma.to_string());
+    col_strings.push(Col::w3_f658n_n.to_string());
+    col_strings.push(Col::w3_f665n.to_string());
+    col_strings.push(Col::w3_f665n_sigma.to_string());
+    col_strings.push(Col::w3_f665n_n.to_string());
+    col_strings.push(Col::w3_f665n_f6.to_string());
+    col_strings.push(Col::w3_f665n_f6_sigma.to_string());
+    col_strings.push(Col::w3_f665n_f6_n.to_string());
+    col_strings.push(Col::w3_fq672n.to_string());
+    col_strings.push(Col::w3_fq672n_sigma.to_string());
+    col_strings.push(Col::w3_fq672n_n.to_string());
+    col_strings.push(Col::w3_f673n.to_string());
+    col_strings.push(Col::w3_f673n_sigma.to_string());
+    col_strings.push(Col::w3_f673n_n.to_string());
+    col_strings.push(Col::w3_fq674n.to_string());
+    col_strings.push(Col::w3_fq674n_sigma.to_string());
+    col_strings.push(Col::w3_fq674n_n.to_string());
+    col_strings.push(Col::w3_f680n.to_string());
+    col_strings.push(Col::w3_f680n_sigma.to_string());
+    col_strings.push(Col::w3_f680n_n.to_string());
+    col_strings.push(Col::w3_f689m.to_string());
+    col_strings.push(Col::w3_f689m_sigma.to_string());
+    col_strings.push(Col::w3_f689m_n.to_string());
+    col_strings.push(Col::w3_fq727n.to_string());
+    col_strings.push(Col::w3_fq727n_sigma.to_string());
+    col_strings.push(Col::w3_fq727n_n.to_string());
+    col_strings.push(Col::w3_fq750n.to_string());
+    col_strings.push(Col::w3_fq750n_sigma.to_string());
+    col_strings.push(Col::w3_fq750n_n.to_string());
+    col_strings.push(Col::w3_f763m.to_string());
+    col_strings.push(Col::w3_f763m_sigma.to_string());
+    col_strings.push(Col::w3_f763m_n.to_string());
+    col_strings.push(Col::w3_f775w.to_string());
+    col_strings.push(Col::w3_f775w_sigma.to_string());
+    col_strings.push(Col::w3_f775w_n.to_string());
+    col_strings.push(Col::w3_f814w.to_string());
+    col_strings.push(Col::w3_f814w_sigma.to_string());
+    col_strings.push(Col::w3_f814w_n.to_string());
+    col_strings.push(Col::w3_f845m.to_string());
+    col_strings.push(Col::w3_f845m_sigma.to_string());
+    col_strings.push(Col::w3_f845m_n.to_string());
+    col_strings.push(Col::w3_f850lp.to_string());
+    col_strings.push(Col::w3_f850lp_sigma.to_string());
+    col_strings.push(Col::w3_f850lp_n.to_string());
+    col_strings.push(Col::w3_fq889n.to_string());
+    col_strings.push(Col::w3_fq889n_sigma.to_string());
+    col_strings.push(Col::w3_fq889n_n.to_string());
+    col_strings.push(Col::w3_fq906n.to_string());
+    col_strings.push(Col::w3_fq906n_sigma.to_string());
+    col_strings.push(Col::w3_fq906n_n.to_string());
+    col_strings.push(Col::w3_fq924n.to_string());
+    col_strings.push(Col::w3_fq924n_sigma.to_string());
+    col_strings.push(Col::w3_fq924n_n.to_string());
+    col_strings.push(Col::w3_fq937n.to_string());
+    col_strings.push(Col::w3_fq937n_sigma.to_string());
+    col_strings.push(Col::w3_fq937n_n.to_string());
+    col_strings.push(Col::w3_f953n.to_string());
+    col_strings.push(Col::w3_f953n_sigma.to_string());
+    col_strings.push(Col::w3_f953n_n.to_string());
+    col_strings.push(Col::w3_g102.to_string());
+    col_strings.push(Col::w3_g102_sigma.to_string());
+    col_strings.push(Col::w3_g102_n.to_string());
+    col_strings.push(Col::w3_g141.to_string());
+    col_strings.push(Col::w3_g141_sigma.to_string());
+    col_strings.push(Col::w3_g141_n.to_string());
+    col_strings.push(Col::w3_g280.to_string());
+    col_strings.push(Col::w3_g280_sigma.to_string());
+    col_strings.push(Col::w3_g280_n.to_string());
     map.insert(hubble_sc.string(), col_strings);
 }
