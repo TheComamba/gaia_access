@@ -12,7 +12,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install dependencies for Linux
         if: matrix.os == 'ubuntu-latest'
@@ -28,6 +28,6 @@ jobs:
         run: |
           ./scripts/test.sh
 
-      - uses: clechasseur/rs-cargo@v1
+      - uses: clechasseur/rs-cargo@v3
         with:
           command: clippy
