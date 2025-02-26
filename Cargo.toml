@@ -16,10 +16,10 @@ crate-type   = ["rlib"]
 
 [dependencies]
 reqwest = { version = "0.12.0", default-features = false, features = ["blocking", "default-tls"] } # Downloading files
-strum = { version = "0.26.0", no-default-features = true, features = ["derive"] } # Derive string from enum
+strum = { version = "0.27.0", no-default-features = true, features = ["derive"] } # Derive string from enum
 serde = { version = "1.0", default-features = false, features = ["derive"] } # (De)Serialization
 serde_json = { version = "1.0", default-features = false, features = ["std"] }
-strum_macros = "0.26.0" # Derive string from enum
+strum_macros = "0.27.0" # Derive string from enum
 
 [dev-dependencies]
 xmltree = "0.11.0" # XML DeSerialization
