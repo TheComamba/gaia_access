@@ -2,13 +2,13 @@
 authors = ["The Comamba <thecomamba@jojoheinze.de>"]
 categories = ["database", "science"]
 description = "Access the Gaia ESA Archive for astronomical data."
-edition = "2021"
+edition = "2024"
 keywords = ["gaia", "astronomy", "ADQL"]
 license = "MIT"
 name = "gaia_access"
 readme = "README.md"
 repository = "https://github.com/TheComamba/gaia_access"
-version = "0.1.3"
+version = "0.1.4"
 
 [lib]
 name         = "gaia_access"
