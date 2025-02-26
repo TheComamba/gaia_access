@@ -313,8 +313,8 @@ pub mod tap_upload;
 
 #[cfg(test)]
 /// Collects all the known schemas and tables in the Gaia database.
-pub(crate) fn collect_known_schemas(
-) -> std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>> {
+pub(crate) fn collect_known_schemas()
+-> std::collections::HashMap<String, std::collections::HashMap<String, Vec<String>>> {
     let mut known = std::collections::HashMap::new();
     external::collect_known(&mut known);
     gaiadr1::collect_known(&mut known);
