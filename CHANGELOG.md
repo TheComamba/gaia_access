@@ -1,3 +1,8 @@
+# [0.1.4]
+
+## Changed
+Updated strum crates and switched to Rust Edition 2024.
+
 # [0.1.3]
 
 ## Added

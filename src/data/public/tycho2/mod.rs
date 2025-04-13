@@ -4,26 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The Tycho-2 Catalogue is an astrometric reference catalogue containing
-///     positions  and proper motions  as well as  two-colour photometric data
-///     for the 2.5 million brightest stars in the sky.  The Tycho-2 positions
-///     and magnitudes are  based on  precisely the  same observations  as the
-///     original  Tycho  Catalogue  (hereafter  Tycho-1;  see  Cat.  I/239))
-///     collected  by the  star mapper  of the  ESA Hipparcos  satellite,  but
-///     Tycho-2 is much bigger  and slightly  more precise,   owing to  a more
-///     advanced   reduction  technique.   Components  of  double  stars  with
-///     separations down to 0.8 arcsec are included. Proper motions precise to
-///     about 2.5 mas/yr are given as  derived  from  a  comparison  with  the
-///     Astrographic   Catalogue  and   143  other   ground-based  astrometric
-///     catalogues,  all reduced to the Hipparcos celestial coordinate system.
-///     Tycho-2  supersedes in most applications Tycho-1,   as well as the ACT
-///     (Cat.  I/246)  and TRC  (Cat. I/250)  catalogues based on Tycho-1.
-///     Supplement-1  lists stars  from the  Hipparcos and  Tycho-1 Catalogues
-///     which are not in Tycho-2.  Supplement-2 lists 1146 Tycho-1 stars which
-///     are probably either false or heavily disturbed.
-///
-///     For more information, please consult the Tycho-2 home page:
-///     http://www.astro.ku.dk/~erik/Tycho-2
+/// The Tycho-2 Catalogue is an astrometric reference catalogue containing positions and proper motions as well as two-colour photometric data for the 2.5 million brightest stars in the sky. The Tycho-2 positions and magnitudes are based on precisely the same observations as the original Tycho Catalogue (hereafter Tycho-1; VizieR catalogue: I/239) collected by the star mapper of the ESA Hipparcos satellite, but Tycho-2 is much bigger and slightly more precise, owing to a more advanced reduction technique. Components of double stars with separations down to 0.8 arcsec are included. Proper motions precise to about 2.5 mas/yr are given as derived from a comparison with the Astrographic Catalogue and 143 other ground-based astrometric catalogues, all reduced to the Hipparcos celestial coordinate system. Tycho-2 supersedes in most applications Tycho-1, as well as the ACT (VizieR catalogue: I/246) and TRC (VizieR catatlogue: I/250) catalogues based on Tycho-1. Supplement-1 lists stars from the Hipparcos and Tycho-1 Catalogues which are not in Tycho-2. Supplement-2 lists 1146 Tycho-1 stars which are probably either false or heavily disturbed. For more information, please consult the Tycho-2 home page: http://www.astro.ku.dk/~erik/Tycho-2 Reference paper: https://ui.adsabs.harvard.edu/abs/2000A%26A...355L..27H/abstract
 #[allow(non_camel_case_types)]
 pub struct tycho2;
 

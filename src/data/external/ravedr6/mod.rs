@@ -4,13 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// This summary table contains a selection of values from several RAVE DR6 tables. The selection of fields is motivated by the findings in the RAVE DR6 papers (DOI:10.3847/1538-3881/ab9ab9, DOI:10.3847/1538-3881/ab9ab8). The RAVE DR6 release contains 22 tables and many more results from other pipelines. The summary in this table draws from the following RAVE DR6 tables:
-/// ravedr6.dr6_rave_sparv (DOI:10.17876/rave/dr.6/001): radial velocities and errors;
-/// ravedr6.dr6_obsdata (DOI:10.17876/rave/dr.6/002): input coordinates of the RAVE observations;
-/// rave_dr6.dr6_bdasp (DOI:10.107876/rave/dr.6/008): stellar atmospheric parameters as derived by pipeline BDASP ("Enhanced stellar atmospheric parameters inferred via a Bayesian pipeline using Gaia DR2 astrometric priors", DOI:10.3847/1538-3881/ab9ab8);
-/// ravedr6.dr6_madera (DOI:10.17876/rave/dr.6/006): values [M/H];
-/// ravedr6.dr6_gauguin_bdasp (DOI:10.17876/rave/dr.6/010): element abundances for selected elements ("Abundances of the elements Fe, Al, and Ni, as well as an overall [?/Fe] ratio obtained using a new pipeline based on the GAUGUIN optimization method that is able to deal with variable signal-to-noise ratios", DOI:10.3847/1538-3881/ab9ab8).
-/// This table has been created in March 2022 based on an earlier version created by Harry Enke and Yori Fournier (AIP) in October 2021 for the Gaia ESA Archive using a custom query on the AIP server.
+/// This summary table contains a selection of values from several RAVE DR6 tables. The selection of fields is motivated by the findings in the RAVE DR6 papers (DOI:10.3847/1538-3881/ab9ab9, DOI:10.3847/1538-3881/ab9ab8). The RAVE DR6 release contains 22 tables and many more results from other pipelines. The summary in this table draws from the following RAVE DR6 tables: ravedr6.dr6_rave_sparv (DOI:10.17876/rave/dr.6/001): radial velocities and errors; ravedr6.dr6_obsdata (DOI:10.17876/rave/dr.6/002): input coordinates of the RAVE observations; rave_dr6.dr6_bdasp (DOI:10.107876/rave/dr.6/008): stellar atmospheric parameters as derived by pipeline BDASP ("Enhanced stellar atmospheric parameters inferred via a Bayesian pipeline using Gaia DR2 astrometric priors", DOI:10.3847/1538-3881/ab9ab8); ravedr6.dr6_madera (DOI:10.17876/rave/dr.6/006): values [M/H]; ravedr6.dr6_gauguin_bdasp (DOI:10.17876/rave/dr.6/010): element abundances for selected elements ("Abundances of the elements Fe, Al, and Ni, as well as an overall [alpha/Fe] ratio obtained using a new pipeline based on the GAUGUIN optimization method that is able to deal with variable signal-to-noise ratios", DOI:10.3847/1538-3881/ab9ab8). This table has been created in March 2022 based on an earlier version created by Harry Enke and Yori Fournier (AIP) in October 2021 for the Gaia ESA Archive using a custom query on the AIP server.
 #[allow(non_camel_case_types)]
 pub struct ravedr6;
 

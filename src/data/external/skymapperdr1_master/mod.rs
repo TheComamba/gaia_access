@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// SkyMapper Data Release 1 - LATEST UPDATE (DR1.1) - MAIN TABLE: Primary table of mean astrometric, photometric and shape measurements per object, with cross-match information to external tables. Reference: Wolf et al. 2018 PASA, 35, 10. Data replicated from NCI TAP http://skymappertap.asvo.nci.org.au/ncitap/tap dr1.master table as of January 2019.
+/// SkyMapper Data Release 1 - latest update (DR1.1) - main table: primary table of mean astrometric, photometric, and shape measurements per object, with cross-match information to external tables. The major improvement in DR1.1 is a significant enhancement of the homogeneity of the photometric calibration. The source of the photometric calibration is now a combination of APASS and 2MASS, where the addition of the latter is used to (a) provide the direct calibration of the SkyMapper i-band and z-band photometry via interpolation between the 2MASS JK and the APASS gr photometry, and (b) refine the selection of APASS stars used for photometric calibration of the other SkyMapper bands (uvgr). Data replicated from NCI TAP http://skymappertap.asvo.nci.org.au/ncitap/tap dr1.master table as of January 2019. Reference paper: https://ui.adsabs.harvard.edu/abs/2018PASA...35...10W/abstract (DOI: 10.1017/pasa.2018.5)
 #[allow(non_camel_case_types)]
 pub struct skymapperdr1_master;
 

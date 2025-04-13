@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// SourceId in original  catalogues
+/// This is Table A.2 in Smart+, 2014, A&A, 570, A87 (IGSL cross catalogue identifiers). This table contains the cross-identifications for Initial Gaia Source List (IGSL) sources from the original catalogues from which they were derived. The IGSL was commissioned by DPAC to fulfil the following broad requirements: all-sky positions, proper motions, and magnitudes for objects to a limit of Gaia magnitude G = 21 mag where possible, e.g., where there are large (>10,000 square degrees) catalogues that reach that limit. The proper motions and magnitudes are provided on a best effort basis, nominally with precisions of 10 mas/yr and 0.3 magnitudes, respectively, but obviously limited by the currently available large catalogues. The DPAC Quasar and Ecliptic Pole catalogues are included with no selection on magnitudes. Hipparcos objects are also included with no selection on magnitudes. The IGSL has been used as the starting point for the Initial Data Treatment (IDT) cross-matching routines in the DPAC processing of Gaia data. Reference paper: https://ui.adsabs.harvard.edu/abs/2014A%26A...570A..87S/abstract (DOI: 10.1051/0004-6361/201424241)
 #[allow(non_camel_case_types)]
 pub struct igsl_source_catalog_ids;
 

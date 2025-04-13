@@ -4,10 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The AAVSO Photometric All-Sky Survey - Data Release 9
-///     This publication makes use of data products from the AAVSO
-///     Photometric All Sky Survey (APASS). Funded by the Robert Martin Ayers
-///     Sciences Fund and the National Science Foundation. Original catalogue released by Henden et al. 2015 AAS Meeting #225, id.336.16. Data retrieved using the VizieR catalogue access tool, CDS, Strasbourg, France. The original description of the VizieR service was published in A&AS 143, 23. VizieR catalogue II/336.
+/// The AAVSO Photometric All Sky Survey (APASS) - Data Release 9. APASS is designed to bridge the gap between the shallow Tycho-2 two-bandpass photometric catalogue that is complete to V = 11 mag and deeper, but less spatially-complete catalogues like SDSS or Pan-STARRS. The APASS Data Release 9 contains approximately 62 million stars in about 99% of the sky. Data retrieved using the VizieR catalogue access tool, CDS, Strasbourg, France (VizieR catalogue: II/336). For more information, please visit the APASS homepage: https://www.aavso.org/apass. Reference paper: https://ui.adsabs.harvard.edu/abs/2015AAS...22533616H/abstract
 #[allow(non_camel_case_types)]
 pub struct apassdr9;
 

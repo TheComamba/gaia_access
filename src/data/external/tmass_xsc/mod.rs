@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// The Two Micron All Sky Survey: Extended Source Catalog. Reference: Skrutskie et al. 2006 AJ 131, 1163. Data replicated from IRSA TAP https://irsa.ipac.caltech.edu/TAP fp_xsc table as of January 2019. Note additional columns have been added after the original publication. The full data model is documented at http://wise2.ipac.caltech.edu/staff/jarrett/2mass/XSC/XSC_DD-new
+/// The Two Micron All Sky Survey (2MASS): Extended Source Catalogue (XSC). In this survey, the entire sky was uniformly scanned in three near-infrared bands to detect and characterise point sources brighter than about 1 mJy in each band, with signal-to-noise ratio (SNR) greater than 10, using a pixel size of 2.044 arcsec. The extended source catalogue contains 1.6 million objects and includes those sources which are resolved with respect to the observed 2MASS point spread function. Approximately 97% of XSC sources are galaxies, with the other ~3% belonging to the Milky Way. Data is replicated from IRSA TAP https://irsa.ipac.caltech.edu/TAP/ fp_xsc table as of January 2019. Note that additional columns have been added after the original publication. The full data model is documented at http://wise2.ipac.caltech.edu/staff/jarrett/2mass/XSC/XSC_DD-new. Reference paper: https://ui.adsabs.harvard.edu/abs/2006AJ....131.1163S/abstract (DOI: 10.1086/498708)
 #[allow(non_camel_case_types)]
 pub struct tmass_xsc;
 

@@ -4,33 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-///
-/// Bailer-Jones et al. (2021) EDR3 distances. <p> Estimating distances from parallaxes. V: Geometric and photogeometric distances to 1.47 billion stars in Gaia Early Data Release 3.
-/// Bailer-Jones et al. 2021 AJ 161 147. Data replicated from gedr3dist.main table at GAVO Data Center TAP service https://dc.g-vo.org/tap and TAP metadata as of December 2020.
-/// <p>
-///     Original table description.
-/// <p>
-///     We estimate the distance from the Sun to sources in Gaia EDR3 that have
-///     parallaxes. We provide two types of distance estimate, together with
-///     their corresponding asymmetric uncertainties, using Bayesian posterior
-///     density functions that we sample for each source. Our prior is based
-///     on a detailed model of the 3D spatial, colour, and magnitude
-///     distribution of stars in our Galaxy that includes a 3D map of
-///     interstellar extinction.
-/// <p>
-///     The first type of distance estimate is purely geometric, in that it only
-///     makes use of the Gaia parallax and parallax uncertainty. This uses a
-///     direction-dependent distance prior derived from our Galaxy model. The
-///     second type of distance estimate is photogeometric: in addition to
-///     parallax it also uses the source's G-band magnitude and BP-RP
-///     colour. This type of estimate uses the geometric prior together with a
-///     direction-dependent and colour-dependent prior on the absolute magnitude
-///     of the star.
-/// <p>
-///     Our distance estimate and uncertainties are quantiles, so are invariant
-///     under logarithmic transformations. This means that our median estimate
-///     of the distance can be used to give the median estimate of the distance
-///     modulus, and likewise for the uncertainties.
+/// Estimating distances from parallaxes: Geometric and photogeometric distances to 1.47 billion stars in Gaia EDR3. The table contains stellar distance estimates to sources in Gaia EDR3 that have parallaxes. Provided are two types of distance estimates, together with their corresponding asymmetric uncertainties, using Bayesian posterior density functions that are sampled for each source. The prior is based on a detailed model of the 3D spatial, colour, and magnitude distribution of stars in our Galaxy that includes a 3D map of interstellar extinction. The first type of distance estimate is purely geometric, in that it only makes use of the Gaia parallax and parallax uncertainty. The second type is photogeometric: in addition to the parallax, it also uses the source's G-band magnitude and BP-RP colour. The distance estimate and uncertainties are quantiles, so are invariant under logarithmic transformations. This means that the median estimate of the distance can be used to give the median estimate of the distance modulus, and likewise for the uncertainties. Data replicated from gedr3dist.main table at GAVO Data Center TAP service https://dc.g-vo.org/tap and TAP metadata as of December 2020. Reference paper: https://ui.adsabs.harvard.edu/abs/2021AJ....161..147B/abstract (DOI: 10.3847/1538-3881/abd806)
 #[allow(non_camel_case_types)]
 pub struct gaiaedr3_distance;
 

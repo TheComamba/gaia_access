@@ -4,11 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// LAMOST Medium-Resolution Spectroscopic Survey General Catalogue
-///
-/// The Large Sky Area Multi-Object Fiber Spectroscopic Telescope (LAMOST) is a Chinese national scientific research facility operated by the National Astronomical Observatories, Chinese Academy of Sciences. It is a special reflecting Schmidt telescope with 4000 fibers in a field of view of 20 degrees. The LAMOST survey provides flux - and wavelength-calibrated, sky-subtracted spectra in the wavelength range of 3700-9000 angstrom for many types of astronomical objects. Since October 2018, LAMOST started the second stage survey program containing both low- and medium-resolution spectroscopic surveys, and the medium-resolution spectroscopic survey includes two surveys, i.e., the time-domain and the non time-domain surveys.
-///
-/// The ninth LAMOST data release (LAMOST DR9) includes observations until June 2021. The Medium-Resolution spectroscopic survey (MRS) General Catalog contains 8,259,362 spectra, where there are 1,846,438 and 6,412,924 spectra for the non time-domain and time-domain surveys, respectively.
+/// LAMOST Medium-Resolution Spectroscopic Survey General Catalogue Data Release 9. The Large Sky Area Multi-Object Fiber Spectroscopic Telescope (LAMOST) is a Chinese national scientific research facility operated by the National Astronomical Observatories, Chinese Academy of Sciences. It is a special reflecting Schmidt telescope with 4000 fibers in a field of view of 20 degrees. The LAMOST survey provides flux- and wavelength-calibrated, sky-subtracted spectra in the wavelength range 3690-9100 Angstrom for many types of astronomical objects. Since October 2018, LAMOST started the second stage survey program containing both low- and medium-resolution spectroscopic surveys, and the medium-resolution spectroscopic survey includes two surveys, i.e., the time-domain and the non-time-domain surveys. The ninth LAMOST data release (LAMOST DR9) includes observations until June 2021. The Medium-Resolution spectroscopic Survey (MRS) General Catalogue contains 8,259,362 spectra, where there are 1,846,438 and 6,412,924 spectra for the non-time-domain and time-domain surveys, respectively. For more information, please consult the LAMOST homepage: https://www.lamost.org/dr9/
 #[allow(non_camel_case_types)]
 pub struct lamost_dr9_mrs;
 

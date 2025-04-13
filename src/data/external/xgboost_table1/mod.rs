@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// This is table 1 of Andrae et al. (2023), "Robust Data-driven Metallicities for 175 Million Stars from Gaia XP Spectra" (https://ui.adsabs.harvard.edu/abs/2023ApJS..267....8A/abstract). This table contains 174,922,161 XGBoost parameters (temperature, surface gravity, and metallicity). XGBoost draws on a number of data features: the full set of Gaia DR3 XP spectral coefficients, narrowband fluxes derived from XP spectra, broadband Gaia DR3 magnitudes, Gaia DR3 parallaxes, and CatWISE 2020 W1 and W2 magnitudes. The mean stellar parameter precision is 0.1 dex in [M/H], 50 K in Teff, and 0.08 dex in log(g). This table has been created in November 2023 based on version 2.1 of the dataset on Zenodo (https://doi.org/10.5281/zenodo.7945154).
+/// Robust data-driven metallicities for 175 million stars from Gaia XP spectra. This is table 1 of Andrae+, 2023, ApJS, 267, 8. It contains 174,922,161 XGBoost parameters (temperature, surface gravity, and metallicity). XGBoost draws on a number of data features: the full set of Gaia DR3 XP spectral coefficients, narrowband fluxes derived from XP spectra, broadband Gaia DR3 magnitudes, Gaia DR3 parallaxes, and CatWISE2020 W1 and W2 magnitudes. The mean stellar parameter precision is 0.1 dex in [M/H], 50 K in Teff, and 0.08 dex in log(g). This table has been created in November 2023 based on version 2.1 of the dataset on Zenodo (https://doi.org/10.5281/zenodo.7945154). Reference paper: https://ui.adsabs.harvard.edu/abs/2023ApJS..267....8A/abstract (DOI: 10.3847/1538-4365/acd53e)
 #[allow(non_camel_case_types)]
 pub struct xgboost_table1;
 

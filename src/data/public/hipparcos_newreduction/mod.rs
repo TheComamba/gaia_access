@@ -4,39 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// Hipparcos New Reduction: The Astrometric Catalogue
-///
-/// Hipparcos, the new Reduction of the Raw data
-///      van Leeuwen F.
-/// Astron. Astrophys. 474, 653 (2007)
-/// http://dx.doi.org/10.1051/0004-6361:20078357
-///
-/// A new reduction of the astrometric data as produced by the Hipparcos
-///     mission has been published, claiming accuracies for nearly all stars
-///     brighter than magnitude Hp=8 to be better, by up to a factor 4, than
-///     in the original catalogue.
-///
-///     The new Hipparcos astrometric catalogue is checked for the quality of
-///     the data and the consistency of the formal errors as well as the
-///     possible presence of error correlations. The differences with the
-///     earlier publication are explained.
-///
-///     Methods. The internal errors are followed through the reduction
-///     process, and the external errors are investigated on the basis of a
-///     comparison with radio observations of a small selection of stars, and
-///     the distribution of negative parallaxes. Error correlation levels are
-///     investigated and the reduction by more than a factor 10 as obtained in
-///     the new catalogue is explained.
-///
-///     Results. The formal errors on the parallaxes for the new catalogue are
-///     confirmed. The presence of a small amount of additional noise, though
-///     unlikely, cannot be ruled out.
-///
-///     Conclusions. The new reduction of the Hipparcos astrometric data
-///     provides an improvement by a factor 2.2 in the total weight compared
-///     to the catalogue published in 1997, and provides much improved data
-///     for a wide range of studies on stellar luminosities and local galactic
-///     kinematics.
+/// This is the main Hipparcos table containing a summary of the main astrometric and photometric properties of each source in the "Hipparcos New Reduction: The Astrometric Catalogue" (Van Leeuwen 2007). This new reduction of the astrometric data as produced by the Hipparcos mission has uncertainties for nearly all stars brighter than Hipparcos magnitude Hp = 8 mag that are better, by up to a factor 4, than in the original catalogue (ESA 1997). The astrometric covariance matrix can be reconstructed following Appendix B of Michalik+, 2014, A&A, 571, A85. Reference paper: https://ui.adsabs.harvard.edu/abs/2007A%26A...474..653V/abstract (DOI: 10.1051/0004-6361:20078357)
 #[allow(non_camel_case_types)]
 pub struct hipparcos_newreduction;
 

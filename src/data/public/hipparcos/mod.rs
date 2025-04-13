@@ -4,7 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// hipparcos original catalogue (J1991.25)
+/// This is the main Hipparcos table containing a summary of the main astrometric and photometric properties of each source in The Hipparcos and Tycho Catalogues (ESA 1997). Median astrometric standard errors (in position, parallax, and annual proper motion) are in the range 0.7-0.9 milliarcsec (mas) for stars brighter than 9 mag at the catalogue epoch (J1991.25). The catalogue is a materialisation of the ICRS reference system, coinciding with its principal axes at the level of +/-0.6 mas, and with proper motions consistent with an inertial system at the level of +/-0.25 mas/yr. The 118,218 constituent stars provide a mean sky density of ~3 stars/deg^2. Reference paper: https://ui.adsabs.harvard.edu/abs/1997A%26A...323L..49P/abstract
 #[allow(non_camel_case_types)]
 pub struct hipparcos;
 

@@ -4,11 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// LAMOST Low-Resolution Spectroscopic Survey General Catalogue
-///
-/// The Large Sky Area Multi-Object Fiber Spectroscopic Telescope (LAMOST) is a Chinese national scientific research facility operated by the National Astronomical Observatories, Chinese Academy of Sciences. It is a special reflecting Schmidt telescope with 4000 fibers in a field of view of 20 degrees. The LAMOST survey, initiated in 2012, provides flux- and wavelength-calibrated, sky-subtracted spectra in the wavelength range of 3690-9100 angstrom with a resolution of 1800 at the 5500 angstrom for many types of astronomical objects.
-///
-/// The ninth LAMOST data release (LAMOST DR9) includes observations until June 2021. The Low-Resolution spectroscopic survey (LRS) General Catalog contains 11,211,028 spectra, of which 10,893,354 are stars, 241,454 are galaxies, and 76,220 are QSOs.
+/// LAMOST Low-Resolution Spectroscopic Survey General Catalogue Data Release 9. The Large Sky Area Multi-Object Fiber Spectroscopic Telescope (LAMOST) is a Chinese national scientific research facility operated by the National Astronomical Observatories, Chinese Academy of Sciences. It is a special reflecting Schmidt telescope with 4000 fibers in a field of view of 20 degrees. The LAMOST survey provides flux- and wavelength-calibrated, sky-subtracted spectra in the wavelength range 3690-9100 Angstrom for many types of astronomical objects. The ninth LAMOST data release (LAMOST DR9) includes observations until June 2021. The Low-Resolution spectroscopic Survey (LRS) General Catalogue contains 11,211,028 spectra, of which 10,893,354 are stars, 241,454 are galaxies, and 76,220 are QSOs. For more information, please consult the LAMOST homepage: https://www.lamost.org/dr9/
 #[allow(non_camel_case_types)]
 pub struct lamost_dr9_lrs;
 

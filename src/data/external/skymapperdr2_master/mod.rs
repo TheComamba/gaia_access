@@ -4,11 +4,7 @@
 
 use crate::traits::{Column, Table};
 
-/// SkyMapper Data Release 2 - MAIN TABLE: Primary table of mean astrometric, photometric and shape measurements per object, with cross-match information to external tables.
-///
-/// Reference: Onken et al. 2019 PASA, 36, 33O.
-///
-/// Data replicated from dr2.master table NCI bulk download files and TAP metadata as of April 2020.
+/// The second data release (DR2) of the SkyMapper Southern Survey, is a hemispheric survey carried out with the SkyMapper Telescope at Siding Spring Observatory in Australia, using six optical filters: u, v, g, r, i, and z. DR2 is the first release to go beyond the ~18 mag (10 sigma) limit of the Shallow Survey released in the first data release (DR1), and includes portions of the sky at full survey depth that reach > 21 mag in the g and r filters. The DR2 photometry has a precision as measured by internal reproducibility of 1% in u and v, and 0.7% in g, r, i, and z. More than 21,000 square degrees have data in some filters (at either Shallow or Main Survey depth) and over 7,000 square degrees have deep Main Survey coverage in all six filters. Finally, about 18,000 square degrees have Main Survey data in the i and z filters, albeit not yet at full depth. The release contains over 120,000 images, as well as catalogues with over 500 million unique astrophysical objects and nearly 5 billion individual detections. It also contains cross-matches with a range of external catalogues such as Gaia DR2, Pan-STARRS1 DR1, GALEX GUVcat, 2MASS, and AllWISE, as well as spectroscopic surveys such as 2MRS, GALAH, 6dFGS, and 2dFLenS. Data replicated from dr2.master table NCI bulk download files and TAP metadata as of April 2020. Reference paper: https://ui.adsabs.harvard.edu/abs/2019PASA...36...33O/abstract (DOI: 10.1017/pasa.2019.27)
 #[allow(non_camel_case_types)]
 pub struct skymapperdr2_master;
 
