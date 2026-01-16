@@ -6,13 +6,13 @@ pub enum GaiaError {
     /// General error with a string message.
     General(String),
     /// Error from the query.
-    Query(reqwest::Error),
+    Query(ureq::Error),
     /// Error from parsing the response.
     Parse(serde_json::Error),
 }
 
-impl From<reqwest::Error> for GaiaError {
-    fn from(error: reqwest::Error) -> Self {
+impl From<ureq::Error> for GaiaError {
+    fn from(error: ureq::Error) -> Self {
         GaiaError::Query(error)
     }
 }

@@ -1,8 +1,11 @@
 #[cfg(test)]
 mod tests {
     use crate::{data::collect_known_schemas, error::GaiaError};
-    use reqwest;
-    use std::{collections::HashMap, fs, io::BufReader};
+    use std::{
+        collections::HashMap,
+        fs,
+        io::{BufReader, Read, Write},
+    };
     use xmltree::Element;
 
     const FILE_PATH: &'static str = "dev_data/tables.xml";
@@ -16,11 +19,19 @@ mod tests {
 
             let url = "https://gea.esac.esa.int/tap-server/tap/tables";
             println!("Downloading {}...", url);
-            let mut response = reqwest::blocking::get(url)?;
+            let mut response = ureq::get(url).call()?;
 
+            let mut content_buffer = Vec::new();
+            response
+                .body_mut()
+                .as_reader()
+                .read_to_end(&mut content_buffer)
+                .unwrap();
             let mut file =
                 fs::File::create(FILE_PATH).map_err(|e| GaiaError::General(e.to_string()))?;
-            response.copy_to(&mut file)?;
+            file.write_all(&content_buffer)
+                .map_err(|e| GaiaError::General(e.to_string()))?;
+            println!("Downloaded and saved to {}", FILE_PATH);
         }
         Ok(())
     }
