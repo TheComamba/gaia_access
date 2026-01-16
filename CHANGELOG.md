@@ -1,7 +1,12 @@
+# [0.2.0]
+
+## BREAKING
+- Switched from reqwest to ureq crate for HTTP calls. This implies a different variant in the GaiaError enum.
+
 # [0.1.4]
 
 ## Changed
-Updated strum crates and switched to Rust Edition 2024.
+- Updated strum crates and switched to Rust Edition 2024.
 
 # [0.1.3]
 

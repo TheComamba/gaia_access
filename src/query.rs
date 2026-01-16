@@ -217,16 +217,13 @@ impl<S: Schema, T: Table, C: Column> GaiaQueryBuilder<S, T, C> {
     /// let result = query_builder.do_query().unwrap();
     /// ```
     pub fn do_query(self) -> Result<GaiaResult<C>, GaiaError> {
-        let response = reqwest::blocking::Client::new()
-            .get("https://gea.esac.esa.int/tap-server/tap/sync")
-            .query(&[
-                ("request", "doQuery"),
-                ("lang", "ADQL"),
-                ("format", "json"),
-                ("query", &self.query_string()),
-            ])
-            .send()?;
-        let text = response.text()?;
+        let mut response = ureq::get("https://gea.esac.esa.int/tap-server/tap/sync")
+            .query("request", "doQuery")
+            .query("lang", "ADQL")
+            .query("format", "json")
+            .query("query", &self.query_string())
+            .call()?;
+        let text = response.body_mut().read_to_string()?;
         let response: GaiaResponse = serde_json::from_str(&text)?;
         Ok(GaiaResult::new(response, self.columns))
     }
