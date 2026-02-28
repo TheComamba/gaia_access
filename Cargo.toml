@@ -8,17 +8,17 @@ license = "MIT"
 name = "gaia_access"
 readme = "README.md"
 repository = "https://github.com/TheComamba/gaia_access"
-version = "0.2.0"
+version = "0.2.1-pre"
 
 [lib]
 name         = "gaia_access"
 crate-type   = ["rlib"]
 
 [dependencies]
-strum = { version = "0.27.0", default-features = false, features = ["derive", "std"] } # Derive string from enum
+strum = { version = "0.28.0", default-features = false, features = ["derive", "std"] } # Derive string from enum
 serde = { version = "1.0", default-features = false, features = ["derive", "std"] } # (De)Serialization
 serde_json = { version = "1.0", default-features = false, features = ["std"] }
-strum_macros = "0.27.0" # Derive string from enum
+strum_macros = "0.28.0" # Derive string from enum
 ureq = { version = "3.0", features = ["rustls"]}
 
 [dev-dependencies]
