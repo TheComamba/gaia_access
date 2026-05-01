@@ -1,0 +1,6 @@
+cooldown_minutes = 1440
+enforcement = "cargo_compatible"
+# `prompt` asks before accepting fresh versions Cargo still requires; `auto` keeps the current best Cargo-valid lockfile without asking.
+cargo_compatible_accept = "prompt"
+# `floor` keeps initial Cargo.lock versions as the minimum; `ignore` allows lower versions.
+lockfile_baseline = "ignore"
